@@ -1,0 +1,193 @@
+{
+  "nodes": [
+    {
+      "index": 1,
+      "category": "product",
+      "id": "생활 플라스틱"
+    },
+    {
+      "index": 2,
+      "category": "product",
+      "id": "사업장 플라스틱"
+    },
+    {
+      "index": 3,
+      "category": "product",
+      "id": "건설 폐기물"
+    },
+    {
+      "index": 4,
+      "category": "product",
+      "id": "지정 폐기물"
+    },
+    {
+      "index": 5,
+      "category": "dispose",
+      "id": "공동.단독 주책"
+    },
+    {
+      "index": 6,
+      "category": "dispose",
+      "id": "산업 폐기물"
+    },
+    {
+      "index": 7,
+      "category": "collect",
+      "id": "종량제 봉투"
+    },
+    {
+      "index": 8,
+      "category": "collect",
+      "id": "재활용품"
+    },
+    {
+      "index": 9,
+      "category": "select",
+      "id": "잔재물"
+    },
+    {
+      "index": 10,
+      "category": "select",
+      "id": "재활용"
+    },
+    {
+      "index": 11,
+      "category": "final",
+      "id": "시멘트 소성료"
+    },
+    {
+      "index": 12,
+      "category": "final",
+      "id": "매립"
+    },
+    {
+      "index": 13,
+      "category": "final",
+      "id": "소각"
+    },
+    {
+      "index": 14,
+      "category": "final",
+      "id": "소각.매립"
+    },
+    {
+      "index": 15,
+      "category": "final",
+      "id": "PP.PE"
+    },
+    {
+      "index": 16,
+      "category": "final",
+      "id": "PET"
+    },
+    {
+      "index": 17,
+      "category": "final",
+      "id": "비닐"
+    }
+  ],
+  "links": [
+    {
+      "name": "생활배출",
+      "source": 1,
+      "target": 5,
+      "value": 323
+    },
+    {
+      "name": "산업배출1",
+      "source": 2,
+      "target": 6,
+      "value": 30
+    },
+    {
+      "name": "산업배출2",
+      "source": 3,
+      "target": 6,
+      "value": 30
+    },
+    {
+      "name": "산업배출3",
+      "source": 4,
+      "target": 6,
+      "value": 30
+    },
+    {
+      "name": "주택배출1",
+      "source": 5,
+      "target": 6,
+      "value": 178
+    },
+    {
+      "name": "주택배출2",
+      "source": 5,
+      "target": 7,
+      "value": 145
+    },
+    {
+      "name": "산업배툴 선별1",
+      "source": 6,
+      "target": 9,
+      "value": 45
+    },
+    {
+      "name": "산업배툴 선별2",
+      "source": 6,
+      "target": 10,
+      "value": 45
+    },
+    {
+      "name": "제활용품 배출1",
+      "source": 8,
+      "target": 9,
+      "value": 67
+    },
+    {
+      "name": "제활용품 배출2",
+      "source": 8,
+      "target": 10,
+      "value": 77
+    },
+    {
+      "name": "잔재물 처리1",
+      "source": 9,
+      "target": 11,
+      "value": 56
+    },
+    {
+      "name": "잔재물 처리2",
+      "source": 9,
+      "target": 12,
+      "value": 8
+    },
+    {
+      "name": "잔재물 처리3",
+      "source": 9,
+      "target": 13,
+      "value": 3.4
+    },
+    {
+      "name": "재활용 처리1",
+      "source": 10,
+      "target": 14,
+      "value": 0
+    },
+    {
+      "name": "재활용 처리2",
+      "source": 10,
+      "target": 15,
+      "value": 17
+    },
+    {
+      "name": "재활용 처리3",
+      "source": 10,
+      "target": 16,
+      "value": 19.4
+    },
+    {
+      "name": "재활용 처리4",
+      "source": 10,
+      "target": 17,
+      "value": 41.2
+    }
+  ]
+}
