@@ -6,6 +6,11 @@ const color = {
     emerald: colorToken.gsEmerald,
     blue: colorToken.gsBlue,
     green: colorToken.gsGreen,
+    epNavy: colorToken.epNavy,
+    epGreen: colorToken.epGreen,
+    epBlue: colorToken.epBlue,
+    epPurple: colorToken.epPurple,
+    epDeepPurple: colorToken.epDeepPurple,
     primary900: colorToken.blue900,
     primary800: colorToken.blue800,
     primary700: colorToken.blue700,
@@ -36,7 +41,10 @@ const color = {
     `,
   },
   ui: {
-    background: colorToken.white700,
+    bg: {
+      light: colorToken.white700,
+      dark: colorToken.epNavy
+    },
     strong: colorToken.gray900,
     middle1: colorToken.gray700,
     middle2: colorToken.gray600,

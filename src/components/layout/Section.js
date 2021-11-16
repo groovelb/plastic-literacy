@@ -13,7 +13,7 @@ const Container = styled.div`
 			case "light":
 				return props.theme.color.brand.secondary100;
 			case "dark":
-				return props.theme.color.brand.secondary900;
+				return props.theme.color.ui.bg.dark;
 			case "gradientBlue":
 				return props.theme.color.brand.gradient.blue;
 			default:

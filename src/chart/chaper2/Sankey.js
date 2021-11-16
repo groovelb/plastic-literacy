@@ -53,6 +53,19 @@ const Sankey = ({ }) => {
           d.target.id + "\n" + format(d.value);
       });
 
+
+    link.append("circle")
+      .attr("cx",0)
+      .attr("cy",0)
+      .attr("r",4)
+      .attr("fill","#FA0000")
+      .trantition()
+      .duration(300)
+      .ease("linear")
+      .tween("pathTween", (d) => {return pathTween(link)});
+
+
+
     // add in the nodes
     const node = svg.append("g").selectAll(".node")
       .data(graph.nodes)
@@ -88,6 +101,17 @@ const Sankey = ({ }) => {
       .attr("text-anchor", "start");
 
   }, []);
+
+  function pathTween(path){
+    var length = path.node().getTotalLength(); // Get the length of the path
+    var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+    return function(t){
+      var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+      d3.select(this) // Select the circle
+        .attr("cx", point.x) // Set the cx
+        .attr("cy", point.y) // Set the cy
+    }
+  }
 
   return (
     <Container>

@@ -4,6 +4,11 @@ const colorToken = {
 	gsEmerald: '#009999',
 	gsGreen: '#42B66E',
 	gsBlue: '#057EC2',
+	epNavy: '#101E2E',
+	epGreen: '#3DDB87',
+	epBlue: '#3E9EFF',
+	epPurple: '#6464FF',
+	epDeepPurple: '#220749',
 	//Primary
 	blue900: '#0026C8',
 	blue800: '#003ADD',

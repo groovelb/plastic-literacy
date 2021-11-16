@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { useAnimationFrameLoop } from "react-timing-hooks";
 import { sankey, sankeyLinkHorizontal, sankeyJustify, sankeyLeft, sankeyCenter } from "d3-sankey";
 import { sankeyData } from "../data/public/dataSankeyChart";
 import theme from "../../assets/theme/theme";
@@ -10,23 +11,15 @@ import ic_collect from "../../assets/img/icon/ic_collect.svg";
 import ic_select from "../../assets/img/icon/ic_select.svg";
 import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
 
-// set the dimensions and margins of the graph
-const width = 1200;
-const height = 600;
-const margin = { top: 48, right: 10, bottom: 10, left: 10 },
-  innerWidth = width - margin.left - margin.right,
-  innerHeight = height - margin.top - margin.bottom;
 
 const Container = styled.div`
   width: ${props => props.theme.size.liveArea};
   svg{
-    width: ${`${width}px`};
-    height: ${`${height}px`};
+    width: 100%;
+    height: 100%;
     /* position: absolute; */
   }
 `;
-
-
 
 
 
@@ -122,7 +115,7 @@ let data = {
       "name": "육상 배출1",
       "source": 0,
       "target": 2,
-      "value": 270000/2,
+      "value": 270000 / 2,
       "isReal": false
     },
     {
@@ -143,7 +136,7 @@ let data = {
       "name": "해상 배출1",
       "source": 1,
       "target": 2,
-      "value": 270000/2,
+      "value": 270000 / 2,
       "isReal": false
     },
     {
@@ -268,8 +261,21 @@ let data = {
   ]
 };
 
+let link;
+let defs;
+let graph;
+let svg;
 
-const Sankey = ({currentStage}) => {
+const Sankey = ({
+  width,
+  height,
+  currentStage,
+  currentChapter,
+}) => {
+
+  const margin = { top: 80, right: 10, bottom: 10, left: 24 },
+    innerWidth = width - margin.left - margin.right,
+    innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -277,19 +283,17 @@ const Sankey = ({currentStage}) => {
     color = d3.scaleOrdinal(d3.schemeCategory10);
 
   let svgRef = useRef(null);
-  let svg;
 
-  const [nodeGroup, setNodeGroup] = useState([]);
+  const [isInitiate, setIsInitiate] = useState(false);
 
   // append the svg object to the body of the page
   useEffect(() => {
 
-    console.log('load!');
     svg = d3.select(svgRef.current)
       .attr("width", innerWidth + margin.left + margin.right)
       .attr("height", innerHeight + margin.top + margin.bottom)
       .append("g")
-      .attr("class", "chart")
+      .attr("class", "sankey")
       .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
@@ -301,19 +305,14 @@ const Sankey = ({currentStage}) => {
       .nodeAlign(sankeyLeft)
       .size([innerWidth, innerHeight]);
 
-    const path = sankeyLayout.links();
-    let freqCounter = 1;
-
     // load the data
 
 
-    const graph = sankeyLayout(data);
-
-    console.log(graph.links);
+    graph = sankeyLayout(data);
 
     // Set Node Group
     const stage = svg.append("g")
-      .attr("transform", "translate(0,-120)");
+      .attr("transform", "translate(0,0)");
 
     let nodeGroupTemp = [
       { name: '생산', depth: 0, x: null, img: ic_throw },
@@ -324,49 +323,51 @@ const Sankey = ({currentStage}) => {
     ];
 
     graph.nodes.forEach((node) => {
-      // 건설폐기물 재활용  노드 강제 이동
+      // 건설폐기물 재활용 노드 강제 이동
       if (node.index === 18) {
-        console.log(node);
         node.depth = 4;
       }
 
       if (nodeGroupTemp[node.depth].x === null) {
         nodeGroupTemp[node.depth].x = node.x0;
-        stage.append("rect")
+
+        stage.append("text")
+              .attr("x",node.x0)
+              .attr("y",-64)
+              .attr("class","stage_title")
+              .attr("text-anchor","middle")
+              .text(nodeGroupTemp[node.depth].name);
+
+        stage.append("line")
           .attr("class", "stage")
-          .attr("x", node.x0)
-          .attr("y", -40)
-          .attr("width", 80)
-          .attr("height", height + 40)
-          .attr("fill", theme.color.brand.secondary800)
+          .attr("x1", node.x0 - 2)
+          .attr("x2", node.x0 - 2)
+          .attr("y1", -56)
+          .attr("y2", height + 40)
+          .attr("stroke", theme.color.brand.secondary600)
+          .attr("stroke-width", 4)
+          .attr("stroke-dasharray", 8)
           .attr("opacity", 0.5)
-          .on("click",() => {
-            console.log(node.depth);
-            d3.selectAll(`.link.ocean`)
-              .style("stroke-opacity",0.1);
-            d3.selectAll(`.link_${node.depth}.ocean`)
-              .style("stroke-opacity",0.75);
-          })
+          .on("click", () => {
+            d3.selectAll(`.link.land`)
+              .style("stroke-opacity", 0.1);
+            d3.selectAll(`.link_${node.depth}.land`)
+              .style("stroke-opacity", 0.5);
+          });
       }
     });
 
-    graph.links.forEach((link,i) => {
-      link.isReal = data.links[i].isReal;
-      console.log(link);
-    });
+    defs = svg.append('defs');
 
-    const defs = svg.append('defs'); 
     // add in the links
-    const link = svg.append("g").selectAll(".link")
+    link = svg.append("g").selectAll(".link")
       .data(graph.links)
       .enter().append("path")
-      .attr("class","link")
       .attr("d", sankeyLinkHorizontal())
       .attr("stroke-width", function (d) { return d.width; });
 
-    link.attr("class",(d) => {
-      console.log(d);
-      return `link link_${d.source.depth} ocean`;
+    link.attr("class", (d, i) => {
+      return `ocean link link_${d.source.depth} path${i}`;
     });
 
     // add the link titles
@@ -375,7 +376,6 @@ const Sankey = ({currentStage}) => {
         return d.source.name + " → " +
           d.target.name + "\n" + format(d.value);
       });
-    ;
 
     // add in the nodes
     const node = svg.append("g").selectAll(".node")
@@ -412,6 +412,7 @@ const Sankey = ({currentStage}) => {
         return d.name + "\n" + format(d.value);
       });
 
+
     // add in the title for the nodes
     node.append("text")
       .attr("class", "node_title")
@@ -433,7 +434,7 @@ const Sankey = ({currentStage}) => {
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
-    const valueScale = d3.scaleLinear().domain(linkExtent).range([12, 32]);
+    const valueScale = d3.scaleLinear().domain(linkExtent).range([12, 28]);
 
     node.append("text")
       .attr("class", "node_value")
@@ -448,62 +449,141 @@ const Sankey = ({currentStage}) => {
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
-        console.log(d);
-        if(!d.isReal){
-          return 16;
-        }
-        else{
-          return valueScale(d.value);
-        }     
+        return valueScale(d.value);
       })
       .style("fill", "#ffffff")
-      .text(function (d,i) { 
-        console.log(data.nodes[i]);
-        if(!data.nodes[i].isReal){
-          return '추정 불가';
-        }
-        else{
-          return d.value; 
-        }
-      })
+      .text(function (d) { return d.value; })
       .filter(function (d) { return d.x0 < innerWidth / 2; })
       .attr("text-anchor", "start");
 
 
+    const particleGroupOcean = svg.append("g").selectAll(".particleGroupOcean")
+      .data(graph.links)
+      .enter().append("g")
+      .attr("class", (d, i) => {
+        return `particleGroupOcean particleGroupOcean${i}`
+      });
 
-    link.style('stroke', (d, i) => {
-
-      // make unique gradient ids  
-      const gradientID = `gradient${i}`;
-
-      const startColor = d.source.color;
-      const stopColor = d.target.color;
-
-      const linearGradient = defs.append('linearGradient')
-        .attr('id', gradientID);
-
-      linearGradient.selectAll('stop')
-        .data([
-          { offset: '10%', color: startColor },
-          { offset: '90%', color: stopColor }
-        ])
-        .enter().append('stop')
-        .attr('offset', d => {
-          return d.offset;
-        })
-        .attr('stop-color', d => {
-          return d.color;
-        });
-
-      return `url(#${gradientID})`;
-    });
+    setIsInitiate(true);
 
     return () => {
-      console.log('unmounted!!');
       svg = null;
       svgRef = null;
     }
   }, []);
+
+  // Draw Gradient Link
+  useEffect(() => {
+
+    if (isInitiate) {
+      link.style('stroke', (d, i) => {
+
+        // make unique gradient  ids  
+        const gradientID = `gradient${i}`;
+
+        const startColor = d.source.color;
+        const stopColor = d.target.color;
+        const linearGradient = defs.append('linearGradient')
+          .attr('id', gradientID);
+
+        linearGradient.selectAll('stop')
+          .data([
+            { offset: '10%', color: startColor },
+            { offset: '90%', color: stopColor }
+          ])
+          .enter().append('stop')
+          .attr('offset', d => {
+            return d.offset;
+          })
+          .attr('stop-color', d => {
+            return d.color;
+          });
+        return `url(#${gradientID})`;
+      });
+    }
+
+  }, [isInitiate])
+
+  // Particle
+  useEffect(() => {
+    updateParticle();
+  }, [currentStage]);
+
+  const [count, setCount] = useState(0);
+  const [stop, setStop] = useState(false);
+
+  function updateParticle() {
+    if (1 <= currentStage && currentStage <= 4) {
+      if (count === 0) {
+        randerParticle();
+      }
+      else if (count % 125 === 0) {
+        console.log('update');
+        randerParticle();
+      }
+      setCount(count + 1);
+    }
+  }
+
+  useAnimationFrameLoop(updateParticle, currentStage === 0)
+
+  useEffect(() => {
+    if (currentChapter !== 3) {
+      // console.log('stop!');
+      setStop(true);
+    }
+    else {
+      // console.log('start!');
+    }
+  }, [currentChapter]);
+
+  useEffect(() => {
+    // console.log(`stage: ${currentStage}`);
+  }, [currentStage])
+
+  function randerParticle() {
+    // console.log(currentChapter);
+    if (1 <= currentStage && currentStage <= 4) {
+      let linkNum = graph.links.length;
+
+      for (let i = 0; i < linkNum; i++) {
+        let targetColor = graph.links[i].target.color;
+        if (graph.links[i].source.depth === currentStage - 1) {
+
+          d3.select(`.particleGroupOcean${i}`)
+            .selectAll('.particle')
+            .data(() => {
+              let data = [];
+              let num = parseInt(graph.links[i].value / 1000);
+              let bandHeight = (graph.links[i].width - 12);
+              for (let index = 0; index < num; index++) {
+                data.push(parseInt(Math.random() * bandHeight) - bandHeight / 2);
+              }
+              return data;
+            })
+            .enter().append("rect")
+            .attr("width", 6)
+            .attr("height", 6)
+            .attr("opacity", 0)
+            // .attr("r", 3)
+            .attr("class", "particle")
+            .attr("fill", targetColor)
+            .transition()
+            .duration(1500)
+            .delay(() => {
+              return Math.random() * 3000;
+            })
+            .attr("opacity", 1)
+            .tween("pathTween", (d) => {
+              if (svg !== null) {
+                let path = svg.select(`.path${i}`)
+                return pathTween(path, d, 3);
+              }
+            }).remove()
+        }
+      }
+    }
+  }
 
   useEffect(() => {
     d3.selectAll(`.link.ocean`)
@@ -515,6 +595,17 @@ const Sankey = ({currentStage}) => {
       .duration(1500)
       .style("stroke-opacity", 0.75);
   }, [currentStage]);
+
+  function pathTween(path, offset, r) {
+    var length = path.node().getTotalLength(); // Get the length of the path
+    var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+    return function (t) {
+      var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+      d3.select(this) // Select the circle
+        .attr("x", point.x + 0) // Set the cx
+        .attr("y", point.y + offset) // Set the cy
+    }
+  }
 
   return (
     <Container id="container_ocean">

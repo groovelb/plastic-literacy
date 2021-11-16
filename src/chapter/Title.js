@@ -55,24 +55,23 @@ const Logo = styled.div`
 const Title = ({
   refObject
 }) => {
-  const [innerHeight, setInnterHeight] = useState(window.innerHeight);
+  const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
   useEffect(() => {
     console.log(window.innerHeight);
-    setInnterHeight(window.innerHeight);
+    setInnerHeight(window.innerHeight);
   },[window]);
 
   return(
     <Container
       refObject={refObject}
-      bgColor={'dark'}
       innerHeight={innerHeight}
     >
       <MainIllust>
         <img src={illust_title} alt='' />
       </MainIllust>
       <TitleMsg>
-        Plastic Literacy <br/> of GS Caltex
+        Plastic Literacy
       </TitleMsg>
       <SubTitleMsg>
         플라스틱의 올바른 수거와 재활용에 대한 이해가 필요한 시대, GS칼텍스가 먼저 묻고 답하다.

@@ -28,10 +28,7 @@ const BarChart = ({
   let xAxis;
   let yAxis;
 
-
   useEffect(() => {
-    console.log(svg);
-    console.log("moundet!");
 
     let width = containerRef.current.clientWidth - margin.left - margin.right;
     let height = containerRef.current.clientHeight - margin.top - margin.bottom;
@@ -54,10 +51,7 @@ const BarChart = ({
 
     // Initiate Chart Setting
     if (!isStart) {
-      console.log('first load!');
       setIsStart(true);
-
-
       setInnerWidth(width);
       setInnerHeight(height);
 
@@ -65,19 +59,17 @@ const BarChart = ({
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
-        .attr("class", "chart")
+        .attr("class", "chart barChart")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-      console.log(x);
 
       xAxis = chart.append("g")
         .attr("transform", "translate(0," + height + ")")
-        .attr("class", "xAxis");
+        .attr("class", "xAxis barChart");
 
       xAxis.call(d3.axisBottom(x));
 
       yAxis = chart.append("g")
-        .attr("class", "yAxis");
+        .attr("class", "yAxi barCharts");
 
 
       update();
@@ -87,7 +79,6 @@ const BarChart = ({
       update();
     }
     return () => {
-      console.log()
     }
   }, [data]);
 
@@ -107,27 +98,44 @@ const BarChart = ({
     x.domain(data.map(function (d) { return d.year; }));
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
-    d3.select(".xAxis").transition().duration(1000).call(d3.axisBottom(x));
-    d3.select(".yAxis").transition().duration(1000).call(d3.axisLeft(y));
+    d3.select(".xAxis.barChart").transition().duration(1000).call(d3.axisBottom(x));
+    d3.select(".yAxis.barChart").transition().duration(1000).call(d3.axisLeft(y));
 
-    chart = svg.select(".chart");
+    chart = svg.select(".chart.barChart");
 
-    const u = chart.selectAll("rect")
-      .data(data);
+    const t = chart.transition()
+      .duration(750);
 
-    u.enter().append("rect")
-      .merge(u)
-      .transition()
-      .duration(1000)
-      .attr("class", "bar positive")
-      .attr("x", function (d) { return x(d.year); })
-      .attr("width", x.bandwidth())
-      .attr("y", function (d) { return y(d.value); })
-      .attr("height", function (d) { return height - y(d.value); });
-
-    u
-      .exit()
-      .remove();
+    chart.selectAll("rect")
+      .data(data)
+      .join(
+        enter => enter.append("rect")
+          .attr("class", "bar positive")
+          .attr("width", x.bandwidth())
+          .attr("x", function (d) { return x(d.year); })
+          .attr("y", height)
+          .attr("height", 0)
+          .call(enter => enter.transition(t)
+            .attr("y", function (d) { return y(d.value); })
+            .attr("height", function (d) { return height - y(d.value); })
+          ),
+        update => update
+          .attr("class", "bar positive")
+          .attr("width", x.bandwidth())
+          .attr("x", function (d) { return x(d.year); })
+          .attr("y", height)
+          .attr("height", 0)
+          .call(enter => enter.transition(t)
+            .attr("y", function (d) { return y(d.value); })
+            .attr("height", function (d) { return height - y(d.value); })
+          ),
+        exit => exit
+          .call(exit => exit.transition(t)
+          .attr("y", height)
+          .attr("height", 0)
+          .remove()
+        )
+      )
   }
 
 

@@ -2,8 +2,8 @@ const type = {
   weight: {
     exp: {
       bold: `
-        font-family: 'Lora', serif;
-        font-weight: 700;
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 800;
       `
     },
     prd: {
@@ -89,8 +89,8 @@ const type = {
     }
     `,
     body1: `
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 24px;
+    line-height: 36px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;
@@ -99,7 +99,7 @@ const type = {
     }
     `,
     body2: `
-    font-size: 16px;
+    font-size: 20px;
     line-height: 28px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
