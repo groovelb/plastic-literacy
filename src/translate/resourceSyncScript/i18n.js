@@ -4,7 +4,7 @@ const csv = require('csv-parser');
 
 // google drive의 "PolaPolar i18n" sheet 활용
 // 실제 경로 : https://docs.google.com/spreadsheets/d/1dvxA4hJB2E9rVWy_5nI7OPuX-RNBXD7yEBjHga8eZ7E/
-const downloadUrl = "https://docs.google.com/spreadsheets/d/1dvxA4hJB2E9rVWy_5nI7OPuX-RNBXD7yEBjHga8eZ7E/gviz/tq?tqx=out:csv";
+const downloadUrl = "https://docs.google.com/spreadsheets/d/1dvxA4hJB2E9rVWy_5nI7OPuX-RNBXD7yEBjHga8eZ7E/gviz/tq?tqx=out:csv&tq=";
 
 const lngList = [
   "kr",

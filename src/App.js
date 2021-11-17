@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
@@ -70,8 +71,6 @@ function App() {
         useRef(null),
         // 3
         useRef(null),
-        // 4
-        useRef(null),
         // space
         useRef(null)
       ]
@@ -129,14 +128,14 @@ function App() {
       // Title Page
       if (chapterList[0].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[1].ref.current.offsetTop - chapterOffset)) {
         setCurrentChapter(0);
-        // console.log("title");
+        console.log("title");
       }
       // Chapter1
       else if (chapterList[1].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[2].ref.current.offsetTop - chapterOffset)) {
-        // console.log("chpater1");
+        console.log("chpater1");
         // set current section of chapter1
-        let previousChapterHeight = chapterList[0].ref.current.offsetHeight;
-        setChapter1CurrentSection(0);
+        let previousChapterHeight = chapterList[1].ref.current.offsetTop;
+        // setChapter1CurrentSection(0);
         setIsChartS1Active(false);
         setIsChartS2Active(false);
         setIsChartLandS1Active(false);
@@ -157,47 +156,53 @@ function App() {
           setChapter1CurrentSection(4);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
-        }
-        else if (chapterList[1].refSection[4].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[5].current.offsetTop + previousChapterHeight)) {
+        } else if (chapterList[1].refSection[4].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[5].current.offsetTop + previousChapterHeight)) {
           setChapter1CurrentSection(5);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
+        } else if(chapterList[1].refSection[5].current.offsetTop + previousChapterHeight <= scrollY){
+          setChapter1CurrentSection(6);
+          setIsChartS2Active(false);
+          
         }
       }
       // Chapter2 - land
       else if (chapterList[2].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[3].ref.current.offsetTop - chapterOffset)) {
+        console.log("section2-land");
         setCurrentChapter(2);
         setIsChartLandS1Active(false);
         setChapter2LandCurrentSection(0);
-        let previousChapterHeight = chapterList[0].ref.current.offsetHeight + chapterList[1].ref.current.offsetHeight;
+        let previousChapterHeight = chapterList[2].ref.current.offsetTop;
+        console.log(chapterList[2].refSection[0].current.offsetTop + previousChapterHeight);
+        console.log(scrollY);
         if (chapterList[2].refSection[0].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[2].refSection[1].current.offsetTop + previousChapterHeight)) {
-          console.log("chpater2-land-1");
+          // console.log("chpater2-land-1");
           setChapter2LandCurrentSection(1);
           setIsChartLandS1Active(true);
         } else if (chapterList[2].refSection[1].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[2].refSection[2].current.offsetTop + previousChapterHeight)) {
-          console.log("chpater2-land-2");
+          // console.log("chpater2-land-2");
           setChapter2LandCurrentSection(2);
           setIsChartLandS1Active(true);
         } else if (chapterList[2].refSection[2].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[2].refSection[3].current.offsetTop + previousChapterHeight)) {
-          console.log("setChapter2Land-3");
+          // console.log("setChapter2Land-3");
           setChapter2LandCurrentSection(3);
           setIsChartLandS1Active(true);
-        } else if (chapterList[2].refSection[3].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[2].refSection[4].current.offsetTop + previousChapterHeight)) {
-          console.log("chpater2-land-4");
+        } else if (chapterList[2].refSection[3].current.offsetTop + previousChapterHeight <= scrollY) {
+          // console.log("chpater2-land-4");
           setChapter2LandCurrentSection(4);
-          setIsChartLandS1Active(true);
-        } else if (chapterList[2].refSection[4].current.offsetTop + previousChapterHeight <= scrollY){
-          console.log("chpater2-land-5");
-          setChapter2LandCurrentSection(5);
           setIsChartLandS1Active(false);
-        }
+        } 
       }
       // Chapter2 - ocean
       else if (chapterList[3].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[4].ref.current.offsetTop - chapterOffset)) {
         setCurrentChapter(3);
         setIsChartOceanS1Active(false);
         setChapter2OceanCurrentSection(0);
-        let previousChapterHeight = chapterList[0].ref.current.offsetHeight + chapterList[1].ref.current.offsetHeight + chapterList[3].ref.current.offsetHeight;
+        console.log("chapter2-ocean");
+        let previousChapterHeight = chapterList[3].ref.current.offsetTop;
+        console.log(previousChapterHeight);
+        console.log(chapterList[3].refSection[0].current.offsetTop);
+        console.log(scrollY);
         if (chapterList[3].refSection[0].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[3].refSection[1].current.offsetTop + previousChapterHeight)) {
           console.log("chpater2-ocean-1");
           setChapter2OceanCurrentSection(1);
@@ -210,15 +215,11 @@ function App() {
           console.log("chpater2-ocean-3");
           setChapter2OceanCurrentSection(3);
           setIsChartOceanS1Active(true);
-        } else if (chapterList[3].refSection[3].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[3].refSection[4].current.offsetTop + previousChapterHeight)) {
+        } else if (chapterList[3].refSection[3].current.offsetTop + previousChapterHeight <= scrollY) {
           console.log("chpater2-ocean-4");
           setChapter2OceanCurrentSection(4);
-          setIsChartOceanS1Active(true);
-        } else if (chapterList[3].refSection[4].current.offsetTop + previousChapterHeight <= scrollY){
-          console.log("chpater2-ocean-5");
-          setChapter2OceanCurrentSection(5);
           setIsChartOceanS1Active(false);
-        }
+        } 
       }
       // chapter
       else {

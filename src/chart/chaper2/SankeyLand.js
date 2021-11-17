@@ -518,13 +518,18 @@ const Sankey = ({
   const [stop, setStop] = useState(false);
 
   function updateParticle() {
-    if (1 <= currentStage && currentStage <= 4) {
+    if (1 <= currentStage && currentStage <= 3) {
+      let depthList;
+      if(currentStage===1) depthList = [0];
+      if(currentStage===2) depthList = [1,2];
+      if(currentStage===3) depthList = [3];
+
       if (count === 0) {
-        randerParticle();
+        randerParticle(depthList);
       }
       else if (count % 125 === 0) {
         console.log('update');
-        randerParticle();
+        randerParticle(depthList);
       }
       setCount(count + 1);
     }
@@ -546,14 +551,14 @@ const Sankey = ({
     // console.log(`stage: ${currentStage}`);
   }, [currentStage])
 
-  function randerParticle() {
+  function randerParticle(depthList) {
     // console.log(currentChapter);
     if (1 <= currentStage && currentStage <= 4) {
       let linkNum = graph.links.length;
 
       for (let i = 0; i < linkNum; i++) {
         let targetColor = graph.links[i].target.color;
-        if (graph.links[i].source.depth === currentStage - 1) {
+        if (depthList.includes(graph.links[i].source.depth)) {
 
           d3.select(`.particleGroupLand${i}`)
             .selectAll('.particle')
@@ -591,11 +596,17 @@ const Sankey = ({
   }
 
   useEffect(() => {
+    let depthList;
+      if(currentStage===1) depthList = [0];
+      if(currentStage===2) depthList = [1,2];
+      if(currentStage===3) depthList = [3];
+
     d3.selectAll(`.link.land`)
       .transition()
       .duration(1500)
       .style("stroke-opacity", 0.05);
-    d3.selectAll(`.link_${currentStage - 1}.land`)
+    d3.selectAll(
+      `.link_${currentStage - 1}.land`)
       .transition()
       .duration(1500)
       .style("stroke-opacity", 0.25);

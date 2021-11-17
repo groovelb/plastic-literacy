@@ -69,7 +69,7 @@ const BarChart = ({
       xAxis.call(d3.axisBottom(x));
 
       yAxis = chart.append("g")
-        .attr("class", "yAxi barCharts");
+        .attr("class", "yAxis barChart");
 
 
       update();
@@ -130,7 +130,7 @@ const BarChart = ({
             .attr("height", function (d) { return height - y(d.value); })
           ),
         exit => exit
-          .call(exit => exit.transition(t)
+          .call(exit => exit.transition().duration(200)
           .attr("y", height)
           .attr("height", 0)
           .remove()

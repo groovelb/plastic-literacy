@@ -67,45 +67,25 @@ let data = {
     {
       "node": 7,
       "category": "select",
-      "name": "스티로폼"
-    },
-    {
-      "node": 8,
-      "category": "select",
       "name": "기타물질"
     },
     {
-      "node": 9,
-      "category": "select",
-      "name": "가연성물질"
-    },
-    {
-      "node": 10,
-      "category": "select",
-      "name": "불연성물질"
-    },
-    {
-      "node": 11,
-      "category": "select",
-      "name": "특수폐기물"
-    },
-    {
-      "node": 12,
+      "node": 8,
       "category": "final",
       "name": "재활용"
     },
     {
-      "node": 13,
+      "node": 9,
       "category": "final",
       "name": "소각"
     },
     {
-      "node": 14,
+      "node": 10,
       "category": "final",
       "name": "매립"
     },
     {
-      "node": 15,
+      "node": 11,
       "category": "final",
       "name": "위탁처리"
     }
@@ -178,86 +158,58 @@ let data = {
       "name": "폐기물 선별1",
       "source": 5,
       "target": 6,
-      "value": 69800,
+      "value": 419000 * 7/10,
       "isReal": false
     },
     {
       "name": "폐기물 선별2",
       "source": 5,
       "target": 7,
-      "value": 69800,
+      "value": 419000 * 3/10,
       "isReal": false
     },
     {
-      "name": "폐기물 선별3",
-      "source": 5,
-      "target": 8,
-      "value": 69800,
-      "isReal": false
-    },
-    {
-      "name": "폐기물 선별4",
-      "source": 5,
-      "target": 9,
-      "value": 69800,
-      "isReal": false
-    },
-    {
-      "name": "폐기물 선별5",
-      "source": 5,
-      "target": 10,
-      "value": 69800,
-      "isReal": false
-    },
-    {
-      "name": "폐기물 선별6",
-      "source": 5,
-      "target": 11,
-      "value": 69800,
-      "isReal": false
-    },
-    {
-      "name": "플라스틱 처리",
+      "name": "플라스틱 처리1",
       "source": 6,
-      "target": 12,
-      "value": 69800,
+      "target": 8,
+      "value": 419000 * 7/30,
       "isReal": false
     },
     {
-      "name": "스티로폼 처리",
+      "name": "플라스틱 처리2",
+      "source": 6,
+      "target": 9,
+      "value": 419000 * 7/30,
+      "isReal": false
+    },
+    {
+      "name": "플라스틱 처리3",
+      "source": 6,
+      "target": 10,
+      "value": 419000 * 7/30,
+      "isReal": false
+    },
+    {
+      "name": "기타 처리",
       "source": 7,
-      "target": 12,
-      "value": 69800,
+      "target": 9,
+      "value": 419000 * 3/30,
       "isReal": false
     },
     {
-      "name": "기타물질 처리",
-      "source": 8,
-      "target": 12,
-      "value": 69800,
+      "name": "기타 처리",
+      "source": 7,
+      "target": 10,
+      "value": 419000 * 3/30,
       "isReal": false
     },
     {
-      "name": "가연성 처리",
-      "source": 9,
-      "target": 13,
-      "value": 69800,
+      "name": "기타 처리",
+      "source": 7,
+      "target": 11,
+      "value": 419000 * 3/30,
       "isReal": false
     },
-    {
-      "name": "불연성 처리",
-      "source": 10,
-      "target": 14,
-      "value": 69800,
-      "isReal": false
-    },
-    {
-      "name": "특수 처리",
-      "source": 11,
-      "target": 15,
-      "value": 69800,
-      "isReal": false
-    }
   ]
 };
 
