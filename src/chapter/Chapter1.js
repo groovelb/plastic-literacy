@@ -26,8 +26,13 @@ const content = [
     chartTitle: '전세계 연도별 플라스틱 생산량'
   },
   {
-    title: `코로나19로 증가하는 일회용품 소비량`,
-    exp: '특히 2019년 이후 코로나19로 배달음식이 증가하면서 일회용품 사용도 급증했다. 환경을 위한 노력이 필요에 의한 사용을 극복하지 못하고 있다.',
+    title: `매년 증가하는 일회용품 소비량`,
+    exp: `우리나라의 1인당 플라스틱 사용량은 세계 최고 수준이다. 
+    이러한 추세로 플라스틱 사용이 지속될 경우 2030년 1인당 
+    플라스틱 연간 소비량은 2018년 대비 26% 상승한 154kg에 
+    달할 것으로 예측되고 있다. 환경을 위한 노력이 필요에 의한
+    사용을 극복하지 못하고 있다.
+    `,
     data: plastic_consumption_1_6,
     chartTitle: '국내 1인당 연간 플라스틱 소비량'
   },
@@ -124,6 +129,8 @@ const Chapter1 = ({
       setData(content[2].data);
     } else if (currentSection === 4) {
       setData(content[3].data);
+    } else if (currentSection === 5) {
+      setData(content[4].data);
     }
   }, [currentSection]);
 
@@ -161,12 +168,12 @@ const Chapter1 = ({
           }
           {/* bar chart */}
           {
-            currentChapter === 1 && 0<currentSection &&
+            currentChapter === 1 && 0 < currentSection &&
             <Chart
               isActive={isChartS2Active}
             >
               <ChartTitle>
-                {content[currentSection-1].chartTitle}
+                {content[currentSection - 1].chartTitle}
               </ChartTitle>
               <BarChart
                 data={data}
@@ -194,8 +201,8 @@ const Chapter1 = ({
         <MsgFullScreen
           refObject={chapterObject.refSection[5]}
           title={` "
-          대체 불가능한 인류의 축복에서
-          천덕꾸러기 신세가 된 플라스틱
+          생산과 소비를 줄인다고 
+해결될 문제가 아닌 플라스틱 환경문제
           "`}
           exp={`
             플라스틱을 사용하지 않는 것이 해답 중 하나가 될 수 있다. 하지만 플라스틱은 이미 우리 삶 속에 완전히 녹아들어있다.
@@ -203,6 +210,12 @@ const Chapter1 = ({
             
             GS칼텍스는 문제 해결을 위해, 가장 먼저 우리가 쓰고 버리는 플라스틱의 여정에 대한 이해에서 출발했다.
           `}
+        />
+        <MsgFullScreen
+          title={` "
+          GS칼텍스는 문제의 해답을 찾기 위해,
+쓰고 버리는 플라스틱의 여정을 올바르게 이해하는 과정에서 시작했다.
+          "`}
         />
       </LiveArea>
     </Container>
