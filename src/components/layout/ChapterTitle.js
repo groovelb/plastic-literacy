@@ -5,6 +5,7 @@ import LiveArea from "../layout/LiveArea";
 
 const Container = styled(Section)`
 	min-height: ${window.innerHeight + 'px'};
+	margin-top: 80px;
 	color: ${(props) => {
 		switch (props.bgColor) {
 			case "dark":

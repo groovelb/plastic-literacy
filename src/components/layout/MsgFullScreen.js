@@ -10,16 +10,19 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 0 calc(50% - 400px);
   h2{
     ${props => props.theme.type.size.h1}
     ${props => props.theme.type.weight.bold}
     text-align: center;
+    margin-bottom: 24px;
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.25);
   }
   p{
     ${props => props.theme.type.size.body1}
     ${props => props.theme.type.weight.light}
+    text-shadow: 0px 0px 12px rgba(0,0,0,0.25);
   }
-
 `;
 
 const FullScreen = ({

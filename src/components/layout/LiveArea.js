@@ -13,7 +13,10 @@ const Container = styled.div`
 	}
 `;
 
-const LiveArea = ({ children, className }) => (
+const LiveArea = ({
+		children,
+		className,
+	}) => (
 	<Container className={className}>{children}</Container>
 );
 

@@ -8,9 +8,12 @@ import ChapterTitle from "../components/layout/ChapterTitle";
 import LiveArea from "../components/layout/LiveArea";
 import TimelineChartC1S1 from "../components/chart/TimelineChartC1S1";
 import BarChart from "../components/chart/BarChart";
+import VideoBackground from "../components/videoBackground/VideoBackground";
+import useWindowSize from '../hook/useWindowSize';
 
 // Data
 import { plastic_industry_timeline_1_1, plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7, plastic_accumulated_waste_1_8 } from '../data/chapter1';
+import video_transition from "../assets/video/video_c1_transition2.mp4";
 
 
 const Container = styled.div`
@@ -44,15 +47,23 @@ const ChartTitle = styled.p`
   ${props => props.theme.type.weight.prd.bold};
 `;
 
-const TextContent = styled.div`
+const Content = styled.div`
+  position: relative;
   width: 100%;
+`;
+
+const TextContent = styled.div`
+  /* width: 100%; */
   display: flex;
   flex-direction: column;
   /* padding-top: 240px; */
-  padding-left: calc(100% - 308px);
+  padding-left: calc(1200px - 308px);
   height: ${window.innerHeight + 'px'};
   opacity: ${props => props.currentSection === props.index ? 1 : 0};
   transition: opacity 0.3s ease-out;
+  width: ${(props) => props.theme.size.liveArea};
+	margin-left: auto;
+	margin-right: auto;
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
@@ -77,6 +88,7 @@ const Chapter1 = ({
 }) => {
 
   const { t } = useTranslation();
+  const windowSize = useWindowSize();
 
   // String
   const content = [
@@ -143,7 +155,7 @@ const Chapter1 = ({
         bgColor={'dark'}
         exp={t("c1-exp")}
       />
-      <LiveArea>
+      <Content>
         {/* plastic history timeline */}
         {
           currentChapter === 1 &&
@@ -192,11 +204,20 @@ const Chapter1 = ({
             </TextContent>
           )
         }
-        <MsgFullScreen
+        <VideoBackground
+          isVideoPlay={true}
+          width={windowSize.width}
+          height={windowSize.height}
+          isFilter={true}
+          videoSrc={video_transition}
           refObject={chapterObject.refSection[5]}
-          title={t('c1-s7-exp')}
-        />
-      </LiveArea>
+        >
+          <MsgFullScreen
+
+            title={t('c1-s7-exp')}
+          />
+        </VideoBackground>
+      </Content>
     </Container>
   )
 }

@@ -141,29 +141,34 @@ function App() {
         setIsChartLandS1Active(false);
         setCurrentChapter(1);
         if (chapterList[1].refSection[0].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[1].current.offsetTop + previousChapterHeight)) {
+          console.log("chpater1-1");
           setChapter1CurrentSection(1);
           setIsChartS1Active(true);
           setIsChartS2Active(false);
         } else if (chapterList[1].refSection[1].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[2].current.offsetTop + previousChapterHeight)) {
+          console.log("chpater1-2");
           setChapter1CurrentSection(2);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
         } else if (chapterList[1].refSection[2].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[3].current.offsetTop + previousChapterHeight)) {
+          console.log("chpater1-3");
           setChapter1CurrentSection(3);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
         } else if (chapterList[1].refSection[3].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[4].current.offsetTop + previousChapterHeight)) {
+          console.log("chpater1-4");
           setChapter1CurrentSection(4);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
         } else if (chapterList[1].refSection[4].current.offsetTop + previousChapterHeight <= scrollY && scrollY <= (chapterList[1].refSection[5].current.offsetTop + previousChapterHeight)) {
+          console.log("chpater1-5");
           setChapter1CurrentSection(5);
           setIsChartS1Active(false);
           setIsChartS2Active(true);
         } else if(chapterList[1].refSection[5].current.offsetTop + previousChapterHeight <= scrollY){
+          console.log("chpater1-6");
           setChapter1CurrentSection(6);
           setIsChartS2Active(false);
-          
         }
       }
       // Chapter2 - land

@@ -7,9 +7,12 @@ import LiveArea from "../components/layout/LiveArea";
 import MsgFullScreen from "../components/layout/MsgFullScreen";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import SankeyOcean from "../chart/chaper2/SankeyOcean";
+import VideoBackground from "../components/videoBackground/VideoBackground";
+import useWindowSize from '../hook/useWindowSize';
 
 // Data
 import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } from '../data/chapter1';
+import video_transition from "../assets/video/video_c1_transition.mp4";
 
 const sankeyHeight = 448;
 
@@ -43,7 +46,9 @@ const Chart = styled.div`
 `;
 
 const TextContent = styled.div`
-  width: 100%;
+  width: ${(props) => props.theme.size.liveArea};
+	margin-left: auto;
+	margin-right: auto;
   display: flex;
   flex-direction: row;
   /* padding-top: 240px; */
@@ -72,6 +77,11 @@ const TextContent = styled.div`
 		${props => props.theme.type.weight.prd.regular}
   }
 `;
+const Content = styled.div`
+  position: relative;
+  width: 100%;
+`;
+
 
 const Space = styled.div`
   height: 240px;
@@ -142,6 +152,7 @@ const Chapter2 = ({
   const [currentSlideOcean, setCurrentSlideOcean] = useState(0);
 
   const { t } = useTranslation();
+  const windowSize = useWindowSize();
 
   // String
   const contentOcean = [
@@ -169,14 +180,24 @@ const Chapter2 = ({
 
   return (
     <Container ref={chapterObject.ref}>
-      <LiveArea>
-        <MsgFullScreen
-          title={t('c2-s5-title')}
-          exp={t('c2-s5-exp')}
-          refObject={chapterObject.refSection[0]}
-        />
+      <Content>
+        <VideoBackground
+          isVideoPlay={true}
+          width={windowSize.width}
+          height={windowSize.height}
+          isFilter={true}
+          videoSrc={video_transition}
+          refObject={chapterObject.refSection[5]}
+        >
+          <MsgFullScreen
+            title={t('c2-s5-title')}
+            exp={t('c2-s5-exp')}
+          />
+        </VideoBackground>
+
         <SpaceFullScreen
-          numX={0.25}
+          numX={0.5}
+          refObject={chapterObject.refSection[0]}
         />
         <Section>
           {
@@ -195,7 +216,7 @@ const Chapter2 = ({
           {
             contentOcean.map((section, i) =>
               <TextContent
-                ref={chapterObject.refSection[i+1]}
+                ref={chapterObject.refSection[i + 1]}
                 currentSection={currentSection}
                 index={i}
               >
@@ -219,7 +240,7 @@ const Chapter2 = ({
             exp={t('c2-s9-exp')}
           />
         </Section>
-      </LiveArea>
+      </Content>
     </Container>
   )
 }
