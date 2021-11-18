@@ -12,9 +12,13 @@ import Title from "./chapter/Title";
 import Chapter1 from "./chapter/Chapter1";
 import Chapter2Land from "./chapter/Chapter2Land";
 import Chapter2Ocean from "./chapter/Chapter2Ocean";
+import Chapter3 from "./chapter/Chapter3";
 
 // Hook
 import useScrollPosition from '@react-hook/window-scroll'
+
+// Assets
+
 
 function App() {
   // Intit Scroll Hook
@@ -261,14 +265,16 @@ function App() {
         currentSection={chapter2OceanCurrentSection}
         isChartActive={isChartOceanActive}
       />
-      {/* <div ref={chapterList[3].ref} /> */}
-      <div ref={chapterList[4].ref} />
+
+      {/* <div ref={chapterList[4].ref} /> */}
+      <Chapter3 chapterObject={chapterList[4]} />
     </ThemeProvider>
   );
 }
 const GlobalStyle = createGlobalStyle`
   *{
     box-sizing: border-box;
+    
   }
   body{
     background-color: ${(props) => props.theme.color.ui.bg.dark};
@@ -322,6 +328,15 @@ const GlobalStyle = createGlobalStyle`
   }
   .tick{
     font-size: 14.8px;
+  }
+  p{
+    ${props => props.theme.type.size.body1};
+    ${props => props.theme.type.weight.prd.regular};
+  }
+  h2{
+    ${props => props.theme.type.size.title1};
+    ${props => props.theme.type.weight.prd.bold};
+    margin-bottom: 24px;
   }
 `;
 export default App;

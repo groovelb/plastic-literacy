@@ -10,6 +10,7 @@ const Container = styled.div`
   width: 100%;
   video{
     object-fit: cover;
+    filter: grayscale(0.4);
   }
   :after{
     content: '';
@@ -18,7 +19,7 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.48)' : 'rgba(0,0,0,0)'};
+    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.64)' : 'rgba(0,0,0,0)'};
     z-index: 9;
   }
 `;

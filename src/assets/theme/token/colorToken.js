@@ -5,6 +5,7 @@ const colorToken = {
 	gsGreen: '#42B66E',
 	gsBlue: '#057EC2',
 	epNavy: '#101E2E',
+	darkNavy: '#091624',
 	epGreen: '#3DDB87',
 	epBlue: '#3E9EFF',
 	epPurple: '#6464FF',

@@ -43,7 +43,7 @@ const color = {
   ui: {
     bg: {
       light: colorToken.white700,
-      dark: colorToken.epNavy
+      dark: colorToken.darkNavy
     },
     strong: colorToken.gray900,
     middle1: colorToken.gray700,

@@ -63,7 +63,8 @@ const ChapterTitle = ({
 	title,
 	subTitle,
 	exp,
-	colorMode
+	colorMode,
+	numChapter
 }) => (
 		<Container
 			className={className}
@@ -73,7 +74,7 @@ const ChapterTitle = ({
 			<LiveArea>
 				<Top>
 					<ChapterMark>
-						CHAPTER1
+						{`CHAPTER${numChapter}`}
 					</ChapterMark>
 					<Title>
 						<h1>

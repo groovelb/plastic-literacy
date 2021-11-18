@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="193px" height="193px" viewBox="0 0 193 193" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_product_big</title>
+    <g id="Page-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1.0MAIN-ver4" transform="translate(-613.000000, -20693.000000)">
+            <g id="illust_c3_cycle" transform="translate(229.000000, 20693.000000)">
+                <g id="Group" transform="translate(384.000000, 0.000000)">
+                    <circle id="Oval-Copy-6" fill="#CFF0ED" cx="96.5" cy="96.5" r="96.5"></circle>
+                    <g transform="translate(57.000000, 40.000000)" id="ic/cycle/factory">
+                        <rect id="Rectangle" x="0" y="0" width="80" height="80"></rect>
+                        <path d="M32.857142,10 C28.5625669,19.2697835 18.238855,11.5635711 12.857142,17.1428554 C14.1104274,7.54607201 22.4856397,15.279213 32.857142,10 Z M20,18.5714265 L20,37.4999935 L30,42.8571493 L30,32.8571374 L50,42.8571493 L50,32.8571374 L69.9999856,42.8571493 L69.9999856,70 L10,70 L10,18.5714265 L20,18.5714265 L20,18.5714265 Z M62.142847,52.1428614 L52.142847,52.1428614 L52.142847,59.2857168 L62.142847,59.2857168 L62.142847,52.1428614 L62.142847,52.1428614 Z M44.9999939,52.1428614 L34.9999939,52.1428614 L34.9999939,59.2857168 L44.9999939,59.2857168 L44.9999939,52.1428614 L44.9999939,52.1428614 Z M27.8571408,52.1428614 L17.8571408,52.1428614 L17.8571408,59.2857168 L27.8571408,59.2857168 L27.8571408,52.1428614 L27.8571408,52.1428614 Z" id="Shape" fill="#009999"></path>
+                    </g>
+                    <text id="생산" font-family="NotoSansCJKkr-Regular, Noto Sans CJK KR" font-size="24" font-weight="normal" fill="#009999">
+                        <tspan x="74.92" y="148">생산</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

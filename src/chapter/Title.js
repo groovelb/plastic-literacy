@@ -146,7 +146,7 @@ const Title = ({
     {
       x: -24,
       y: 400 - 54,
-      img: ic_production
+      img: ic_recycling
     }
   ];
 
