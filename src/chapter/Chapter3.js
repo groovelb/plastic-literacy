@@ -13,6 +13,7 @@ import ic_production from "../assets/illust/title/ic_production.svg";
 import ic_dispose from "../assets/illust/title/ic_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_collect.svg";
 import color from "../assets/theme/atom/color";
+import arrow_down_big from "../assets/img/icon/arrow_down_big.svg";
 
 
 const Container = styled.div`
@@ -121,7 +122,7 @@ const TextContent = styled.div`
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
-  margin-bottom: 48px;
+  margin-bottom: 80px;
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
@@ -143,11 +144,16 @@ const ReyclingList = styled.div`
   justify-content: space-around;
 `;
 
+const MR = styled.div`
+  width: 100%;
+`;
+
 const Chapter3 = ({
   currentChapter,
   chapterObject,
   currentSection,
 }) => {
+
   const { t } = useTranslation();
   const windowSize = useWindowSize();
 
