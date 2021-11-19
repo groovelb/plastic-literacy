@@ -14,7 +14,11 @@ import ic_dispose from "../assets/illust/title/ic_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_collect.svg";
 import color from "../assets/theme/atom/color";
 import arrow_down_big from "../assets/img/icon/arrow_down_big.svg";
-
+import ic_marker from "../assets/img/icon/ic_marker.svg";
+import illust_flake_green from "../assets/illust/flake_green.svg";
+import illust_flake_blue from "../assets/illust/flake_blue.svg";
+import illust_flake_orange from "../assets/illust/flake_orange.svg";
+import logo_short from "../assets/img/logo/logo_short.svg";
 
 const Container = styled.div`
   width: 100%;
@@ -103,6 +107,7 @@ const Cycle = styled.div`
   text-align: center;
   word-break: keep-all;
   white-space: pre-line;
+  outline: ${props => props.isBorder ? 'solid 24px #D9F0F0' : 'none'};
 `;
 
 const Msg = styled.div`
@@ -111,6 +116,7 @@ const Msg = styled.div`
   ${props => props.theme.type.weight.exp.bold}
   color: ${props => props.theme.color.brand.epGreen};
 `;
+
 
 const TextContent = styled.div`
   width: 100%;
@@ -137,6 +143,32 @@ const TextContent = styled.div`
   }
 `;
 
+const ImageContent = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  transition: opacity 0.3s ease-out;
+  word-break: keep-all;
+  white-space: pre-line;
+  margin-bottom: 80px;
+  h2{
+    span{
+      ${props => props.theme.type.size.title1}
+      ${props => props.theme.type.weight.prd.bold}
+      margin-bottom: 24px;
+    }
+    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.weight.prd.light}
+    margin-bottom: 48px;
+    width: 280px;
+  }
+  div{
+    width: calc(100% - 280px - 48px );
+    padding-left: 0;
+    ${props => props.theme.type.size.body2}
+		${props => props.theme.type.weight.prd.regular}
+  }
+`;
 
 const ReyclingList = styled.div`
   width: 100%;
@@ -146,6 +178,55 @@ const ReyclingList = styled.div`
 
 const MR = styled.div`
   width: 100%;
+  ${props => props.theme.layout.flexColCenter};
+  position: relative;
+`;
+
+const Arrow = styled.img`
+
+`;
+
+const FlakeTunnel = styled.div`
+  display: flex;
+  position: absolute;
+  z-index: 99;
+  width: 100%;
+  justify-content: space-around;
+  background-image: linear-gradient(to bottom, rgba(8, 22, 36, 1), rgba(18, 34, 41, 1), rgba(8, 22, 36, 1));
+  padding: 64px 0px;
+  top: 320px;
+  left: 0px;
+`;
+
+const Flake = styled.div`
+
+`;
+
+const Divider = styled.hr`
+  color: ${props => props.theme.color.secondary400};
+  height:0.5px;
+  margin: 80px 0px;
+`;
+
+const ExpBox = styled.div`
+  position: relative;
+  border-radius: 4px;
+  background-color: #D9F0F0;
+  padding: 24px;
+  padding-left: 48px;
+  border: solid 0.5px ${props => props.theme.color.brand.green};
+  width: 512px;
+  position: absolute;
+  top: 100px;
+  left: calc((100% - 512px)/2);
+  ${props => props.theme.type.size.body2}
+  color: ${props => props.theme.color.ui.strong};
+`;
+
+const Marker = styled.img`
+  position: absolute;
+  top: 24px;
+  left: 16px;
 `;
 
 const Chapter3 = ({
@@ -205,14 +286,17 @@ const Chapter3 = ({
 
   const recycleMethods = [
     {
+      id: "cr",
       name: 'Chemical\nRecycling',
       color: color.brand.orange
     },
     {
+      id: "mr",
       name: 'Mechanical\nRecycling',
       color: color.brand.emerald
     },
     {
+      id: "tr",
       name: 'Thermal\nRecycling',
       color: color.brand.blue
     },
@@ -283,12 +367,81 @@ const Chapter3 = ({
               recycleMethods.map((method) =>
                 <Cycle
                   bgColor={method.color}
+                  isBorder={method.id === 'mr'}
                 >
                   {method.name}
                 </Cycle>
               )
             }
           </ReyclingList>
+          <MR>
+            <Arrow src={arrow_down_big} alt='' />
+            <ExpBox>
+              <Marker src={ic_marker} alt='' />
+              {t('c3-s2-subexp')}
+            </ExpBox>
+            <FlakeTunnel>
+              <img src={illust_flake_blue} alt='' />
+              <img src={illust_flake_green} alt='' />
+              <img src={illust_flake_orange} alt='' />
+            </FlakeTunnel>
+          </MR>
+          <ImageContent>
+            <h2>
+              <span>
+                {t('c3-s3-title')}
+              </span>
+              <br />
+              {t('c3-s3-exp')}
+            </h2>
+            <div>
+
+            </div>
+          </ImageContent>
+          <Divider />
+          <TextContent>
+            <h2>
+              {t('c3-s4-title')}
+            </h2>
+            <p>
+              {t('c3-s4-exp')}
+            </p>
+          </TextContent>
+          <ReyclingList>
+            <Cycle
+              bgColor={'#F0FFFA'}
+              isBorder={true}
+              style={{color:'#009999'}}
+            >
+              <img src={logo_short} alt='' />
+              Mechanical <br />
+              Recycling
+            </Cycle>
+          </ReyclingList>
+          <MR>
+            <Arrow src={arrow_down_big} alt='' />
+            <ExpBox>
+              <Marker src={ic_marker} alt='' />
+              {t('c3-s4-subexp')}
+            </ExpBox>
+            <FlakeTunnel>
+              <img src={illust_flake_blue} alt='' />
+              <img src={illust_flake_green} alt='' />
+              <img src={illust_flake_orange} alt='' />
+            </FlakeTunnel>
+          </MR>
+          <ImageContent>
+            <h2>
+              <span>
+                {t('c3-s5-title')}
+              </span>
+              <br />
+              {t('c3-s5-exp')}
+            </h2>
+            <div>
+
+            </div>
+          </ImageContent>
         </LiveArea>
       </Section>
     </Container>
