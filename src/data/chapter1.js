@@ -1,33 +1,44 @@
+import ic_movie from "../assets/img/icon/ic_movie.svg";
+import ic_music from "../assets/img/icon/ic_music.svg";
+import ic_electric from "../assets/img/icon/ic_electric.svg";
+import ic_medical from "../assets/img/icon/ic_medical.svg";
+import ic_space from "../assets/img/icon/ic_rocket.svg";
+
 export const plastic_industry_timeline_1_1 = [
   {
     "year": 1800,
     "value": 1,
     "name": '영화 산업',
-    "exp": `영화 필름에 사용되어 \n 영화산업의 발전에 기여`
+    "exp": `영화 필름에 사용되어 \n 영화산업의 발전에 기여`,
+    "img": ic_movie
   },
   {
     "year": 1900,
     "value": 2,
     "name": '음악 산업',
-    "exp": `레코드, 카세트테이프, 등에\n  활용되며 음악의 대중화에 기여`
+    "exp": `레코드, 카세트테이프, 등에\n  활용되며 음악의 대중화에 기여`,
+    "img": ic_music
   },
   {
     "year": 1950,
     "value": 3,
     "name": '전기 산업',
-    "exp": `절연성이 뛰어나 전선을 감싸는 \n 재료로 조명장치, 플로그 등에 사용`
+    "exp": `절연성이 뛰어나 전선을 감싸는 \n 재료로 조명장치, 플로그 등에 사용`,
+    "img": ic_electric
   },
   {
     "year": 1975,
     "value": 1,
     "name": '의료 산업',
-    "exp": `살균이 어렵고 깨지기 쉬운 병원의 \n 유리병 과 고무 튜브를 플라스틱이 대체`
+    "exp": `살균이 어렵고 깨지기 쉬운 병원의 \n 유리병 과 고무 튜브를 플라스틱이 대체`,
+    "img": ic_medical
   },
   {
     "year": 2000,
     "value": 2,
     "name": '우주 산업',
-    "exp": `우주선의 부품이나 우주복에 \n 무게가 가벼운 플라스틱 소재 활용`
+    "exp": `우주선의 부품이나 우주복에 \n 무게가 가벼운 플라스틱 소재 활용`,
+    "img": ic_space
   },
 ];
 

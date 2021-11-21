@@ -9,6 +9,7 @@ import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import SankeyOcean from "../chart/chaper2/SankeyOcean";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import useWindowSize from '../hook/useWindowSize';
+import ViewportWrapper from '../components/ViewportWrapper';
 
 // Data
 import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } from '../data/chapter1';
@@ -144,12 +145,11 @@ const BttNext = styled.div`
 const Chapter2 = ({
   chapterObject,
   currentChapter,
-  isChartActive,
-  currentSection
 }) => {
 
-  const [innerHeight, setInnterHeight] = useState(window.innerHeight);
-  const [currentSlideOcean, setCurrentSlideOcean] = useState(0);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isVideoTrigger, setIsVideoTrigger] = useState(false);
+  const [isChartActive, setIsChartActive] = useState(false);
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
@@ -171,33 +171,49 @@ const Chapter2 = ({
   ];
 
   useEffect(() => {
-    setInnterHeight(window.innerHeight);
-  }, [window]);
-
-  useEffect(() => {
-
-  }, []);
+    if (currentSection === 0) {
+      setIsChartActive(false);
+    } else if (currentSection === 1) {
+      setIsChartActive(true);
+    } else if (currentSection === 2) {
+      setIsChartActive(true);
+    } else if (currentSection === 3) {
+      setIsChartActive(true);
+    }
+    else if (currentSection === 4) {
+      setIsChartActive(false);
+    }
+  }, [currentSection]);
 
   return (
     <Container ref={chapterObject.ref}>
       <Content>
-        <VideoBackground
-          isVideoPlay={true}
-          width={windowSize.width}
-          height={windowSize.height}
-          isFilter={true}
-          videoSrc={video_transition}
-          refObject={chapterObject.refSection[5]}
+        <ViewportWrapper
+          onEnterViewport={() => {
+            setCurrentSection(0);
+            setIsVideoTrigger(true);
+          }}
+          onLeaveViewport={() => {
+            setIsVideoTrigger(false);
+          }}
         >
-          <MsgFullScreen
-            title={t('c2-s5-title')}
-            exp={t('c2-s5-exp')}
-          />
-        </VideoBackground>
-
+          <VideoBackground
+            isVideoPlay={true}
+            width={windowSize.width}
+            height={windowSize.height}
+            isFilter={true}
+            videoSrc={video_transition}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isVideoTrigger}
+          >
+            <MsgFullScreen
+              title={t('c2-s5-title')}
+              exp={t('c2-s5-exp')}
+            />
+          </VideoBackground>
+        </ViewportWrapper>
         <SpaceFullScreen
-          numX={0.5}
-          refObject={chapterObject.refSection[0]}
+          numX={1.25}
         />
         <Section>
           {
@@ -215,30 +231,44 @@ const Chapter2 = ({
           }
           {
             contentOcean.map((section, i) =>
-              <TextContent
-                ref={chapterObject.refSection[i + 1]}
-                currentSection={currentSection}
-                index={i}
+              <ViewportWrapper
+                onEnterViewport={() => {
+                  console.log("enter: " + (i + 1));
+                  setCurrentSection(i + 1);
+                }}
               >
-                <h1>
-                  {i + 1}
-                </h1>
-                <h2>
-                  {section.title}
-                </h2>
-                <p>
-                  {section.exp}
-                </p>
-              </TextContent>
+                <TextContent
+                  ref={chapterObject.refSection[i + 1]}
+                  currentSection={currentSection}
+                  index={i}
+                >
+                  <h1>
+                    {i + 1}
+                  </h1>
+                  <h2>
+                    {section.title}
+                  </h2>
+                  <p>
+                    {section.exp}
+                  </p>
+                </TextContent>
+              </ViewportWrapper>
             )
           }
           <SpaceFullScreen
             refObject={chapterObject.refSection[4]}
             numX={0.25}
           />
-          <MsgFullScreen
-            exp={t('c2-s9-exp')}
-          />
+          <ViewportWrapper
+            onEnterViewport={() => {
+              setCurrentSection(4);
+            }}
+          >
+            <MsgFullScreen
+              title={t('c2-s9-exp')}
+            />
+          </ViewportWrapper>
+
         </Section>
       </Content>
     </Container>

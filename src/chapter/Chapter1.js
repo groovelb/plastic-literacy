@@ -10,6 +10,13 @@ import TimelineChartC1S1 from "../components/chart/TimelineChartC1S1";
 import BarChart from "../components/chart/BarChart";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import useWindowSize from '../hook/useWindowSize';
+import ViewportWrapper from '../components/ViewportWrapper';
+import SpaceFullScreen from "../components/layout/SpaceFullScreen";
+import ic_movie from "../assets/img/icon/ic_movie.svg";
+import ic_music from "../assets/img/icon/ic_music.svg";
+import ic_electric from "../assets/img/icon/ic_electric.svg";
+import ic_medical from "../assets/img/icon/ic_medical.svg";
+import ic_space from "../assets/img/icon/ic_rocket.svg";
 
 // Data
 import { plastic_industry_timeline_1_1, plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7, plastic_accumulated_waste_1_8 } from '../data/chapter1';
@@ -40,6 +47,8 @@ const Chart = styled.div`
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
 `;
 
+
+
 const ChartTitle = styled.p`
   padding-left: 40px;
   margin-bottom: 16px;
@@ -58,8 +67,8 @@ const TextContent = styled.div`
   flex-direction: column;
   /* padding-top: 240px; */
   padding-left: calc(1200px - 308px);
-  height: ${window.innerHeight + 'px'};
-  opacity: ${props => props.currentSection === props.index ? 1 : 0};
+  height: ${window.innerHeight * 1.5 + 'px'};
+  /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
   width: ${(props) => props.theme.size.liveArea};
 	margin-left: auto;
@@ -81,10 +90,6 @@ const Space = styled.div`
 const Chapter1 = ({
   currentChapter,
   chapterObject,
-  currentSection,
-  isChartS1Active,
-  isChartS2Active,
-  isTrigger
 }) => {
 
   const { t } = useTranslation();
@@ -126,41 +131,74 @@ const Chapter1 = ({
 
   const [innerHeight, setInnterHeight] = useState(window.innerHeight);
   const [data, setData] = useState(content[0].data);
+  const [isTitleTrigger, setIsTitleTrigger] = useState(false);
+  const [isChart1Active, setIsChart1Active] = useState(false);
+  const [isChart2Active, setIsChart2Active] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isVideoTrigger, setIsVideoTrigger] = useState(false);
 
   useEffect(() => {
     setInnterHeight(window.innerHeight);
   }, [window]);
 
   useEffect(() => {
-    if (currentSection === 1) {
+    console.log(currentSection);
+    if (currentSection === 0) {
+      setIsChart1Active(false);
+      setIsChart2Active(false);
+    }
+    else if (currentSection === 1) {
       setData(content[0].data);
+      setIsChart1Active(true);
+      setIsChart2Active(false);
     }
     else if (currentSection === 2) {
+      setIsChart1Active(false);
+      setIsChart2Active(true);
       setData(content[1].data);
     } else if (currentSection === 3) {
+      setIsChart1Active(false);
+      setIsChart2Active(true);
       setData(content[2].data);
     } else if (currentSection === 4) {
+      setIsChart1Active(false);
+      setIsChart2Active(true);
       setData(content[3].data);
     } else if (currentSection === 5) {
+      setIsChart1Active(false);
+      setIsChart2Active(true);
       setData(content[4].data);
+    } else if (currentSection === 6) {
+      setIsChart2Active(false);
+      setIsChart1Active(false);
     }
   }, [currentSection]);
 
   return (
     <Container ref={chapterObject.ref}>
-      <ChapterTitle
-        numChapter={1}
-        title={t("c1-title")}
-        subTitle={t("c1-subtitle")}
-        bgColor={'dark'}
-        exp={t("c1-exp")}
-      />
+      <ViewportWrapper
+        onEnterViewport={() => {
+          console.log("enter: 0");
+          setCurrentSection(0);
+          setIsTitleTrigger(true);
+        }}
+      >
+        <ChapterTitle
+          numChapter={1}
+          title={t("c1-title")}
+          subTitle={t("c1-subtitle")}
+          bgColor={'dark'}
+          exp={t("c1-exp")}
+          isTrigger={isTitleTrigger}
+        />
+      </ViewportWrapper>
+
       <Content>
         {/* plastic history timeline */}
         {
           currentChapter === 1 &&
           <Chart
-            isActive={isChartS1Active}
+            isActive={isChart1Active}
           >
             <ChartTitle>
               {content[0].chartTitle}
@@ -175,9 +213,9 @@ const Chapter1 = ({
         }
         {/* bar chart */}
         {
-          currentChapter === 1 && 0 < currentSection &&
+          currentChapter === 1 &&
           <Chart
-            isActive={isChartS2Active}
+            isActive={isChart2Active}
           >
             <ChartTitle>
               {content[currentSection - 1] && content[currentSection - 1].chartTitle}
@@ -190,33 +228,54 @@ const Chapter1 = ({
         <Space />
         {
           content.map((section, i) =>
-            <TextContent
-              ref={chapterObject.refSection[i]}
-              currentSection={currentSection - 1}
-              index={i}
+            <ViewportWrapper
+              onEnterViewport={() => {
+                console.log("enter: " + (i + 1));
+                setCurrentSection(i + 1);
+              }}
             >
-              <h2>
-                {section.title}
-              </h2>
-              <p>
-                {section.exp}
-              </p>
-            </TextContent>
+              <TextContent
+                ref={chapterObject.refSection[i]}
+                currentSection={currentSection}
+                index={i}
+              >
+                <h2>
+                  {section.title}
+                </h2>
+                <p>
+                  {section.exp}
+                </p>
+              </TextContent>
+            </ViewportWrapper>
           )
         }
-        <VideoBackground
-          isVideoPlay={true}
-          width={windowSize.width}
-          height={windowSize.height}
-          isFilter={true}
-          videoSrc={video_transition}
-          refObject={chapterObject.refSection[5]}
+        <ViewportWrapper
+          onEnterViewport={() => {
+            setCurrentSection(6);
+            setIsVideoTrigger(true);
+          }}
+          onLeaveViewport={() => {
+            setIsVideoTrigger(false);
+          }}
         >
-          <MsgFullScreen
-
-            title={t('c1-s7-exp')}
-          />
-        </VideoBackground>
+          <VideoBackground
+            isVideoPlay={true}
+            width={windowSize.width}
+            height={windowSize.height}
+            isFilter={true}
+            videoSrc={video_transition}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isVideoTrigger}
+          >
+            <MsgFullScreen
+              title={t('c1-s7-exp')}
+            />
+          </VideoBackground>
+        </ViewportWrapper>
+        <SpaceFullScreen
+          refObject={chapterObject.refSection[3]}
+          numX={0.3}
+        />
       </Content>
     </Container>
   )

@@ -112,7 +112,7 @@ const Sankey = ({ }) => {
         .attr("cy", point.y) // Set the cy
     }
   }
-
+  
   return (
     <Container>
       <svg ref={svgRef} />

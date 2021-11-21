@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import styled from 'styled-components';
 import ReactPlayer from 'react-player';
+import useWindowSize from '../../hook/useWindowSize';
 // import videoSrc from '../../assets/video/video_bg_section1.mp4';
 
 
@@ -8,6 +9,18 @@ const Container = styled.div`
   display: flex;
   position: relative;
   width: 100%;
+  pointer-events: none;
+  height: ${props =>`${props.height}px`};
+`;
+
+const VideoBG = styled.div`
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  opacity: ${props => props.isTrigger ? '1' : '0'};
+  transition: opacity 0.4s ease-in-out;
   video{
     object-fit: cover;
     filter: grayscale(0.4);
@@ -43,7 +56,8 @@ function VideoBackground({
   children,
   isFilter,
   isVideoPlay,
-  refObject
+  refObject,
+  isTrigger
 }) {
 
   const playerRef = useRef(null);
@@ -58,30 +72,38 @@ function VideoBackground({
     setPlaying(true);
   }
 
+  const windowSize = useWindowSize();
+
   return (
     <Container
       onClick={playVideo}
-      isFilter={isFilter}
+      height={windowSize.height}
       ref={refObject}
-      >
-      <ReactPlayer
-        ref={playerRef}
-        url={videoSrc}
-        autoPlay={false}
-        playing={isVideoPlay}
-        loop={true}
-        muted={true}
-        width={width}
-        height={height}
-        controls={false}
-        playsinline={true}
-        style={{ display: 'flex' }}
-        onReady={
-          () => {
-            playVideo();
+    >
+      <VideoBG
+        isTrigger={isTrigger}
+        isFilter={isFilter}
+        >
+        <ReactPlayer
+          ref={playerRef}
+          url={videoSrc}
+          autoPlay={false}
+          playing={isVideoPlay}
+          loop={true}
+          muted={true}
+          width={width}
+          height={height}
+          controls={false}
+          playsinline={true}
+          style={{ display: 'flex' }}
+          onReady={
+            () => {
+              playVideo();
+            }
           }
-        }
-      />
+        />
+      </VideoBG>
+
       <Content>
         {children}
       </Content>

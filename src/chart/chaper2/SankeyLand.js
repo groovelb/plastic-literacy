@@ -510,9 +510,9 @@ const Sankey = ({
   }, [isInitiate])
 
   // Particle
-  useEffect(() => {
-    updateParticle();
-  }, [currentStage]);
+  // useEffect(() => {
+  //   updateParticle();
+  // }, [currentStage]);
 
   const [count, setCount] = useState(0);
   const [stop, setStop] = useState(false);

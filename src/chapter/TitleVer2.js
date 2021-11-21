@@ -11,6 +11,7 @@ import ic_dispose from "../assets/illust/title/ic_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_recycling.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
+import PlasticCycle from "../chart/title/PlasticCycle";
 
 const Container = styled(Section)`
   height: ${props => props.innerHeight + 'px'};
@@ -46,10 +47,10 @@ const IllustContainer = styled.div`
 
 const Illust = styled.div`
   position: absolute;
-  width: 800px;
-  height: 800px;
-  top: calc((100% - 800px)/2);
-  left: calc((100% - 800px)/2);
+  width: 900px;
+  height: 900px;
+  top: calc((100% - 900px)/2);
+  left: calc((100% - 900px)/2);
   @media only screen and (max-width: 480px) {
     width: 100%;
     height: 100%;
@@ -83,8 +84,8 @@ const Circle = styled.div`
     top: ${props => `${props.y}px`};
     left: ${props => `${props.x}px`};
     img{
-      width: 800px;
-      height: 800px;
+      width: 900px;
+      height: 900px;
       position: absolute;
       top: ${props => `-${props.y}px`};
       left: ${props => `-${props.x}px`};
@@ -114,7 +115,8 @@ const Logo = styled.div`
 
 
 const Title = ({
-  refObject
+  refObject,
+  currentChapter
 }) => {
   const [innerHeight, setInnerHeight] = useState(window.innerHeight);
 
@@ -176,26 +178,9 @@ const Title = ({
     >
       <IllustContainer>
         <Illust>
-          {
-            circleList.map((circle) =>
-              <Circle
-                x={circle.x * 400}
-                y={circle.y * 400}
-              >
-                <img src={circle.img} alt='' />
-              </Circle>
-            )
-          }
-          {
-            nodeList.map((node) =>
-              <Node
-                x={node.x}
-                y={node.y}
-              >
-                <img src={node.img} />
-              </Node>
-            )
-          }
+          <PlasticCycle
+            currentChapter={currentChapter}
+          />
         </Illust>
         <TitleMsg>
           Plastic Literacy

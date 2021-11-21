@@ -7,6 +7,7 @@ import MsgFullScreen from "../components/layout/MsgFullScreen";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import LiveArea from "../components/layout/LiveArea";
 import SankeyLand from "../chart/chaper2/SankeyLand";
+import ViewportWrapper from '../components/ViewportWrapper';
 
 // Data
 import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } from '../data/chapter1';
@@ -133,8 +134,6 @@ const BttNext = styled.div`
 const Chapter2 = ({
   chapterObject,
   currentChapter,
-  isChartActive,
-  currentSection
 }) => {
 
   const { t } = useTranslation();
@@ -157,32 +156,48 @@ const Chapter2 = ({
 
   const [innerHeight, setInnterHeight] = useState(window.innerHeight);
   const [currentSlideLand, setCurrentSlideLand] = useState(0);
+  const [isTitleTrigger, setIsTitleTrigger] = useState(false);
+  const [currentSection, setCurrentSection] = useState(0);
+  const [isChartActive, setIsChartActive] = useState(false);
 
   useEffect(() => {
     setInnterHeight(window.innerHeight);
   }, [window]);
 
   useEffect(() => {
-
-  }, []);
+    if (currentSection === 0) {
+      setIsChartActive(false);
+    } else if (currentSection === 1) {
+      setIsChartActive(true);
+    } else if (currentSection === 2) {
+      setIsChartActive(true);
+    } else if (currentSection === 3) {
+      setIsChartActive(true);
+    }
+    else if (currentSection === 4) {
+      setIsChartActive(false);
+    }
+  }, [currentSection]);
 
   return (
     <Container ref={chapterObject.ref}>
-      <ChapterTitle
-        numChapter={2}
-        title={t("c2-title")}
-        subTitle={t("c2-subtitle")}
-        bgColor={'dark'}
-        exp={t("c2-exp")}
-      />
+      <ViewportWrapper
+        onEnterViewport={() => {
+          console.log("enter: 0");
+          setCurrentSection(0);
+          setIsTitleTrigger(true);
+        }}
+      >
+        <ChapterTitle
+          numChapter={2}
+          title={t("c2-title")}
+          subTitle={t("c2-subtitle")}
+          bgColor={'dark'}
+          exp={t("c2-exp")}
+          isTrigger={isTitleTrigger}
+        />
+      </ViewportWrapper>
       <LiveArea>
-        {/* <MsgFullScreen
-          title={`
-          우리가 생활 속에서 버리는 플라스틱들은 배출-수거-선별 과정을 거쳐 재활용된다. 
-          
-          하지만, 플라스틱의 종류는 너무 다양하고 서로 다른 다른 재질들이 섞여 있기 때문에 재활용은 생각보다 매우 어려운 과정이다. 
-          `}
-        /> */}
         <MsgFullScreen
           title={`
 
@@ -205,27 +220,39 @@ const Chapter2 = ({
 
           {
             contentLand.map((section, i) =>
-              <TextContent
-                ref={chapterObject.refSection[i]}
-                currentSection={currentSection}
-                index={i}
+              <ViewportWrapper
+                onEnterViewport={() => {
+                  console.log("enter: " + (i + 1));
+                  setCurrentSection(i + 1);
+                }}
               >
-                <h1>
-                  {i + 1}
-                </h1>
-                <h2>
-                  {section.title}
-                </h2>
-                <p>
-                  {section.exp}
-                </p>
-              </TextContent>
+                <TextContent
+                  ref={chapterObject.refSection[i]}
+                  currentSection={currentSection}
+                  index={i}
+                >
+                  <h1>
+                    {i + 1}
+                  </h1>
+                  <h2>
+                    {section.title}
+                  </h2>
+                  <p>
+                    {section.exp}
+                  </p>
+                </TextContent>
+              </ViewportWrapper>
             )
           }
-          <SpaceFullScreen
-            refObject={chapterObject.refSection[3]}
-            numX={0.25}
-          />
+          <ViewportWrapper
+            onEnterViewport={() => {
+              setCurrentSection(4);
+            }}
+          >
+            <SpaceFullScreen
+              numX={0.25}
+            />
+          </ViewportWrapper>
         </Section>
       </LiveArea>
     </Container>

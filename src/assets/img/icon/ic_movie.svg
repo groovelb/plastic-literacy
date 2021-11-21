@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="86px" height="86px" viewBox="0 0 86 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_movie</title>
+    <g id="Page-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_movie">
+            <circle id="Oval-Copy-3" stroke="#F0F0F0" stroke-width="4" fill="#D8D8D8" cx="43" cy="43" r="41"></circle>
+            <g transform="translate(19.000000, 22.000000)" fill="#122229" fill-rule="nonzero" id="Combined-Shape">
+                <path d="M48,15.0800171 L48,42.920044 L39.9998169,37.3198853 L39.9998169,20.6801758 L48,15.0800171 Z M38,16 L38,42 L0,42 L0,16 L38,16 Z M9,4 C12.3099976,4 15,6.7000122 15,10 C15,13.3099976 12.3099976,16 9,16 C5.7000122,16 3,13.3099976 3,10 C3,6.7000122 5.7000122,4 9,4 Z M27.5,0 C31.9199829,0 35.5,3.5900269 35.5,8 C35.5,12.4100342 31.9199829,16 27.5,16 C23.0900269,16 19.5,12.4100342 19.5,8 C19.5,3.5900269 23.0900269,0 27.5,0 Z"></path>
+            </g>
+        </g>
+    </g>
+</svg>

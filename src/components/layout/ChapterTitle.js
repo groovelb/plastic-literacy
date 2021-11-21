@@ -1,11 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Section from "./Section";
 import LiveArea from "../layout/LiveArea";
+import handleViewport from 'react-in-viewport';
+import ToTop from '../motion/ToTop';
+import ViewportWrapper from "../ViewportWrapper";
+
 
 const Container = styled(Section)`
 	min-height: ${window.innerHeight + 'px'};
 	margin-top: 80px;
+	margin-bottom: 120px;
 	color: ${(props) => {
 		switch (props.bgColor) {
 			case "dark":
@@ -17,6 +22,8 @@ const Container = styled(Section)`
 		}
 	}};
 `;
+
+const ViewportBlock = handleViewport(Container, /** options: {}, config: {} **/);
 
 const ChapterMark = styled.p`
 	width: 100%;
@@ -64,33 +71,47 @@ const ChapterTitle = ({
 	subTitle,
 	exp,
 	colorMode,
-	numChapter
-}) => (
+	numChapter,
+	isTrigger
+}) => {
+
+	return(
 		<Container
 			className={className}
 			bgColor={bgColor}
 			colorMode={colorMode}
+			// onEnterViewport={() => {
+			// 		console.log("enter");
+			// 		setIsTrigger(true);
+			// 	}}
+			// onLeaveViewport={() => {}}
 		>
-			<LiveArea>
-				<Top>
-					<ChapterMark>
-						{`CHAPTER${numChapter}`}
-					</ChapterMark>
-					<Title>
-						<h1>
-							{title}
-						</h1>
-						<h2>
-							{subTitle}
-						</h2>
-					</Title>
-					<Exp>
-						{exp}
-					</Exp>
-				</Top>
-				<Illust />
-			</LiveArea>
+			<ToTop
+				isTrigger={isTrigger}
+				index={0}
+			>
+				<LiveArea>
+					<Top>
+						<ChapterMark>
+							{`CHAPTER${numChapter}`}
+						</ChapterMark>
+						<Title>
+							<h1>
+								{title}
+							</h1>
+							<h2>
+								{subTitle}
+							</h2>
+						</Title>
+						<Exp>
+							{exp}
+						</Exp>
+					</Top>
+					<Illust />
+				</LiveArea>
+			</ToTop>
 		</Container>
-	);
+	)
+}
 
 export default ChapterTitle;

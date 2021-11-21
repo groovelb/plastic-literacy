@@ -11,7 +11,7 @@ const BarChart = ({
   data,
 }) => {
 
-  const margin = { top: 20, right: 20, bottom: 70, left: 40 };
+  const margin = { top: 20, right: 20, bottom: 80, left: 80 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);

@@ -30,10 +30,12 @@ const Section = ({
 		children,
 		className,
 		bgColor,
-		refObject
+		refObject,
+		inViewport,
+		forwardedRef
 	}) => (
 	<Container
-		ref={refObject}
+		ref={forwardedRef}
 		className={className}
 		bgColor={bgColor}
 	>
