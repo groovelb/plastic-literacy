@@ -21,6 +21,9 @@ const Container = styled(Section)`
 				return null;
 		}
 	}};
+	@media only screen and (max-width: 480px) {
+		
+	}
 `;
 
 const ViewportBlock = handleViewport(Container, /** options: {}, config: {} **/);
@@ -32,10 +35,10 @@ const ChapterMark = styled.p`
 
 const Top = styled.div`
 	width: 100%;
-	display: flex;
 	flex-wrap: wrap;
 	padding-top: 80px;
 	margin-bottom: 48px;
+	${props => props.theme.layout.flexRowCol}
 `;
 
 const Title = styled.div`
@@ -49,6 +52,9 @@ const Title = styled.div`
 		${props => props.theme.type.size.h2}
 		${props => props.theme.type.weight.prd.light}
 	}
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const Exp = styled.div`
@@ -56,12 +62,19 @@ const Exp = styled.div`
 	${props => props.theme.type.size.body2}
 	${props => props.theme.type.weight.prd.light}
 	margin-top: 12px;
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const Illust = styled.div`
 	width: 100%;
 	height: 480px;
 	background-color: rgba(0,0,0,0.25);
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+		height: 240px;
+	}
 `
 
 const ChapterTitle = ({

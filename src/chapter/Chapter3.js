@@ -4,7 +4,15 @@ import { useTranslation } from 'react-i18next';
 import ChapterTitle from "../components/layout/ChapterTitle";
 import useWindowSize from '../hook/useWindowSize';
 import Section from "../components/layout/Section";
+import ViewportWrapper from '../components/ViewportWrapper';
+import MsgFullScreen from "../components/layout/MsgFullScreen";
+import SpaceFullScreen from "../components/layout/SpaceFullScreen";
+import VideoBackground from "../components/videoBackground/VideoBackground";
+import ToTop from '../components/motion/ToTop';
+import ToLeft from '../components/motion/ToLeft';
 import LiveArea from "../components/layout/LiveArea";
+import PlasticCirculation from "../chart/title/PlasticCirculation2";
+
 import circle_product from "../assets/illust/title/circle_product.svg";
 import circle_waste from "../assets/illust/title/circle_waste.svg";
 import circle_part from "../assets/illust/title/circle_part.svg";
@@ -12,6 +20,7 @@ import circle_flake from "../assets/illust/title/circle_flake.svg";
 import ic_production from "../assets/illust/title/ic_production.svg";
 import ic_dispose from "../assets/illust/title/ic_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_collect.svg";
+import ic_recycling from "../assets/illust/title/ic_recycling.svg";
 import color from "../assets/theme/atom/color";
 import arrow_down_big from "../assets/img/icon/arrow_down_big.svg";
 import ic_marker from "../assets/img/icon/ic_marker.svg";
@@ -19,6 +28,9 @@ import illust_flake_green from "../assets/illust/flake_green.svg";
 import illust_flake_blue from "../assets/illust/flake_blue.svg";
 import illust_flake_orange from "../assets/illust/flake_orange.svg";
 import logo_short from "../assets/img/logo/logo_short.svg";
+import illust_bottle from "../assets/illust/illust_bottle.svg";
+import { isMobile } from 'react-device-detect';
+import video_s4 from "../assets/video/video_c3_last.mp4";
 
 const Container = styled.div`
   width: 100%;
@@ -34,15 +46,37 @@ const IllustContainer = styled.div`
   width: 100%;
   height: 100%;
   ${props => props.theme.layout.flexColCenter}
+  @media only screen and (max-width: 480px) {
+   
+  }
 `;
+
+const circleSize = {
+  width: isMobile ? window.innerWidth : 900,
+  height: isMobile ? window.innerWidth : 900,
+  margin: isMobile ? 0 : 20
+};
+
+const nodeSize = {
+  width: isMobile ? 54 : 108,
+  height: isMobile ? 54 : 108,
+  margin: isMobile ? 0 : 20
+};
+
 
 const Illust = styled.div`
   position: absolute;
-  width: 800px;
-  height: 800px;
-  top: calc((100% - 800px)/2);
-  left: calc((100% - 800px)/2);
-  ${props => props.theme.layout.flexColCenter};
+  width: ${`${circleSize.width}px`};
+  height: ${`${circleSize.height}px`};
+  top: ${`calc((100% - ${circleSize.height}px)/2)`};
+  left: ${`calc((100% - ${circleSize.width}px)/2)`};
+  @media only screen and (max-width: 480px) {
+    padding-top: 20px;
+    width: 100%;
+    height: auto;
+    top: ${`${circleSize.margin}px`};
+    left: 0%;
+  }
 `;
 const Rotate = keyframes`
   from {
@@ -67,6 +101,18 @@ const Text = styled.div`
   width: 820px;
   word-break: keep-all;
   white-space: pre-line;
+`;
+
+const NodeContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  @media only screen and (max-width: 480px) {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding-top: 20px;
+    height: auto;
+  }
 `;
 
 const Node = styled.div`
@@ -115,6 +161,9 @@ const Msg = styled.div`
   ${props => props.theme.type.size.title}
   ${props => props.theme.type.weight.exp.bold}
   color: ${props => props.theme.color.brand.epGreen};
+  width: 100%;
+    top: 400px;
+    position: absolute;
 `;
 
 
@@ -150,6 +199,7 @@ const ImageContent = styled.div`
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
+  margin-top: 48px;
   margin-bottom: 80px;
   h2{
     span{
@@ -163,6 +213,7 @@ const ImageContent = styled.div`
     width: 280px;
   }
   div{
+    display: flex;
     width: calc(100% - 280px - 48px );
     padding-left: 0;
     ${props => props.theme.type.size.body2}
@@ -205,7 +256,7 @@ const Flake = styled.div`
 const Divider = styled.hr`
   color: ${props => props.theme.color.secondary400};
   height:0.5px;
-  margin: 80px 0px;
+  margin: 160px 0px;
 `;
 
 const ExpBox = styled.div`
@@ -237,6 +288,14 @@ const Chapter3 = ({
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
+  const [isTitleTrigger, setIsTitleTrigger] = useState(false);
+  const [isS1Trigger, setIsS1Trigger] = useState(false);
+  const [isS2Trigger, setIsS2Trigger] = useState(false);
+  const [isS1ProductTrigger, setIsS1ProductTrigger] = useState(false);
+  const [isS2ProductTrigger, setIsS2ProductTrigger] = useState(false);
+  const [isVideoTrigger, setIsVideoTrigger] = useState(false);
+  const [isS3Trigger, setIsS3Trigger] = useState(false);
+  const bottleList = [1, 2, 3];
 
   const circleList = [
     {
@@ -263,24 +322,24 @@ const Chapter3 = ({
 
   const nodeList = [
     {
-      x: 400 - 54,
-      y: -16,
+      x: circleSize.width / 2 - nodeSize.width / 2,
+      y: nodeSize.margin,
       img: ic_production
     },
     {
-      x: 800 - 54 - 32,
-      y: 400 - 54,
+      x: circleSize.width - nodeSize.width - nodeSize.margin,
+      y: circleSize.height / 2 - nodeSize.height / 2,
       img: ic_dispose
     },
     {
-      x: 400 - 54,
-      y: 800 - 54 - 40,
+      x: circleSize.width / 2 - nodeSize.width / 2,
+      y: circleSize.height - nodeSize.height - nodeSize.margin,
       img: ic_collect
     },
     {
-      x: -24,
-      y: 400 - 54,
-      img: ic_production
+      x: nodeSize.margin,
+      y: circleSize.height / 2 - nodeSize.height / 2,
+      img: ic_recycling
     }
   ];
 
@@ -304,145 +363,254 @@ const Chapter3 = ({
 
   return (
     <Container ref={chapterObject.ref}>
-
-      <ChapterTitle
-        numChapter={3}
-        title={t("c3-title")}
-        subTitle={t("c3-subtitle")}
-        bgColor={'dark'}
-        exp={t("c3-exp")}
-      />
+      <ViewportWrapper
+        onEnterViewport={
+          () => {
+            setIsTitleTrigger(true);
+          }
+        }
+        onLeaveViewport={
+          () => {
+            // setIsTitleTrigger(false);
+          }
+        }
+      >
+        <ChapterTitle
+          numChapter={3}
+          title={t("c3-title")}
+          subTitle={t("c3-subtitle")}
+          bgColor={'dark'}
+          exp={t("c3-exp")}
+          isTrigger={isTitleTrigger}
+        />
+      </ViewportWrapper>
       <Section>
-        <LiveArea>
-          <TitleCenter>
-            {t('c3-s1-title')}
-          </TitleCenter>
-          <Wrapper>
-            <IllustContainer>
-              <Illust>
-                <Msg>
-                  CIRCULATION<br />
-                OF PLASTIC
-              </Msg>
-                {
-                  circleList.map((circle) =>
-                    <Circle
-                      x={circle.x * 400}
-                      y={circle.y * 400}
-                    >
-                      <img src={circle.img} alt='' />
-                    </Circle>
-                  )
-                }
-                {
-                  nodeList.map((node) =>
-                    <Node
-                      x={node.x}
-                      y={node.y}
-                    >
-                      <img src={node.img} />
-                    </Node>
-                  )
-                }
-              </Illust>
-            </IllustContainer>
-          </Wrapper>
-          <Text>
-            {t('c3-s1-exp')}
-          </Text>
-        </LiveArea>
+        <ViewportWrapper
+          onEnterViewport={
+            () => {
+              setIsS1Trigger(true);
+            }
+          }
+          onLeaveViewport={
+            () => {
+              // setIsS1Trigger(false);
+            }
+          }
+        >
+          <ToTop
+            isTrigger={isS1Trigger}
+            index={0}
+          >
+            <LiveArea>
+              <TitleCenter>
+                {t('c3-s1-title')}
+              </TitleCenter>
+              <Wrapper>
+                <IllustContainer>
+                  <Illust>
+                    <Msg>
+                      CIRCULATION<br />
+                      OF PLASTIC
+                    </Msg>
+                    <PlasticCirculation
+                      currentChapter={0}
+                    />
+                    <NodeContainer>
+                      {
+                        nodeList.map((node) =>
+                          <Node
+                            x={node.x}
+                            y={node.y}
+                          >
+                            <img src={node.img} />
+                          </Node>
+                        )
+                      }
+                    </NodeContainer>
+                  </Illust>
+                </IllustContainer>
+              </Wrapper>
+              <Text>
+                {t('c3-s1-exp')}
+              </Text>
+            </LiveArea>
+          </ToTop>
+        </ViewportWrapper>
       </Section>
       <Section>
-        <LiveArea>
-          <TextContent>
-            <h2>
-              {t('c3-s2-title')}
-            </h2>
-            <p>
-              {t('c3-s2-exp')}
-            </p>
-          </TextContent>
-          <ReyclingList>
-            {
-              recycleMethods.map((method) =>
-                <Cycle
-                  bgColor={method.color}
-                  isBorder={method.id === 'mr'}
-                >
-                  {method.name}
-                </Cycle>
-              )
+        <ViewportWrapper
+          onEnterViewport={
+            () => {
+              setIsS2Trigger(true);
             }
-          </ReyclingList>
-          <MR>
-            <Arrow src={arrow_down_big} alt='' />
-            <ExpBox>
-              <Marker src={ic_marker} alt='' />
-              {t('c3-s2-subexp')}
-            </ExpBox>
-            <FlakeTunnel>
-              <img src={illust_flake_blue} alt='' />
-              <img src={illust_flake_green} alt='' />
-              <img src={illust_flake_orange} alt='' />
-            </FlakeTunnel>
-          </MR>
-          <ImageContent>
-            <h2>
-              <span>
-                {t('c3-s3-title')}
-              </span>
-              <br />
-              {t('c3-s3-exp')}
-            </h2>
-            <div>
-
-            </div>
-          </ImageContent>
-          <Divider />
-          <TextContent>
-            <h2>
-              {t('c3-s4-title')}
-            </h2>
-            <p>
-              {t('c3-s4-exp')}
-            </p>
-          </TextContent>
-          <ReyclingList>
-            <Cycle
-              bgColor={'#F0FFFA'}
-              isBorder={true}
-              style={{color:'#009999'}}
-            >
-              <img src={logo_short} alt='' />
+          }
+          onLeaveViewport={
+            () => {
+              // setIsS2Trigger(false);
+            }
+          }
+        >
+          <ToTop
+            isTrigger={isS2Trigger}
+            index={0}
+          >
+            <LiveArea>
+              <TextContent>
+                <h2>
+                  {t('c3-s2-title')}
+                </h2>
+                <p>
+                  {t('c3-s2-exp')}
+                </p>
+              </TextContent>
+              <ReyclingList>
+                {
+                  recycleMethods.map((method) =>
+                    <Cycle
+                      bgColor={method.color}
+                      isBorder={method.id === 'mr'}
+                    >
+                      {method.name}
+                    </Cycle>
+                  )
+                }
+              </ReyclingList>
+              <MR>
+                <Arrow src={arrow_down_big} alt='' />
+                <ExpBox>
+                  <Marker src={ic_marker} alt='' />
+                  {t('c3-s2-subexp')}
+                </ExpBox>
+                <FlakeTunnel>
+                  <img src={illust_flake_blue} alt='' />
+                  <img src={illust_flake_green} alt='' />
+                  <img src={illust_flake_orange} alt='' />
+                </FlakeTunnel>
+              </MR>
+              <ImageContent>
+                <h2>
+                  <span>
+                    {t('c3-s3-title')}
+                  </span>
+                  <br />
+                  {t('c3-s3-exp')}
+                </h2>
+                <ViewportWrapper
+                  onEnterViewport={
+                    () => {
+                      setIsS1ProductTrigger(true);
+                    }
+                  }
+                >
+                  {
+                    bottleList.map((bottle, i) =>
+                      <ToLeft
+                        isTrigger={isS1ProductTrigger}
+                        index={i}
+                      >
+                        <img src={illust_bottle} alt='' />
+                      </ToLeft>
+                    )
+                  }
+                </ViewportWrapper>
+              </ImageContent>
+              <Divider />
+              <TextContent>
+                <h2>
+                  {t('c3-s4-title')}
+                </h2>
+                <p>
+                  {t('c3-s4-exp')}
+                </p>
+              </TextContent>
+              <ReyclingList>
+                <Cycle
+                  bgColor={'#F0FFFA'}
+                  isBorder={true}
+                  style={{ color: '#009999' }}
+                >
+                  <img src={logo_short} alt='' />
               Mechanical <br />
               Recycling
             </Cycle>
-          </ReyclingList>
-          <MR>
-            <Arrow src={arrow_down_big} alt='' />
-            <ExpBox>
-              <Marker src={ic_marker} alt='' />
-              {t('c3-s4-subexp')}
-            </ExpBox>
-            <FlakeTunnel>
-              <img src={illust_flake_blue} alt='' />
-              <img src={illust_flake_green} alt='' />
-              <img src={illust_flake_orange} alt='' />
-            </FlakeTunnel>
-          </MR>
-          <ImageContent>
-            <h2>
-              <span>
-                {t('c3-s5-title')}
-              </span>
-              <br />
-              {t('c3-s5-exp')}
-            </h2>
-            <div>
-
-            </div>
-          </ImageContent>
-        </LiveArea>
+              </ReyclingList>
+              <MR>
+                <Arrow src={arrow_down_big} alt='' />
+                <ExpBox>
+                  <Marker src={ic_marker} alt='' />
+                  {t('c3-s4-subexp')}
+                </ExpBox>
+                <FlakeTunnel>
+                  <img src={illust_flake_blue} alt='' />
+                  <img src={illust_flake_green} alt='' />
+                  <img src={illust_flake_orange} alt='' />
+                </FlakeTunnel>
+              </MR>
+              <ImageContent>
+                <h2>
+                  <span>
+                    {t('c3-s5-title')}
+                  </span>
+                  <br />
+                  {t('c3-s5-exp')}
+                </h2>
+                <ViewportWrapper
+                  onEnterViewport={
+                    () => {
+                      setIsS2ProductTrigger(true);
+                    }
+                  }
+                >
+                  {
+                    bottleList.map((bottle, i) =>
+                      <ToLeft
+                        isTrigger={isS2ProductTrigger}
+                        index={i}
+                      >
+                        <img src={illust_bottle} alt='' />
+                      </ToLeft>
+                    )
+                  }
+                </ViewportWrapper>
+              </ImageContent>
+              <Divider />
+              <TextContent>
+                <h2>
+                  {t('c3-s6-title')}
+                </h2>
+                <p>
+                  {t('c3-s6-exp')}
+                </p>
+              </TextContent>
+            </LiveArea>
+          </ToTop>
+        </ViewportWrapper>
+        <SpaceFullScreen
+          numX={0.75}
+        />
+        <ViewportWrapper
+          onEnterViewport={() => {
+            setIsVideoTrigger(true);
+          }}
+          onLeaveViewport={() => {
+            setIsVideoTrigger(false);
+          }}
+        >
+          <VideoBackground
+            isVideoPlay={isVideoTrigger}
+            width={windowSize.width}
+            height={windowSize.height}
+            isFilter={true}
+            videoSrc={video_s4}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isVideoTrigger}
+          >
+            <MsgFullScreen
+              title={t('c3-s8-title')}
+              exp={t('c3-s8-exp')}
+            />
+          </VideoBackground>
+        </ViewportWrapper>
       </Section>
     </Container>
   )

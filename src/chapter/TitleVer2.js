@@ -11,13 +11,29 @@ import ic_dispose from "../assets/illust/title/ic_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_recycling.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
-import PlasticCycle from "../chart/title/PlasticCycle";
+import PlasticCirculation from "../chart/title/PlasticCirculation";
+import { isMobile } from 'react-device-detect';
+
+const circleSize = {
+  width: isMobile ? window.innerWidth : 900,
+  height: isMobile ? window.innerWidth : 900,
+  margin: isMobile ? 0 : 20
+};
+
+const nodeSize = {
+  width: isMobile ? 54 : 108,
+  height: isMobile ? 54 : 108,
+  margin: isMobile ? 0 : 20
+};
 
 const Container = styled(Section)`
   height: ${props => props.innerHeight + 'px'};
   width: 100%;
   ${props => props.theme.layout.flexColCenter}
   position: relative;
+  @media only screen and (max-width: 480px) {
+  
+  }
 `;
 
 const TitleMsg = styled.p`
@@ -27,6 +43,11 @@ const TitleMsg = styled.p`
   text-align: center;
   color: #fff;
   margin: 92px 0 24px;
+  @media only screen and (max-width: 480px) {
+    position: absolute;
+    margin:0;
+    top:${`calc(${window.innerWidth / 2}px - 52px)`}
+  }
 `;
 
 const SubTitleMsg = styled.p`
@@ -37,27 +58,40 @@ const SubTitleMsg = styled.p`
   ${props => props.theme.type.size.title2};
   color: #fff;
   margin-bottom: 64px;
+  @media only screen and (max-width: 480px) {
+    position: absolute;
+    left:0;
+    bottom: 120px;
+    width: 100%;
+    margin:0;
+    padding:0 16px;
+  }
 `;
 
 const IllustContainer = styled.div`
   width: 100%;
   height: 100%;
   ${props => props.theme.layout.flexColCenter}
+  @media only screen and (max-width: 480px) {
+   
+  }
 `;
 
 const Illust = styled.div`
   position: absolute;
-  width: 900px;
-  height: 900px;
-  top: calc((100% - 900px)/2);
-  left: calc((100% - 900px)/2);
+  width: ${`${circleSize.width}px`};
+  height: ${`${circleSize.height}px`};
+  top: ${`calc((100% - ${circleSize.height}px)/2)`};
+  left: ${`calc((100% - ${circleSize.width}px)/2)`};
   @media only screen and (max-width: 480px) {
+    padding-top: 20px;
     width: 100%;
-    height: 100%;
-    top: 50%;
-    left: 50;
+    height: auto;
+    top: ${`${circleSize.margin}px`};
+    left: 0%;
   }
 `;
+
 const Rotate = keyframes`
   from {
     transform: rotate( 0deg );
@@ -67,38 +101,29 @@ const Rotate = keyframes`
   }
 `;
 
+const NodeContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  @media only screen and (max-width: 480px) {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    padding-top: 20px;
+    height: auto;
+  }
+`;
+
 const Node = styled.div`
-  width: 108px;
-  height: 108px;
+  width: ${nodeSize.width + 'px'};
+  height:  ${nodeSize.height + 'px'};
   position: absolute;
   top: ${props => `${props.y}px`};
   left: ${props => `${props.x}px`};
   transform-origin: center center;
-`;
-
-const Circle = styled.div`
-    width: 420px;
-    height: 400px;
-    overflow: hidden;
-    position: absolute;
-    top: ${props => `${props.y}px`};
-    left: ${props => `${props.x}px`};
-    img{
-      width: 900px;
-      height: 900px;
-      position: absolute;
-      top: ${props => `-${props.y}px`};
-      left: ${props => `-${props.x}px`};
-      animation: ${Rotate} 280s linear infinite;
-    }
-    @media only screen and (max-width: 480px) {
-      width: 50%;
-      height: 50%;
-      img{
-        width: 50%;
-        height: 50%;
-      }
-    }
+  img{
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const Logo = styled.div`
@@ -109,6 +134,15 @@ const Logo = styled.div`
   img{
     width: 148px;
     height: auto;
+  }
+  @media only screen and (max-width: 480px) {
+    position: absolute;
+    top:${`calc(${window.innerWidth / 2}px + 54px)`};
+    left: calc(50 - 40px);
+    img{
+    width: 80px;
+    height: auto;
+  }
   }
 `;
 
@@ -145,23 +179,23 @@ const Title = ({
 
   const nodeList = [
     {
-      x: 400 - 54,
-      y: -16,
+      x: circleSize.width / 2 - nodeSize.width / 2,
+      y: nodeSize.margin,
       img: ic_production
     },
     {
-      x: 800 - 54 - 32,
-      y: 400 - 54,
+      x: circleSize.width - nodeSize.width - nodeSize.margin,
+      y: circleSize.height / 2 - nodeSize.height / 2,
       img: ic_dispose
     },
     {
-      x: 400 - 54,
-      y: 800 - 54 - 40,
+      x: circleSize.width / 2 - nodeSize.width / 2,
+      y: circleSize.height - nodeSize.height - nodeSize.margin,
       img: ic_collect
     },
     {
-      x: -24,
-      y: 400 - 54,
+      x: nodeSize.margin,
+      y: circleSize.height / 2 - nodeSize.height / 2,
       img: ic_recycling
     }
   ];
@@ -174,22 +208,37 @@ const Title = ({
   return (
     <Container
       refObject={refObject}
-      innerHeight={innerHeight}
+      innerHeight={isMobile?360:innerHeight}
     >
       <IllustContainer>
         <Illust>
-          <PlasticCycle
+          <PlasticCirculation
             currentChapter={currentChapter}
           />
+          <NodeContainer>
+            {
+              nodeList.map((node) =>
+                <Node
+                  x={node.x}
+                  y={node.y}
+                >
+                  <img src={node.img} />
+                </Node>
+              )
+            }
+          </NodeContainer>
+
         </Illust>
         <TitleMsg>
-          Plastic Literacy
+          Plastic
+          {isMobile&&<br />}
+          Literacy
       </TitleMsg>
-        <SubTitleMsg>
+      <SubTitleMsg>
           플라스틱의 올바른 수거와 재활용에 대한 이해가 필요한 시대, GS칼텍스가 먼저 묻고 답하다.
       </SubTitleMsg>
         <Logo>
-          with <br />
+          {/* with <br /> */}
           <img src={logo_gs} alt='' />
         </Logo>
       </IllustContainer>

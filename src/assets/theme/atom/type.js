@@ -27,7 +27,7 @@ const type = {
     line-height: 64px;
     letter-spacing: 4px;
     @media only screen and (max-width: 480px) {
-      font-size: 48px;
+      font-size: 40px;
       line-height: 46px;
       letter-spacing:  1.5px;
     }
@@ -109,11 +109,11 @@ const type = {
     }
     `,
     caption: `
-    font-size: 12px;
+    font-size: 14px;
     line-height: 16px;
     letter-spacing: 0;
     @media only screen and (max-width: 480px) {
-      font-size: 12px;
+      font-size: 14px;
       line-height: 16px;
       letter-spacing: 0;
     }

@@ -172,11 +172,10 @@ function Main() {
         setCurrentChapter(3);
         setIsChartOceanS1Active(false);
         setChapter2OceanCurrentSection(0);
-  
       }
       // chapter
       else {
-
+        setCurrentChapter(4);
       }
     }
   }, [scrollY]);

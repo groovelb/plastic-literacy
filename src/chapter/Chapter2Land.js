@@ -12,7 +12,7 @@ import ViewportWrapper from '../components/ViewportWrapper';
 // Data
 import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } from '../data/chapter1';
 
-const sankeyHeight = 448;
+const sankeyHeight = 360;
 
 const Container = styled.div`
   width: 100%;

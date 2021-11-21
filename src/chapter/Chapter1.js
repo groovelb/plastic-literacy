@@ -45,6 +45,11 @@ const Chart = styled.div`
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    left: 0;
+    top: 20px;
+  }
 `;
 
 

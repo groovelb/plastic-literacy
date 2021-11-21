@@ -10,7 +10,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 calc(50% - 400px);
+  padding: 0 calc(50% - 480px);
   h2{
     ${props => props.theme.type.size.h1}
     ${props => props.theme.type.weight.bold}
