@@ -167,25 +167,25 @@ const Chapter1 = ({
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
       data: plastic_production_1_3,
-      chartTitle: '전세계 연도별 플라스틱 생산량'
+      chartTitle: '전세계 연도별 플라스틱 생산량 (단위: ton)'
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
-      chartTitle: '국내 1인당 연간 플라스틱 소비량'
+      chartTitle: '국내 1인당 연간 플라스틱 소비량 (단위: ton)'
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
       data: plastic_waste_1_7,
-      chartTitle: '연도별 플라스틱 폐기물량'
+      chartTitle: '연도별 플라스틱 폐기물량 (단위: ton)'
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
-      chartTitle: '연도별 플라스틱 누적 폐기물량'
+      chartTitle: '연도별 플라스틱 누적 폐기물량 (단위: ton)'
     }
   ];
 
