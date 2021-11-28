@@ -8,16 +8,19 @@ const type = {
     },
     prd: {
       light: `
-        font-family: 'noto_sans_kr_light';
-        // font-weight: 300;
+        // font-family: 'noto_sans_kr_light';
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 300;
       `,
       regular: `
-        font-family: noto_sans_kr_regular;
-        // font-weight: 400;
+        // font-family: noto_sans_kr_regular;
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
       `,
       bold: `
-        font-family: 'noto_sans_kr_black';
-        // font-weight: 900;
+        // font-family: 'noto_sans_kr_black';
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 900;
       `
     },
     num: `
