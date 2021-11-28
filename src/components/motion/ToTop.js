@@ -6,25 +6,40 @@ const Container = styled.div`
   flex-direction: column;
   width: 100%;
   // Transition
-  top: ${props => props.isTrigger?'0px':props.theme.motion.transition.distance.big};
-  opacity: ${props => props.isTrigger?'1':'0'};
+  top: ${props => {
+    switch (props.distance) {
+      case 'big':
+        return props.isTrigger?'0px':props.theme.motion.transition.distance.big;
+      case 'middle':
+        return props.isTrigger?'0px':props.theme.motion.transition.distance.middle;
+      case 'short':
+        return props.isTrigger?'0px':props.theme.motion.transition.distance.short;
+      default:
+        return props.isTrigger?'0px':props.theme.motion.transition.distance.big;
+    }
+  }
+  };
+  opacity: ${props => props.isTrigger ? '1' : '0'};
   transition: all ${props => props.theme.motion.transition.duration} ease-out;
-  transition-delay: ${props => `${props.theme.motion.delayRate*0.2}s`};
+  transition-delay: ${props => `${props.theme.motion.transition.delayRate * props.index}s`};
 `;
 
-function ToTop ({
+function ToTop({
   children,
   className,
   isTrigger,
   index,
-  style
-}){
+  style,
+  distance,
+  speed
+}) {
   return (
     <Container
       index={index}
       isTrigger={isTrigger}
       className={className}
       style={style}
+      distance={distance}
     >
       {children}
     </Container>

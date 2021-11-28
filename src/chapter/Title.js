@@ -200,7 +200,7 @@ const Title = ({
         <TitleMsg>
           Plastic Literacy
       </TitleMsg>
-        <SubTitleMsg>
+      <SubTitleMsg>
           플라스틱의 올바른 수거와 재활용에 대한 이해가 필요한 시대, GS칼텍스가 먼저 묻고 답하다.
       </SubTitleMsg>
         <Logo>

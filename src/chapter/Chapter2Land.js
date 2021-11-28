@@ -8,11 +8,13 @@ import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import LiveArea from "../components/layout/LiveArea";
 import SankeyLand from "../chart/chaper2/SankeyLand";
 import ViewportWrapper from '../components/ViewportWrapper';
+import bg_c2 from "../assets/img/bg/title_bg_c2.png";
+import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
 
 // Data
 import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } from '../data/chapter1';
 
-const sankeyHeight = 360;
+const sankeyHeight = 424;
 
 const Container = styled.div`
   width: 100%;
@@ -32,6 +34,7 @@ const Chart = styled.div`
   top: 0px;
   padding-top: 80px;
   box-sizing: content-box;
+  width: ${props => props.theme.size.liveArea};
   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`}; */
@@ -40,38 +43,70 @@ const Chart = styled.div`
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
   /* animation: ${FadeIn} 1s linear forwards; */
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    left: 0%;
+  }
 `;
 
 const TextContent = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
   /* padding-top: 240px; */
-  padding-left: 64px;
-  height: ${window.innerHeight + 'px'};
+  height: ${window.innerHeight * 2 + 'px'};
   /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
+
+  p{
+    width: calc(100% - 424px - 48px);
+    /* padding-left: 48px; */
+    /* width: 100%; */
+    /* padding-right: 120px; */
+    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.weight.prd.regular}
+    word-break: break-all;
+    margin-top: -8px;
+  }
+  @media only screen and (max-width: 480px) {
+    padding-left: 0px;
+    flex-direction: column;
+    p{
+      width: 100%;
+      padding:0;
+     
+    }
+  }
+`;
+
+const SectionTitle = styled.div`
+  width: 424px;
+  display: flex;
+  margin-bottom: 72px;
   h1{
     ${props => props.theme.type.size.title}
-    ${props => props.theme.type.weight.prd.bold}
+    ${props => props.theme.type.weight.prd.num}
     margin-right: 16px;
+    width: 80px;
+    height: 80px;
+    ${props => props.theme.layout.flexColCenter};
+    color: ${props => props.theme.color.brand.epGreen};
+    border: 0.5px solid ${props => props.theme.color.brand.epGreen};
+    /* background-color: ${props => props.theme.color.brand.epDeepPurple}; */
+    /* margin-top: -4px; */
   }
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
-    margin-bottom: 48px;
-    width: 360px;
-  }
-  p{
-    width: calc(100% - 240px - 48px - 120px);
-    padding-left: 48px;
-    padding-right: 120px;
-    ${props => props.theme.type.size.body2}
-		${props => props.theme.type.weight.prd.regular}
+    width: calc(424px - 80px);
+    margin-top: -8px;
   }
 `;
+
 
 const Space = styled.div`
   height: 240px;
@@ -189,6 +224,7 @@ const Chapter2 = ({
         }}
       >
         <ChapterTitle
+          img={bg_c2}
           numChapter={2}
           title={t("c2-title")}
           subTitle={t("c2-subtitle")}
@@ -210,8 +246,8 @@ const Chapter2 = ({
               isActive={isChartActive}
             >
               <SankeyLand
-                width={1200}
-                height={sankeyHeight}
+                // width={1200}
+                // height={sankeyHeight}
                 currentStage={currentSection}
                 currentChapter={currentChapter}
               />
@@ -226,21 +262,11 @@ const Chapter2 = ({
                   setCurrentSection(i + 1);
                 }}
               >
-                <TextContent
-                  ref={chapterObject.refSection[i]}
-                  currentSection={currentSection}
+                <SectionContentHorizon
+                  title={section.title}
+                  exp={section.exp}
                   index={i}
-                >
-                  <h1>
-                    {i + 1}
-                  </h1>
-                  <h2>
-                    {section.title}
-                  </h2>
-                  <p>
-                    {section.exp}
-                  </p>
-                </TextContent>
+                />
               </ViewportWrapper>
             )
           }

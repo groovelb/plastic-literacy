@@ -1,1 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Noto+Sans+KR:wght@300;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;400');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;900&display=swap'); */
+
+@font-face {
+  font-family: noto_sans_kr_regular;
+  src: url(../font/NotoSansKR-Regular.otf);
+}
+@font-face {
+  font-family: Noto_Sans_KR_Light;
+  src: url(../font/NotoSansKR-Light.otf);
+}
+@font-face {
+  font-family: Noto_Sans_KR_Black;
+  src: url(../font/NotoSansKR-Black.otf);
+}

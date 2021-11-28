@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Section from "./Section";
 import LiveArea from "../layout/LiveArea";
 import handleViewport from 'react-in-viewport';
 import ToTop from '../motion/ToTop';
 import ViewportWrapper from "../ViewportWrapper";
+import ImageBackground from "../../components/videoBackground/ImageBackground";
 
 
 const Container = styled(Section)`
 	min-height: ${window.innerHeight + 'px'};
 	margin-top: 80px;
 	margin-bottom: 120px;
+	${props => props.theme.layout.flexColCenter}
 	color: ${(props) => {
 		switch (props.bgColor) {
 			case "dark":
@@ -29,39 +31,116 @@ const Container = styled(Section)`
 const ViewportBlock = handleViewport(Container, /** options: {}, config: {} **/);
 
 const ChapterMark = styled.p`
-	width: 100%;
+	text-align: center;
 	${props => props.theme.type.size.chapterMark};
+	opacity: 0.75;
+	margin-bottom:24px;
 `;
 
 const Top = styled.div`
+	text-align: center;
 	width: 100%;
-	flex-wrap: wrap;
+	${props => props.theme.layout.flexColCenter}
 	padding-top: 80px;
 	margin-bottom: 48px;
-	${props => props.theme.layout.flexRowCol}
 `;
 
 const Title = styled.div`
 	width: 50%;
+	text-align: center;
 	h1{
 		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.exp.bold}
-		margin-bottom: 16px;
+		text-transform: capitalize;
+		/* margin-bottom: 16px; */
 	}
 	h2{
 		${props => props.theme.type.size.h2}
 		${props => props.theme.type.weight.prd.light}
+		margin-bottom:48px;
 	}
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
 `;
 
+const DrawTop = keyframes`
+	0%{width: 0%}
+	100%{width: 100%}
+`;
+
+const DrawRight = keyframes`
+	0%{height: 0%}
+	100%{height: 100%}
+`;
+
+const DrawBottom = keyframes`
+	0%{width: 0%; left: 100%}
+	100%{width: 100%; left: 0%}
+`;
+
+const DrawLeft = keyframes`
+	0%{height: 0%; top: 100%}
+	100%{height: 100%; top: 0%}
+`;
+
+
+const BorderTop = styled.div`
+	position: absolute;
+	top:0;
+	left:0;
+	width: 0px;
+	height: 1px;
+	background-color: #fff;
+	animation: ${props => props.isTrigger?DrawTop:'none'} 0.25s linear forwards;
+	animation-iteration-count: 1;
+	animation-delay: 0.25s;
+`;
+const BorderRight = styled.div`
+	position: absolute;
+	top:0;
+	right:0;
+	width: 1px;
+	height: 0px;
+	background-color: #fff;
+	animation: ${props => props.isTrigger?DrawRight:'none'} 0.25s linear forwards;
+	animation-iteration-count: 1;
+	animation-delay: 0.5s;
+`;
+const BorderBottom = styled.div`
+	position: absolute;
+	top:calc(100% - 1px);
+	left:0;
+	height: 1px;
+	width: 0px;
+	background-color: #fff;
+	animation: ${props => props.isTrigger?DrawBottom:'none'} 0.25s linear forwards;
+	animation-iteration-count: 1;
+	animation-delay: 0.75s;
+`;
+const BorderLeft = styled.div`
+	position: absolute;
+	top:0;
+	left:0;
+	height: 0px;
+	width: 1px;
+	background-color: #fff;
+	animation: ${props => props.isTrigger?DrawLeft:'none'} 0.25s linear forwards;
+	animation-iteration-count: 1;
+	animation-delay: 1s;
+`;
+
+
 const Exp = styled.div`
-	width: 50%;
-	${props => props.theme.type.size.body2}
+	position: relative;
+	width: 75%;
+	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.light}
+	text-align: left;
 	margin-top: 12px;
+	padding: 48px;
+	transition: opacity 1s ease-in-out;
+	/* border: solid 1px #fff; */
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
@@ -85,45 +164,63 @@ const ChapterTitle = ({
 	exp,
 	colorMode,
 	numChapter,
-	isTrigger
+	isTrigger,
+	img
 }) => {
 
-	return(
-		<Container
-			className={className}
-			bgColor={bgColor}
-			colorMode={colorMode}
-			// onEnterViewport={() => {
-			// 		console.log("enter");
-			// 		setIsTrigger(true);
-			// 	}}
-			// onLeaveViewport={() => {}}
-		>
-			<ToTop
-				isTrigger={isTrigger}
-				index={0}
+	const [isTitleOn, setIsTitleOn] = useState(false);
+
+	return (
+		<>
+			<ImageBackground
+				isFilter={true}
+				isTrigger={isTitleOn}
+				img={img}
+			/>
+			<Container
+				className={className}
+				bgColor={bgColor}
+				colorMode={colorMode}
 			>
-				<LiveArea>
-					<Top>
-						<ChapterMark>
-							{`CHAPTER${numChapter}`}
-						</ChapterMark>
-						<Title>
-							<h1>
-								{title}
-							</h1>
-							<h2>
-								{subTitle}
-							</h2>
-						</Title>
-						<Exp>
-							{exp}
-						</Exp>
-					</Top>
-					<Illust />
-				</LiveArea>
-			</ToTop>
-		</Container>
+				<ToTop
+					isTrigger={isTrigger}
+					index={0}
+				>
+					<ViewportWrapper
+						onEnterViewport={() => {
+							setIsTitleOn(true);
+						}}
+						onLeaveViewport={() => {
+							setIsTitleOn(false);
+						}}
+					>
+						<LiveArea>
+							<Top>
+								<ChapterMark>
+									{`CHAPTER${numChapter}`}
+								</ChapterMark>
+								<Title>
+									<h1>
+										{title}
+									</h1>
+									<h2>
+										{subTitle}
+									</h2>
+								</Title>
+								<Exp isTrigger={isTrigger}>
+									<BorderTop isTrigger={isTrigger} />
+									<BorderRight isTrigger={isTrigger}/>
+									<BorderBottom isTrigger={isTrigger}/>
+									<BorderLeft isTrigger={isTrigger}/>
+									{exp}
+								</Exp>
+							</Top>
+							{/* <Illust /> */}
+						</LiveArea>
+					</ViewportWrapper>
+				</ToTop>
+			</Container>
+		</>
 	)
 }
 

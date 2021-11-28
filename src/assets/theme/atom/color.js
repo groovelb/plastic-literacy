@@ -3,6 +3,7 @@ import colorToken from '../token/colorToken';
 const color = {
   brand: {
     orange: colorToken.gsOrange,
+    orangeDark: colorToken.gsOrange2,
     emerald: colorToken.gsEmerald,
     blue: colorToken.gsBlue,
     green: colorToken.gsGreen,
@@ -10,6 +11,7 @@ const color = {
     epGreen: colorToken.epGreen,
     epBlue: colorToken.epBlue,
     epPurple: colorToken.epPurple,
+    darkNavy: colorToken.darkNavy,
     epDeepPurple: colorToken.epDeepPurple,
     primary900: colorToken.blue900,
     primary800: colorToken.blue800,

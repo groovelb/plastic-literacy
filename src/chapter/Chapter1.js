@@ -17,12 +17,13 @@ import ic_music from "../assets/img/icon/ic_music.svg";
 import ic_electric from "../assets/img/icon/ic_electric.svg";
 import ic_medical from "../assets/img/icon/ic_medical.svg";
 import ic_space from "../assets/img/icon/ic_rocket.svg";
+import bg_c1 from "../assets/img/bg/title_bg_c1.jpg";
 
 // Data
 import { plastic_industry_timeline_1_1, plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7, plastic_accumulated_waste_1_8 } from '../data/chapter1';
 import video_transition from "../assets/video/video_c1_transition2.mp4";
 
-
+const chartWidth = 720;
 const Container = styled.div`
   width: 100%;
 `;
@@ -35,30 +36,50 @@ const FadeIn = keyframes`
     opacity: 1;
   }
 `;
-
+// const chartHeight = 560;
 const Chart = styled.div`
+  /* display: none; */
   position: fixed;
-  top: 160px;
+  top: 0px;
+  padding-top: 180px;
+  background-color: ${props => props.theme.color.ui.bg.dark};
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
-  width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`};
-  height: 680px;
+  /* width: ${props => props.theme.size.liveArea}; */
+  width: ${`${chartWidth}px`};
+  height: calc(100% - 240px);
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
   @media only screen and (max-width: 480px) {
     width: 100%;
+    height: 55%;
     left: 0;
-    top: 20px;
+    top: 0px;
+    padding-top: 48px;
+    background-color: ${props => props.theme.color.ui.bg.dark};
   }
 `;
 
 
 
 const ChartTitle = styled.p`
-  padding-left: 40px;
-  margin-bottom: 16px;
-  ${props => props.theme.type.size.title2};
-  ${props => props.theme.type.weight.prd.bold};
+  padding-left: 44px;
+  margin-bottom: 12px;
+  ${props => props.theme.type.size.title3};
+  ${props => props.theme.type.weight.prd.regular};
+  @media only screen and (max-width: 480px) {
+    padding-left: 24px;
+  }
+`;
+
+const ChartTitlePadding = styled.p`
+  padding-left: 80px;
+  margin-bottom: 12px;
+  ${props => props.theme.type.size.title3};
+  ${props => props.theme.type.weight.prd.regular};
+  @media only screen and (max-width: 480px) {
+    padding-left: 24px;
+  }
 `;
 
 const Content = styled.div`
@@ -67,27 +88,61 @@ const Content = styled.div`
 `;
 
 const TextContent = styled.div`
-  /* width: 100%; */
+  width: 100%;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   /* padding-top: 240px; */
-  padding-left: calc(1200px - 308px);
-  height: ${window.innerHeight * 1.5 + 'px'};
+  padding-left: ${`calc(${chartWidth}px + 24px)`};
+  height: ${window.innerHeight * 2 + 'px'};
   /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
-  width: ${(props) => props.theme.size.liveArea};
-	margin-left: auto;
-	margin-right: auto;
+  word-break: keep-all;
+  white-space: pre-line;
+
+  p{
+    /* width: calc(100% - 360px - 80px - 24px); */
+    /* padding-left: 48px; */
+    width: 100%;
+    /* padding-right: 120px; */
+    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.weight.prd.regular}
+    word-break: break-all;
+  }
+  @media only screen and (max-width: 480px) {
+    padding-left: 0px;
+    flex-direction: column;
+    p{
+      width: 100%;
+      padding:0;
+    }
+  }
+`;
+
+const SectionTitle = styled.div`
+  width: 100%;
+  display: flex;
+  margin-bottom: 72px;
+  h1{
+    ${props => props.theme.type.size.title}
+    ${props => props.theme.type.weight.prd.num}
+    margin-right: 16px;
+    width: 80px;
+    height: 80px;
+    ${props => props.theme.layout.flexColCenter};
+    color: ${props => props.theme.color.brand.epGreen};
+    border: 0.5px solid ${props => props.theme.color.brand.epGreen};
+    /* background-color: ${props => props.theme.color.brand.epDeepPurple}; */
+    /* margin-top: -4px; */
+  }
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
-    margin-bottom: 48px;
-  }
-  p{
-    ${props => props.theme.type.size.body2}
-		${props => props.theme.type.weight.prd.regular}
+    width: 360px;
+    margin-top: -8px;
   }
 `;
+
 const Space = styled.div`
   height: 240px;
 `;
@@ -187,8 +242,12 @@ const Chapter1 = ({
           setCurrentSection(0);
           setIsTitleTrigger(true);
         }}
+        onLeaveViewport={() => {
+          setIsTitleTrigger(false);
+        }}
       >
         <ChapterTitle
+          img={bg_c1}
           numChapter={1}
           title={t("c1-title")}
           subTitle={t("c1-subtitle")}
@@ -197,91 +256,96 @@ const Chapter1 = ({
           isTrigger={isTitleTrigger}
         />
       </ViewportWrapper>
-
-      <Content>
-        {/* plastic history timeline */}
-        {
-          currentChapter === 1 &&
-          <Chart
-            isActive={isChart1Active}
-          >
-            <ChartTitle>
-              {content[0].chartTitle}
-            </ChartTitle>
-            <TimelineChartC1S1
-              data={data}
+      <SpaceFullScreen
+        numX={1}
+      />
+      <Section>
+        <LiveArea>
+          {/* plastic history timeline */}
+          {
+            currentChapter === 1 &&
+            <Chart
+              isActive={isChart1Active}
             >
-
-            </TimelineChartC1S1>
-          </Chart>
-
-        }
-        {/* bar chart */}
-        {
-          currentChapter === 1 &&
-          <Chart
-            isActive={isChart2Active}
-          >
-            <ChartTitle>
-              {content[currentSection - 1] && content[currentSection - 1].chartTitle}
-            </ChartTitle>
-            <BarChart
-              data={data}
-            />
-          </Chart>
-        }
-        <Space />
-        {
-          content.map((section, i) =>
-            <ViewportWrapper
-              onEnterViewport={() => {
-                console.log("enter: " + (i + 1));
-                setCurrentSection(i + 1);
-              }}
+              <ChartTitle>
+                {content[0].chartTitle}
+              </ChartTitle>
+              <TimelineChartC1S1
+                data={data}
+              />
+            </Chart>
+          }
+          {/* bar chart */}
+          {
+            currentChapter === 1 &&
+            <Chart
+              isActive={isChart2Active}
             >
-              <TextContent
-                ref={chapterObject.refSection[i]}
-                currentSection={currentSection}
-                index={i}
+              <ChartTitlePadding>
+                {content[currentSection - 1] && content[currentSection - 1].chartTitle}
+              </ChartTitlePadding>
+              <BarChart
+                data={data}
+              />
+            </Chart>
+          }
+          <Space />
+          {
+            content.map((section, i) =>
+              <ViewportWrapper
+                onEnterViewport={() => {
+                  console.log("enter: " + (i + 1));
+                  setCurrentSection(i + 1);
+                }}
               >
-                <h2>
-                  {section.title}
-                </h2>
-                <p>
-                  {section.exp}
-                </p>
-              </TextContent>
-            </ViewportWrapper>
-          )
-        }
-        <ViewportWrapper
-          onEnterViewport={() => {
-            setCurrentSection(6);
-            setIsVideoTrigger(true);
-          }}
-          onLeaveViewport={() => {
-            setIsVideoTrigger(false);
-          }}
-        >
-          <VideoBackground
-            isVideoPlay={true}
-            width={windowSize.width}
-            height={windowSize.height}
-            isFilter={true}
-            videoSrc={video_transition}
-            refObject={chapterObject.refSection[5]}
-            isTrigger={isVideoTrigger}
+                <TextContent
+                  ref={chapterObject.refSection[i]}
+                  currentSection={currentSection}
+                  index={i}
+                >
+                  <SectionTitle>
+                    <h1>
+                      {i + 1}
+                    </h1>
+                    <h2>
+                      {section.title}
+                    </h2>
+                  </SectionTitle>
+                  <p>
+                    {section.exp}
+                  </p>
+                </TextContent>
+              </ViewportWrapper>
+            )
+          }
+          <ViewportWrapper
+            onEnterViewport={() => {
+              setCurrentSection(6);
+              setIsVideoTrigger(true);
+            }}
+            onLeaveViewport={() => {
+              setIsVideoTrigger(false);
+            }}
           >
-            <MsgFullScreen
-              title={t('c1-s7-exp')}
-            />
-          </VideoBackground>
-        </ViewportWrapper>
-        <SpaceFullScreen
-          refObject={chapterObject.refSection[3]}
-          numX={0.3}
-        />
-      </Content>
+            <VideoBackground
+              isVideoPlay={true}
+              width={windowSize.width}
+              height={windowSize.height}
+              isFilter={true}
+              videoSrc={video_transition}
+              refObject={chapterObject.refSection[5]}
+              isTrigger={isVideoTrigger}
+            >
+              <MsgFullScreen
+                title={t('c1-s7-exp')}
+              />
+            </VideoBackground>
+          </ViewportWrapper>
+          <SpaceFullScreen
+            numX={0.3}
+          />
+        </LiveArea>
+      </Section>
     </Container>
   )
 }

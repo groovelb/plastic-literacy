@@ -1,11 +1,12 @@
 const colorToken = {
 	// Brand Color
 	gsOrange: '#F99E1A',
+	gsOrange2: '#F33A21',
 	gsEmerald: '#009999',
 	gsGreen: '#42B66E',
 	gsBlue: '#057EC2',
 	epNavy: '#101E2E',
-	darkNavy: '#091624',
+	darkNavy: '#020F18',
 	epGreen: '#3DDB87',
 	epBlue: '#3E9EFF',
 	epPurple: '#6464FF',

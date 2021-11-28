@@ -32,12 +32,13 @@ const GlobalStyle = createGlobalStyle`
   body{
     background-color: ${(props) => props.theme.color.ui.bg.dark};
     color: #fff;
+    overflow-x: hidden;
   } 
   p{
     margin: 0px;
   }
   .node rect {
-    fill-opacity: 1;
+    fill-opacity: 0.86;
     shape-rendering: crispEdges;
   }
   .node text {
@@ -79,8 +80,31 @@ const GlobalStyle = createGlobalStyle`
   .stroke-opacity{
     transition: opacity 1s ease-in-out;
   }
+  .barChart{
+    path{
+      stroke: #fff;
+      stroke-width: 0.5px;
+      opacity: 0.3;
+    }
+  }
+  .timeline.yAxis{
+    path{
+      stroke: #fff;
+      stroke-width: 0.5px;
+      opacity: 0.3;
+      display: none;
+    }
+  }
   .tick{
     font-size: 14.8px;
+    line{
+      stroke: #fff;
+      stroke-width: 0.5px;
+      opacity: 0.3;
+    }
+    @media only screen and (max-width: 480px) {
+      font-size: 12px;
+    }
   }
   p{
     ${props => props.theme.type.size.body1};
@@ -90,6 +114,15 @@ const GlobalStyle = createGlobalStyle`
     ${props => props.theme.type.size.title1};
     ${props => props.theme.type.weight.prd.bold};
     margin-bottom: 24px;
+  }
+  .exp{
+    font-size: 14px;
+    fill: #fff;
+  }
+  @media only screen and (max-width: 480px) {
+    .exp{
+      font-size: 12px;
+    }
   }
 `;
 export default App;

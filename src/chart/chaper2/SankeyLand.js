@@ -12,8 +12,9 @@ import ic_select from "../../assets/img/icon/ic_select.svg";
 import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
 
 const Container = styled.div`
-  width: ${props => props.theme.size.liveArea};
   /* padding: 48px; */
+  width: 100%;
+  height: 100%;
   svg{
     width: 100%;
     height: 100%;
@@ -270,16 +271,18 @@ let graph;
 let svg;
 
 const Sankey = ({
-  width,
-  height,
+  // width,
+  // height,
   currentStage,
   currentChapter,
 }) => {
 
+  let containerRef = useRef(null);
+
   // set the dimensions and margins of the graph
-  const margin = { top: 80, right: 10, bottom: 10, left: 24 },
-    innerWidth = width - margin.left - margin.right,
-    innerHeight = height - margin.top - margin.bottom;
+  const margin = { top: 80, right: 10, bottom: 10, left: 24 };
+    // innerWidth = width - margin.left - margin.right,
+    // innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -293,9 +296,12 @@ const Sankey = ({
   // append the svg object to the body of the page
   useEffect(() => {
 
+    let width = containerRef.current.clientWidth - margin.left - margin.right;
+    let height = containerRef.current.clientHeight - margin.top - margin.bottom;
+
     svg = d3.select(svgRef.current)
-      .attr("width", innerWidth + margin.left + margin.right)
-      .attr("height", innerHeight + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("class", "sankey")
       .attr("transform",
@@ -307,7 +313,7 @@ const Sankey = ({
       .nodeWidth(80)
       .nodePadding(56)
       .nodeAlign(sankeyLeft)
-      .size([innerWidth, innerHeight]);
+      .size([width, height]);
 
     // load the data
 
@@ -441,7 +447,7 @@ const Sankey = ({
           else return d.textColor = theme.color.brand.secondary500;
         }
       })
-      .filter(function (d) { return d.x0 < innerWidth / 2; })
+      .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
@@ -464,9 +470,8 @@ const Sankey = ({
       })
       .style("fill", "#ffffff")
       .text(function (d) { return d.value; })
-      .filter(function (d) { return d.x0 < innerWidth / 2; })
+      .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
-
 
     setIsInitiate(true);
 
@@ -520,9 +525,9 @@ const Sankey = ({
   function updateParticle() {
     if (1 <= currentStage && currentStage <= 3) {
       let depthList;
-      if(currentStage===1) depthList = [0];
-      if(currentStage===2) depthList = [1,2];
-      if(currentStage===3) depthList = [3];
+      if (currentStage === 1) depthList = [0];
+      if (currentStage === 2) depthList = [1, 2];
+      if (currentStage === 3) depthList = [3];
 
       if (count === 0) {
         randerParticle(depthList);
@@ -596,20 +601,25 @@ const Sankey = ({
   }
 
   useEffect(() => {
-    let depthList;
-      if(currentStage===1) depthList = [0];
-      if(currentStage===2) depthList = [1,2];
-      if(currentStage===3) depthList = [3];
+    let depthList = [];
+    if (currentStage === 1) depthList = [0];
+    if (currentStage === 2) depthList = [1, 2];
+    if (currentStage === 3) depthList = [3];
 
     d3.selectAll(`.link.land`)
-      .transition()
-      .duration(1500)
+      // .transition()
+      // .duration(1500)
       .style("stroke-opacity", 0.05);
-    d3.selectAll(
-      `.link_${currentStage - 1}.land`)
-      .transition()
-      .duration(1500)
-      .style("stroke-opacity", 0.25);
+
+    if(depthList.length>0){
+      depthList.forEach(depth => {
+        d3.selectAll(
+        `.link_${depth}.land`)
+        .transition()
+        .duration(1500)
+        .style("stroke-opacity", 0.25);
+      });
+    }
   }, [currentStage]);
 
   function pathTween(path, offset, r) {
@@ -624,7 +634,9 @@ const Sankey = ({
   }
 
   return (
-    <Container id="container_land">
+    <Container
+      ref={containerRef}
+      id="container_land">
       <svg ref={svgRef} />
     </Container>
   )

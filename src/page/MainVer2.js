@@ -1,9 +1,12 @@
 import '../translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
+import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import { isMobile } from 'react-device-detect';
 import theme from "../assets/theme/theme";
 import styled from 'styled-components';
+import ProgressBar from "react-scroll-progress-bar";
+import ReactFullpage from '@fullpage/react-fullpage';
 
 // Chapter
 import Title from "../chapter/TitleVer2";
@@ -16,23 +19,6 @@ import Chapter3 from "../chapter/Chapter3";
 import useScrollPosition from '@react-hook/window-scroll';
 import handleViewport from 'react-in-viewport';
 
-const Block = ({
-  inViewport,
-  forwardedRef,
-  number
-}) => {
-
-  const color = inViewport ? '#217ac0' : '#ff9800';
-  const text = inViewport ? 'In viewport' : 'Not in viewport';
-
-  return (
-    <div ref={forwardedRef}>
-      <h3>{text + number}</h3>
-      <div style={{ width: '400px', height: '300px', background: color }} />
-    </div>
-  );
-}
-const ViewportBlock = handleViewport(Block, /** options: {}, config: {} **/);
 
 function Main() {
   // Intit Scroll Hook
@@ -182,9 +168,23 @@ function Main() {
 
   return (
     <>
+      <div style={{
+        opacity: 0.5,
+        zIndex: 9999,
+        position: 'fixed',
+        top:0,
+        left:0
+      }}>
+        <ProgressBar
+          bgcolor={theme.color.brand.epGreen}
+        />
+      </div>
       <Title
         refObject={chapterList[0].ref}
         currentChapter={currentChapter}
+      />
+      <SpaceFullScreen
+        numX={0.2}
       />
       <Chapter1
         currentChapter={currentChapter}
@@ -194,17 +194,26 @@ function Main() {
         isChartS1Active={isChartS1Active}
         isChartS2Active={isChartS2Active}
       />
+      <SpaceFullScreen
+        numX={0.2}
+      />
       <Chapter2Land
         currentChapter={currentChapter}
         chapterObject={chapterList[2]}
         currentSection={chapter2LandCurrentSection}
         isChartActive={isChartLandActive}
       />
+      <SpaceFullScreen
+        numX={0.2}
+      />
       <Chapter2Ocean
         currentChapter={currentChapter}
         chapterObject={chapterList[3]}
         currentSection={chapter2OceanCurrentSection}
         isChartActive={isChartOceanActive}
+      />
+      <SpaceFullScreen
+        numX={0.2}
       />
       <Chapter3
         chapterObject={chapterList[4]} />

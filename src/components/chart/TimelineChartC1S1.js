@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 import styled from "styled-components";
+import { isMobile } from 'react-device-detect';
 
 import ic_movie from "../../assets/img/icon/ic_movie.svg";
 import ic_music from "../../assets/img/icon/ic_music.svg";
@@ -11,13 +12,18 @@ import ic_space from "../../assets/img/icon/ic_rocket.svg";
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  svg{
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const BarChart = ({
   data,
 }) => {
 
-  const margin = { top: 20, right: 20, bottom: 70, left: 40 };
+  const marginUnit = isMobile?10:20;
+  const margin = { top: marginUnit*1, right: marginUnit*2, bottom: marginUnit*2, left: marginUnit*2 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);
@@ -33,6 +39,7 @@ const BarChart = ({
   let y;
   let xAxis;
   let yAxis;
+  let yAxis2;
 
   useEffect(() => {
 
@@ -45,6 +52,8 @@ const BarChart = ({
     x = d3.scaleBand()
       .range([0, width])
       .padding(0.1);
+
+    const offsetY = isMobile ? 40 : 240;
 
     y = d3.scaleLinear()
       .range([height, 0]);
@@ -72,7 +81,15 @@ const BarChart = ({
       xAxis.call(d3.axisBottom(x));
 
       yAxis = chart.append("g")
-        .attr("class", "yAxis timeline");
+        .attr("class", "yAxis timeline")
+        .attr("transform", "translate(0,0)");
+
+      yAxis2 = chart.append("g")
+        .attr("class", "yAxis timeline")
+        .attr("transform", `translate(${width},0)`);
+
+      yAxis.call(d3.axisLeft(y).tickSize(-width).tickFormat(function (d) { return ''; }));
+      yAxis.call(d3.axisRight(y).tickSize(width).tickFormat(function (d) { return ''; }));
 
       update();
     }
@@ -89,14 +106,22 @@ const BarChart = ({
     let width = containerRef.current.clientWidth - margin.left - margin.right;
     let height = containerRef.current.clientHeight - margin.top - margin.bottom;
 
+    const offsetY = isMobile ? 40 : 80;
+    const r = isMobile?24:32;
+    const textX = isMobile?32:45;
+    const yearEnd = isMobile?2100:2080;
+    const expWidth = isMobile?96:148;
+
     // set the ranges
     x = d3.scaleLinear()
       .range([0, width]);
 
-    y = d3.scaleLinear()
-      .range([height / 2, 0]);
 
-    x.domain([1780, 2050]);
+
+    y = d3.scaleLinear()
+      .range([height - offsetY, offsetY]);
+
+    x.domain([1780, yearEnd]);
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
     d3.select(".xAxis.timeline").call(
@@ -165,11 +190,12 @@ const BarChart = ({
       .attr("x1", function (d) { return x(d.year); })
       .attr("x2", function (d) { return x(d.year); })
       .attr("y1", height)
-      .attr("y2", function (d) { return y(d.value) + 160; })
+      .attr("y2", function (d) { return y(d.value); })
       .attr("stroke-width", '0.5px')
       .attr("opacity", 0.3)
       .style("stroke-dasharray", ("4, 4"))
       .attr("stroke", '#f0f0f0');
+    
 
     // Top circle
     chart.selectAll(".marker2")
@@ -178,16 +204,16 @@ const BarChart = ({
       .append("circle")
       .attr("class", "marker2")
       .attr("cx", function (d) { return x(d.year); })
-      .attr("cy", function (d) { return y(d.value) + 160; })
-      .attr("r", 32)
+      .attr("cy", function (d) { return y(d.value); })
+      .attr("r", r)
       .attr("fill", '#fff');
 
-      enter.append("svg:image")
+    enter.append("svg:image")
       .attr("xlink:href", (d) => d.img)
-      .attr("x", function (d) { return x(d.year) - 32; })
-      .attr("y", function (d) { return y(d.value) + 160 - 32; })
-      .attr("height", 64)
-      .attr("width", 64);
+      .attr("x", function (d) { return x(d.year) - r; })
+      .attr("y", function (d) { return y(d.value) - r; })
+      .attr("height", r*2)
+      .attr("width", r*2);
 
     // Text
     let text = chart.selectAll(".exp")
@@ -196,13 +222,16 @@ const BarChart = ({
       .append("text")
       .attr("text-anchor", "start")
       .attr("class", "exp")
-      .attr("x", function (d) { return x(d.year) + 45; })
-      .attr("y", function (d) { return y(d.value) + 160 - 20; })
+      .attr("x", function (d) { return x(d.year) + textX; })
+      .attr("y", function (d) { return y(d.value) - 20; })
       .attr("fill", "#fff")
-      .text((d) => d.exp)
+      .text((d) =>{ 
+        let text = isMobile?d.exp2:d.exp;
+        return text;
+      })
       .attr("dy", "0.8em");
 
-    d3.selectAll(".exp").call(wrap, 180);
+    d3.selectAll(".exp").call(wrap, expWidth);
 
 
     // Add a <tspan class="text"> for every text line.

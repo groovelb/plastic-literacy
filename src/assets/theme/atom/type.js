@@ -8,18 +8,22 @@ const type = {
     },
     prd: {
       light: `
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 300;
+        font-family: 'noto_sans_kr_light';
+        // font-weight: 300;
       `,
       regular: `
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 400;
+        font-family: noto_sans_kr_regular;
+        // font-weight: 400;
       `,
       bold: `
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 800;
+        font-family: 'noto_sans_kr_black';
+        // font-weight: 900;
       `
     },
+    num: `
+      font-family: 'Roboto', sans-serif;
+      font-weight: 900;
+    `
   },
   size: {
     title: `
@@ -34,9 +38,10 @@ const type = {
     `,
     chapterMark: `
       font-size: 20px;
-      font-family: 'Noto Sans KR', sans-serif;
-      font-weight: 700;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 400;
       letter-spacing: 4px;
+      text-transform: capitalize;
     `,
     h1: `
     font-size: 48px;
@@ -50,7 +55,7 @@ const type = {
     `,
     title1: `
     font-size: 32px;
-    line-height: 46px;
+    line-height: 44px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 22px;
@@ -90,17 +95,17 @@ const type = {
     `,
     body1: `
     font-size: 24px;
-    line-height: 36px;
+    line-height: 40px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;
-      line-height: 22px;
+      line-height: 26px;
       letter-spacing: 0px;
     }
     `,
     body2: `
     font-size: 20px;
-    line-height: 28px;
+    line-height: 32px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;

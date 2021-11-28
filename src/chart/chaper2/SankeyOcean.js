@@ -13,7 +13,8 @@ import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
 
 
 const Container = styled.div`
-  width: ${props => props.theme.size.liveArea};
+  width: 100%;
+  height: 100%;
   svg{
     width: 100%;
     height: 100%;
@@ -219,15 +220,17 @@ let graph;
 let svg;
 
 const Sankey = ({
-  width,
-  height,
+  // width,
+  // height,
   currentStage,
   currentChapter,
 }) => {
 
-  const margin = { top: 80, right: 10, bottom: 10, left: 24 },
-    innerWidth = width - margin.left - margin.right,
-    innerHeight = height - margin.top - margin.bottom;
+  let containerRef = useRef(null);
+
+  const margin = { top: 80, right: 10, bottom: 10, left: 24 };
+    // innerWidth = width - margin.left - margin.right,
+    // innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -241,9 +244,12 @@ const Sankey = ({
   // append the svg object to the body of the page
   useEffect(() => {
 
+    let width = containerRef.current.clientWidth - margin.left - margin.right;
+    let height = containerRef.current.clientHeight - margin.top - margin.bottom;
+
     svg = d3.select(svgRef.current)
-      .attr("width", innerWidth + margin.left + margin.right)
-      .attr("height", innerHeight + margin.top + margin.bottom)
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("class", "sankey")
       .attr("transform",
@@ -255,7 +261,7 @@ const Sankey = ({
       .nodeWidth(80)
       .nodePadding(56)
       .nodeAlign(sankeyLeft)
-      .size([innerWidth, innerHeight]);
+      .size([width, height]);
 
     // load the data
 
@@ -301,9 +307,9 @@ const Sankey = ({
           .attr("stroke-dasharray", 8)
           .attr("opacity", 0.5)
           .on("click", () => {
-            d3.selectAll(`.link.land`)
+            d3.selectAll(`.link.ocean`)
               .style("stroke-opacity", 0.1);
-            d3.selectAll(`.link_${node.depth}.land`)
+            d3.selectAll(`.link_${node.depth}.ocean`)
               .style("stroke-opacity", 0.5);
           });
       }
@@ -382,7 +388,7 @@ const Sankey = ({
           else return d.textColor = theme.color.brand.secondary500;
         }
       })
-      .filter(function (d) { return d.x0 < innerWidth / 2; })
+      .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
@@ -401,11 +407,23 @@ const Sankey = ({
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
-        return valueScale(d.value);
+        if(d.isReal){
+          return valueScale(d.value);
+        }else{
+          return '16px';
+        }
       })
       .style("fill", "#ffffff")
-      .text(function (d) { return d.value; })
-      .filter(function (d) { return d.x0 < innerWidth / 2; })
+      .text(function (d) { 
+        if(d.isReal){
+          return d.value;
+        }
+        else {
+          return '추정치';
+        }
+        
+      })
+      .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
 
@@ -457,21 +475,27 @@ const Sankey = ({
   }, [isInitiate])
 
   // Particle
-  useEffect(() => {
-    updateParticle();
-  }, [currentStage]);
+  // useEffect(() => {
+  //   updateParticle();
+  // }, [currentStage]);
 
   const [count, setCount] = useState(0);
   const [stop, setStop] = useState(false);
 
   function updateParticle() {
-    if (1 <= currentStage && currentStage <= 4) {
+    if (1 <= currentStage && currentStage <= 3) {
+
+      let depthList;
+      if(currentStage===1) depthList = [0];
+      if(currentStage===2) depthList = [1,2];
+      if(currentStage===3) depthList = [3];
+      
       if (count === 0) {
-        randerParticle();
+        randerParticle(depthList);
       }
       else if (count % 125 === 0) {
         console.log('update');
-        randerParticle();
+        randerParticle(depthList);
       }
       setCount(count + 1);
     }
@@ -493,14 +517,14 @@ const Sankey = ({
     // console.log(`stage: ${currentStage}`);
   }, [currentStage])
 
-  function randerParticle() {
+  function randerParticle(depthList) {
     // console.log(currentChapter);
     if (1 <= currentStage && currentStage <= 4) {
       let linkNum = graph.links.length;
 
       for (let i = 0; i < linkNum; i++) {
         let targetColor = graph.links[i].target.color;
-        if (graph.links[i].source.depth === currentStage - 1) {
+        if (depthList.includes(graph.links[i].source.depth)) {
 
           d3.select(`.particleGroupOcean${i}`)
             .selectAll('.particle')
@@ -538,14 +562,25 @@ const Sankey = ({
   }
 
   useEffect(() => {
-    d3.selectAll(`.link.ocean`)
-      .transition()
-      .duration(1500)
-      .style("stroke-opacity", 0.1);
-    d3.selectAll(`.link_${currentStage}.ocean`)
-      .transition()
-      .duration(1500)
-      .style("stroke-opacity", 0.75);
+    let depthList = [];
+      if(currentStage===1) depthList = [0];
+      if(currentStage===2) depthList = [1,2];
+      if(currentStage===3) depthList = [3];
+
+      d3.selectAll(`.link.ocean`)
+      // .transition()
+      // .duration(1500)
+      .style("stroke-opacity", 0.05);
+
+    if(depthList.length>0){
+      depthList.forEach(depth => {
+        d3.selectAll(
+        `.link_${depth}.ocean`)
+        .transition()
+        .duration(1500)
+        .style("stroke-opacity", 0.25);
+      });
+    }
   }, [currentStage]);
 
   function pathTween(path, offset, r) {
@@ -560,7 +595,10 @@ const Sankey = ({
   }
 
   return (
-    <Container id="container_ocean">
+    <Container
+      id="container_ocean"
+      ref={containerRef}
+    >
       <svg ref={svgRef} />
     </Container>
   )

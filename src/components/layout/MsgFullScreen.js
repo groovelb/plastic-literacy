@@ -1,35 +1,60 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
+import LiveArea from "../layout/LiveArea";
 
-const Container = styled.div`
-  width: 100%;
-  height: ${props => props.height + 'px'};
+const Container = styled(LiveArea)`
+  /* width: 100%; */
+  min-height: ${props => props.height + 'px'};
   word-break: keep-all;
   white-space: pre-line;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 calc(50% - 480px);
-  h2{
-    ${props => props.theme.type.size.h1}
-    ${props => props.theme.type.weight.bold}
-    text-align: center;
-    margin-bottom: 24px;
-    text-shadow: 0px 0px 12px rgba(0,0,0,0.25);
-  }
-  p{
-    ${props => props.theme.type.size.body1}
-    ${props => props.theme.type.weight.light}
-    text-shadow: 0px 0px 12px rgba(0,0,0,0.25);
-  }
+  ${props => props.theme.layout.flexColCenter}
+`;
+
+const Title = styled.div`
+	width: 100%;
+	text-align: center;
+	h1{
+		${props => props.theme.type.size.h1}
+		${props => props.theme.type.weight.exp.bold}
+		text-transform: capitalize;
+		margin-bottom: 16px;
+	}
+	h2{
+		${props => props.theme.type.size.h2}
+		${props => props.theme.type.weight.prd.light}
+		margin-bottom:48px;
+	}
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
+`;
+
+
+const Exp = styled.div`
+	position: relative;
+	width: 75%;
+	${props => props.theme.type.size.body1}
+	${props => props.theme.type.weight.prd.light}
+	text-align: left;
+	margin-top: 12px;
+	padding: 48px;
+	transition: opacity 1s ease-in-out;
+	border: solid 1px #fff;
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const FullScreen = ({
   className,
   refObject,
   title,
-  exp
+  exp,
+  children
 }) => {
 
   const size = useWindowSize();
@@ -40,8 +65,19 @@ const FullScreen = ({
       className={className}
       height={size.height}
     >
-      <h2>{title}</h2>
-      <p>{exp}</p>
+      <Title>
+        <h1>
+          {title}
+        </h1>
+      </Title>
+      {
+        exp&&<Exp>{exp}</Exp>
+      }
+      <>
+        {
+          children
+        }
+      </>
     </Container>
   )
 }

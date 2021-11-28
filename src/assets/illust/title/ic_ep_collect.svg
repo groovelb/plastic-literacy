@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="174px" height="176px" viewBox="0 0 174 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>ic_ep_collect</title>
+    <g id="plastic-literacy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-605.000000, -412.000000)">
+            <g id="ic_ep_collect" transform="translate(611.694913, 419.694913)">
+                <rect id="Rectangle-Copy-2" x="0" y="0" width="160" height="160"></rect>
+                <rect id="Rectangle" fill="#3DDB87" x="71" y="71" width="18" height="18"></rect>
+                <path d="M137.305087,107.683766 L157.926407,128.305087 L137.305087,148.926407 L137.305087,138.305087 L97.8050865,138.305087 L97.8050865,117.305087 L137.305087,117.305087 L137.305087,107.683766 Z" id="Combined-Shape" stroke="#020F18" stroke-width="3" fill="#3DDB87" transform="translate(127.555087, 128.305087) scale(-1, 1) rotate(-45.000000) translate(-127.555087, -128.305087) "></path>
+                <path d="M137.305087,11.6837662 L157.926407,32.3050865 L137.305087,52.9264069 L137.305087,42.3050865 L97.8050865,42.3050865 L97.8050865,21.3050865 L137.305087,21.3050865 L137.305087,11.6837662 Z" id="Combined-Shape-Copy-2" stroke="#020F18" stroke-width="3" fill="#3DDB87" transform="translate(127.555087, 32.305087) scale(-1, 1) rotate(45.000000) translate(-127.555087, -32.305087) "></path>
+                <path d="M42.3050865,11.6837662 L62.9264069,32.3050865 L42.3050865,52.9264069 L42.3050865,42.3050865 L2.80508653,42.3050865 L2.80508653,21.3050865 L42.3050865,21.3050865 L42.3050865,11.6837662 Z" id="Combined-Shape-Copy-3" stroke="#020F18" stroke-width="3" fill="#3DDB87" transform="translate(32.555087, 32.305087) scale(-1, 1) rotate(135.000000) translate(-32.555087, -32.305087) "></path>
+                <path d="M42.3050865,107.683766 L62.9264069,128.305087 L42.3050865,148.926407 L42.3050865,138.305087 L2.80508653,138.305087 L2.80508653,117.305087 L42.3050865,117.305087 L42.3050865,107.683766 Z" id="Combined-Shape-Copy-4" stroke="#020F18" stroke-width="3" fill="#3DDB87" transform="translate(32.555087, 128.305087) scale(-1, 1) rotate(-135.000000) translate(-32.555087, -128.305087) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

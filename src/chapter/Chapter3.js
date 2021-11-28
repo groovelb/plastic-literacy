@@ -12,15 +12,16 @@ import ToTop from '../components/motion/ToTop';
 import ToLeft from '../components/motion/ToLeft';
 import LiveArea from "../components/layout/LiveArea";
 import PlasticCirculation from "../chart/title/PlasticCirculation2";
+import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
 
 import circle_product from "../assets/illust/title/circle_product.svg";
 import circle_waste from "../assets/illust/title/circle_waste.svg";
 import circle_part from "../assets/illust/title/circle_part.svg";
 import circle_flake from "../assets/illust/title/circle_flake.svg";
-import ic_production from "../assets/illust/title/ic_production.svg";
-import ic_dispose from "../assets/illust/title/ic_dispose.svg";
-import ic_collect from "../assets/illust/title/ic_collect.svg";
-import ic_recycling from "../assets/illust/title/ic_recycling.svg";
+import ic_production from "../assets/illust/title/ic_ep_produce.svg";
+import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
+import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
+import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
 import color from "../assets/theme/atom/color";
 import arrow_down_big from "../assets/img/icon/arrow_down_big.svg";
 import ic_marker from "../assets/img/icon/ic_marker.svg";
@@ -31,6 +32,12 @@ import logo_short from "../assets/img/logo/logo_short.svg";
 import illust_bottle from "../assets/illust/illust_bottle.svg";
 import { isMobile } from 'react-device-detect';
 import video_s4 from "../assets/video/video_c3_last.mp4";
+import bg_title from "../assets/img/bg/title_bg_c3.jpeg";
+
+import illust_mr from "../assets/img/illust/illust_MR.svg";
+import illust_cr from "../assets/img/illust/illust_CR.svg";
+import illust_tr from "../assets/img/illust/illust_TR.svg";
+
 
 const Container = styled.div`
   width: 100%;
@@ -40,6 +47,7 @@ const Wrapper = styled.div`
   position: relative;
   width: 100%;
   height: 800px;
+  margin-bottom: 48px;
 `;
 
 const IllustContainer = styled.div`
@@ -88,9 +96,9 @@ const Rotate = keyframes`
 `;
 
 const TitleCenter = styled.div`
-  ${props => props.theme.type.size.h1};
+  ${props => props.theme.type.size.title1};
   ${props => props.theme.type.weight.prd.bold};
-  margin-bottom: 64px;
+  margin-bottom: 96px;
   text-align: center;
 `;
 
@@ -101,6 +109,9 @@ const Text = styled.div`
   width: 820px;
   word-break: keep-all;
   white-space: pre-line;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const NodeContainer = styled.div`
@@ -116,12 +127,27 @@ const NodeContainer = styled.div`
 `;
 
 const Node = styled.div`
-  width: 108px;
-  height: 108px;
+  width: ${nodeSize.width + 'px'};
+  height:  ${nodeSize.height + 'px'};
   position: absolute;
   top: ${props => `${props.y}px`};
   left: ${props => `${props.x}px`};
   transform-origin: center center;
+  img{
+    width: 80%;
+    height: 80%;
+  }
+`;
+const NodeCircle = styled.div`
+  width: ${nodeSize.width + 'px'};
+  height:  ${nodeSize.height + 'px'};
+  background-color: ${props => props.theme.color.ui.bg.dark};
+  ${props => props.theme.layout.flexColCenter}
+  border-radius: 50%;
+  img{
+    width: 80%;
+    height: 80%;
+  }
 `;
 
 const Circle = styled.div`
@@ -142,15 +168,30 @@ const Circle = styled.div`
 `;
 
 const Cycle = styled.div`
+  overflow: hidden;
+  position: relative;
   width: 308px;
   height: 308px;
   border-radius: 50%;
+  background-image: ${props => `radial-gradient(${props.color1} 25%, ${props.color2} 100%)`};
   color: #fff;
   background-color: ${props => props.bgColor};
   ${props => props.theme.layout.flexColCenter};
-  ${props => props.theme.type.size.title1};
-  ${props => props.theme.type.weight.prd.bold};
-  text-align: center;
+  p{
+    ${props => props.theme.type.size.title1};
+    ${props => props.theme.type.weight.exp.bold};
+    text-align: center;
+    z-index: 9;
+    text-shadow: 0px 0px 16px ${props => props.color2};
+  }
+  img{
+    top: 45%;
+    left: 15%;
+    position: absolute;
+    width: 70%;
+    height: auto;
+  }
+ 
   word-break: keep-all;
   white-space: pre-line;
   outline: ${props => props.isBorder ? 'solid 24px #D9F0F0' : 'none'};
@@ -182,13 +223,19 @@ const TextContent = styled.div`
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
     margin-bottom: 48px;
-    width: 360px;
+    width: 100%;
   }
   p{
     width: calc(100% - 240px - 48px - 120px);
     padding-left: 0;
     ${props => props.theme.type.size.body2}
 		${props => props.theme.type.weight.prd.regular}
+  }
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+    p{
+      width: 100%;
+    }
   }
 `;
 
@@ -219,12 +266,16 @@ const ImageContent = styled.div`
     ${props => props.theme.type.size.body2}
 		${props => props.theme.type.weight.prd.regular}
   }
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+  }
 `;
 
 const ReyclingList = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  margin: 80px 0px 120px 0px;
 `;
 
 const MR = styled.div`
@@ -239,24 +290,33 @@ const Arrow = styled.img`
 
 const FlakeTunnel = styled.div`
   display: flex;
-  position: absolute;
-  z-index: 99;
+  margin-bottom: 120px;
   width: 100%;
   justify-content: space-around;
-  background-image: linear-gradient(to bottom, rgba(8, 22, 36, 1), rgba(18, 34, 41, 1), rgba(8, 22, 36, 1));
+background-image: ${`linear-gradient(to bottom, rgba(8, 22, 36, 0), rgba(18, 34, 41, 1), rgba(8, 22, 36, 0))`};
   padding: 64px 0px;
-  top: 320px;
-  left: 0px;
 `;
 
 const Flake = styled.div`
-
+  width: 208px;
+  height: auto;
+  img{
+    width: 100%;
+    height: auto;
+  }
+  @media only screen and (max-width: 480px) {
+    width: calc(33% - 24px);
+    img{
+    width: 100%;
+    height: auto;
+  }
+  }
 `;
 
 const Divider = styled.hr`
   color: ${props => props.theme.color.secondary400};
   height:0.5px;
-  margin: 160px 0px;
+  margin-bottom: 320px;
 `;
 
 const ExpBox = styled.div`
@@ -272,6 +332,10 @@ const ExpBox = styled.div`
   left: calc((100% - 512px)/2);
   ${props => props.theme.type.size.body2}
   color: ${props => props.theme.color.ui.strong};
+  @media only screen and (max-width: 480px) {
+    width: calc(100% - 32px);
+    left: 16px;
+  }
 `;
 
 const Marker = styled.img`
@@ -345,20 +409,27 @@ const Chapter3 = ({
 
   const recycleMethods = [
     {
-      id: "cr",
-      name: 'Chemical\nRecycling',
-      color: color.brand.orange
-    },
-    {
       id: "mr",
       name: 'Mechanical\nRecycling',
-      color: color.brand.emerald
+      color1: color.brand.emerald,
+      color2: color.brand.epGreen,
+      img: illust_mr
     },
+    {
+      id: "cr",
+      name: 'Chemical\nRecycling',
+      color1: color.brand.epDeepPurple,
+      color2: color.brand.epPurple,
+      img: illust_cr
+    },
+
     {
       id: "tr",
       name: 'Thermal\nRecycling',
-      color: color.brand.blue
-    },
+      color1: color.brand.orangeDark,
+      color2: color.brand.orange,
+      img: illust_tr
+    }
   ];
 
   return (
@@ -382,6 +453,7 @@ const Chapter3 = ({
           bgColor={'dark'}
           exp={t("c3-exp")}
           isTrigger={isTitleTrigger}
+          img={bg_title}
         />
       </ViewportWrapper>
       <Section>
@@ -401,39 +473,39 @@ const Chapter3 = ({
             isTrigger={isS1Trigger}
             index={0}
           >
-            <LiveArea>
-              <TitleCenter>
-                {t('c3-s1-title')}
-              </TitleCenter>
-              <Wrapper>
-                <IllustContainer>
-                  <Illust>
-                    <Msg>
-                      CIRCULATION<br />
+            <TitleCenter>
+              {t('c3-s1-title')}
+            </TitleCenter>
+            <Wrapper>
+              <IllustContainer>
+                <Illust>
+                  <Msg>
+                    CIRCULATION<br />
                       OF PLASTIC
                     </Msg>
-                    <PlasticCirculation
-                      currentChapter={0}
-                    />
-                    <NodeContainer>
-                      {
-                        nodeList.map((node) =>
-                          <Node
-                            x={node.x}
-                            y={node.y}
-                          >
+                  <PlasticCirculation
+                    currentChapter={0}
+                  />
+                  <NodeContainer>
+                    {
+                      nodeList.map((node) =>
+                        <Node
+                          x={node.x}
+                          y={node.y}
+                        >
+                          <NodeCircle>
                             <img src={node.img} />
-                          </Node>
-                        )
-                      }
-                    </NodeContainer>
-                  </Illust>
-                </IllustContainer>
-              </Wrapper>
-              <Text>
-                {t('c3-s1-exp')}
-              </Text>
-            </LiveArea>
+                          </NodeCircle>
+                        </Node>
+                      )
+                    }
+                  </NodeContainer>
+                </Illust>
+              </IllustContainer>
+            </Wrapper>
+            <Text>
+              {t('c3-s1-exp')}
+            </Text>
           </ToTop>
         </ViewportWrapper>
       </Section>
@@ -455,38 +527,44 @@ const Chapter3 = ({
             index={0}
           >
             <LiveArea>
-              <TextContent>
-                <h2>
-                  {t('c3-s2-title')}
-                </h2>
-                <p>
-                  {t('c3-s2-exp')}
-                </p>
-              </TextContent>
+              <SectionContentHorizon
+                title={t('c3-s2-title')}
+                exp={t('c3-s2-exp')}
+                index={0}
+                isContentFit={true}
+              />
               <ReyclingList>
                 {
                   recycleMethods.map((method) =>
                     <Cycle
-                      bgColor={method.color}
+                      color1={method.color1}
+                      color2={method.color2}
                       isBorder={method.id === 'mr'}
                     >
-                      {method.name}
+                      <p>{method.name}</p>
+                      <img src={method.img} />
                     </Cycle>
                   )
                 }
               </ReyclingList>
-              <MR>
-                <Arrow src={arrow_down_big} alt='' />
-                <ExpBox>
-                  <Marker src={ic_marker} alt='' />
-                  {t('c3-s2-subexp')}
-                </ExpBox>
-                <FlakeTunnel>
+              <Divider />
+              <SectionContentHorizon
+                title={'Mechanical Recycling'}
+                exp={t('c3-s2-subexp')}
+                index={1}
+                isContentFit={true}
+              />
+              <FlakeTunnel>
+                <Flake>
                   <img src={illust_flake_blue} alt='' />
+                </Flake>
+                <Flake>
                   <img src={illust_flake_green} alt='' />
+                </Flake>
+                <Flake>
                   <img src={illust_flake_orange} alt='' />
-                </FlakeTunnel>
-              </MR>
+                </Flake>
+              </FlakeTunnel>
               <ImageContent>
                 <h2>
                   <span>
@@ -515,37 +593,23 @@ const Chapter3 = ({
                 </ViewportWrapper>
               </ImageContent>
               <Divider />
-              <TextContent>
-                <h2>
-                  {t('c3-s4-title')}
-                </h2>
-                <p>
-                  {t('c3-s4-exp')}
-                </p>
-              </TextContent>
-              <ReyclingList>
-                <Cycle
-                  bgColor={'#F0FFFA'}
-                  isBorder={true}
-                  style={{ color: '#009999' }}
-                >
-                  <img src={logo_short} alt='' />
-              Mechanical <br />
-              Recycling
-            </Cycle>
-              </ReyclingList>
-              <MR>
-                <Arrow src={arrow_down_big} alt='' />
-                <ExpBox>
-                  <Marker src={ic_marker} alt='' />
-                  {t('c3-s4-subexp')}
-                </ExpBox>
-                <FlakeTunnel>
+              <SectionContentHorizon
+                title={t('c3-s4-title')}
+                exp={t('c3-s4-exp') + t('c3-s4-subexp')}
+                index={2}
+                isContentFit={true}
+              />
+              <FlakeTunnel>
+                <Flake>
                   <img src={illust_flake_blue} alt='' />
+                </Flake>
+                <Flake>
                   <img src={illust_flake_green} alt='' />
+                </Flake>
+                <Flake>
                   <img src={illust_flake_orange} alt='' />
-                </FlakeTunnel>
-              </MR>
+                </Flake>
+              </FlakeTunnel>
               <ImageContent>
                 <h2>
                   <span>
@@ -574,14 +638,12 @@ const Chapter3 = ({
                 </ViewportWrapper>
               </ImageContent>
               <Divider />
-              <TextContent>
-                <h2>
-                  {t('c3-s6-title')}
-                </h2>
-                <p>
-                  {t('c3-s6-exp')}
-                </p>
-              </TextContent>
+              <SectionContentHorizon
+                title={t('c3-s6-title')}
+                exp={t('c3-s6-exp')}
+                index={3}
+                isContentFit={true}
+              />
             </LiveArea>
           </ToTop>
         </ViewportWrapper>

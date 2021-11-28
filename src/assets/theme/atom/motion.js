@@ -1,9 +1,11 @@
 const motion = {
   transition: {
-    duration: '1.5s',
+    duration: '1s',
     delayRate: 0.25,
     distance: {
-      big: '320px'
+      big: '320px',
+      middle: '160px',
+      short: '48px'
     }
   }
 }

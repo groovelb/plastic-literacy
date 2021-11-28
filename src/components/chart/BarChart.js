@@ -1,17 +1,23 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 import styled from "styled-components";
+import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
+  svg{
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 const BarChart = ({
   data,
 }) => {
 
-  const margin = { top: 20, right: 20, bottom: 80, left: 80 };
+  const marginUnit = isMobile?10:20;
+  const margin = { top: marginUnit*1, right: marginUnit*2, bottom: marginUnit*2, left: marginUnit*4 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);
@@ -27,6 +33,7 @@ const BarChart = ({
   let y;
   let xAxis;
   let yAxis;
+
 
   useEffect(() => {
 
@@ -45,7 +52,7 @@ const BarChart = ({
 
     x.domain(data.map(function (d) { return d.year; }));
 
-    y.domain([0, d3.max(data, function (d) { return d.value; })]);
+    y.domain([0, d3.max(data, function (d) { return d.value * 1.5; })]);
 
 
 
@@ -66,7 +73,7 @@ const BarChart = ({
         .attr("transform", "translate(0," + height + ")")
         .attr("class", "xAxis barChart");
 
-      xAxis.call(d3.axisBottom(x));
+      xAxis.call(d3.axisBottom(x).ticks(4));
 
       yAxis = chart.append("g")
         .attr("class", "yAxis barChart");
@@ -83,6 +90,12 @@ const BarChart = ({
   }, [data]);
 
   function update() {
+    let tickValues = [];
+    data.forEach((item,i) => {
+      if(i%3===0){
+        tickValues.push(item.year);
+      }
+    })
 
     let width = containerRef.current.clientWidth - margin.left - margin.right;
     let height = containerRef.current.clientHeight - margin.top - margin.bottom;
@@ -98,8 +111,18 @@ const BarChart = ({
     x.domain(data.map(function (d) { return d.year; }));
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
-    d3.select(".xAxis.barChart").transition().duration(1000).call(d3.axisBottom(x));
-    d3.select(".yAxis.barChart").transition().duration(1000).call(d3.axisLeft(y));
+    let xScaleData;
+
+    if(true){
+      xScaleData = d3.axisBottom().scale(x).tickValues(tickValues)
+      // .tickSize(-height);
+    }else{
+      xScaleData = d3.axisBottom().scale(x)
+      // .tickSize(-height);
+    }
+    
+    d3.select(".xAxis.barChart").transition().duration(1000).call(xScaleData);
+    d3.select(".yAxis.barChart").transition().duration(1000).call(d3.axisLeft(y).tickSize(-width));
 
     chart = svg.select(".chart.barChart");
 
