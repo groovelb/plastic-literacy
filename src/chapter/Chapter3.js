@@ -12,6 +12,7 @@ import ToTop from '../components/motion/ToTop';
 import ToLeft from '../components/motion/ToLeft';
 import LiveArea from "../components/layout/LiveArea";
 import PlasticCirculation from "../chart/title/PlasticCirculation2";
+import PlasticLiteracy from "../template/PlasticLiteracy";
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
 
 import circle_product from "../assets/illust/title/circle_product.svg";
@@ -37,6 +38,9 @@ import bg_title from "../assets/img/bg/title_bg_c3.jpeg";
 import illust_mr from "../assets/img/illust/illust_MR.svg";
 import illust_cr from "../assets/img/illust/illust_CR.svg";
 import illust_tr from "../assets/img/illust/illust_TR.svg";
+import illust_result_mr from "../assets/illust/illust_result_mr.svg";
+import illust_result_cr from "../assets/illust/illust_result_cr.svg";
+import illust_result_tr from "../assets/illust/illust_result_tr.svg";
 
 
 const Container = styled.div`
@@ -170,8 +174,8 @@ const Circle = styled.div`
 const Cycle = styled.div`
   overflow: hidden;
   position: relative;
-  width: 308px;
-  height: 308px;
+  width: 256px;
+  height: 256px;
   border-radius: 50%;
   background-image: ${props => `radial-gradient(${props.color1} 25%, ${props.color2} 100%)`};
   color: #fff;
@@ -195,6 +199,16 @@ const Cycle = styled.div`
   word-break: keep-all;
   white-space: pre-line;
   outline: ${props => props.isBorder ? 'solid 24px #D9F0F0' : 'none'};
+`;
+
+const Tunnel = styled.div`
+  width: 80px;
+  height: 240px;
+  background-image: ${props => `radial-gradient(${props.color1} 25%, ${props.color2} 100%)`};
+`;
+
+const Result = styled.div`
+
 `;
 
 const Msg = styled.div`
@@ -413,14 +427,16 @@ const Chapter3 = ({
       name: 'Mechanical\nRecycling',
       color1: color.brand.emerald,
       color2: color.brand.epGreen,
-      img: illust_mr
+      img: illust_mr,
+      img2: illust_result_mr
     },
     {
       id: "cr",
       name: 'Chemical\nRecycling',
       color1: color.brand.epDeepPurple,
       color2: color.brand.epPurple,
-      img: illust_cr
+      img: illust_cr,
+      img2: illust_result_cr
     },
 
     {
@@ -428,7 +444,8 @@ const Chapter3 = ({
       name: 'Thermal\nRecycling',
       color1: color.brand.orangeDark,
       color2: color.brand.orange,
-      img: illust_tr
+      img: illust_tr,
+      img2: illust_result_tr
     }
   ];
 
@@ -478,29 +495,14 @@ const Chapter3 = ({
             </TitleCenter>
             <Wrapper>
               <IllustContainer>
-                <Illust>
-                  <Msg>
-                    CIRCULATION<br />
-                      OF PLASTIC
-                    </Msg>
-                  <PlasticCirculation
-                    currentChapter={0}
+                {/* {
+                  currentChapter === 4 &&
+                  <PlasticLiteracy
+                    id={'c3'}
+                    starChatper={4}
+                    currentChapter={3}
                   />
-                  <NodeContainer>
-                    {
-                      nodeList.map((node) =>
-                        <Node
-                          x={node.x}
-                          y={node.y}
-                        >
-                          <NodeCircle>
-                            <img src={node.img} />
-                          </NodeCircle>
-                        </Node>
-                      )
-                    }
-                  </NodeContainer>
-                </Illust>
+                } */}
               </IllustContainer>
             </Wrapper>
             <Text>

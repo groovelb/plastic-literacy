@@ -22,9 +22,12 @@
     "react-in-viewport": "^1.0.0-alpha.20",
     "react-player": "^2.9.0",
     "react-scripts": "4.0.3",
+    "react-scroll": "^1.8.4",
     "react-scroll-progress-bar": "^1.1.13",
+    "react-smooth-scrolling": "^1.0.2",
     "react-spring": "^9.3.0",
     "react-timing-hooks": "^2.0.0",
+    "smooth-scrollbar": "^8.7.0",
     "styled-components": "^5.3.3",
     "typescript": "^4.4.4",
     "web-vitals": "^1.0.1"

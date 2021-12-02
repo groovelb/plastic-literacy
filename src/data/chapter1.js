@@ -170,60 +170,74 @@ export const plastic_consumption_1_6 = [
 export const plastic_waste_1_7 = [
   {
     "year": 2008,
-    "value": 739
+    "value": 739,
+    "recycle": 244,
   },
   {
     "year": 2009,
-    "value": 755
+    "value": 755,
+    "recycle": 258,
   },
   {
     "year": 2010,
-    "value": 770
+    "value": 770,
+    "recycle": 277,
   },
   {
     "year": 2011,
-    "value": 798
+    "value": 798,
+    "recycle": 289,
   },
   {
     "year": 2012,
-    "value": 883
+    "value": 883,
+    "recycle": 353,
   },
   {
     "year": 2013,
-    "value": 883
+    "value": 883,
+    "recycle": 369,
   },
   {
     "year": 2014,
-    "value": 924
+    "value": 924,
+    "recycle": 419,
   },
   {
     "year": 2015,
-    "value": 963
+    "value": 963,
+    "recycle": 454,
   },
   {
     "year": 2016,
-    "value": 1007
+    "value": 1007,
+    "recycle": 498,
   },
   {
     "year": 2017,
-    "value": 1090
+    "value": 1090,
+    "recycle": 566,
   },
   // 2018 부터 추정치
   {
     "year": 2018,
-    "value": 1096
+    "value": 1096,
+    "recycle": 590,
   },
   {
     "year": 2019,
-    "value": 1112
+    "value": 1112,
+    "recycle": 624,
   },
   {
     "year": 2020,
-    "value": 1124
+    "value": 1124,
+    "recycle": 632,
   },
   {
     "year": 2021,
-    "value": 1136
+    "value": 1136,
+    "recycle": 648,
   },
 ];
 

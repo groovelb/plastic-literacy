@@ -29,7 +29,9 @@ const Container = styled.div`
 `;
 
 const PlasticCycle = ({
-  currentChapter
+  currentChapter,
+  starChatper,
+  id
 }) => {
 
   let containerRef = useRef(null);
@@ -44,14 +46,15 @@ const PlasticCycle = ({
   const duration = isMobile ? 10000 : 20000;
 
   const [count, setCount] = useState(0);
+  // const [isMounted,setIsUnmounted] = useState(false);
 
-  useAnimationFrameLoop(updateParticle, currentChapter !== 0);
+  useAnimationFrameLoop(updateParticle, currentChapter !== starChatper);
 
   let defs;
 
   function updateParticle() {
     if (count === 0) {
-      console.log("start");
+      //  console.log("start");
       randerPlastic();
     }
     else if (count % 125 === 0) {
@@ -117,7 +120,8 @@ const PlasticCycle = ({
           y: d.y,
           deg: parseInt(Math.random() * 360),
         };
-        return pathTweenWithGroup(path, offset, bottleSize, 3);
+
+        if(currentChapter===0) return pathTweenWithGroup(path, offset, bottleSize, 3);
       })
       .remove();
 
@@ -285,8 +289,9 @@ const PlasticCycle = ({
 
 
   useEffect(() => {
-
-    let width = containerRef.current.clientWidth - margin.left - margin.right;
+    let isMounted = true;
+    if(isMounted){
+      let width = containerRef.current.clientWidth - margin.left - margin.right;
     let height = containerRef.current.clientHeight - margin.top - margin.bottom;
 
     svg = d3.select(svgRef.current)
@@ -388,66 +393,7 @@ const PlasticCycle = ({
     //   .outerRadius(width / 2)
     //   .startAngle(0);
 
-    const arcTween = (newAngle) => {
 
-      // The function passed to attrTween is invoked for each selected element when
-      // the transition starts, and for each element returns the interpolator to use
-      // over the course of transition. This function is thus responsible for
-      // determining the starting angle of the transition (which is pulled from the
-      // element’s bound datum, d.endAngle), and the ending angle (simply the
-      // newAngle argument to the enclosing function).
-      return function (d) {
-
-        // To interpolate between the two angles, we use the default d3.interpolate.
-        // (Internally, this maps to d3.interpolateNumber, since both of the
-        // arguments to d3.interpolate are numbers.) The returned function takes a
-        // single argument t and returns a number between the starting angle and the
-        // ending angle. When t = 0, it returns d.endAngle; when t = 1, it returns
-        // newAngle; and for 0 < t < 1 it returns an angle in-between.
-        var interpolate = d3.interpolate(d.endAngle, newAngle);
-
-        // The return value of the attrTween is also a function: the function that
-        // we want to run for each tick of the transition. Because we used
-        // attrTween("d"), the return value of this last function will be set to the
-        // "d" attribute at every tick. (It’s also possible to use transition.tween
-        // to run arbitrary code for every tick, say if you want to set multiple
-        // attributes from a single function.) The argument t ranges from 0, at the
-        // start of the transition, to 1, at the end.
-        return function (t) {
-
-          // Calculate the current arc angle based on the transition time, t. Since
-          // the t for the transition and the t for the interpolate both range from
-          // 0 to 1, we can pass t directly to the interpolator.
-          //
-          // Note that the interpolated angle is written into the element’s bound
-          // data object! This is important: it means that if the transition were
-          // interrupted, the data bound to the element would still be consistent
-          // with its appearance. Whenever we start a new arc transition, the
-          // correct starting angle can be inferred from the data.
-          d.endAngle = interpolate(t);
-
-          // Lastly, compute the arc path given the updated data! In effect, this
-          // transition uses data-space interpolation: the data is interpolated
-          // (that is, the end angle) rather than the path string itself.
-          // Interpolating the angles in polar coordinates, rather than the raw path
-          // string, produces valid intermediate arcs during the transition.
-          // return wholePath(d);
-        };
-      };
-    }
-    const color = d3.interpolateRainbow;
-
-    // cycle.append("g")
-    //   .attr("transform", `translate(${width / 2},${height / 2})`)
-    //   .append("path")
-    //   .attr("class", "circle_path_whole")
-    //   .datum({ endAngle: 0 * tau })
-    //   .attr("stroke", "#009999")
-    //   .attr("opacity", 1)
-    //   .attr("d", wholePath)
-    //   .transition()
-    //   .duration(1500)
-    //   .attrTween("d", arcTween(1 * tau));
 
     // Product Path  
     let pathProduct = d3.path();
@@ -520,18 +466,29 @@ const PlasticCycle = ({
       // .attr("stroke", "#009999")
       .attr("opacity", 0.1)
       .attr("stroke-width", strokeWidth);
+    }
+    return () => {
+      isMounted = false;
+      svg.selectAll("g").remove();
+      pathTweenWithGroup = () => {
+        
+      }
+    }
   }, []);
 
   function pathTweenWithGroup(path, offset, size, r) {
-    var length = path.node().getTotalLength(); // Get the length of the path
-    var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
-    return function (t) {
-      var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+    console.log(path);
+    if (path !== null) {
+      var length = path.node().getTotalLength(); // Get the length of the path
+      var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+      return function (t) {
+        var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
 
-      d3.select(this) // Select the circle
-        // .attr("x", point.x + offset.x) // Set the cx
-        // .attr("y", point.y + offset.y) // Set the cy
-        .attr("transform", `translate(${point.x + offset.x},${point.y + offset.y})rotate(${offset.deg + r(t)},${size.width / 2},${size.hegiht / 2})`)
+        d3.select(this) // Select the circle
+          // .attr("x", point.x + offset.x) // Set the cx
+          // .attr("y", point.y + offset.y) // Set the cy
+          .attr("transform", `translate(${point.x + offset.x},${point.y + offset.y})rotate(${offset.deg + r(t)},${size.width / 2},${size.hegiht / 2})`)
+      }
     }
   }
 

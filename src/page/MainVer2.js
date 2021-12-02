@@ -216,7 +216,9 @@ function Main() {
         numX={0.2}
       />
       <Chapter3
-        chapterObject={chapterList[4]} />
+        chapterObject={chapterList[4]}
+        currentChapter={currentChapter}
+      />
     </>
   );
 }

@@ -95,9 +95,10 @@ const BarChart = ({
     }
     // Update Cycle
     else {
-      update();
+      // update();
     }
     return () => {
+      svg.select('svg').remove();
     }
   }, [data]);
 
@@ -133,7 +134,7 @@ const BarChart = ({
     chart = svg.select(".chart.timeline");
 
     const t = chart.transition()
-      .duration(750);
+      .duration(500);
 
     // chart.selectAll("rect")
     //   .data(data)
@@ -168,6 +169,8 @@ const BarChart = ({
 
     chart.selectAll(".marker").exit().remove();
 
+    const delayStart = 200;
+
     // Node Enter
     const enter = chart.selectAll(".marker")
       .data(data)
@@ -186,15 +189,19 @@ const BarChart = ({
       .data(data)
       .enter()
       .append("line")
-      .attr("class", "line")
+      .attr("class", "line")  
       .attr("x1", function (d) { return x(d.year); })
       .attr("x2", function (d) { return x(d.year); })
       .attr("y1", height)
-      .attr("y2", function (d) { return y(d.value); })
+      .attr("y2", height)
       .attr("stroke-width", '0.5px')
       .attr("opacity", 0.3)
       .style("stroke-dasharray", ("4, 4"))
-      .attr("stroke", '#f0f0f0');
+      .attr("stroke", '#f0f0f0')
+      .transition(t)
+      .delay((d,i) => delayStart + i *500)
+      .attr("y1", height)
+      .attr("y2", function (d) { return y(d.value); })
     
 
     // Top circle
@@ -206,14 +213,23 @@ const BarChart = ({
       .attr("cx", function (d) { return x(d.year); })
       .attr("cy", function (d) { return y(d.value); })
       .attr("r", r)
-      .attr("fill", '#fff');
+      .attr("fill", '#fff')
+      .attr("opacity",0)
+      .transition(t)
+      .delay((d,i) => delayStart + (i+1) *500)
+      .attr("opacity",1);
 
     enter.append("svg:image")
       .attr("xlink:href", (d) => d.img)
       .attr("x", function (d) { return x(d.year) - r; })
       .attr("y", function (d) { return y(d.value) - r; })
       .attr("height", r*2)
-      .attr("width", r*2);
+      .attr("width", r*2)
+      .attr("opacity",0)
+      .transition(t)
+      .delay((d,i) => delayStart + (i+1) *500)
+      .attr("opacity",1);
+
 
     // Text
     let text = chart.selectAll(".exp")
@@ -231,7 +247,11 @@ const BarChart = ({
       })
       .attr("dy", "0.8em");
 
-    d3.selectAll(".exp").call(wrap, expWidth);
+    d3.selectAll(".exp").call(wrap, expWidth)
+    .attr("opacity",0)
+    .transition(t)
+    .delay((d,i) => delayStart + (i+1) *500)
+    .attr("opacity",1);
 
 
     // Add a <tspan class="text"> for every text line.

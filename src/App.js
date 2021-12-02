@@ -6,14 +6,11 @@ import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
 import styled from 'styled-components';
+import Scrollbar from 'smooth-scrollbar';
 
 // Chapter
 import MainVer2 from "./page/MainVer2";
-import Title from "./chapter/Title";
-import Chapter1 from "./chapter/Chapter1";
-import Chapter2Land from "./chapter/Chapter2Land";
-import Chapter2Ocean from "./chapter/Chapter2Ocean";
-import Chapter3 from "./chapter/Chapter3";
+
 
 function App() {
 
@@ -33,6 +30,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: ${(props) => props.theme.color.ui.bg.dark};
     color: #fff;
     overflow-x: hidden;
+    margin: 0;
+    height:100vh;
+    width:100vw;
   } 
   p{
     margin: 0px;
@@ -44,6 +44,10 @@ const GlobalStyle = createGlobalStyle`
   .node text {
     pointer-events: none;
     /* text-shadow: 0 1px 0 #fff; */
+  }
+  .text.recycle{
+    fill: #004628;
+    font-weight: bold;
   }
   .link {
     fill: none;
@@ -74,11 +78,39 @@ const GlobalStyle = createGlobalStyle`
   h1,h2{
     margin: 0;
   }
+  .bar{
+    transition: fill 0.5s ease-out;
+  }
   .bar.positive{
-    fill: ${props => props.theme.color.brand.epGreen};
+    /* fill: ${props => props.theme.color.brand.epGreen}; */
+    fill: #30DF7A;
+  }
+  .bar.fade{
+    opacity: 0.2 !important;
+  }
+  .bar.negative{
+    fill: ${props => props.theme.color.signal.warn};
+  }
+  @keyframes blink{
+    0%{opacity: 0;}
+    50%{opacity: .5;}
+    100%{opacity: 1;}
+  }
+  .bar.highlight{
+    fill: ${props => props.theme.color.signal.warn};
+    animation: blink 1s linear infinite;
+  }
+  .delay1{
+    animation-delay: 0.5s;
+  }
+  .delay2{
+    animation-delay: 1s;
   }
   .stroke-opacity{
     transition: opacity 1s ease-in-out;
+  }
+  .bar.recycle{
+    opacity: 0.92;
   }
   .barChart{
     path{

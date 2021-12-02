@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
+import { isMobile } from 'react-device-detect';
+
 import styled, { keyframes } from "styled-components";
 import { useAnimationFrameLoop } from "react-timing-hooks";
 import { sankey, sankeyLinkHorizontal, sankeyJustify, sankeyLeft, sankeyCenter } from "d3-sankey";
@@ -251,8 +253,8 @@ const Sankey = ({
 
   // set the dimensions and margins of the graph
   const margin = { top: 80, right: 10, bottom: 10, left: 24 };
-    // innerWidth = width - margin.left - margin.right,
-    // innerHeight = height - margin.top - margin.bottom;
+  // innerWidth = width - margin.left - margin.right,
+  // innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -523,6 +525,12 @@ const Sankey = ({
   }, [currentStage])
 
   function randerParticle(depthList) {
+    // Trash
+    const trashSize = {
+      width: isMobile ? 15 : 30,
+      hegiht: isMobile ? 34 : 68
+    }
+
     // console.log(currentChapter);
     if (1 <= currentStage && currentStage <= 4) {
       let linkNum = graph.links.length;
@@ -531,7 +539,7 @@ const Sankey = ({
         let targetColor = graph.links[i].target.color;
         if (depthList.includes(graph.links[i].source.depth)) {
 
-          d3.select(`.particleGroupLand${i}`)
+          let trashGroup = d3.select(`.particleGroupLand${i}`)
             .selectAll('.particle')
             .data(() => {
               let data = [];
@@ -542,14 +550,26 @@ const Sankey = ({
               }
               return data;
             })
-            .enter().append("rect")
-            .attr("width", 6)
-            .attr("height", 6)
-            .attr("opacity", 0)
-            // .attr("r", 3)
+            .enter()
+            .append("g")
             .attr("class", "particle")
-            .attr("fill", targetColor)
-            .transition()
+            .attr("transform", "translate(0,0)");
+
+          trashGroup.append("svg:image")
+            .attr("xlink:href", (d, i) => {
+              let img;
+              if (i % 3 === 0) img = illust_trash_blue;
+              if (i % 3 === 1) img = illust_trash_orange;
+              if (i % 3 === 2) img = illust_trash_emerald;
+              return img;
+            })
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("opacity", 1)
+            .attr("width", trashSize.width)
+            .attr("height", trashSize.hegiht);
+
+          trashGroup.transition()
             .duration(1500)
             .delay(() => {
               return Math.random() * 3000;
@@ -557,8 +577,9 @@ const Sankey = ({
             .attr("opacity", 1)
             .tween("pathTween", (d) => {
               if (svg !== null) {
-                let path = svg.select(`.path${i}`)
-                return pathTween(path, d, 3);
+                let path = svg.select(`.path${i}`);
+                console.log(path);
+                return pathTweenWithGroup(path, d, 3);
               }
             }).remove()
         }
@@ -577,13 +598,13 @@ const Sankey = ({
       // .duration(1500)
       .style("stroke-opacity", 0.05);
 
-    if(depthList.length>0){
+    if (depthList.length > 0) {
       depthList.forEach(depth => {
         d3.selectAll(
-        `.link_${depth}.land`)
-        .transition()
-        .duration(1500)
-        .style("stroke-opacity", 0.25);
+          `.link_${depth}.land`)
+          .transition()
+          .duration(1500)
+          .style("stroke-opacity", 0.25);
       });
     }
   }, [currentStage]);
@@ -608,7 +629,7 @@ const Sankey = ({
       d3.select(this) // Select the circle
         // .attr("x", point.x + offset.x) // Set the cx
         // .attr("y", point.y + offset.y) // Set the cy
-        .attr("transform", `translate(${point.x + offset.x},${point.y + offset.y})rotate(${offset.deg + r(t)},${size.width / 2},${size.hegiht / 2})`)
+        .attr("transform", `translate(${point.x + offset.x},${point.y + offset.y})`)
     }
   }
 

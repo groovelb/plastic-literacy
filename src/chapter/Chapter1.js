@@ -6,7 +6,7 @@ import FullScreen from "../components/layout/FullScreen";
 import MsgFullScreen from "../components/layout/MsgFullScreen";
 import ChapterTitle from "../components/layout/ChapterTitle";
 import LiveArea from "../components/layout/LiveArea";
-import TimelineChartC1S1 from "../components/chart/TimelineChartC1S1";
+import TimelineChartC1S1 from "../components/chart/TimeChart";
 import BarChart from "../components/chart/BarChart";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import useWindowSize from '../hook/useWindowSize';
@@ -30,13 +30,39 @@ const Container = styled.div`
 
 const FadeIn = keyframes`
   from {
+    margin-top: 160px;
     opacity: 0;
   }
   to {
+    margin-top: 0px;
     opacity: 1;
   }
 `;
+
+
 // const chartHeight = 560;
+const TimeChart = styled.div`
+  /* display: none; */
+  position: fixed;
+  top: 0px;
+  padding-top: 180px;
+  background-color: ${props => props.theme.color.ui.bg.dark};
+  left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
+  /* width: ${props => props.theme.size.liveArea}; */
+  width: ${`${chartWidth}px`};
+  height: calc(100% - 240px);
+  opacity: ${props => props.isActive ? 1 : 0};
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    height: 55%;
+    left: 0;
+    top: 0px;
+    padding-top: 48px;
+    background-color: ${props => props.theme.color.ui.bg.dark};
+  }
+`;
 const Chart = styled.div`
   /* display: none; */
   position: fixed;
@@ -143,6 +169,51 @@ const SectionTitle = styled.div`
   }
 `;
 
+const ChartMsg = styled.div`
+  position: absolute;
+  top: 286px;
+  left: 124px;
+  text-shadow: 0px 0px 16px rgba(0,0,0,0.24);
+  ${props => props.theme.color.ui.white700};
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.h1}
+  opacity: 0;
+  animation-name: ${FadeIn};
+  animation-duration: 1s;
+  animation-delay: 1.5s;
+  animation-fill-mode: forwards;
+`;
+
+const LegendList = styled.div`
+  position: absolute;
+  left: 80px;
+   bottom: -100px;
+  width: 100%;
+  display: flex;
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.caption}
+`;
+
+const Legend = styled.div`
+  width: 224px;
+  display: flex;
+  align-items: center;
+`;
+
+const Red = styled.div`
+  width: 24px;
+  height: 24px;
+  background-color: ${props => props.theme.color.signal.warn};
+  margin-right: 12px;
+`
+
+const Green = styled.div`
+  width: 24px;
+  height: 24px;
+  background-color: ${props => props.theme.color.brand.epGreen};
+  margin-right: 12px;
+`
+
 const Space = styled.div`
   height: 240px;
 `;
@@ -167,25 +238,25 @@ const Chapter1 = ({
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
       data: plastic_production_1_3,
-      chartTitle: '전세계 연도별 플라스틱 생산량 (단위: ton)'
+      chartTitle: '전세계 연도별 플라스틱 생산량 (단위: million metric tons)'
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
-      chartTitle: '국내 1인당 연간 플라스틱 소비량 (단위: ton)'
+      chartTitle: '국내 1인당 연간 플라스틱 소비량 (단위: kilogram)'
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
       data: plastic_waste_1_7,
-      chartTitle: '연도별 플라스틱 폐기물량 (단위: ton)'
+      chartTitle: '연도별 플라스틱 폐기물량 (단위: 1000 ton)'
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
-      chartTitle: '연도별 플라스틱 누적 폐기물량 (단위: ton)'
+      chartTitle: '연도별 플라스틱 누적 폐기물량 (단위: 1000 ton)'
     }
   ];
 
@@ -263,8 +334,8 @@ const Chapter1 = ({
         <LiveArea>
           {/* plastic history timeline */}
           {
-            currentChapter === 1 &&
-            <Chart
+            isChart1Active &&
+            <TimeChart
               isActive={isChart1Active}
             >
               <ChartTitle>
@@ -273,7 +344,7 @@ const Chapter1 = ({
               <TimelineChartC1S1
                 data={data}
               />
-            </Chart>
+            </TimeChart>
           }
           {/* bar chart */}
           {
@@ -281,28 +352,54 @@ const Chapter1 = ({
             <Chart
               isActive={isChart2Active}
             >
+              {
+                currentSection===2&&
+                <ChartMsg>
+                  50년동안 <br/>
+                  280배 증가
+                </ChartMsg>
+              }
+              {
+                currentSection===4&&
+                <LegendList>
+                  <Legend>
+                    <Red />
+                    <p>
+                      폐기물량
+                    </p>
+                  </Legend>
+                  <Legend>
+                    <Green />
+                    <p>
+                      재활용률
+                    </p>
+                  </Legend>
+                </LegendList>
+              }
               <ChartTitlePadding>
                 {content[currentSection - 1] && content[currentSection - 1].chartTitle}
               </ChartTitlePadding>
               <BarChart
                 data={data}
+                stage={currentSection}
               />
             </Chart>
           }
           <Space />
           {
             content.map((section, i) =>
-              <ViewportWrapper
-                onEnterViewport={() => {
-                  console.log("enter: " + (i + 1));
-                  setCurrentSection(i + 1);
-                }}
+              <TextContent
+                ref={chapterObject.refSection[i]}
+                currentSection={currentSection}
+                index={i}
               >
-                <TextContent
-                  ref={chapterObject.refSection[i]}
-                  currentSection={currentSection}
-                  index={i}
+                <ViewportWrapper
+                  onEnterViewport={() => {
+                    console.log("enter: " + (i + 1));
+                    setCurrentSection(i + 1);
+                  }}
                 >
+
                   <SectionTitle>
                     <h1>
                       {i + 1}
@@ -314,8 +411,8 @@ const Chapter1 = ({
                   <p>
                     {section.exp}
                   </p>
-                </TextContent>
-              </ViewportWrapper>
+                </ViewportWrapper>
+              </TextContent>
             )
           }
           <ViewportWrapper

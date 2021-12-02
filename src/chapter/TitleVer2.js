@@ -17,6 +17,7 @@ import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
 import PlasticCirculation from "../chart/title/PlasticCirculation";
+import PlasticLiteracy from "../template/PlasticLiteracy";
 import PlasticParticle from "../chart/title/PlasticParticle";
 import { isMobile } from 'react-device-detect';
 import useWindowSize from '../hook/useWindowSize';
@@ -352,7 +353,7 @@ const Title = ({
         refObject={refObject}
         innerHeight={isMobile ? 360 : innerHeight}
       >
-        <PlasticParticleContainer>
+        {/* <PlasticParticleContainer>
           {
             currentChapter === 0 &&
             <ViewportWrapper
@@ -367,9 +368,9 @@ const Title = ({
               />
             </ViewportWrapper>
           }
-        </PlasticParticleContainer>
+        </PlasticParticleContainer> */}
         <IllustContainer>
-          <Illust>
+          {/* <Illust>
             <PlasticCirculation
               currentChapter={currentChapter}
             />
@@ -394,7 +395,14 @@ const Title = ({
                 )
               }
             </NodeContainer>
-          </Illust>
+          </Illust> */}
+          {
+            true&&<PlasticLiteracy
+              currentChapter={0}
+              starChatper={0}
+            />
+          }
+          
           <TitleMsg>
             <ToTop
               isTrigger={isStart}
