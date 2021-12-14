@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="160px" height="160px" viewBox="0 0 160 160" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/PL/select</title>
+    <g id="element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="plastic-item" transform="translate(-733.000000, -2971.000000)">
+            <g id="icon/PL/collect-Copy" transform="translate(733.000000, 2971.000000)">
+                <rect id="Rectangle" fill="#020F18" x="0" y="0" width="160" height="160"></rect>
+                <rect id="Rectangle-Copy-2" x="0" y="0" width="160" height="160"></rect>
+                <path d="M117,18 L117,43 L93,43 L93,67 L117,67 L117,43 L142,43 L142,68 L117,68 L117,92 L93,92 L93,117 L117,117 L117,142 L92,142 L92,117 L68,117 L68,142 L43,142 L43,117 L68,117 L68,92 L92,92 L92,68 L68,68 L68,92 L43,92 L43,68 L18,68 L18,43 L43,43 L43,67 L68,67 L68,43 L92,43 L92,18 L117,18 Z M43,92 L43,117 L18,117 L18,92 L43,92 Z M142,92 L142,117 L117,117 L117,92 L142,92 Z M68,18 L68,43 L43,43 L43,18 L68,18 Z" id="Combined-Shape" fill="#3DDB87"></path>
+            </g>
+        </g>
+    </g>
+</svg>

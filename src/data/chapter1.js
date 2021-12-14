@@ -4,47 +4,53 @@ import ic_electric from "../assets/img/icon/ic_electric.svg";
 import ic_medical from "../assets/img/icon/ic_medical.svg";
 import ic_space from "../assets/img/icon/ic_rocket.svg";
 
+import ic_camera from "../assets/img/icon/c1/camera.svg";
+import ic_bomb from "../assets/img/icon/c1/bomb.svg";
+import ic_container from "../assets/img/icon/c1/container.svg";
+import ic_vynil from "../assets/img/icon/c1/vynil.svg";
+import ic_astronaut from "../assets/img/icon/c1/astronaut.svg";
+
 export const plastic_industry_timeline_1_1 = [
   {
-    "year": 1800,
+    "year": 1889,
     "value": 1,
-    "name": '영화 산업',
-    "exp": `영화 필름에 사용되어 \n 영화산업의 발전에 기여`,
-    "exp2": `필름의 재료로 영화산업 발전`,
-    "img": ic_movie
+    "name": 'kodak 필름',
+    "exp": `플라스틱 덕분에 발전할 수 있었던 사진 및 영화 필름 산업`,
+    "exp2": `플라스틱 덕분에 발전할 수 있었던 사진 및 영화 필름 산업`,
+    "img": ic_camera
   },
   {
-    "year": 1900,
-    "value": 5,
-    "name": '음악 산업',
-    "exp": `레코드, 카세트테이프, 등에\n  활용되며 음악의 대중화에 기여`,
-    "exp2": `레코드,테이프 재료로 대중음악 확산`,
-    "img": ic_music
+    "year": 1940 - 20,
+    "value": 3,
+    "name": '군수 산업',
+    "exp": `플라스틱으로 대량 생산할 수 있었던 군수 산업`,
+    "exp2": `플라스틱으로 대량 생산할 수 있었던 군수 산업`,
+    "img": ic_bomb
   },
   {
-    "year": 1950,
-    "value": 10,
-    "name": '전기 산업',
-    "exp": `절연성이 뛰어나 전선을 감싸는 \n 재료로 조명장치, 플로그 등에 사용`,
-    "exp2": `절연재로 활용 전기산업 저변 확대`,
-    "img": ic_electric
+    "year": 1946,
+    "value": 6,
+    "name": '포장용기',
+    "exp": `플라스틱으로 식품의 오염을 막고 보관이 용이해진 포장용기 산업`,
+    "exp2": `플라스틱으로 식품의 오염을 막고 보관이 용이해진 포장용기 산업`,
+    "img": ic_container
   },
   {
-    "year": 1975,
+    "year": 1948 + 10,
+    "value": 4.5,
+    "name": '음반 산업',
+    "exp": `플라스틱의 특성 중 가볍고 변형이 쉬운 장점으로 발전한 음반 산업`,
+    "exp2": `플라스틱의 특성 중 가볍고 변형이 쉬운 장점으로 발전한 음반 산업`,
+    "img": ic_vynil
+  },
+  {
+    "year": 1965,
     "value": 2,
-    "name": '의료 산업',
-    "exp": `살균이 어렵고 깨지기 쉬운 병원의 \n 유리병 과 고무 튜브를 플라스틱이 대체`,
-    "exp2": `가공성,살균의 용이성으로 의료산업 기여`,
-    "img": ic_medical
-  },
-  {
-    "year": 2000,
-    "value": 7.5,
-    "name": '우주 산업',
-    "exp": `우주선의 부품이나 우주복에 \n 무게가 가벼운 플라스틱 소재 활용`,
-    "exp2": `중장비 경량화로 우주산업 기여`,
-    "img": ic_space
-  },
+    "name": '우주산업',
+    "exp": `우주의 높은 온도와 압력을 극복한 플라스틱 소재를 통한 우주산업 발전`,
+    "exp2": `우주의 높은 온도와 압력을 극복한 플라스틱 소재를 통한 우주산업 발전`,
+    "img": ic_astronaut
+  }
 ];
 
 export const plastic_production_1_3 = [

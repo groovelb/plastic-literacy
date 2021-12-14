@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="24px" viewBox="0 0 15 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/navigation/next/white</title>
+    <defs>
+        <polygon id="path-1" points="30.82 14.82 28 12 16 24 28 36 30.82 33.18 21.66 24"></polygon>
+    </defs>
+    <g id="Page-5" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ver5_chapter1" transform="translate(-1352.000000, -2368.000000)">
+            <g id="Group-9" transform="translate(934.000000, 2103.000000)">
+                <g id="Group" transform="translate(401.000000, 253.000000)">
+                    <g id="icon/navigation/chevron_left_24px-copy" transform="translate(24.000000, 24.000000) rotate(180.000000) translate(-24.000000, -24.000000) ">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="icon/navigation/chevron_left_24px" fill-rule="nonzero"></g>
+                        <g id="Group" mask="url(#mask-2)" fill="#FFFFFF">
+                            <g id="↳-Color">
+                                <rect id="Rectangle-13" x="0" y="0" width="48" height="48"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

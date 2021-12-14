@@ -87,6 +87,8 @@ const DrawLeft = keyframes`
 
 const duration = 0.5;
 
+const border = 8;
+
 const BorderTop = styled.div`
 	position: absolute;
 	top:0;
@@ -142,6 +144,7 @@ const Exp = styled.div`
 	margin-top: 12px;
 	padding: 48px;
 	transition: opacity 1s ease-in-out;
+	border: solid 8px #fff;
 	/* border: solid 1px #fff; */
 	@media only screen and (max-width: 480px) {
 		width: 100%;
@@ -213,10 +216,10 @@ const ChapterTitle = ({
 									</h2>
 								</Title>
 								<Exp isTrigger={isExpOn}>
-									<BorderTop isTrigger={isExpOn} />
+									{/* <BorderTop isTrigger={isExpOn} />
 									<BorderRight isTrigger={isExpOn} />
 									<BorderBottom isTrigger={isExpOn} />
-									<BorderLeft isTrigger={isExpOn} />
+									<BorderLeft isTrigger={isExpOn} /> */}
 									{exp}
 								</Exp>
 							</Top>

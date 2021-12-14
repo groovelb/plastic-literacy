@@ -3,12 +3,15 @@ import styled, {keyframes} from 'styled-components';
 import useWindowSize from '../../hook/useWindowSize';
 
 // img
-import illust_bottle_blue from "../../assets/illust/illust_bottle_blue.svg";
-import illust_bottle_orange from "../../assets/illust/illust_bottle_orange.svg";
-import illust_bottle_emerald from "../../assets/illust/illust_bottle_emerald.svg";
-import illust_trash_blue from "../../assets/illust/illust_trash_blue.svg";
-import illust_trash_orange from "../../assets/illust/illust_trash_orange.svg";
-import illust_trash_emerald from "../../assets/illust/illust_trash_emerald.svg";
+import illust_p1 from "../../assets/img/icon/particle/p1.svg";
+import illust_p2 from "../../assets/img/icon/particle/p2.svg";
+import illust_p3 from "../../assets/img/icon/particle/p3.svg";
+import illust_p4 from "../../assets/img/icon/particle/p4.svg";
+import illust_p5 from "../../assets/img/icon/particle/p5.svg";
+import illust_p6 from "../../assets/img/icon/particle/p6.svg";
+import illust_p7 from "../../assets/img/icon/particle/p7.svg";
+import illust_p8 from "../../assets/img/icon/particle/p8.svg";
+import illust_p9 from "../../assets/img/icon/particle/p9.svg";
 
 const particleNum = { x: 8, y: 8 };
 const particleSize = 40;
@@ -36,11 +39,11 @@ const Particle = styled.div`
   height: ${`${particleSize}px`};
   ${props => props.theme.layout.flexColCenter};
   opacity: ${props => props.triggerStage===2?0:0.25};
-  animation: ${props => props.triggerStage===2?'none':Rotae} 15s ease-in-out;
+  animation: ${props => props.triggerStage===2?'none':Rotae} 15s linear;
   animation-iteration-count: infinite;
   transition: all 1s ease-out;
   img{
-    width: 16px;
+    width: 40px;
     height: auto;
     transform: ${props => `rotate(${props.deg}deg)`};
   }
@@ -58,16 +61,19 @@ const Particle = styled.div`
 `;
 
 const imgList = [
-  illust_trash_blue,
-  illust_trash_orange,
-  illust_trash_emerald,
-  illust_trash_blue,
-  illust_trash_orange,
-  illust_trash_emerald
+  illust_p1,
+  illust_p2,
+  illust_p3,
+  illust_p4,
+  illust_p5,
+  illust_p6,
+  illust_p7,
+  illust_p8,
+  illust_p9
 ];
 
 
-let particleList = [];
+
 
 
 
@@ -80,22 +86,33 @@ const PlasticParticle = ({
 
   // 1st Setting
   useEffect(() => {
-    for (let i = 0; i < particleNum.y; i++) {
-      for (let j = 0; j < particleNum.x; j++) {
-        let num = parseInt(Math.random() * 6);
-        let deg = Math.random()*360
-        let data = {
-          x: `calc((${(j + 0.5) / particleNum.x} * 100%) - ${particleSize/2}px)`,
-          y: `calc((${(i + 0.5) / particleNum.y} * 100%) - ${particleSize/2}px)`,
-          x2: `calc(${(j + 1 - particleNum.x/2)}*50% - ${particleSize/2}px)`,
-          y2: `calc(${(i + 1 - particleNum.x/2)}*50% - ${particleSize/2}px)`,
-          img: imgList[num],
-          deg: deg
-        };
-        particleList.push(data);
+    let isMounted = true;
+
+    if (isMounted){
+      let particleList = [];
+
+      for (let i = 0; i < particleNum.y; i++) {
+        for (let j = 0; j < particleNum.x; j++) {
+          let num = parseInt(Math.random() * 6);
+          let deg = Math.random()*360
+          let data = {
+            x: `calc((${(j + 0.5) / particleNum.x} * 100%) - ${particleSize/2}px)`,
+            y: `calc((${(i + 0.5) / particleNum.y} * 100%) - ${particleSize/2}px)`,
+            x2: `calc(${(j + 1 - particleNum.x/2)}*50% - ${particleSize/2}px)`,
+            y2: `calc(${(i + 1 - particleNum.x/2)}*50% - ${particleSize/2}px)`,
+            img: imgList[num],
+            deg: deg
+          };
+          particleList.push(data);
+        }
       }
+      setParticleData(particleList);  
     }
-    setParticleData(particleList);
+    
+    return () => {
+      console.log('unmounted');
+      isMounted = false;
+    }
   },[]);
 
   // Trigger

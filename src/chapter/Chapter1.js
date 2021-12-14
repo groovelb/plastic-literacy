@@ -8,16 +8,22 @@ import ChapterTitle from "../components/layout/ChapterTitle";
 import LiveArea from "../components/layout/LiveArea";
 import TimelineChartC1S1 from "../components/chart/TimeChart";
 import BarChart from "../components/chart/BarChart";
+import ImageBackground from "../components/videoBackground/ImageBackground";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import useWindowSize from '../hook/useWindowSize';
 import ViewportWrapper from '../components/ViewportWrapper';
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
-import ic_movie from "../assets/img/icon/ic_movie.svg";
-import ic_music from "../assets/img/icon/ic_music.svg";
-import ic_electric from "../assets/img/icon/ic_electric.svg";
-import ic_medical from "../assets/img/icon/ic_medical.svg";
-import ic_space from "../assets/img/icon/ic_rocket.svg";
+import ImagePreview from "../components/media/ImagePreview";
+import img_kodak from "../assets/img/image/c1/kodak.jpg";
+import img_container from "../assets/img/image/c1/container.jpg";
+import img_bomb from "../assets/img/image/c1/bomb.jpg";
+import img_vynil from "../assets/img/image/c1/vynil.jpg";
+import img_astronaut from "../assets/img/image/c1/astronaut.jpg";
+import illust_comparing_volume from "../assets/img/illust/c1/compare_volume.png";
+import illust_daily_consume from "../assets/img/illust/c1/daily_consume.png";
 import bg_c1 from "../assets/img/bg/title_bg_c1.jpg";
+import bg_c1_transition from "../assets/img/bg/c1_transition.jpg";
+import ToTop from "../components/motion/ToTop";
 
 // Data
 import { plastic_industry_timeline_1_1, plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7, plastic_accumulated_waste_1_8 } from '../data/chapter1';
@@ -111,6 +117,15 @@ const ChartTitlePadding = styled.p`
 const Content = styled.div`
   position: relative;
   width: 100%;
+  background-color: ${props => props.theme.color.brand.darkNavy};
+  padding-bottom: 24px;
+  p{
+    margin-bottom: 48px;
+  }
+  img.content{
+    width: 100%;
+    height: auto;
+  }
 `;
 
 const TextContent = styled.div`
@@ -125,7 +140,17 @@ const TextContent = styled.div`
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
-
+  position: relative;
+  /* :before{
+    position: absolute;
+    content: '';
+    top: 0px;
+    left: ${`calc(${chartWidth}px + 24px + 228px)`};
+    width: 2px;
+    height: 100%;
+    background-color: ${props => props.theme.color.brand.epGreen};
+    opacity: 0.1; */
+  }
   p{
     /* width: calc(100% - 360px - 80px - 24px); */
     /* padding-left: 48px; */
@@ -226,6 +251,31 @@ const Chapter1 = ({
   const { t } = useTranslation();
   const windowSize = useWindowSize();
 
+  // Image Preview
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const imgList = [
+    {
+      src: img_kodak,
+      caption: 'Eastman Company에서 출시된 플라스틱 투명 롤 필름',
+    },
+    {
+      src: img_bomb,
+      caption: '제2차 세계 대전 당시, 대량 생산할 수 있는 장점으로 개발된 플라스틱 수류탄 British No. 69',
+    },
+    {
+      src: img_container,
+      caption: 'Tupperware에서 최초로 출시한 밀폐 플라스틱 용기',
+    },
+    {
+      src: img_vynil,
+      caption: '미국 레코드사에서 플라스틱(PVC)을 활용해 개발한 LP판',
+    },
+    {
+      src: img_astronaut,
+      caption: '아폴로 계획에서 닐 암스트롱이 착용한 우주 헬멧에 적용된 플라스틱',
+    },
+  ];
+
   // String
   const content = [
     {
@@ -267,6 +317,10 @@ const Chapter1 = ({
   const [isChart2Active, setIsChart2Active] = useState(false);
   const [currentSection, setCurrentSection] = useState(0);
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
+
+  // motion trigger
+  const [isTrigger1, setIsTrigger1] = useState(false);
+  const [isTrigger2, setIsTrigger2] = useState(false);
 
   useEffect(() => {
     setInnterHeight(window.innerHeight);
@@ -353,14 +407,14 @@ const Chapter1 = ({
               isActive={isChart2Active}
             >
               {
-                currentSection===2&&
+                currentSection === 2 &&
                 <ChartMsg>
-                  50년동안 <br/>
+                  50년동안 <br />
                   280배 증가
                 </ChartMsg>
               }
               {
-                currentSection===4&&
+                currentSection === 4 &&
                 <LegendList>
                   <Legend>
                     <Red />
@@ -397,20 +451,58 @@ const Chapter1 = ({
                   onEnterViewport={() => {
                     console.log("enter: " + (i + 1));
                     setCurrentSection(i + 1);
+                    if(i===1){
+                      setIsTrigger1(true);
+                    }
+                    if(i===2){
+                      setIsTrigger2(true);
+                    }
                   }}
                 >
-
-                  <SectionTitle>
-                    <h1>
-                      {i + 1}
-                    </h1>
-                    <h2>
-                      {section.title}
-                    </h2>
-                  </SectionTitle>
-                  <p>
-                    {section.exp}
-                  </p>
+                  <Content>
+                    <SectionTitle>
+                      <h1>
+                        {i + 1}
+                      </h1>
+                      <h2>
+                        {section.title}
+                      </h2>
+                    </SectionTitle>
+                    <p>
+                      {section.exp}
+                    </p>
+                    {/* Section1 image preview */}
+                    {
+                      i === 0 &&
+                      <ImagePreview
+                        imgList={imgList}
+                        currentIndex={currentImageIndex}
+                        onNext={() => { setCurrentImageIndex(currentImageIndex + 1) }}
+                        onPrev={() => { setCurrentImageIndex(currentImageIndex - 1) }}
+                      />
+                    }
+                    {
+                      i === 1 &&
+                        <ToTop isTrigger={isTrigger1}>
+                          <img className={'content'} src={illust_comparing_volume} alt='' />
+                        </ToTop>
+                    }
+                    {
+                      i === 2 &&
+                        <ToTop isTrigger={isTrigger2}>
+                          <img className={'content'} src={illust_daily_consume} alt='' />
+                        </ToTop>
+                    }
+                     {
+                      i === 4 &&
+                      <ImagePreview
+                        imgList={imgList}
+                        currentIndex={currentImageIndex}
+                        onNext={() => { setCurrentImageIndex(currentImageIndex + 1) }}
+                        onPrev={() => { setCurrentImageIndex(currentImageIndex - 1) }}
+                      />
+                    }
+                  </Content>
                 </ViewportWrapper>
               </TextContent>
             )
@@ -424,19 +516,17 @@ const Chapter1 = ({
               setIsVideoTrigger(false);
             }}
           >
-            <VideoBackground
-              isVideoPlay={true}
-              width={windowSize.width}
-              height={windowSize.height}
-              isFilter={true}
-              videoSrc={video_transition}
+            <ImageBackground
+              isFilter={false}
+              img={bg_c1_transition}
               refObject={chapterObject.refSection[5]}
               isTrigger={isVideoTrigger}
             >
               <MsgFullScreen
-                title={t('c1-s7-exp')}
+                title={t('c1-s6-title')}
+                exp={t('c1-s6-exp')}
               />
-            </VideoBackground>
+            </ImageBackground>
           </ViewportWrapper>
           <SpaceFullScreen
             numX={0.3}

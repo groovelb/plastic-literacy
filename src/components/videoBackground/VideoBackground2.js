@@ -66,11 +66,9 @@ function VideoBackground({
   const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
-    console.log("is video played: " + isVideoPlay);
   }, [isVideoPlay]);
 
   const playVideo = () => {
-    console.log('load!');
     setPlaying(true);
   }
 

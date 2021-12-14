@@ -24,7 +24,7 @@ const ImgBG = styled.div`
   background-image: url(${props => props.img});
   background-size: cover;
   background-position: center;
-  filter: grayscale(0.6) brightness(50%);
+  filter:  ${props => props.isFilter ? `grayscale(0.6) brightness(50%)` :  `grayscale(0.32) brightness(60%)`};
   :after{
     content: '';
     position: absolute;

@@ -109,8 +109,8 @@ const BarChart = ({
 
     const offsetY = isMobile ? 40 : 80;
     const r = isMobile?24:32;
-    const textX = isMobile?32:45;
-    const yearEnd = isMobile?2100:2080;
+    const textX = isMobile?48:56;
+    const yearEnd = isMobile?2000:2000;
     const expWidth = isMobile?96:148;
 
     // set the ranges
@@ -120,20 +120,21 @@ const BarChart = ({
 
 
     y = d3.scaleLinear()
-      .range([height - offsetY, offsetY]);
+      .range([height - offsetY, offsetY*2]);
 
-    x.domain([1780, yearEnd]);
+    x.domain([1880, yearEnd]);
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
     d3.select(".xAxis.timeline").call(
       d3.axisBottom(x)
-        .tickValues([1800, 1900, 2000])
+        .tickValues([1900, 1950])
         .tickFormat((d) => { return d + '년대' })
     );
 
     chart = svg.select(".chart.timeline");
 
     const t = chart.transition()
+      .ease(d3.easeBounce)
       .duration(500);
 
     // chart.selectAll("rect")
@@ -170,6 +171,7 @@ const BarChart = ({
     chart.selectAll(".marker").exit().remove();
 
     const delayStart = 200;
+    const delayUnit = 300;
 
     // Node Enter
     const enter = chart.selectAll(".marker")
@@ -199,24 +201,25 @@ const BarChart = ({
       .style("stroke-dasharray", ("4, 4"))
       .attr("stroke", '#f0f0f0')
       .transition(t)
-      .delay((d,i) => delayStart + i *500)
+      .ease(d3.easeBounce)
+      .delay((d,i) => delayStart + i *delayUnit)
       .attr("y1", height)
-      .attr("y2", function (d) { return y(d.value); })
+      .attr("y2", function (d) { return y(d.value); });
     
-
     // Top circle
     chart.selectAll(".marker2")
       .data(data)
       .enter()
-      .append("circle")
+      .append("rect")
       .attr("class", "marker2")
-      .attr("cx", function (d) { return x(d.year); })
-      .attr("cy", function (d) { return y(d.value); })
-      .attr("r", r)
-      .attr("fill", '#fff')
+      .attr("x", function (d) { return x(d.year) - 43; })
+      .attr("y", function (d) { return y(d.value) - 43; })
+      .attr("width", 86)
+      .attr("height",86)
       .attr("opacity",0)
       .transition(t)
-      .delay((d,i) => delayStart + (i+1) *500)
+      .ease(d3.easeBounce)
+      .delay((d,i) => delayStart + (i+1) *delayUnit)
       .attr("opacity",1);
 
     enter.append("svg:image")
@@ -227,7 +230,8 @@ const BarChart = ({
       .attr("width", r*2)
       .attr("opacity",0)
       .transition(t)
-      .delay((d,i) => delayStart + (i+1) *500)
+      .ease(d3.easeBounce)
+      .delay((d,i) => delayStart + (i+1) *delayUnit)
       .attr("opacity",1);
 
 
@@ -250,7 +254,8 @@ const BarChart = ({
     d3.selectAll(".exp").call(wrap, expWidth)
     .attr("opacity",0)
     .transition(t)
-    .delay((d,i) => delayStart + (i+1) *500)
+    .ease(d3.easeBounce)
+    .delay((d,i) => delayStart + (i+1) *delayUnit)
     .attr("opacity",1);
 
 

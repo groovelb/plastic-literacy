@@ -6,7 +6,6 @@ import MsgFullScreen from "../components/layout/MsgFullScreen";
 import VideoBackground from "../components/videoBackground/VideoBackground2";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import ViewportWrapper from '../components/ViewportWrapper';
-import illust_title from "../assets/illust/illust_title.svg";
 import circle_product from "../assets/illust/title/circle_product.svg";
 import circle_waste from "../assets/illust/title/circle_waste.svg";
 import circle_part from "../assets/illust/title/circle_part.svg";
@@ -16,7 +15,6 @@ import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
-import PlasticCirculation from "../chart/title/PlasticCirculation";
 import PlasticLiteracy from "../template/PlasticLiteracy";
 import PlasticParticle from "../chart/title/PlasticParticle";
 import { isMobile } from 'react-device-detect';
@@ -24,17 +22,9 @@ import useWindowSize from '../hook/useWindowSize';
 import video_earth from "../assets/video/earth_spin.mp4";
 import ToTop from "../components/motion/ToTop";
 import LiveArea from "../components/layout/LiveArea";
-
 import dual_circle from "../assets/img/shape/dual_circle.svg";
-import img_earth from "../assets/img/img_earth.png";
 
-
-const PlasticParticleContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: -1;
-`;
+import illust_arrow_purple from "../assets/img/illust/illust_arrow_cycle_purple.svg";
 
 const circleSize = {
   width: isMobile ? window.innerWidth : 900,
@@ -55,6 +45,7 @@ const Container = styled(Section)`
   position: relative;
   z-index: 999;
   background-color: rgba(16, 30, 46, 0.5);
+  padding-top: 160px;
   @media only screen and (max-width: 480px) {
     height: ${`${window.innerHeight}px`};
   }
@@ -211,31 +202,32 @@ const PricincpleList = styled(LiveArea)`
   display: flex;
   flex-wrap: wrap;
   margin-top: -116px;
-  /* width: 100%; */
-  :before{
+  width: 900px;
+  justify-content: space-between;
+   :before{
     content: '';
     position: absolute;
     z-index: -1;
-    top: 96px;
-    left: 96px;
-    width: calc(100% - 192px);
-    height: calc(100% - 336px);
-    border: solid 1px ${props => props.theme.color.brand.epGreen};
-    border-style: dashed;
+    top: 80px;
+    left: 0px;
+    background-image: ${`url(${illust_arrow_purple})`};
+    background-size: cover;
+    width: 100%;
+    height: 208px;
   }
 `;
 
 const Pricinple = styled.div`
-  width: 50%;
+  width: 40%;
   /* height: 248px; */
   ${props => props.theme.layout.flexColCenter}
   color: ${props => props.theme.color.brand.epGreen};
-  padding: 24px;
-  margin-bottom: 32px;
+  padding: 22px;
+  /* margin-bottom: 32px; */
   .img{
-    width: 144px;
-    height: 144px;
+    width: 124px;
     margin-bottom: 24px;
+    padding: 0 16px;
     background-color: ${props => props.theme.color.ui.bg.dark};
     img{
       width: 100%;
@@ -243,7 +235,7 @@ const Pricinple = styled.div`
     }
   }
   h2{
-    ${props => props.theme.type.size.title1}
+    ${props => props.theme.type.size.body1}
     ${props => props.theme.type.weight.prd.bold}
     margin-bottom: 0px;
   }
@@ -251,8 +243,6 @@ const Pricinple = styled.div`
     ${props => props.theme.type.size.body1}
   }
 `;
-
-
 
 const Title = ({
   refObject,
@@ -312,31 +302,22 @@ const Title = ({
 
   const principles = [
     {
-      title: '1. 생산',
-      rule: '분류 표준 정립',
-      exp: '플라스틱 세부 재활용 표준을 정립 제품 생산 단계에서부터 분류 기준을 명시한다.',
+      title: '생산',
       img: ic_production
     },
     {
-      title: '2. 배출',
-      rule: '분류 일관성 강화',
-      exp: '분류된 세부 기준대로 분리수거가 배출될 수 있도록 정책적 노력을 강화한다.',
+      title: '배출',
       img: ic_dispose
     },
     {
-      title: '4.처리',
-      rule: '재활용율 개선',
-      exp: '플라스틱 폐기물의 재활용율 높일 수 있는 기술적 방안을 연구한다.',
+      title: '처리',
       img: ic_recycling
     },
     {
-      title: '3. 수거',
-      rule: '수거 체계 균일화',
-      exp: '분류된 세부 기준대로 분리수거가 배출될 수 있도록 정책적 노력을 강화한다.',
+      title: '수거',
       img: ic_collect
     },
-
-  ]
+  ];
 
   useEffect(() => {
     console.log(window.innerHeight);
@@ -353,86 +334,53 @@ const Title = ({
         refObject={refObject}
         innerHeight={isMobile ? 360 : innerHeight}
       >
-        {/* <PlasticParticleContainer>
-          {
-            currentChapter === 0 &&
-            <ViewportWrapper
-              onEnterViewport={
-                () => {
-                  setS1TriggerStage(1);
-                }
-              }
-            >
-              <PlasticParticle
-                triggerStage={s1TriggerStage}
+        <ViewportWrapper
+          onEnterViewport={
+            () => {
+              setS1TriggerStage(0);
+            }
+          }
+        >
+          <IllustContainer>
+            {
+              currentChapter === 0 && <PlasticLiteracy
+                currentChapter={currentChapter}
+                starChatper={0}
               />
-            </ViewportWrapper>
-          }
-        </PlasticParticleContainer> */}
-        <IllustContainer>
-          {/* <Illust>
-            <PlasticCirculation
-              currentChapter={currentChapter}
-            />
-            <NodeContainer>
-              {
-                nodeList.map((node, i) =>
-                  <Node
-                    x={node.x}
-                    y={node.y}
-                  >
-                    <ToTop
-                      isTrigger={isStart}
-                      index={i * 0.5}
-                      distance="short"
-                      style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-                    >
-                      <NodeCircle>
-                        <img src={node.img} />
-                      </NodeCircle>
-                    </ToTop>
-                  </Node>
-                )
-              }
-            </NodeContainer>
-          </Illust> */}
-          {
-            true&&<PlasticLiteracy
-              currentChapter={0}
-              starChatper={0}
-            />
-          }
-          
-          <TitleMsg>
-            <ToTop
-              isTrigger={isStart}
-              index={3}
-              distance="short"
-            >
-              Plastic
-              Literacy
-            </ToTop>
-          </TitleMsg>
-          <SubTitleMsg>
-            <ToTop
-              isTrigger={isStart}
-              index={4}
-              distance="short"
-            >
-              플라스틱의 올바른 수거와 재활용에 대한 이해가 필요한 시대, GS칼텍스가 먼저 묻고 답하다.
+            }
+
+            <TitleMsg>
+              <ToTop
+                isTrigger={isStart}
+                index={3}
+                distance="short"
+              >
+                {t('title-title')}
               </ToTop>
-          </SubTitleMsg>
-          <Logo>
-            {/* with <br /> */}
-            <ToTop
-              isTrigger={isStart}
-              index={5}
-              distance="short"
-            >
-              <img src={logo_gs} alt='' />
-            </ToTop>
-          </Logo>
-        </IllustContainer>
+            </TitleMsg>
+            <SubTitleMsg>
+              <ToTop
+                isTrigger={isStart}
+                index={4}
+                distance="short"
+              >
+                {t('title-subtitle')}
+              </ToTop>
+            </SubTitleMsg>
+            <Logo>
+              <ToTop
+                isTrigger={isStart}
+                index={5}
+                distance="short"
+              >
+                <img src={logo_gs} alt='' />
+              </ToTop>
+            </Logo>
+          </IllustContainer>
+        </ViewportWrapper>
+        {
+          currentChapter === 0 && <PlasticParticle triggerStage={s1TriggerStage} />
+        }
       </Container>
       <SpaceFullScreen
         numX={1}
@@ -448,25 +396,6 @@ const Title = ({
           title={t('title-s1-title')}
           exp={t('title-s1-exp')}
         >
-          {/* <DualEarth>
-            <img src={img_earth} alt='' />
-          </DualEarth> */}
-        </MsgFullScreen>
-      </ViewportWrapper>
-      <SpaceFullScreen
-        numX={1}
-      />
-      <ViewportWrapper
-        onEnterViewport={
-          () => {
-            setS1TriggerStage(2);
-          }
-        }
-      >
-        <MsgFullScreen
-          title={t('title-s2-title')}
-          exp={t('title-s2-exp')}
-        >
           <PrincipleTitle>
             플라스틱 생태계의 단계별 원칙
             </PrincipleTitle>
@@ -479,12 +408,25 @@ const Title = ({
                   </div>
                   <h2>{item.title}</h2>
                   <p>{item.rule}</p>
-                  {/* <p>{item.exp}</p> */}
                 </Pricinple>
               )
             }
           </PricincpleList>
         </MsgFullScreen>
+      </ViewportWrapper>
+      <SpaceFullScreen
+        numX={0.5}
+      />
+      <ViewportWrapper
+        onEnterViewport={
+          () => {
+            setS1TriggerStage(2);
+          }
+        }
+      >
+        <SpaceFullScreen
+          numX={0.25}
+        />
       </ViewportWrapper>
       <ToTop
         isTrigger={isStart}
@@ -497,8 +439,7 @@ const Title = ({
           width={windowSize.width}
           height={windowSize.height}
           isFilter={true}
-          videoSrc={video_earth}
-          // refObject={chapterObject.refSection[5]}
+          videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/earth_spin.mp4?alt=media&token=7d0b37cd-0a3b-4398-ba2c-692a33a07299'}
           isTrigger={true}
         />
       </ToTop>

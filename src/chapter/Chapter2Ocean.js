@@ -8,9 +8,20 @@ import MsgFullScreen from "../components/layout/MsgFullScreen";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import SankeyOcean from "../chart/chaper2/SankeyOcean";
 import VideoBackground from "../components/videoBackground/VideoBackground";
+import ImageBackground from "../components/videoBackground/ImageBackground";
 import useWindowSize from '../hook/useWindowSize';
 import ViewportWrapper from '../components/ViewportWrapper';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
+import Report from "../components/report/Report";
+import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage";
+import bg_transition from '../assets/img/bg/bg_c2_ocean_transition.jpg';
+
+
+// report image
+import img_s1_s1 from "../assets/img/c2/report/c2-s2-p1-img.PNG";
+import img_s1_s2 from "../assets/img/c2/report/c2-s2-p2-img.PNG";
+import img_s2_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
+import img_s2_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
 
 
 // Data
@@ -36,8 +47,9 @@ const FadeIn = keyframes`
 
 const Chart = styled.div`
   position: fixed;
+  z-index: 9;
   top: 0px;
-  padding-top: 80px;
+  padding-top: 180px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
@@ -87,93 +99,12 @@ const TextContent = styled.div`
     }
   }
 `;
-
-const SectionTitle = styled.div`
-  width: 424px;
-  display: flex;
-  margin-bottom: 72px;
-  h1{
-    ${props => props.theme.type.size.title}
-    ${props => props.theme.type.weight.prd.num}
-    margin-right: 16px;
-    width: 80px;
-    height: 80px;
-    ${props => props.theme.layout.flexColCenter};
-    color: ${props => props.theme.color.brand.epGreen};
-    border: 0.5px solid ${props => props.theme.color.brand.epGreen};
-    /* background-color: ${props => props.theme.color.brand.epDeepPurple}; */
-    /* margin-top: -4px; */
-  }
-  h2{
-    ${props => props.theme.type.size.title1}
-    ${props => props.theme.type.weight.prd.bold}
-    width: calc(424px - 80px);
-    margin-top: -8px;
-  }
-`;
-
-const Content = styled.div`
-  position: relative;
-  width: 100%;
-`;
-
-
-const Space = styled.div`
-  height: 240px;
-`;
-
-const SectionFull = styled.div`
-  height: ${props => props.innerHeight + 'px'};
-  width: 100%;
-  ${props => props.theme.layout.flexColCenter}
-  position: relative;
-`;
-
-const Slider = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
-  height: 200px;
-  overflow: hidden;
-  margin-top: 64px;
-`;
-
-const Stage = styled.div`
-  display: flex;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: ${props => `calc(100% * ${(props.index - props.currentSlide)})`};
-  transition: left 0.3s ease-in-out;
-`;
-
-const StageTitle = styled.div`
-  width: 240px;
-  margin-right: 48px;
-  ${props => props.theme.type.weight.prd.bold}
-  ${props => props.theme.type.size.title2}
-`;
-
-const StageExp = styled.div`
-  width: calc(100% - 240px - 240px);
-  ${props => props.theme.type.weight.prd.light}
-  ${props => props.theme.type.size.body1}
-`;
-
-const BttNext = styled.div`
-  z-index: 99;
-  position: absolute;
-  width: 148px;
-  top:0;
-  right:0;
-  ${props => props.theme.type.weight.prd.bold}
-  ${props => props.theme.type.size.body1}
-  cursor: pointer;
-  opacity: 0.5;
-  transition: opacity 0.2s ease-in-out;
-  :hover{
-    opacity: 1;
-  }
+  flex-direction: column;
+  height: ${window.innerHeight * 2 + 'px'};
 `;
 
 const Chapter2 = ({
@@ -188,6 +119,54 @@ const Chapter2 = ({
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
+
+  const reportData = [
+    {
+      title: t('c2-summary1-title'),
+      sectionList: [
+        {
+          title: t('c2-summary1-s1-title'),
+          exp: t('c2-summary1-s1-exp'),
+          img: img_s1_s1
+        },
+        {
+          title: t('c2-summary1-s2-title'),
+          exp: t('c2-summary1-s2-exp'),
+          img: img_s1_s2
+        },
+      ]
+    },
+    {
+      title: t('c2-summary2-title'),
+      sectionList: [
+        {
+          title: t('c2-summary2-s1-title'),
+          exp: t('c2-summary2-s1-exp'),
+          img: img_s1_s1
+        },
+        {
+          title: t('c2-summary2-s2-title'),
+          exp: t('c2-summary2-s2-exp'),
+          img: img_s1_s2
+        },
+      ]
+    },
+    {
+      title: t('c2-summary3-title'),
+      sectionList: [
+        {
+          title: t('c2-summary3-s1-title'),
+          exp: t('c2-summary3-s1-exp'),
+          img: img_s1_s1
+        },
+        {
+          title: t('c2-summary3-s2-title'),
+          exp: t('c2-summary3-s2-exp'),
+          img: img_s1_s2
+        },
+      ]
+    },
+  ];
 
   // String
   const contentOcean = [
@@ -222,30 +201,6 @@ const Chapter2 = ({
 
   return (
     <Container ref={chapterObject.ref}>
-      <ViewportWrapper
-        onEnterViewport={() => {
-          setCurrentSection(0);
-          setIsVideoTrigger(true);
-        }}
-        onLeaveViewport={() => {
-          setIsVideoTrigger(false);
-        }}
-      >
-        <VideoBackground
-          isVideoPlay={true}
-          width={windowSize.width}
-          height={windowSize.height}
-          isFilter={true}
-          videoSrc={video_transition}
-          refObject={chapterObject.refSection[5]}
-          isTrigger={isVideoTrigger}
-        >
-          <MsgFullScreen
-            title={t('c2-s5-title')}
-            exp={t('c2-s5-exp')}
-          />
-        </VideoBackground>
-      </ViewportWrapper>
       <SpaceFullScreen
         numX={1.25}
       />
@@ -266,19 +221,36 @@ const Chapter2 = ({
           }
           {
             contentOcean.map((section, i) =>
-              <ViewportWrapper
-                onEnterViewport={() => {
-                  console.log("enter: " + (i + 1));
-                  setCurrentSection(i + 1);
-                }}
-              >
-                <SectionContentHorizon
-                  title={section.title}
-                  exp={section.exp}
-                  index={i}
-                />
-              </ViewportWrapper>
+              <Wrapper>
+                <ViewportWrapper
+                  onEnterViewport={() => {
+                    console.log("enter: " + (i + 1));
+                    setCurrentSection(i + 1);
+                  }}
+                >
+                  <SectionContentHorizon
+                    title={section.title}
+                    exp={section.exp}
+                    index={i}
+                  />
+                </ViewportWrapper>
+              </Wrapper>
             )
+          }
+          <ViewportWrapper
+            onEnterViewport={() => {
+              setCurrentSection(4);
+            }}
+          >
+            <SpaceFullScreen
+              numX={0.25}
+            />
+            <Report reportData={reportData} />
+          </ViewportWrapper>
+          {
+            currentSection === 4 && <>
+              <PlasticVerticalStage />
+            </>
           }
           <SpaceFullScreen
             refObject={chapterObject.refSection[4]}
@@ -286,26 +258,25 @@ const Chapter2 = ({
           />
           <ViewportWrapper
             onEnterViewport={() => {
-              setCurrentSection(4);
+              setCurrentSection(5);
               setIsVideo2Trigger(true);
             }}
             onLeaveViewport={() => {
               setIsVideo2Trigger(false);
             }}
           >
-            <VideoBackground
-              isVideoPlay={true}
-              width={windowSize.width}
-              height={windowSize.height}
+            <ImageBackground
               isFilter={true}
-              videoSrc={video_transition2}
+              img={bg_transition}
               refObject={chapterObject.refSection[5]}
+              isTrigger={currentSection === 5}
               isTrigger={isVideo2Trigger}
             >
               <MsgFullScreen
+                title={t('c2-s9-title')}
                 exp={t('c2-s9-exp')}
               />
-            </VideoBackground>
+            </ImageBackground>
           </ViewportWrapper>
           <SpaceFullScreen
             numX={0.5}

@@ -1,12 +1,9 @@
 import '../translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
-import { ThemeProvider, createGlobalStyle } from "styled-components";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import { isMobile } from 'react-device-detect';
-import theme from "../assets/theme/theme";
-import styled from 'styled-components';
-import ProgressBar from "react-scroll-progress-bar";
-import ReactFullpage from '@fullpage/react-fullpage';
+import ViewportWarpper from "../components/ViewportWrapper";
+import GNB from "../components/navigation/GNB";
 
 // Chapter
 import Title from "../chapter/TitleVer2";
@@ -17,7 +14,6 @@ import Chapter3 from "../chapter/Chapter3";
 
 // Hook
 import useScrollPosition from '@react-hook/window-scroll';
-import handleViewport from 'react-in-viewport';
 
 
 function Main() {
@@ -115,110 +111,93 @@ function Main() {
 
 
   const [currentChapter, setCurrentChapter] = useState(0);
-  const [isChartS1Active, setIsChartS1Active] = useState(false);
-  const [isChartS2Active, setIsChartS2Active] = useState(false);
-  const [isChartLandActive, setIsChartLandS1Active] = useState(false);
-  const [isChartOceanActive, setIsChartOceanS1Active] = useState(false);
-
-  const chapterOffset = 300;
 
 
   useEffect(() => {
-    // Prevent Ref Pre-loading
-    if (!isScrollStart && scrollY < 10) {
-      setIsScrollStart(true);
-    }
-    // Start Tracking Scroll After Ref loading
-    if (isScrollStart) {
-      // Title Page
-      if (scrollY <= (chapterList[1].ref.current.offsetTop - chapterOffset)) {
-        setCurrentChapter(0);
-        // console.log("title");
-      }
-      // Chapter1
-      else if (chapterList[1].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[2].ref.current.offsetTop - chapterOffset)) {
-        // console.log("chpater1");
-        // set current section of chapter1
-        let previousChapterHeight = chapterList[1].ref.current.offsetTop;
-        // setChapter1CurrentSection(0);
-        setIsChartS1Active(false);
-        setIsChartS2Active(false);
-        setIsChartLandS1Active(false);
-        setCurrentChapter(1);
-      }
-      // Chapter2 - land
-      else if (chapterList[2].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[3].ref.current.offsetTop - chapterOffset)) {
-        // console.log("section2-land");
-        setCurrentChapter(2);
-        setIsChartLandS1Active(false);
-        setChapter2LandCurrentSection(0);
-      }
-      // Chapter2 - ocean
-      else if (chapterList[3].ref.current.offsetTop - chapterOffset <= scrollY && scrollY <= (chapterList[4].ref.current.offsetTop - chapterOffset)) {
-        setCurrentChapter(3);
-        setIsChartOceanS1Active(false);
-        setChapter2OceanCurrentSection(0);
-      }
-      // chapter
-      else {
-        setCurrentChapter(4);
-      }
-    }
-  }, [scrollY]);
+    console.log("CHAPTER CHANGED: " + currentChapter);
+  }, [currentChapter]);
 
   return (
     <>
-      <div style={{
-        opacity: 0.5,
-        zIndex: 9999,
-        position: 'fixed',
-        top:0,
-        left:0
-      }}>
-        <ProgressBar
-          bgcolor={theme.color.brand.epGreen}
+    <GNB/>
+      <ViewportWarpper
+        onEnterViewport={
+          () => {
+            setCurrentChapter(0);
+          }
+        }
+      >
+        <Title
+          refObject={chapterList[0].ref}
+          currentChapter={currentChapter}
         />
-      </div>
-      <Title
-        refObject={chapterList[0].ref}
-        currentChapter={currentChapter}
-      />
+      </ViewportWarpper>
+
       <SpaceFullScreen
         numX={0.2}
       />
-      <Chapter1
-        currentChapter={currentChapter}
-        chapterObject={chapterList[1]}
-        refSection1={chapterList[1].refSection1}
-        refSection2={chapterList[1].refSection2}
-        isChartS1Active={isChartS1Active}
-        isChartS2Active={isChartS2Active}
-      />
+      <ViewportWarpper
+        onEnterViewport={
+          () => {
+            setCurrentChapter(1);
+          }
+        }
+      >
+        <Chapter1
+          currentChapter={currentChapter}
+          chapterObject={chapterList[1]}
+          refSection1={chapterList[1].refSection1}
+          refSection2={chapterList[1].refSection2}
+        />
+      </ViewportWarpper>
       <SpaceFullScreen
         numX={0.2}
       />
-      <Chapter2Land
-        currentChapter={currentChapter}
-        chapterObject={chapterList[2]}
-        currentSection={chapter2LandCurrentSection}
-        isChartActive={isChartLandActive}
-      />
+      <ViewportWarpper
+        onEnterViewport={
+          () => {
+            setCurrentChapter(2);
+          }
+        }
+      >
+        <Chapter2Land
+          currentChapter={currentChapter}
+          chapterObject={chapterList[2]}
+          currentSection={chapter2LandCurrentSection}
+        />
+      </ViewportWarpper>
       <SpaceFullScreen
         numX={0.2}
       />
-      <Chapter2Ocean
-        currentChapter={currentChapter}
-        chapterObject={chapterList[3]}
-        currentSection={chapter2OceanCurrentSection}
-        isChartActive={isChartOceanActive}
-      />
+      <ViewportWarpper
+        onEnterViewport={
+          () => {
+            setCurrentChapter(3);
+          }
+        }
+      >
+        <Chapter2Ocean
+          currentChapter={currentChapter}
+          chapterObject={chapterList[3]}
+          currentSection={chapter2OceanCurrentSection}
+        />
+      </ViewportWarpper>
+
       <SpaceFullScreen
         numX={0.2}
       />
-      <Chapter3
-        chapterObject={chapterList[4]}
-        currentChapter={currentChapter}
-      />
+      <ViewportWarpper
+        onEnterViewport={
+          () => {
+            setCurrentChapter(4);
+          }
+        }
+      >
+        <Chapter3
+          chapterObject={chapterList[4]}
+          currentChapter={currentChapter}
+        />
+      </ViewportWarpper>
     </>
   );
 }

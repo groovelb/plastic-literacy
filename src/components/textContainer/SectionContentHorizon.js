@@ -4,18 +4,18 @@ import styled from "styled-components";
 const TextContent = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
   /* padding-top: 240px; */
-  height: ${props => props.isContentFit?'auto':window.innerHeight * 2 + 'px'};
   /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
   margin-bottom: ${props => props.isContentFit?'80px':'0px'};
   p{
-    width: calc(100% - 424px - 48px);
+    width: calc(100% - 480px - 48px);
     /* padding-left: 48px; */
     /* width: 100%; */
     /* padding-right: 120px; */
@@ -36,7 +36,7 @@ const TextContent = styled.div`
 `;
 
 const SectionTitle = styled.div`
-  width: 424px;
+  width: 480px;
   display: flex;
   /* margin-bottom: 72px; */
   h1{
@@ -54,7 +54,7 @@ const SectionTitle = styled.div`
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
-    width: calc(424px - 80px);
+    width: calc(480px - 80px);
     margin-top: -8px;
   }
 `;

@@ -121,12 +121,12 @@ const BarChart = ({
     y = d3.scaleLinear()
       .range([height - offsetY, offsetY]);
 
-    x.domain([1780, yearEnd]);
+    x.domain([1900, yearEnd]);
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
     d3.select(".xAxis.timeline").call(
       d3.axisBottom(x)
-        .tickValues([1800, 1900, 2000])
+        .tickValues([1900, 2000])
         .tickFormat((d) => { return d + '년대' })
     );
 
@@ -134,37 +134,6 @@ const BarChart = ({
 
     const t = chart.transition()
       .duration(750);
-
-    // chart.selectAll("rect")
-    //   .data(data)
-    //   .join(
-    //     enter => enter.append("circle")
-    //       .attr("class", "bar positive")
-    //       .attr("width", x.bandwidth())
-    //       .attr("cx", function (d) { return x(d.year); })
-    //       .attr("cy", height)
-    //       .attr("height", 0)
-    //       .call(enter => enter.transition(t)
-    //         .attr("y", function (d) { return y(d.value); })
-    //         .attr("height", function (d) { return height - y(d.value); })
-    //       ),
-    //     update => update
-    //       .attr("class", "bar positive")
-    //       .attr("width", x.bandwidth())
-    //       .attr("x", function (d) { return x(d.year); })
-    //       .attr("y", height)
-    //       .attr("height", 0)
-    //       .call(enter => enter.transition(t)
-    //         .attr("y", function (d) { return y(d.value); })
-    //         .attr("height", function (d) { return height - y(d.value); })
-    //       ),
-    //     exit => exit
-    //       .call(exit => exit.transition(t)
-    //       .attr("y", height)
-    //       .attr("height", 0)
-    //       .remove()
-    //     )
-    //   )
 
     chart.selectAll(".marker").exit().remove();
 
@@ -232,19 +201,6 @@ const BarChart = ({
       .attr("dy", "0.8em");
 
     d3.selectAll(".exp").call(wrap, expWidth);
-
-
-    // Add a <tspan class="text"> for every text line.
-    // text.selectAll("tspan.text")
-    //   .data(d => d.exp.split("\n"))
-    //   .enter()
-    //   .append("tspan")
-    //   .attr("class", "text")
-    //   .attr("fill","#fff")
-    //   .text(d => d)
-    //   .attr("x", function (d) { return x(d.year); })
-    //   // .attr("dx", 0)
-    //   .attr("dy", 22);
   }
 
   function wrap(text, width) {

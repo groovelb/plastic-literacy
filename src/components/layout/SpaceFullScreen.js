@@ -9,7 +9,8 @@ const Container = styled.div`
 const SpaceFullScreen = ({
   className,
   refObject,
-  numX
+  numX,
+  children
 }) => {
 
   const size = useWindowSize();
@@ -20,6 +21,7 @@ const SpaceFullScreen = ({
       className={className}
       height={size.height * numX}
     >
+      {children}
     </Container>
   )
 }

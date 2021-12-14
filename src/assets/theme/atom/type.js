@@ -1,6 +1,10 @@
 const type = {
   weight: {
     exp: {
+      regular: `
+        font-family: 'Montserrat', sans-serif;
+        font-weight: 400;
+      `,
       bold: `
         font-family: 'Montserrat', sans-serif;
         font-weight: 800;
@@ -117,13 +121,13 @@ const type = {
     }
     `,
     caption: `
-    font-size: 14px;
-    line-height: 16px;
-    letter-spacing: 0;
+    font-size: 14px !important;
+    line-height: 16px !important;
+    letter-spacing: 0 !important;
     @media only screen and (max-width: 480px) {
-      font-size: 14px;
-      line-height: 16px;
-      letter-spacing: 0;
+      font-size: 14px !important;
+      line-height: 16px !important;
+      letter-spacing: 0 !important;
     }
     `,
     bttText: `

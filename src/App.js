@@ -34,6 +34,11 @@ const GlobalStyle = createGlobalStyle`
     height:100vh;
     width:100vw;
   } 
+  .marker2{
+    fill: #03233A;
+    box-shadow: 0 0 16px 0 rgba(0,0,0,0.50);
+    border-radius: 4px;
+  }
   p{
     margin: 0px;
   }

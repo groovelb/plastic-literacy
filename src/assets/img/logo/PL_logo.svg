@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="95px" viewBox="0 0 96 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>PL_logo</title>
+    <defs>
+        <linearGradient x1="0%" y1="50%" x2="81.9363053%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#00E07E" offset="0%"></stop>
+            <stop stop-color="#00D380" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="0%" y1="50%" x2="78.6944258%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#00D380" offset="0%"></stop>
+            <stop stop-color="#00CA83" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#00CA83" offset="0%"></stop>
+            <stop stop-color="#00C383" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="41.67904%" y1="50%" x2="2.82596573%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#00C383" offset="0%"></stop>
+            <stop stop-color="#00C383" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#00B886" offset="0%"></stop>
+            <stop stop-color="#00C383" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="plastic-literacy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard" transform="translate(-417.000000, -547.000000)">
+            <g id="PL_logo" transform="translate(417.402020, 547.000000)">
+                <rect id="Rectangle" fill="url(#linearGradient-1)" x="0.597979746" y="0" width="94" height="16"></rect>
+                <path d="M8.09797975,8 L27.0979797,8 C32.3446849,8 37.0946849,10.1266474 40.5330086,13.5649712 C43.9713323,17.0032949 46.0979797,21.7532949 46.0979797,27 C46.0979797,32.2467051 43.9713323,36.9967051 40.5330086,40.4350288 C37.0946849,43.8733526 32.3446849,46 27.0979797,46 L27.0979797,46 L8.09797975,46 L8.09797975,8 Z" id="Rectangle" stroke="" stroke-width="16"></path>
+                <rect id="Rectangle-Copy" fill="url(#linearGradient-2)" transform="translate(86.597980, 55.000000) rotate(90.000000) translate(-86.597980, -55.000000) " x="46.5979797" y="47" width="80" height="16"></rect>
+                <polygon id="Combined-Shape" fill="url(#linearGradient-3)" points="34.9762973 79 79.5979797 79 79.5979797 95 34.9762973 95 28.5979797 87.3718474"></polygon>
+                <polygon id="Combined-Shape-Copy" fill="url(#linearGradient-4)" transform="translate(14.314525, 87.250000) scale(-1, 1) translate(-14.314525, -87.250000) " points="-2.84217094e-14 79.5 28.62905 79.5 28.62905 95 -2.84217094e-14 95 6.74934951 87.6102272"></polygon>
+                <rect id="Rectangle" fill="url(#linearGradient-5)" x="0.0979797464" y="0" width="16" height="80"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

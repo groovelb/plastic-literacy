@@ -9,38 +9,33 @@ import MsgFullScreen from "../components/layout/MsgFullScreen";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import ToTop from '../components/motion/ToTop';
-import ToLeft from '../components/motion/ToLeft';
 import LiveArea from "../components/layout/LiveArea";
-import PlasticCirculation from "../chart/title/PlasticCirculation2";
 import PlasticLiteracy from "../template/PlasticLiteracy";
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
+import ImageBackground from "../components/videoBackground/ImageBackground";
 
-import circle_product from "../assets/illust/title/circle_product.svg";
-import circle_waste from "../assets/illust/title/circle_waste.svg";
-import circle_part from "../assets/illust/title/circle_part.svg";
-import circle_flake from "../assets/illust/title/circle_flake.svg";
-import ic_production from "../assets/illust/title/ic_ep_produce.svg";
-import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
-import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
-import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
-import color from "../assets/theme/atom/color";
-import arrow_down_big from "../assets/img/icon/arrow_down_big.svg";
-import ic_marker from "../assets/img/icon/ic_marker.svg";
-import illust_flake_green from "../assets/illust/flake_green.svg";
-import illust_flake_blue from "../assets/illust/flake_blue.svg";
-import illust_flake_orange from "../assets/illust/flake_orange.svg";
-import logo_short from "../assets/img/logo/logo_short.svg";
-import illust_bottle from "../assets/illust/illust_bottle.svg";
 import { isMobile } from 'react-device-detect';
 import video_s4 from "../assets/video/video_c3_last.mp4";
 import bg_title from "../assets/img/bg/title_bg_c3.jpeg";
+import bg_transition from '../assets/img/bg/bg_c2_ocean_transition.jpg';
 
-import illust_mr from "../assets/img/illust/illust_MR.svg";
-import illust_cr from "../assets/img/illust/illust_CR.svg";
-import illust_tr from "../assets/img/illust/illust_TR.svg";
 import illust_result_mr from "../assets/illust/illust_result_mr.svg";
 import illust_result_cr from "../assets/illust/illust_result_cr.svg";
 import illust_result_tr from "../assets/illust/illust_result_tr.svg";
+
+import illust_circle_mr from "../assets/img/illust/c3/circle_mr.svg";
+import illust_circle_cr from "../assets/img/illust/c3/circle_cr.svg";
+import illust_circle_tr from "../assets/img/illust/c3/circle_tr.svg";
+import ic_arrow_down_white from "../assets/img/icon/ic_arrow_down_white.svg";
+
+import illust_process_mr_general from "../assets/img/illust/c3/process_mr_general.png";
+import illust_process_mr_gs from "../assets/img/illust/c3/process_mr_gs.png";
+import illust_process_cr from "../assets/img/illust/c3/process_cr.png";
+import illust_mr1 from "../assets/img/illust/result/mr1.svg";
+import illust_mr2 from "../assets/img/illust/result/mr2.svg";
+import illust_mr3 from "../assets/img/illust/result/mr3.svg";
+import illust_mr4 from "../assets/img/illust/result/mr4.svg";
+import illust_mr5 from "../assets/img/illust/result/mr5.svg";
 
 
 const Container = styled.div`
@@ -75,30 +70,6 @@ const nodeSize = {
   margin: isMobile ? 0 : 20
 };
 
-
-const Illust = styled.div`
-  position: absolute;
-  width: ${`${circleSize.width}px`};
-  height: ${`${circleSize.height}px`};
-  top: ${`calc((100% - ${circleSize.height}px)/2)`};
-  left: ${`calc((100% - ${circleSize.width}px)/2)`};
-  @media only screen and (max-width: 480px) {
-    padding-top: 20px;
-    width: 100%;
-    height: auto;
-    top: ${`${circleSize.margin}px`};
-    left: 0%;
-  }
-`;
-const Rotate = keyframes`
-  from {
-    transform: rotate( 0deg );
-  }
-  to {
-    transform: rotate( 360deg );
-  }
-`;
-
 const TitleCenter = styled.div`
   ${props => props.theme.type.size.title1};
   ${props => props.theme.type.weight.prd.bold};
@@ -107,149 +78,14 @@ const TitleCenter = styled.div`
 `;
 
 const Text = styled.div`
-  ${props => props.theme.type.size.body1};
+  ${props => props.theme.type.size.body2};
   ${props => props.theme.type.weight.prd.regular};
   margin: 48px auto;
-  width: 820px;
+  width: 480px;
   word-break: keep-all;
   white-space: pre-line;
   @media only screen and (max-width: 480px) {
     width: 100%;
-  }
-`;
-
-const NodeContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  @media only screen and (max-width: 480px) {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    padding-top: 20px;
-    height: auto;
-  }
-`;
-
-const Node = styled.div`
-  width: ${nodeSize.width + 'px'};
-  height:  ${nodeSize.height + 'px'};
-  position: absolute;
-  top: ${props => `${props.y}px`};
-  left: ${props => `${props.x}px`};
-  transform-origin: center center;
-  img{
-    width: 80%;
-    height: 80%;
-  }
-`;
-const NodeCircle = styled.div`
-  width: ${nodeSize.width + 'px'};
-  height:  ${nodeSize.height + 'px'};
-  background-color: ${props => props.theme.color.ui.bg.dark};
-  ${props => props.theme.layout.flexColCenter}
-  border-radius: 50%;
-  img{
-    width: 80%;
-    height: 80%;
-  }
-`;
-
-const Circle = styled.div`
-    width: 420px;
-    height: 400px;
-    overflow: hidden;
-    position: absolute;
-    top: ${props => `${props.y}px`};
-    left: ${props => `${props.x}px`};
-    img{
-      width: 800px;
-      height: 800px;
-      position: absolute;
-      top: ${props => `-${props.y}px`};
-      left: ${props => `-${props.x}px`};
-      animation: ${Rotate} 280s linear infinite;
-    }
-`;
-
-const Cycle = styled.div`
-  overflow: hidden;
-  position: relative;
-  width: 256px;
-  height: 256px;
-  border-radius: 50%;
-  background-image: ${props => `radial-gradient(${props.color1} 25%, ${props.color2} 100%)`};
-  color: #fff;
-  background-color: ${props => props.bgColor};
-  ${props => props.theme.layout.flexColCenter};
-  p{
-    ${props => props.theme.type.size.title1};
-    ${props => props.theme.type.weight.exp.bold};
-    text-align: center;
-    z-index: 9;
-    text-shadow: 0px 0px 16px ${props => props.color2};
-  }
-  img{
-    top: 45%;
-    left: 15%;
-    position: absolute;
-    width: 70%;
-    height: auto;
-  }
- 
-  word-break: keep-all;
-  white-space: pre-line;
-  outline: ${props => props.isBorder ? 'solid 24px #D9F0F0' : 'none'};
-`;
-
-const Tunnel = styled.div`
-  width: 80px;
-  height: 240px;
-  background-image: ${props => `radial-gradient(${props.color1} 25%, ${props.color2} 100%)`};
-`;
-
-const Result = styled.div`
-
-`;
-
-const Msg = styled.div`
-  text-align: center;
-  ${props => props.theme.type.size.title}
-  ${props => props.theme.type.weight.exp.bold}
-  color: ${props => props.theme.color.brand.epGreen};
-  width: 100%;
-    top: 400px;
-    position: absolute;
-`;
-
-
-const TextContent = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  /* padding-top: 240px; */
-  /* padding-left: 64px; */
-  /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
-  transition: opacity 0.3s ease-out;
-  word-break: keep-all;
-  white-space: pre-line;
-  margin-bottom: 80px;
-  h2{
-    ${props => props.theme.type.size.title1}
-    ${props => props.theme.type.weight.prd.bold}
-    margin-bottom: 48px;
-    width: 100%;
-  }
-  p{
-    width: calc(100% - 240px - 48px - 120px);
-    padding-left: 0;
-    ${props => props.theme.type.size.body2}
-		${props => props.theme.type.weight.prd.regular}
-  }
-  @media only screen and (max-width: 480px) {
-    flex-direction: column;
-    p{
-      width: 100%;
-    }
   }
 `;
 
@@ -260,12 +96,17 @@ const ImageContent = styled.div`
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
-  margin-top: 48px;
+  margin-top: 80px;
   margin-bottom: 80px;
+  position: relative;
   h2{
+    position: absolute;
+    top: 0;
+    left: 0;
     span{
-      ${props => props.theme.type.size.title1}
+      ${props => props.theme.type.size.title3}
       ${props => props.theme.type.weight.prd.bold}
+      color: ${props => props.theme.color.brand.epGreen};
       margin-bottom: 24px;
     }
     ${props => props.theme.type.size.title2}
@@ -273,10 +114,9 @@ const ImageContent = styled.div`
     margin-bottom: 48px;
     width: 280px;
   }
-  div{
+  div.content{
     display: flex;
-    width: calc(100% - 280px - 48px );
-    padding-left: 0;
+    width: calc(100%);
     ${props => props.theme.type.size.body2}
 		${props => props.theme.type.weight.prd.regular}
   }
@@ -285,45 +125,111 @@ const ImageContent = styled.div`
   }
 `;
 
-const ReyclingList = styled.div`
+
+const ImageList = styled.div`
   width: 100%;
+  padding: 0px 160px;
   display: flex;
   justify-content: space-around;
-  margin: 80px 0px 120px 0px;
 `;
 
-const MR = styled.div`
+const ImageList2 = styled.div`
   width: 100%;
-  ${props => props.theme.layout.flexColCenter};
+  padding-left: 240px;
+  display: flex;
+  justify-content: space-around;
+`;
+
+const ImageCol = styled.div`
+  width: 256px !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  img.arrow{
+      margin-top: 24px;
+    }
+  .title{
+    display: flex;
+    width: 100% !important;
+    margin-bottom: 24px;
+    img{
+      width: 64px;
+      height: 64px;
+    }
+    p{
+      width: calc(100% - 64px);
+      ${props => props.theme.type.weight.prd.bold}
+    }
+  }
+  p{
+    ${props => props.theme.type.size.body2}
+  }
+`;
+
+const ImageCo2 = styled.div`
   position: relative;
-`;
-
-const Arrow = styled.img`
-
-`;
-
-const FlakeTunnel = styled.div`
+  width: 360px !important;
   display: flex;
-  margin-bottom: 120px;
-  width: 100%;
-  justify-content: space-around;
-background-image: ${`linear-gradient(to bottom, rgba(8, 22, 36, 0), rgba(18, 34, 41, 1), rgba(8, 22, 36, 0))`};
-  padding: 64px 0px;
-`;
-
-const Flake = styled.div`
-  width: 208px;
-  height: auto;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   img{
     width: 100%;
-    height: auto;
   }
-  @media only screen and (max-width: 480px) {
-    width: calc(33% - 24px);
+  .title{
+    display: flex;
+    width: 100% !important;
+    margin-bottom: 24px;
     img{
-    width: 100%;
-    height: auto;
+      width: 64px;
+      height: 64px;
+    }
+    p{
+      width: calc(100% - 64px);
+      ${props => props.theme.type.weight.prd.bold}
+    }
   }
+  p{
+    margin-bottom: 16px;
+    ${props => props.theme.type.size.body2}
+  }
+`;
+
+const ImageMark = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  ${props => props.theme.layout.flexColCenter}
+  color: ${props => props.theme.color.brand.epGreen};
+  background-color: rgba(100, 100, 255, 0.86);
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.caption}
+  position: absolute;
+  top: ${props => `${props.top}px`};
+  left: ${props => `${props.left}px`};
+`;
+
+const Row = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+`;
+
+const PartLegend = styled.div`
+  width: 50%;
+  color: ${props => props.theme.color.brand.epGreen};
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.caption}
+  margin-bottom: 12px;;
+`;
+
+const ShiftUp = styled.div`
+  width: 100%;
+  margin-top: -420px;
+  margin-bottom: 280px;
+  div{
+    padding: 24px 0px;
+    background-color: rgba(2, 15, 24, 0.48);
   }
 `;
 
@@ -333,35 +239,64 @@ const Divider = styled.hr`
   margin-bottom: 320px;
 `;
 
-const ExpBox = styled.div`
-  position: relative;
-  border-radius: 4px;
-  background-color: #D9F0F0;
-  padding: 24px;
-  padding-left: 48px;
-  border: solid 0.5px ${props => props.theme.color.brand.green};
-  width: 512px;
-  position: absolute;
-  top: 100px;
-  left: calc((100% - 512px)/2);
-  ${props => props.theme.type.size.body2}
-  color: ${props => props.theme.color.ui.strong};
-  @media only screen and (max-width: 480px) {
-    width: calc(100% - 32px);
-    left: 16px;
-  }
-`;
+const carPartList = [
+  {
+    title: 'Side Garnish',
+    id: 'A',
+    top: 145,
+    left: 80,
+  },
+  {
+    title: 'Lamp Housing',
+    id: 'B',
+    top: 115,
+    left: 140,
+  },
+  {
+    title: 'Door Module',
+    id: 'C',
+    top: 125,
+    left: 230,
+  },
+  {
+    title: 'Sunroof Frame',
+    id: 'D',
+    top: 25,
+    left: 100,
+  },
+];
 
-const Marker = styled.img`
-  position: absolute;
-  top: 24px;
-  left: 16px;
-`;
+const washingPartList = [
+  {
+    title: 'Drum Tube',
+    id: 'A',
+    top: 125,
+    left: 130,
+  },
+  {
+    title: 'Blower Housing',
+    id: 'B',
+    top: 15,
+    left: 90,
+  },
+  {
+    title: 'Body Drawer',
+    id: 'C',
+    top: -5,
+    left: 160,
+  },
+  {
+    title: 'Gasket',
+    id: 'D',
+    top: 95,
+    left: 190,
+  },
+];
+
 
 const Chapter3 = ({
   currentChapter,
   chapterObject,
-  currentSection,
 }) => {
 
   const { t } = useTranslation();
@@ -375,82 +310,68 @@ const Chapter3 = ({
   const [isS3Trigger, setIsS3Trigger] = useState(false);
   const bottleList = [1, 2, 3];
 
-  const circleList = [
-    {
-      x: 1,
-      y: 0,
-      img: circle_product
-    },
-    {
-      x: 1,
-      y: 1,
-      img: circle_waste
-    },
-    {
-      x: 0,
-      y: 1,
-      img: circle_part
-    },
-    {
-      x: 0,
-      y: 0,
-      img: circle_flake
-    },
-  ];
-
-  const nodeList = [
-    {
-      x: circleSize.width / 2 - nodeSize.width / 2,
-      y: nodeSize.margin,
-      img: ic_production
-    },
-    {
-      x: circleSize.width - nodeSize.width - nodeSize.margin,
-      y: circleSize.height / 2 - nodeSize.height / 2,
-      img: ic_dispose
-    },
-    {
-      x: circleSize.width / 2 - nodeSize.width / 2,
-      y: circleSize.height - nodeSize.height - nodeSize.margin,
-      img: ic_collect
-    },
-    {
-      x: nodeSize.margin,
-      y: circleSize.height / 2 - nodeSize.height / 2,
-      img: ic_recycling
-    }
-  ];
-
   const recycleMethods = [
     {
       id: "mr",
       name: 'Mechanical\nRecycling',
-      color1: color.brand.emerald,
-      color2: color.brand.epGreen,
-      img: illust_mr,
-      img2: illust_result_mr
+      img: illust_circle_mr,
+      img2: illust_result_mr,
+      result: {
+        title: `플라스틱 플레이크\n(Plastic Flake)`,
+        exp: `재생산되는 플라스틱 제품의 원료로 사용되는 플라스틱 결정체`
+      }
     },
     {
       id: "cr",
       name: 'Chemical\nRecycling',
-      color1: color.brand.epDeepPurple,
-      color2: color.brand.epPurple,
-      img: illust_cr,
-      img2: illust_result_cr
+      img: illust_circle_cr,
+      img2: illust_result_cr,
+      result: {
+        title: `석유화학의 원제료\n(Petrochemical)`,
+        exp: `플라스틱 유기화합물의 화학적 원료로 정제공저의 원료로 사용`
+      }
     },
-
     {
       id: "tr",
       name: 'Thermal\nRecycling',
-      color1: color.brand.orangeDark,
-      color2: color.brand.orange,
-      img: illust_tr,
-      img2: illust_result_tr
+      img: illust_circle_tr,
+      img2: illust_result_tr,
+      result: {
+        title: `열 발전 에너지 연료\n(Thermal Energy)`,
+        exp: `화력발전을 위한 연료로 사용`
+      }
+    }
+  ];
+
+  const mrReulstList = [
+    {
+      title: '아스팔트 포장재',
+      img: illust_mr1
+    },
+    {
+      title: '건축자재',
+      img: illust_mr2
+    },
+    {
+      title: '일회용 파레트',
+      img: illust_mr3
+    }
+  ];
+
+  const mrReulstList2 = [
+    {
+      title: '자동차 부품',
+      img: illust_mr4
+    },
+    {
+      title: '세탁기 부품',
+      img: illust_mr5
     }
   ];
 
   return (
     <Container ref={chapterObject.ref}>
+      {/* TITLE */}
       <ViewportWrapper
         onEnterViewport={
           () => {
@@ -495,22 +416,22 @@ const Chapter3 = ({
             </TitleCenter>
             <Wrapper>
               <IllustContainer>
-                {/* {
+                {
                   currentChapter === 4 &&
                   <PlasticLiteracy
-                    id={'c3'}
                     starChatper={4}
-                    currentChapter={3}
+                    currentChapter={currentChapter}
                   />
-                } */}
+                }
+                <Text>
+                  {t('c3-s1-exp')}
+                </Text>
               </IllustContainer>
             </Wrapper>
-            <Text>
-              {t('c3-s1-exp')}
-            </Text>
           </ToTop>
         </ViewportWrapper>
       </Section>
+      {/* TECNIQUE INTRO */}
       <Section>
         <ViewportWrapper
           onEnterViewport={
@@ -535,117 +456,157 @@ const Chapter3 = ({
                 index={0}
                 isContentFit={true}
               />
-              <ReyclingList>
-                {
-                  recycleMethods.map((method) =>
-                    <Cycle
-                      color1={method.color1}
-                      color2={method.color2}
-                      isBorder={method.id === 'mr'}
-                    >
-                      <p>{method.name}</p>
-                      <img src={method.img} />
-                    </Cycle>
-                  )
-                }
-              </ReyclingList>
+              <ImageContent>
+                <h2>
+                  <span>재활용 기술</span>
+                </h2>
+                <ImageList2>
+                  {
+                    recycleMethods.map((recycle, index) =>
+                      <ImageCol key={index}>
+                        <img src={recycle.img} alt='' />
+                        <img className={'arrow'} src={ic_arrow_down_white} alt='' />
+                      </ImageCol>
+                    )
+                  }
+                </ImageList2>
+              </ImageContent>
+              <ImageContent>
+                <h2>
+                  <span>공정 산출물</span>
+                </h2>
+                <ImageList2>
+                  {
+                    recycleMethods.map((recycle, index) =>
+                      <ImageCol key={index}>
+                        <div className={'title'}>
+                          <img src={recycle.img2} alt='' />
+                          <p>{recycle.result.title}</p>
+                        </div>
+                        <p>{recycle.result.exp}</p>
+                      </ImageCol>
+                    )
+                  }
+                </ImageList2>
+              </ImageContent>
               <Divider />
+              {/* GENERAL MR */}
               <SectionContentHorizon
-                title={'Mechanical Recycling'}
-                exp={t('c3-s2-subexp')}
+                title={t('c3-s3-title')}
+                exp={t('c3-s3-exp')}
                 index={1}
                 isContentFit={true}
               />
-              <FlakeTunnel>
-                <Flake>
-                  <img src={illust_flake_blue} alt='' />
-                </Flake>
-                <Flake>
-                  <img src={illust_flake_green} alt='' />
-                </Flake>
-                <Flake>
-                  <img src={illust_flake_orange} alt='' />
-                </Flake>
-              </FlakeTunnel>
+              <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_general} alt='' />
+              <ShiftUp>
+                <SectionContentHorizon
+                  title={t('c3-s4-title')}
+                  exp={t('c3-s4-exp')}
+                  index={2}
+                  isContentFit={true}
+                />
+              </ShiftUp>
               <ImageContent>
                 <h2>
-                  <span>
-                    {t('c3-s3-title')}
-                  </span>
-                  <br />
-                  {t('c3-s3-exp')}
+                  <span>{t('c3-s4-subtitle')}</span>
                 </h2>
-                <ViewportWrapper
-                  onEnterViewport={
-                    () => {
-                      setIsS1ProductTrigger(true);
-                    }
-                  }
-                >
+                <ImageList>
                   {
-                    bottleList.map((bottle, i) =>
-                      <ToLeft
-                        isTrigger={isS1ProductTrigger}
-                        index={i}
-                      >
-                        <img src={illust_bottle} alt='' />
-                      </ToLeft>
+                    mrReulstList.map((result, index) =>
+                      <ImageCol key={index}>
+                        <img src={result.img} alt='' />
+                        <p>{result.title}</p>
+                      </ImageCol>
                     )
                   }
-                </ViewportWrapper>
+                </ImageList>
               </ImageContent>
               <Divider />
+              {/* GS MR */}
               <SectionContentHorizon
-                title={t('c3-s4-title')}
-                exp={t('c3-s4-exp') + t('c3-s4-subexp')}
-                index={2}
+                title={t('c3-s5-title')}
+                exp={t('c3-s5-exp')}
+                index={3}
                 isContentFit={true}
               />
-              <FlakeTunnel>
-                <Flake>
-                  <img src={illust_flake_blue} alt='' />
-                </Flake>
-                <Flake>
-                  <img src={illust_flake_green} alt='' />
-                </Flake>
-                <Flake>
-                  <img src={illust_flake_orange} alt='' />
-                </Flake>
-              </FlakeTunnel>
+              <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_gs} alt='' />
               <ImageContent>
                 <h2>
-                  <span>
-                    {t('c3-s5-title')}
-                  </span>
-                  <br />
-                  {t('c3-s5-exp')}
+                  <span>{t('c3-s5-subtitle')}</span>
                 </h2>
-                <ViewportWrapper
-                  onEnterViewport={
-                    () => {
-                      setIsS2ProductTrigger(true);
-                    }
-                  }
-                >
+                <ImageList>
                   {
-                    bottleList.map((bottle, i) =>
-                      <ToLeft
-                        isTrigger={isS2ProductTrigger}
-                        index={i}
-                      >
-                        <img src={illust_bottle} alt='' />
-                      </ToLeft>
+                    mrReulstList2.map((result, index) =>
+                      <ImageCo2 key={index}>
+                        <img src={result.img} alt='' />
+                        <p>{result.title}</p>
+                        {
+                          index === 0 &&
+                          <>
+                            {
+                              carPartList.map((part, j) =>
+
+                                <ImageMark
+                                  top={part.top}
+                                  left={part.left}
+                                >
+                                  {part.id}
+                                </ImageMark>
+
+                              )
+                            }
+                            <Row>
+                              {
+                                carPartList.map((part, j) =>
+
+                                  <PartLegend>
+                                    {`${part.id} - ${part.title}`}
+                                  </PartLegend>
+
+                                )
+                              }
+                            </Row>
+                          </>
+                        }
+                        {
+                          index === 1 &&
+                          <>
+                            {
+                              washingPartList.map((part, j) =>
+                                <ImageMark
+                                  top={part.top}
+                                  left={part.left}
+                                >
+                                  {part.id}
+                                </ImageMark>
+                              )
+                            }
+                            <Row>
+                              {
+                                washingPartList.map((part, j) =>
+
+                                  <PartLegend>
+                                    {`${part.id} - ${part.title}`}
+                                  </PartLegend>
+
+                                )
+                              }
+                            </Row>
+                          </>
+                        }
+                      </ImageCo2>
                     )
                   }
-                </ViewportWrapper>
+                </ImageList>
               </ImageContent>
-              <Divider />
+              {/* GS CR */}
               <SectionContentHorizon
                 title={t('c3-s6-title')}
                 exp={t('c3-s6-exp')}
                 index={3}
                 isContentFit={true}
               />
+              <img style={{ width: '100%', height: 'auto' }} src={illust_process_cr} alt='' />
             </LiveArea>
           </ToTop>
         </ViewportWrapper>
@@ -660,20 +621,17 @@ const Chapter3 = ({
             setIsVideoTrigger(false);
           }}
         >
-          <VideoBackground
-            isVideoPlay={isVideoTrigger}
-            width={windowSize.width}
-            height={windowSize.height}
-            isFilter={true}
-            videoSrc={video_s4}
-            refObject={chapterObject.refSection[5]}
-            isTrigger={isVideoTrigger}
-          >
-            <MsgFullScreen
-              title={t('c3-s8-title')}
-              exp={t('c3-s8-exp')}
-            />
-          </VideoBackground>
+          <ImageBackground
+              isFilter={true}
+              img={bg_transition}
+              refObject={chapterObject.refSection[5]}
+              isTrigger={isVideoTrigger}
+            >
+              <MsgFullScreen
+                title={t('c3-s8-title')}
+                exp={t('c3-s8-exp')}
+              />
+            </ImageBackground>
         </ViewportWrapper>
       </Section>
     </Container>

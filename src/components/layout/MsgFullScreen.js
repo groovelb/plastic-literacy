@@ -21,7 +21,7 @@ const Title = styled.div`
 		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.exp.bold}
 		text-transform: capitalize;
-		margin-bottom: 16px;
+		margin-bottom: 48px;
 	}
 	h2{
 		${props => props.theme.type.size.h2}
@@ -36,14 +36,14 @@ const Title = styled.div`
 
 const Exp = styled.div`
 	position: relative;
-	width: 75%;
+	width: 100%;
 	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.light}
 	text-align: left;
 	margin-top: 12px;
-	padding: 48px;
+	/* padding: 48px; */
 	transition: opacity 1s ease-in-out;
-	border: solid 1px #fff;
+	/* border: solid 1px #fff; */
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
