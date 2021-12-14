@@ -207,7 +207,7 @@ const Chapter2 = ({
           width={windowSize.width}
           height={windowSize.height}
           isFilter={true}
-          videoSrc={bg_video_s1}
+          videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/video_c1_transition2.mp4?alt=media&token=37363232-5063-40bb-a5a4-2247a08ed314'}
         >
           <MsgFullScreen
             title={t('c2-s1-title')}
