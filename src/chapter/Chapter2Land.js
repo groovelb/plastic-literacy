@@ -26,7 +26,7 @@ import img_s3_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
 import img_s3_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
 import bg_transition from '../assets/img/bg/c2_land_transition.jpg';
 
-const sankeyHeight = 424;
+const sankeyHeight = 386;
 
 const Container = styled.div`
   width: 100%;

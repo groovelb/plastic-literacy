@@ -92,7 +92,7 @@ const PlasticCycle = ({
         });
 
       cycle = svg.append("g")
-        .attr("class", "cycle")
+        .attr("class", `cycle_${id}`)
         .attr("transform", `translate(${margin.left},${margin.top})`);
 
       let pathWhole = d3.path();
@@ -136,7 +136,7 @@ const PlasticCycle = ({
 
       cycle.append("path")
         .attr("d", pathProduct)
-        .attr("class", "circle_path_product")
+        .attr("class", `circle_path_product_${id}`)
         .attr("fill", "none")
         // .attr("stroke", "#009999")
         .attr("opacity", 0.12)
@@ -220,7 +220,7 @@ const PlasticCycle = ({
       width: isMobile ? 10 : 15,
       hegiht: isMobile ? 32 : 48
     }
-    const bottleGroup = d3.select('.cycle').selectAll(".bottle")
+    const bottleGroup = d3.select(`.cycle_${id}`).selectAll(`.bottle_${id}`)
       .data(() => {
         let data = [];
         let num = 100;
@@ -243,7 +243,7 @@ const PlasticCycle = ({
       })
       .enter()
       .append("g")
-      .attr("class", "bottle")
+      .attr("class", `bottle_${id}`)
       .attr("transform", "translate(-100,-100)")
 
     bottleGroup.append("svg:image")
@@ -264,14 +264,13 @@ const PlasticCycle = ({
       })
       .attr("opacity", 1)
       .tween("pathTween", (d) => {
-        let path = d3.select(`.circle_path_product`);
+        let path = d3.select(`.circle_path_product_${id}`);
         let offset = {
           x: d.x,
           y: d.y,
           deg: parseInt(Math.random() * 360),
         };
-
-        if (currentChapter === 0) return pathTweenWithGroup(path, offset, bottleSize, 3);
+        return pathTweenWithGroup(path, offset, bottleSize, 3);
       })
       .remove();
 
@@ -280,7 +279,7 @@ const PlasticCycle = ({
       width: isMobile ? 15 : 20,
       hegiht: isMobile ? 34 : 46
     }
-    const trashGroup = d3.select('.cycle').selectAll(".trash")
+    const trashGroup = d3.select(`.cycle_${id}`).selectAll(".trash")
       .data(() => {
         let data = [];
         let num = 100;
@@ -336,7 +335,7 @@ const PlasticCycle = ({
       width: isMobile ? 40 : 56,
       hegiht: isMobile ? 40 : 56
     }
-    const reproductGroup = d3.select('.cycle').selectAll(".reproduct")
+    const reproductGroup = d3.select(`.cycle_${id}`).selectAll(".reproduct")
       .data(() => {
         let data = [];
         let num = 100;
@@ -387,7 +386,7 @@ const PlasticCycle = ({
       width: isMobile ? 40 : 56,
       hegiht: isMobile ? 40 : 56
     }
-    const flakeGroup = d3.select('.cycle').selectAll(".flake")
+    const flakeGroup = d3.select(`.cycle_${id}`).selectAll(".flake")
       .data(() => {
         let data = [];
         let num = 100;

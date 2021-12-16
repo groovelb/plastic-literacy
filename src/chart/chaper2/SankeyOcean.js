@@ -11,6 +11,28 @@ import ic_collect from "../../assets/img/icon/ic_collect.svg";
 import ic_select from "../../assets/img/icon/ic_select.svg";
 import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
 
+// img
+import illust_p1 from "../../assets/img/icon/particle/p1.svg";
+import illust_p2 from "../../assets/img/icon/particle/p2.svg";
+import illust_p3 from "../../assets/img/icon/particle/p3.svg";
+import illust_p4 from "../../assets/img/icon/particle/p4.svg";
+import illust_p5 from "../../assets/img/icon/particle/p5.svg";
+import illust_p6 from "../../assets/img/icon/particle/p6.svg";
+import illust_p7 from "../../assets/img/icon/particle/p7.svg";
+import illust_p8 from "../../assets/img/icon/particle/p8.svg";
+import illust_p9 from "../../assets/img/icon/particle/p9.svg";
+
+const particleIllustList = [
+  illust_p1,
+  illust_p2,
+  illust_p3,
+  illust_p4,
+  illust_p5,
+  illust_p6,
+  illust_p7,
+  illust_p8,
+  illust_p9
+];
 
 const Container = styled.div`
   width: 100%;
@@ -159,56 +181,56 @@ let data = {
       "name": "폐기물 선별1",
       "source": 5,
       "target": 6,
-      "value": 419000 * 7/10,
+      "value": 419000 * 7 / 10,
       "isReal": false
     },
     {
       "name": "폐기물 선별2",
       "source": 5,
       "target": 7,
-      "value": 419000 * 3/10,
+      "value": 419000 * 3 / 10,
       "isReal": false
     },
     {
       "name": "플라스틱 처리1",
       "source": 6,
       "target": 8,
-      "value": 419000 * 7/30,
+      "value": 419000 * 7 / 30,
       "isReal": false
     },
     {
       "name": "플라스틱 처리2",
       "source": 6,
       "target": 9,
-      "value": 419000 * 7/30,
+      "value": 419000 * 7 / 30,
       "isReal": false
     },
     {
       "name": "플라스틱 처리3",
       "source": 6,
       "target": 10,
-      "value": 419000 * 7/30,
+      "value": 419000 * 7 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 9,
-      "value": 419000 * 3/30,
+      "value": 419000 * 3 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 10,
-      "value": 419000 * 3/30,
+      "value": 419000 * 3 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 11,
-      "value": 419000 * 3/30,
+      "value": 419000 * 3 / 30,
       "isReal": false
     },
   ]
@@ -229,8 +251,8 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   const margin = { top: 80, right: 10, bottom: 10, left: 24 };
-    // innerWidth = width - margin.left - margin.right,
-    // innerHeight = height - margin.top - margin.bottom;
+  // innerWidth = width - margin.left - margin.right,
+  // innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -290,11 +312,11 @@ const Sankey = ({
         nodeGroupTemp[node.depth].x = node.x0;
 
         stage.append("text")
-              .attr("x",node.x0)
-              .attr("y",-64)
-              .attr("class","stage_title")
-              .attr("text-anchor","middle")
-              .text(nodeGroupTemp[node.depth].name);
+          .attr("x", node.x0)
+          .attr("y", -64)
+          .attr("class", "stage_title")
+          .attr("text-anchor", "middle")
+          .text(nodeGroupTemp[node.depth].name);
 
         stage.append("line")
           .attr("class", "stage")
@@ -316,6 +338,13 @@ const Sankey = ({
     });
 
     defs = svg.append('defs');
+
+    const particleGroupOcean = svg.append("g").selectAll(".particleGroupOcean")
+      .data(graph.links)
+      .enter().append("g")
+      .attr("class", (d, i) => {
+        return `particleGroupOcean particleGroupOcean${i}`
+      });
 
     // add in the links
     link = svg.append("g").selectAll(".link")
@@ -407,38 +436,31 @@ const Sankey = ({
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
-        if(d.isReal){
+        if (d.isReal) {
           return valueScale(d.value);
-        }else{
+        } else {
           return '16px';
         }
       })
       .style("fill", "#ffffff")
-      .text(function (d) { 
-        if(d.isReal){
+      .text(function (d) {
+        if (d.isReal) {
           return d.value;
         }
         else {
           return '추정치';
         }
-        
+
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
-
-
-    const particleGroupOcean = svg.append("g").selectAll(".particleGroupOcean")
-      .data(graph.links)
-      .enter().append("g")
-      .attr("class", (d, i) => {
-        return `particleGroupOcean particleGroupOcean${i}`
-      });
 
     setIsInitiate(true);
 
     return () => {
       svg = null;
       svgRef = null;
+      setStop(true);
     }
   }, []);
 
@@ -486,10 +508,10 @@ const Sankey = ({
     if (1 <= currentStage && currentStage <= 3) {
 
       let depthList;
-      if(currentStage===1) depthList = [0];
-      if(currentStage===2) depthList = [1,2];
-      if(currentStage===3) depthList = [3];
-      
+      if (currentStage === 1) depthList = [0];
+      if (currentStage === 2) depthList = [1, 2];
+      if (currentStage === 3) depthList = [3];
+
       if (count === 0) {
         randerParticle(depthList);
       }
@@ -501,7 +523,7 @@ const Sankey = ({
     }
   }
 
-  useAnimationFrameLoop(updateParticle, currentStage === 0)
+  useAnimationFrameLoop(updateParticle, stop)
 
   useEffect(() => {
     if (currentChapter !== 3) {
@@ -518,6 +540,7 @@ const Sankey = ({
   }, [currentStage])
 
   function randerParticle(depthList) {
+    const delay = 7500;
     // console.log(currentChapter);
     if (1 <= currentStage && currentStage <= 4) {
       let linkNum = graph.links.length;
@@ -526,34 +549,40 @@ const Sankey = ({
         let targetColor = graph.links[i].target.color;
         if (depthList.includes(graph.links[i].source.depth)) {
 
-          d3.select(`.particleGroupOcean${i}`)
+          let particleGroup = d3.select(`.particleGroupOcean${i}`)
             .selectAll('.particle')
             .data(() => {
               let data = [];
-              let num = parseInt(graph.links[i].value / 1000);
+              let num = parseInt(graph.links[i].value / 2500);
               let bandHeight = (graph.links[i].width - 12);
               for (let index = 0; index < num; index++) {
                 data.push(parseInt(Math.random() * bandHeight) - bandHeight / 2);
               }
               return data;
             })
-            .enter().append("rect")
-            .attr("width", 6)
-            .attr("height", 6)
-            .attr("opacity", 0)
-            // .attr("r", 3)
+            .enter().append("g")
             .attr("class", "particle")
-            .attr("fill", targetColor)
+            .attr("opacity", 0)
+            .attr("transform", "translate(0,0)");
+
+          particleGroup.append("svg:image")
+            .attr("xlink:href", (d, i) => particleIllustList[i % 9])
+            .attr("x", 0)
+            .attr("y", -16)
+            .attr("width", 32)
+            .attr("height", 32);
+
+          particleGroup
             .transition()
             .duration(1500)
             .delay(() => {
-              return Math.random() * 3000;
+              return Math.random() * delay;
             })
             .attr("opacity", 1)
             .tween("pathTween", (d) => {
               if (svg !== null) {
                 let path = svg.select(`.path${i}`)
-                return pathTween(path, d, 3);
+                return pathTweenWithGroup(path, d, 3);
               }
             }).remove()
         }
@@ -563,22 +592,22 @@ const Sankey = ({
 
   useEffect(() => {
     let depthList = [];
-      if(currentStage===1) depthList = [0];
-      if(currentStage===2) depthList = [1,2];
-      if(currentStage===3) depthList = [3];
+    if (currentStage === 1) depthList = [0];
+    if (currentStage === 2) depthList = [1, 2];
+    if (currentStage === 3) depthList = [3];
 
-      d3.selectAll(`.link.ocean`)
+    d3.selectAll(`.link.ocean`)
       // .transition()
       // .duration(1500)
       .style("stroke-opacity", 0.05);
 
-    if(depthList.length>0){
+    if (depthList.length > 0) {
       depthList.forEach(depth => {
         d3.selectAll(
-        `.link_${depth}.ocean`)
-        .transition()
-        .duration(1500)
-        .style("stroke-opacity", 0.25);
+          `.link_${depth}.ocean`)
+          .transition()
+          .duration(1500)
+          .style("stroke-opacity", 0.25);
       });
     }
   }, [currentStage]);
@@ -591,6 +620,19 @@ const Sankey = ({
       d3.select(this) // Select the circle
         .attr("x", point.x + 0) // Set the cx
         .attr("y", point.y + offset) // Set the cy
+    }
+  }
+
+  function pathTweenWithGroup(path, offset, size, r) {
+    var length = path.node().getTotalLength(); // Get the length of the path
+    var r = d3.interpolate(0, length); //Set up interpolation from 0 to the path length
+    return function (t) {
+      var point = path.node().getPointAtLength(r(t)); // Get the next point along the path
+
+      d3.select(this) // Select the circle
+        // .attr("x", point.x + offset.x) // Set the cx
+        // .attr("y", point.y + offset.y) // Set the cy
+        .attr("transform", `translate(${point.x},${point.y + offset})`)
     }
   }
 

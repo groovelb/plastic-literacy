@@ -11,9 +11,28 @@ import ic_collect from "../../assets/img/icon/ic_collect.svg";
 import ic_select from "../../assets/img/icon/ic_select.svg";
 import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
 
-import illust_trash_blue from "../../assets/illust/illust_trash_blue.svg";
-import illust_trash_orange from "../../assets/illust/illust_trash_orange.svg";
-import illust_trash_emerald from "../../assets/illust/illust_trash_emerald.svg";
+// img
+import illust_p1 from "../../assets/img/icon/particle/p1.svg";
+import illust_p2 from "../../assets/img/icon/particle/p2.svg";
+import illust_p3 from "../../assets/img/icon/particle/p3.svg";
+import illust_p4 from "../../assets/img/icon/particle/p4.svg";
+import illust_p5 from "../../assets/img/icon/particle/p5.svg";
+import illust_p6 from "../../assets/img/icon/particle/p6.svg";
+import illust_p7 from "../../assets/img/icon/particle/p7.svg";
+import illust_p8 from "../../assets/img/icon/particle/p8.svg";
+import illust_p9 from "../../assets/img/icon/particle/p9.svg";
+
+const particleIllustList = [
+  illust_p1,
+  illust_p2,
+  illust_p3,
+  illust_p4,
+  illust_p5,
+  illust_p6,
+  illust_p7,
+  illust_p8,
+  illust_p9
+];
 
 const Container = styled.div`
   /* padding: 48px; */
@@ -251,8 +270,8 @@ const Sankey = ({
 
   // set the dimensions and margins of the graph
   const margin = { top: 80, right: 10, bottom: 10, left: 24 };
-    // innerWidth = width - margin.left - margin.right,
-    // innerHeight = height - margin.top - margin.bottom;
+  // innerWidth = width - margin.left - margin.right,
+  // innerHeight = height - margin.top - margin.bottom;
 
   // format constiables
   const formatNumber = d3.format(",.0f"), // zero decimal places
@@ -506,7 +525,7 @@ const Sankey = ({
     }
   }
 
-  useAnimationFrameLoop(updateParticle, currentStage === 0)
+  useAnimationFrameLoop(updateParticle, stop)
 
   useEffect(() => {
     if (currentChapter !== 2) {
@@ -523,6 +542,7 @@ const Sankey = ({
   }, [currentStage])
 
   function randerParticle(depthList) {
+    const delay = 5000;
     // console.log(currentChapter);
     if (1 <= currentStage && currentStage <= 4) {
       let linkNum = graph.links.length;
@@ -531,34 +551,40 @@ const Sankey = ({
         let targetColor = graph.links[i].target.color;
         if (depthList.includes(graph.links[i].source.depth)) {
 
-          d3.select(`.particleGroupLand${i}`)
+          let particleGroup = d3.select(`.particleGroupLand${i}`)
             .selectAll('.particle')
             .data(() => {
               let data = [];
-              let num = parseInt(graph.links[i].value / 30);
+              let num = parseInt(graph.links[i].value / 100);
               let bandHeight = (graph.links[i].width - 12);
               for (let index = 0; index < num; index++) {
                 data.push(parseInt(Math.random() * bandHeight) - bandHeight / 2);
               }
               return data;
             })
-            .enter().append("rect")
-            .attr("width", 6)
-            .attr("height", 6)
-            .attr("opacity", 0)
-            // .attr("r", 3)
+            .enter().append("g")
             .attr("class", "particle")
-            .attr("fill", targetColor)
+            .attr("opacity",0)
+            .attr("transform", "translate(0,0)");
+
+          particleGroup.append("svg:image")
+            .attr("xlink:href", (d,i) => particleIllustList[i%9])
+            .attr("x", 0)
+            .attr("y", -16)
+            .attr("width", 32)
+            .attr("height", 32);
+
+          particleGroup
             .transition()
             .duration(1500)
             .delay(() => {
-              return Math.random() * 3000;
+              return Math.random() * delay;
             })
             .attr("opacity", 1)
             .tween("pathTween", (d) => {
               if (svg !== null) {
                 let path = svg.select(`.path${i}`)
-                return pathTween(path, d, 3);
+                return pathTweenWithGroup(path, d, 3);
               }
             }).remove()
         }
@@ -577,13 +603,13 @@ const Sankey = ({
       // .duration(1500)
       .style("stroke-opacity", 0.05);
 
-    if(depthList.length>0){
+    if (depthList.length > 0) {
       depthList.forEach(depth => {
         d3.selectAll(
-        `.link_${depth}.land`)
-        .transition()
-        .duration(1500)
-        .style("stroke-opacity", 0.25);
+          `.link_${depth}.land`)
+          .transition()
+          .duration(1500)
+          .style("stroke-opacity", 0.25);
       });
     }
   }, [currentStage]);
@@ -608,7 +634,7 @@ const Sankey = ({
       d3.select(this) // Select the circle
         // .attr("x", point.x + offset.x) // Set the cx
         // .attr("y", point.y + offset.y) // Set the cy
-        .attr("transform", `translate(${point.x + offset.x},${point.y + offset.y})rotate(${offset.deg + r(t)},${size.width / 2},${size.hegiht / 2})`)
+        .attr("transform", `translate(${point.x},${point.y + offset})`)
     }
   }
 

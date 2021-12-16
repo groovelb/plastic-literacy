@@ -346,6 +346,7 @@ const Title = ({
               currentChapter === 0 && <PlasticLiteracy
                 currentChapter={currentChapter}
                 starChatper={0}
+                id={'c0'}
               />
             }
 

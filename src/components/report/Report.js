@@ -9,7 +9,7 @@ const Container = styled.div`
 
 const Stage = styled.div`
   width: 100%;
-  min-height: ${props =>`${props.minHeight}px`};
+  /* min-height: ${props =>`${props.minHeight}px`}; */
 `;
 
 const StageTitle = styled.p`

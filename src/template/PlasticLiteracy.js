@@ -99,12 +99,14 @@ const nodeList = [
 const PlasticLiteracy = ({
   currentChapter,
   starChatper,
+  id,
 }) => {
   return (
     <Illust>
       <PlasticCirculation
         currentChapter={currentChapter}
         starChatper={starChatper}
+        id={id}
       />
 
       <NodeContainer>

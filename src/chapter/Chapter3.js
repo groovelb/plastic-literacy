@@ -233,9 +233,9 @@ const ShiftUp = styled.div`
   }
 `;
 
-const Divider = styled.hr`
-  color: ${props => props.theme.color.secondary400};
-  height:0.5px;
+const Divider = styled.div`
+  border-bottom:0.5px solid ${props => props.theme.color.brand.secondary400};
+  margin-top: 80px;
   margin-bottom: 320px;
 `;
 
@@ -419,6 +419,7 @@ const Chapter3 = ({
                 {
                   currentChapter === 4 &&
                   <PlasticLiteracy
+                    id={'c3'}
                     starChatper={4}
                     currentChapter={currentChapter}
                   />
@@ -599,6 +600,7 @@ const Chapter3 = ({
                   }
                 </ImageList>
               </ImageContent>
+              <Divider />
               {/* GS CR */}
               <SectionContentHorizon
                 title={t('c3-s6-title')}

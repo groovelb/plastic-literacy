@@ -55,14 +55,16 @@ const Stage = styled.div`
 `;
 
 const verticalMove = keyframes`
-  0% { background-position: 0% 0%; }
-  100% { background-position: 0% 100%; }
+  0% { background-position: 0% 0%; opacity: 0.2}
+  100% { background-position: 0% 100%;  opacity: 0.75}
 `;
 
 const Link = styled.div`
   animation: ${verticalMove} 2s linear infinite;
+  animation-delay: ${props => `${props.delay*0.5}s`};
   background-image: linear-gradient(0deg,#020F18, #04384A);
   background-size: 100% 400%;
+  opacity: 0.2;
   width: 24px;
   height: 120px;
   margin-left: 72px;
@@ -74,14 +76,18 @@ const PlsaticVerticalStage = ({}) => {
       {
         stageList.map((stage, index, arr) =>
           <>
-            <Stage key={index}>
+            <Stage
+              key={index}
+            >
               <img src={stage.img} alt='' />
               <p>
                 {stage.title}
               </p>
             </Stage>
             {
-              (arr.length-1)!==index&& <Link />
+              (arr.length-1)!==index&& <Link
+                key={index}
+                delay={index} />
             }
           </>
         )
