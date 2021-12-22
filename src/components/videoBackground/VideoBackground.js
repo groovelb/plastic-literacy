@@ -25,6 +25,7 @@ const VideoBG = styled.div`
     object-fit: cover;
     filter: grayscale(0.4);
   }
+  filter:  ${props => props.isFilter ? `grayscale(0.12) brightness(75%)` :  `grayscale(0.0) brightness(100%)`};
   :after{
     content: '';
     position: absolute;
@@ -33,6 +34,7 @@ const VideoBG = styled.div`
     width: 100%;
     height: 100%;
     background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.64)' : 'rgba(0,0,0,0)'};
+    /* background-color: ${props => props.isFilter ? 'rgba(0,48,24,0.64)' : 'rgba(0,0,0,0)'}; */
     z-index: 9;
   }
 `;

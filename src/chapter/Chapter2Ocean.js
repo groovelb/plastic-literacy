@@ -18,6 +18,7 @@ import bg_transition from '../assets/img/bg/bg_c2_ocean_transition.jpg';
 
 
 // report image
+import { videoURL } from '../assets/mediaURL';
 import img_s1_s1 from "../assets/img/c2/report/c2-s2-p1-img.PNG";
 import img_s1_s2 from "../assets/img/c2/report/c2-s2-p2-img.PNG";
 import img_s2_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
@@ -29,7 +30,7 @@ import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } fr
 import video_transition from "../assets/video/video_c1_transition.mp4";
 import video_transition2 from "../assets/video/video_c2_c3_transition.mp4";
 
-const sankeyHeight = 360;
+const sankeyHeight = 324;
 
 
 const Container = styled.div`
@@ -122,47 +123,53 @@ const Chapter2 = ({
 
   const reportData = [
     {
-      title: t('c2-summary1-title'),
+      title: t('c2-summary4-title'),
       sectionList: [
         {
-          title: t('c2-summary1-s1-title'),
-          exp: t('c2-summary1-s1-exp'),
-          img: img_s1_s1
+          title: t('c2-summary4-s1-title'),
+          exp: t('c2-summary4-s1-exp'),
+          type: 'image',
+          src: videoURL.c2.summary.img.s4_s1
         },
         {
-          title: t('c2-summary1-s2-title'),
-          exp: t('c2-summary1-s2-exp'),
-          img: img_s1_s2
+          title: t('c2-summary4-s2-title'),
+          exp: t('c2-summary4-s2-exp'),
+          type: 'video',
+          src: videoURL.c2.summary.video.s4_s2
         },
       ]
     },
     {
-      title: t('c2-summary2-title'),
+      title: t('c2-summary5-title'),
       sectionList: [
         {
-          title: t('c2-summary2-s1-title'),
-          exp: t('c2-summary2-s1-exp'),
-          img: img_s1_s1
+          title: t('c2-summary5-s1-title'),
+          exp: t('c2-summary5-s1-exp'),
+          type: 'video',
+          src: videoURL.c2.summary.video.s5_s1
         },
         {
-          title: t('c2-summary2-s2-title'),
-          exp: t('c2-summary2-s2-exp'),
-          img: img_s1_s2
+          title: t('c2-summary5-s2-title'),
+          exp: t('c2-summary5-s2-exp'),
+          type: 'video',
+          src: videoURL.c2.summary.video.s5_s2
         },
       ]
     },
     {
-      title: t('c2-summary3-title'),
+      title: t('c2-summary6-title'),
       sectionList: [
         {
-          title: t('c2-summary3-s1-title'),
-          exp: t('c2-summary3-s1-exp'),
-          img: img_s1_s1
+          title: t('c2-summary6-s1-title'),
+          exp: t('c2-summary6-s1-exp'),
+          type: 'video',
+          src: videoURL.c2.summary.video.s6_s1
         },
         {
-          title: t('c2-summary3-s2-title'),
-          exp: t('c2-summary3-s2-exp'),
-          img: img_s1_s2
+          title: t('c2-summary6-s2-title'),
+          exp: t('c2-summary6-s2-exp'),
+          type: 'video',
+          src: videoURL.c2.summary.video.s6_s2
         },
       ]
     },
@@ -267,7 +274,7 @@ const Chapter2 = ({
           >
             <ImageBackground
               isFilter={true}
-              img={bg_transition}
+              img={videoURL.c2.s9.bg}
               refObject={chapterObject.refSection[5]}
               isTrigger={currentSection === 5}
               isTrigger={isVideo2Trigger}

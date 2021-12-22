@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import useWindowSize from '../../hook/useWindowSize';
+import { Player } from 'video-react';
 
 const Container = styled.div`
   width: 100%;
@@ -9,7 +10,7 @@ const Container = styled.div`
 
 const Stage = styled.div`
   width: 100%;
-  /* min-height: ${props =>`${props.minHeight}px`}; */
+  /* min-height: ${props => `${props.minHeight}px`}; */
 `;
 
 const StageTitle = styled.p`
@@ -25,7 +26,7 @@ const StageTitle = styled.p`
 const Section = styled.div`
   width: 100%;
   color: #fff;
-  height: ${props =>`${props.height}px`};
+  height: ${props => `${props.height}px`};
   margin-bottom: 56px;
   img{
     width: 100%;
@@ -56,7 +57,7 @@ const Report = ({
     <Container>
       {
         reportData.map((stage, i) =>
-          <Stage minHeight={windowSize.height*2}>
+          <Stage minHeight={windowSize.height * 2}>
             <StageTitle>{stage.title}</StageTitle>
             {
               stage.sectionList.map((section, j) =>
@@ -67,7 +68,15 @@ const Report = ({
                   <SectionExp>
                     {section.exp}
                   </SectionExp>
-                  <img src={section.img} alt='' />
+                  {
+                    section.type === 'image' && <img src={section.src} alt='' />
+                  }
+                  {
+                    section.type === 'video' && <Player>
+                      <source src={section.src} />
+                    </Player>
+                  }
+
                 </Section>
               )
             }

@@ -25,8 +25,9 @@ import img_s2_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
 import img_s3_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
 import img_s3_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
 import bg_transition from '../assets/img/bg/c2_land_transition.jpg';
+import { videoURL } from '../assets/mediaURL';
 
-const sankeyHeight = 386;
+const sankeyHeight = 348;
 
 const Container = styled.div`
   width: 100%;
@@ -43,6 +44,7 @@ const FadeIn = keyframes`
 `;
 
 const Chart = styled.div`
+  pointer-events: none;
   position: fixed;
   z-index: 9;
   top: 0px;
@@ -69,6 +71,26 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   height: ${window.innerHeight * 2 + 'px'};
+  table{
+    margin-left: calc(480px + 48px);
+    margin-top: 48px;
+    width: calc(100% - 480px - 48px);
+  }
+  td,th{
+    height: 48px;
+  }
+  th{
+    opacity: 0.5;
+  }
+  td{
+    padding-left: 16px;
+    padding-right: 16px;
+    color: ${props => props.theme.color.brand.epGreen};
+  }
+  table,th,td{
+    border:1px solid ${props => props.theme.color.brand.epNavy};
+    border-spacing: 0;
+  }
 `;
 
 const Chapter2 = ({
@@ -86,12 +108,14 @@ const Chapter2 = ({
         {
           title: t('c2-summary1-s1-title'),
           exp: t('c2-summary1-s1-exp'),
-          img: img_s1_s1
+          type: 'video',
+          src: videoURL.c2.summary.video.s1_s1
         },
         {
           title: t('c2-summary1-s2-title'),
           exp: t('c2-summary1-s2-exp'),
-          img: img_s1_s2
+          type: 'video',
+          src: videoURL.c2.summary.video.s1_s2
         },
       ]
     },
@@ -101,12 +125,14 @@ const Chapter2 = ({
         {
           title: t('c2-summary2-s1-title'),
           exp: t('c2-summary2-s1-exp'),
-          img: img_s2_s1
+          type: 'image',
+          src: videoURL.c2.summary.img.s2_s1
         },
         {
           title: t('c2-summary2-s2-title'),
           exp: t('c2-summary2-s2-exp'),
-          img: img_s2_s2
+          type: 'video',
+          src: videoURL.c2.summary.video.s2_s2
         },
       ]
     },
@@ -116,12 +142,14 @@ const Chapter2 = ({
         {
           title: t('c2-summary3-s1-title'),
           exp: t('c2-summary3-s1-exp'),
-          img: img_s3_s1
+          type: 'video',
+          src: videoURL.c2.summary.video.s3_s1
         },
         {
           title: t('c2-summary3-s2-title'),
           exp: t('c2-summary3-s2-exp'),
-          img: img_s3_s2
+          type: 'video',
+          src: videoURL.c2.summary.video.s3_s2
         },
       ]
     },
@@ -142,6 +170,21 @@ const Chapter2 = ({
       exp: t("c2-s4-exp"),
     }
   ];
+
+  const categoryTableData = {
+    header: [
+      '번호','소재','재활용 여부','예시',
+    ],
+    data: [
+      [1,'PETE','가능','생수병, 음료수병'],
+      [2,'HDPE','가능','유아용 장난감, 젖병, 세재용기'],
+      [3,'PVC','일부 가능','우비, 비닐, 고무호스'],
+      [4,'LDPE','가능','휴대폰 필름, 비닐봉지, 위생장갑 등 투명한 제품'],
+      [5,'PP','가능', '소주 상자, 주방 조리도구, 자동차 내장재'],
+      [6,'PS','가능', '요구르트병, 과자봉지'],
+      [7,'OTHER','불가능','비닐, 건축 외장재, 휴대폰 케이스'],
+    ]
+  }
 
   const [innerHeight, setInnterHeight] = useState(window.innerHeight);
   const [isTitleTrigger, setIsTitleTrigger] = useState(false);
@@ -180,13 +223,14 @@ const Chapter2 = ({
         }}
       >
         <ChapterTitle
-          img={bg_c2}
+          src={videoURL.c2.bg}
           numChapter={2}
           title={t("c2-title")}
           subTitle={t("c2-subtitle")}
           bgColor={'dark'}
           exp={t("c2-exp")}
           isTrigger={isTitleTrigger}
+          isFilter={true}
         />
       </ViewportWrapper>
       <SpaceFullScreen
@@ -201,18 +245,16 @@ const Chapter2 = ({
           setIsTrigger1(false);
         }}
       >
-        <VideoBackground
-          isTrigger={isTrigger1}
-          isVideoPlay={true}
-          width={windowSize.width}
-          height={windowSize.height}
-          isFilter={true}
-          videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/video_c1_transition2.mp4?alt=media&token=37363232-5063-40bb-a5a4-2247a08ed314'}
-        >
-          <MsgFullScreen
-            title={t('c2-s1-title')}
-          />
-        </VideoBackground>
+        <ImageBackground
+              isFilter={true}
+              img={videoURL.c2.s1.bg}
+              refObject={chapterObject.refSection[5]}
+              isTrigger={isTrigger1}
+            >
+              <MsgFullScreen
+                title={t('c2-s1-title')}
+              />
+            </ImageBackground>
       </ViewportWrapper>
       <SpaceFullScreen
         numX={0.75}
@@ -230,8 +272,6 @@ const Chapter2 = ({
               isActive={isChartActive}
             >
               <SankeyLand
-                // width={1200}
-                // height={sankeyHeight}
                 currentStage={currentSection}
                 currentChapter={currentChapter}
               />
@@ -252,7 +292,34 @@ const Chapter2 = ({
                     exp={section.exp}
                     index={i}
                   />
-                  {/* {`enter: ${i}`} */}
+                  {
+                    i===0&&
+                    <table>
+                      <tr>
+                      {
+                        categoryTableData.header.map((item,index) =>
+                          <th key={index}>
+                            {item}
+                          </th>
+                        )
+                      }
+                      </tr>
+                      {
+                        categoryTableData.data.map((row,index) =>
+                          <tr key={index}>
+                            {
+                              row.map((data,index) =>
+                                <td key={index}>
+                                  {data}
+                                </td>
+                              )
+                            }
+                          </tr>
+                        )
+                      }
+                      
+                    </table>
+                  }
                 </ViewportWrapper>
               </Wrapper>
             )
@@ -282,7 +349,7 @@ const Chapter2 = ({
             />
             <ImageBackground
               isFilter={true}
-              img={bg_transition}
+              img={videoURL.c2.s5.bg}
               refObject={chapterObject.refSection[5]}
               isTrigger={currentSection === 5}
             >

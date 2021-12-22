@@ -6,6 +6,8 @@ import handleViewport from 'react-in-viewport';
 import ToTop from '../motion/ToTop';
 import ViewportWrapper from "../ViewportWrapper";
 import ImageBackground from "../../components/videoBackground/ImageBackground";
+import useWindowSize from '../../hook/useWindowSize';
+import VideoBackground from "../videoBackground/VideoBackground";
 
 
 const Container = styled(Section)`
@@ -169,19 +171,24 @@ const ChapterTitle = ({
 	exp,
 	colorMode,
 	numChapter,
-	isTrigger,
-	img
+	isFilter,
+	src
 }) => {
 
 	const [isTitleOn, setIsTitleOn] = useState(false);
 	const [isExpOn, setIsExpOn] = useState(true);
 
+	const windowSize = useWindowSize();
+
 	return (
 		<>
-			<ImageBackground
-				isFilter={true}
+			<VideoBackground
 				isTrigger={isTitleOn}
-				img={img}
+				isVideoPlay={true}
+				width={windowSize.width}
+				height={windowSize.height}
+				isFilter={true}
+				videoSrc={src}
 			/>
 			<Container
 				className={className}

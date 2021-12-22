@@ -9,6 +9,7 @@ import MsgFullScreen from "../components/layout/MsgFullScreen";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import VideoBackground from "../components/videoBackground/VideoBackground";
 import ToTop from '../components/motion/ToTop';
+import FadeIn from '../components/motion/FadeIn';
 import LiveArea from "../components/layout/LiveArea";
 import PlasticLiteracy from "../template/PlasticLiteracy";
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
@@ -28,6 +29,7 @@ import illust_circle_cr from "../assets/img/illust/c3/circle_cr.svg";
 import illust_circle_tr from "../assets/img/illust/c3/circle_tr.svg";
 import ic_arrow_down_white from "../assets/img/icon/ic_arrow_down_white.svg";
 
+import { videoURL } from '../assets/mediaURL';
 import illust_process_mr_general from "../assets/img/illust/c3/process_mr_general.png";
 import illust_process_mr_gs from "../assets/img/illust/c3/process_mr_gs.png";
 import illust_process_cr from "../assets/img/illust/c3/process_cr.png";
@@ -304,10 +306,13 @@ const Chapter3 = ({
   const [isTitleTrigger, setIsTitleTrigger] = useState(false);
   const [isS1Trigger, setIsS1Trigger] = useState(false);
   const [isS2Trigger, setIsS2Trigger] = useState(false);
-  const [isS1ProductTrigger, setIsS1ProductTrigger] = useState(false);
-  const [isS2ProductTrigger, setIsS2ProductTrigger] = useState(false);
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
+  const [isS8Trigger, setIsS8Trigger] = useState(false);
   const [isS3Trigger, setIsS3Trigger] = useState(false);
+  const [isLowTrigger, setIsLowTrigger] = useState(false);
+  const [isS4Trigger, setIsS4Trigger] = useState(false);
+  const [isHighTrigger, setIsHighTrigger] = useState(false);
+  const [isS5Trigger, setIsS5Trigger] = useState(false);
   const bottleList = [1, 2, 3];
 
   const recycleMethods = [
@@ -391,7 +396,8 @@ const Chapter3 = ({
           bgColor={'dark'}
           exp={t("c3-exp")}
           isTrigger={isTitleTrigger}
-          img={bg_title}
+          isFilter={true}
+          src={videoURL.c3.bg}
         />
       </ViewportWrapper>
       <Section>
@@ -407,7 +413,7 @@ const Chapter3 = ({
             }
           }
         >
-          <ToTop
+          <FadeIn
             isTrigger={isS1Trigger}
             index={0}
           >
@@ -429,7 +435,7 @@ const Chapter3 = ({
                 </Text>
               </IllustContainer>
             </Wrapper>
-          </ToTop>
+          </FadeIn>
         </ViewportWrapper>
       </Section>
       {/* TECNIQUE INTRO */}
@@ -446,39 +452,50 @@ const Chapter3 = ({
             }
           }
         >
-          <ToTop
-            isTrigger={isS2Trigger}
-            index={0}
-          >
-            <LiveArea>
+          <LiveArea>
+            <FadeIn
+              isTrigger={isS2Trigger}
+              index={0}
+            >
               <SectionContentHorizon
                 title={t('c3-s2-title')}
                 exp={t('c3-s2-exp')}
                 index={0}
                 isContentFit={true}
               />
-              <ImageContent>
-                <h2>
-                  <span>재활용 기술</span>
-                </h2>
-                <ImageList2>
-                  {
-                    recycleMethods.map((recycle, index) =>
+            </FadeIn>
+            <ImageContent>
+              <h2>
+                <span>재활용 기술</span>
+              </h2>
+              <ImageList2>
+                {
+                  recycleMethods.map((recycle, index) =>
+                    <ToTop
+                      isTrigger={isS2Trigger}
+                      index={3 + index}
+                    >
                       <ImageCol key={index}>
+
                         <img src={recycle.img} alt='' />
                         <img className={'arrow'} src={ic_arrow_down_white} alt='' />
                       </ImageCol>
-                    )
-                  }
-                </ImageList2>
-              </ImageContent>
-              <ImageContent>
-                <h2>
-                  <span>공정 산출물</span>
-                </h2>
-                <ImageList2>
-                  {
-                    recycleMethods.map((recycle, index) =>
+                    </ToTop>
+                  )
+                }
+              </ImageList2>
+            </ImageContent>
+            <ImageContent>
+              <h2>
+                <span>공정 산출물</span>
+              </h2>
+              <ImageList2>
+                {
+                  recycleMethods.map((recycle, index) =>
+                    <ToTop
+                      isTrigger={isS2Trigger}
+                      index={6 + index}
+                    >
                       <ImageCol key={index}>
                         <div className={'title'}>
                           <img src={recycle.img2} alt='' />
@@ -486,51 +503,109 @@ const Chapter3 = ({
                         </div>
                         <p>{recycle.result.exp}</p>
                       </ImageCol>
-                    )
-                  }
-                </ImageList2>
-              </ImageContent>
-              <Divider />
-              {/* GENERAL MR */}
-              <SectionContentHorizon
-                title={t('c3-s3-title')}
-                exp={t('c3-s3-exp')}
-                index={1}
-                isContentFit={true}
-              />
-              <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_general} alt='' />
-              <ShiftUp>
+                    </ToTop>
+                  )
+                }
+              </ImageList2>
+            </ImageContent>
+            <Divider />
+            {/* GENERAL MR */}
+            <ViewportWrapper
+              onEnterViewport={
+                () => {
+                  setIsS3Trigger(true);
+                }
+              }
+            >
+              <ToTop
+                isTrigger={isS3Trigger}
+                index={0}
+              >
                 <SectionContentHorizon
-                  title={t('c3-s4-title')}
-                  exp={t('c3-s4-exp')}
-                  index={2}
+                  title={t('c3-s3-title')}
+                  exp={t('c3-s3-exp')}
+                  index={1}
                   isContentFit={true}
                 />
-              </ShiftUp>
-              <ImageContent>
-                <h2>
-                  <span>{t('c3-s4-subtitle')}</span>
-                </h2>
+              </ToTop>
+            </ViewportWrapper>
+            <ToTop
+              isTrigger={isS3Trigger}
+              index={2}
+            >
+              <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_general} alt='' />
+            </ToTop>
+            <ShiftUp>
+              <SectionContentHorizon
+                title={t('c3-s4-title')}
+                exp={t('c3-s4-exp')}
+                index={2}
+                isContentFit={true}
+              />
+            </ShiftUp>
+            <ImageContent>
+              <h2>
+                <span>{t('c3-s4-subtitle')}</span>
+              </h2>
+              <ViewportWrapper
+                onEnterViewport={
+                  () => {
+                    setIsLowTrigger(true);
+                  }
+                }
+              >
                 <ImageList>
                   {
                     mrReulstList.map((result, index) =>
-                      <ImageCol key={index}>
-                        <img src={result.img} alt='' />
-                        <p>{result.title}</p>
-                      </ImageCol>
+                      <ToTop
+                        isTrigger={isLowTrigger}
+                        index={index + 1}
+                      >
+                        <ImageCol key={index}>
+                          <img src={result.img} alt='' />
+                          <p>{result.title}</p>
+                        </ImageCol>
+                      </ToTop>
+
                     )
                   }
                 </ImageList>
-              </ImageContent>
-              <Divider />
-              {/* GS MR */}
-              <SectionContentHorizon
-                title={t('c3-s5-title')}
-                exp={t('c3-s5-exp')}
-                index={3}
-                isContentFit={true}
-              />
+              </ViewportWrapper>
+            </ImageContent>
+            <Divider />
+            {/* GS MR */}
+            <ViewportWrapper
+              onEnterViewport={
+                () => {
+                  setIsS4Trigger(true);
+                }
+              }
+            >
+              <ToTop
+                isTrigger={isS4Trigger}
+                index={0}
+              >
+                <SectionContentHorizon
+                  title={t('c3-s5-title')}
+                  exp={t('c3-s5-exp')}
+                  index={3}
+                  isContentFit={true}
+                />
+              </ToTop>
+            </ViewportWrapper>
+            <ToTop
+              isTrigger={isS4Trigger}
+              index={1}
+            >
               <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_gs} alt='' />
+            </ToTop>
+            <ViewportWrapper
+              onEnterViewport={
+                () => {
+                  setIsHighTrigger(true);
+                }
+              }
+            >
               <ImageContent>
                 <h2>
                   <span>{t('c3-s5-subtitle')}</span>
@@ -538,79 +613,102 @@ const Chapter3 = ({
                 <ImageList>
                   {
                     mrReulstList2.map((result, index) =>
-                      <ImageCo2 key={index}>
-                        <img src={result.img} alt='' />
-                        <p>{result.title}</p>
-                        {
-                          index === 0 &&
-                          <>
-                            {
-                              carPartList.map((part, j) =>
-
-                                <ImageMark
-                                  top={part.top}
-                                  left={part.left}
-                                >
-                                  {part.id}
-                                </ImageMark>
-
-                              )
-                            }
-                            <Row>
+                      <ToTop
+                        isTrigger={isHighTrigger}
+                        index={index + 2}
+                      >
+                        <ImageCo2 key={index}>
+                          <img src={result.img} alt='' />
+                          <p>{result.title}</p>
+                          {
+                            index === 0 &&
+                            <>
                               {
                                 carPartList.map((part, j) =>
 
-                                  <PartLegend>
-                                    {`${part.id} - ${part.title}`}
-                                  </PartLegend>
-
+                                  <ImageMark
+                                    top={part.top}
+                                    left={part.left}
+                                  >
+                                    {part.id}
+                                  </ImageMark>
                                 )
                               }
-                            </Row>
-                          </>
-                        }
-                        {
-                          index === 1 &&
-                          <>
-                            {
-                              washingPartList.map((part, j) =>
-                                <ImageMark
-                                  top={part.top}
-                                  left={part.left}
-                                >
-                                  {part.id}
-                                </ImageMark>
-                              )
-                            }
-                            <Row>
+                              <Row>
+                                {
+                                  carPartList.map((part, j) =>
+
+                                    <PartLegend>
+                                      {`${part.id} - ${part.title}`}
+                                    </PartLegend>
+                                  )
+                                }
+                              </Row>
+                            </>
+                          }
+                          {
+                            index === 1 &&
+                            <>
                               {
                                 washingPartList.map((part, j) =>
-
-                                  <PartLegend>
-                                    {`${part.id} - ${part.title}`}
-                                  </PartLegend>
-
+                                  <ImageMark
+                                    top={part.top}
+                                    left={part.left}
+                                  >
+                                    {part.id}
+                                  </ImageMark>
                                 )
                               }
-                            </Row>
-                          </>
-                        }
-                      </ImageCo2>
+                              <Row>
+                                {
+                                  washingPartList.map((part, j) =>
+
+                                    <PartLegend>
+                                      {`${part.id} - ${part.title}`}
+                                    </PartLegend>
+
+                                  )
+                                }
+                              </Row>
+                            </>
+                          }
+                        </ImageCo2>
+                      </ToTop>
                     )
                   }
                 </ImageList>
               </ImageContent>
-              <Divider />
-              {/* GS CR */}
-              <SectionContentHorizon
-                title={t('c3-s6-title')}
-                exp={t('c3-s6-exp')}
-                index={3}
-                isContentFit={true}
-              />
+            </ViewportWrapper>
+
+            <Divider />
+            {/* GS CR */}
+            <ViewportWrapper
+              onEnterViewport={
+                () => {
+                  setIsS4Trigger(true);
+                }
+              }
+            >
+              <ToTop
+                isTrigger={isS4Trigger}
+                index={0}
+              >
+                <SectionContentHorizon
+                  title={t('c3-s6-title')}
+                  exp={t('c3-s6-exp')}
+                  index={3}
+                  isContentFit={true}
+                />
+              </ToTop>
+            </ViewportWrapper>
+            <ToTop
+              isTrigger={isS4Trigger}
+              index={2}
+            >
               <img style={{ width: '100%', height: 'auto' }} src={illust_process_cr} alt='' />
-            </LiveArea>
-          </ToTop>
+            </ToTop>
+
+          </LiveArea>
         </ViewportWrapper>
         <SpaceFullScreen
           numX={0.75}
@@ -624,16 +722,39 @@ const Chapter3 = ({
           }}
         >
           <ImageBackground
-              isFilter={true}
-              img={bg_transition}
-              refObject={chapterObject.refSection[5]}
-              isTrigger={isVideoTrigger}
-            >
-              <MsgFullScreen
-                title={t('c3-s8-title')}
-                exp={t('c3-s8-exp')}
-              />
-            </ImageBackground>
+            isFilter={true}
+            img={videoURL.c3.s7.bg}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isVideoTrigger}
+          >
+            <MsgFullScreen
+              title={t('c3-s7-title')}
+              exp={t('c3-s7-exp')}
+            />
+          </ImageBackground>
+        </ViewportWrapper>
+        <SpaceFullScreen
+          numX={0.75}
+        />
+        <ViewportWrapper
+          onEnterViewport={() => {
+            setIsS8Trigger(true);
+          }}
+          onLeaveViewport={() => {
+            setIsS8Trigger(false);
+          }}
+        >
+          <ImageBackground
+            isFilter={true}
+            img={videoURL.c3.s8.bg}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isS8Trigger}
+          >
+            <MsgFullScreen
+              title={t('c3-s8-title')}
+              exp={t('c3-s8-exp')}
+            />
+          </ImageBackground>
         </ViewportWrapper>
       </Section>
     </Container>
