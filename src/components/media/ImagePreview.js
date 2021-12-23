@@ -72,7 +72,6 @@ const ImagePreview = ({
   onPrev,
   currentIndex,
 }) => {
-  console.log(imgList);
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     setCurrent(currentIndex);

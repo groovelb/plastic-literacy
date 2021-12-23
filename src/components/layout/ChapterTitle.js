@@ -66,76 +66,6 @@ const Title = styled.div`
 	}
 `;
 
-const DrawTop = keyframes`
-	0%{width: 0%}
-	100%{width: 100%}
-`;
-
-const DrawRight = keyframes`
-	0%{height: 0%}
-	100%{height: 100%}
-`;
-
-const DrawBottom = keyframes`
-	0%{width: 0%; left: 100%}
-	100%{width: 100%; left: 0%}
-`;
-
-const DrawLeft = keyframes`
-	0%{height: 0%; top: 100%}
-	100%{height: 100%; top: 0%}
-`;
-
-
-const duration = 0.5;
-
-const border = 8;
-
-const BorderTop = styled.div`
-	position: absolute;
-	top:0;
-	left:0;
-	width: 0px;
-	height: 1px;
-	background-color: #fff;
-	animation: ${props => props.isTrigger ? DrawTop : 'none'} ${`${duration}s`} linear forwards;
-	animation-iteration-count: 1;
-	animation-delay:  ${`${duration*1}s`};
-`;
-const BorderRight = styled.div`
-	position: absolute;
-	top:0;
-	right:0;
-	width: 1px;
-	height: 0px;
-	background-color: #fff;
-	animation: ${props => props.isTrigger ? DrawRight : 'none'} 0.25s linear forwards;
-	animation-iteration-count: 1;
-	animation-delay: ${`${duration*2}s`};
-`;
-const BorderBottom = styled.div`
-	position: absolute;
-	top:calc(100% - 1px);
-	left:0;
-	height: 1px;
-	width: 0px;
-	background-color: #fff;
-	animation: ${props => props.isTrigger ? DrawBottom : 'none'} 0.25s linear forwards;
-	animation-iteration-count: 1;
-	animation-delay: ${`${duration*3}s`};
-`;
-const BorderLeft = styled.div`
-	position: absolute;
-	top:0;
-	left:0;
-	height: 0px;
-	width: 1px;
-	background-color: #fff;
-	animation: ${props => props.isTrigger ? DrawLeft : 'none'} 0.25s linear forwards;
-	animation-iteration-count: 1;
-	animation-delay: ${`${duration*4}s`};
-`;
-
 
 const Exp = styled.div`
 	position: relative;
@@ -153,16 +83,6 @@ const Exp = styled.div`
 	}
 `;
 
-const Illust = styled.div`
-	width: 100%;
-	height: 480px;
-	background-color: rgba(0,0,0,0.25);
-	@media only screen and (max-width: 480px) {
-		width: 100%;
-		height: 240px;
-	}
-`
-
 const ChapterTitle = ({
 	className,
 	bgColor,
@@ -171,7 +91,6 @@ const ChapterTitle = ({
 	exp,
 	colorMode,
 	numChapter,
-	isFilter,
 	src
 }) => {
 
@@ -199,7 +118,8 @@ const ChapterTitle = ({
 					isTrigger={isTrigger}
 					index={0}
 				> */}
-					<ViewportWrapper
+						<LiveArea>
+						<ViewportWrapper
 						onEnterViewport={() => {
 							setIsTitleOn(true);
 							console.log('enter');
@@ -209,7 +129,6 @@ const ChapterTitle = ({
 							console.log('leave');
 						}}
 					>
-						<LiveArea>
 							<Top>
 								<ChapterMark>
 									{`CHAPTER${numChapter}`}
@@ -222,17 +141,13 @@ const ChapterTitle = ({
 										{subTitle}
 									</h2>
 								</Title>
-								<Exp isTrigger={isExpOn}>
-									{/* <BorderTop isTrigger={isExpOn} />
-									<BorderRight isTrigger={isExpOn} />
-									<BorderBottom isTrigger={isExpOn} />
-									<BorderLeft isTrigger={isExpOn} /> */}
+								<Exp>
 									{exp}
 								</Exp>
 							</Top>
 							{/* <Illust /> */}
+							</ViewportWrapper>
 						</LiveArea>
-					</ViewportWrapper>
 				{/* </ToTop> */}
 			</Container>
 		</>

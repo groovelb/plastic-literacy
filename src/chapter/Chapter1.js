@@ -445,29 +445,18 @@ const Chapter1 = ({
 
   return (
     <Container ref={chapterObject.ref}>
-      <ViewportWrapper
-        onEnterViewport={() => {
-          console.log("enter: 0");
-          setCurrentSection(0);
-          setIsTitleTrigger(true);
-        }}
-        onLeaveViewport={() => {
-          setIsTitleTrigger(false);
-        }}
-      >
-        <ChapterTitle
-          src={videoURL.c1.bg}
-          numChapter={1}
-          title={t("c1-title")}
-          subTitle={t("c1-subtitle")}
-          bgColor={'dark'}
-          exp={t("c1-exp")}
-          isFilter={true}
-          isTrigger={isTitleTrigger}
-        />
-      </ViewportWrapper>
+      <ChapterTitle
+        src={videoURL.c1.bg}
+        numChapter={1}
+        title={t("c1-title")}
+        subTitle={t("c1-subtitle")}
+        bgColor={'dark'}
+        exp={t("c1-exp")}
+        isFilter={true}
+        isTrigger={isTitleTrigger}
+      />
       <SpaceFullScreen
-        numX={1}
+        numX={0.5}
       />
       <Section>
         <LiveArea>

@@ -73,7 +73,6 @@ const VideoList = ({
   onPrev,
   currentIndex,
 }) => {
-  console.log(videoList);
   const [current, setCurrent] = useState(0);
   useEffect(() => {
     setCurrent(currentIndex);

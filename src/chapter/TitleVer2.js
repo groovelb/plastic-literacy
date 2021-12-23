@@ -379,12 +379,12 @@ const Title = ({
             </Logo>
           </IllustContainer>
         </ViewportWrapper>
-        {
+        {/* {
           currentChapter === 0 && <PlasticParticle triggerStage={s1TriggerStage} />
-        }
+        } */}
       </Container>
       <SpaceFullScreen
-        numX={1}
+        numX={0.25}
       />
       <ViewportWrapper
         onEnterViewport={
@@ -415,9 +415,6 @@ const Title = ({
           </PricincpleList>
         </MsgFullScreen>
       </ViewportWrapper>
-      <SpaceFullScreen
-        numX={0.5}
-      />
       <ViewportWrapper
         onEnterViewport={
           () => {

@@ -3,6 +3,7 @@ import styled from "styled-components";
 import handleViewport from 'react-in-viewport';
 
 const Container = styled.div`
+  display: inline-block;
   width: 100%;
 `;
 

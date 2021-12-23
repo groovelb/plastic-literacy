@@ -36,7 +36,8 @@ const Title = styled.div`
 
 const Exp = styled.div`
 	position: relative;
-	width: 100%;
+	width: 900px;
+  word-break: break-all;
 	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.light}
 	text-align: left;
