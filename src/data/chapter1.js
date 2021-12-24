@@ -5,6 +5,8 @@ import ic_medical from "../assets/img/icon/ic_medical.svg";
 import ic_space from "../assets/img/icon/ic_rocket.svg";
 
 import ic_camera from "../assets/img/icon/c1/camera.svg";
+import ic_plug from "../assets/img/icon/c1/plug.svg";
+import ic_elephant from "../assets/img/icon/c1/elephant.png"
 import ic_bomb from "../assets/img/icon/c1/bomb.svg";
 import ic_container from "../assets/img/icon/c1/container.svg";
 import ic_vynil from "../assets/img/icon/c1/vynil.svg";
@@ -12,42 +14,50 @@ import ic_astronaut from "../assets/img/icon/c1/astronaut.svg";
 
 export const plastic_industry_timeline_1_1 = [
   {
-    "year": 1889,
+    "year": 1868,
     "value": 1,
     "name": 'kodak 필름',
-    "exp": `플라스틱 덕분에 발전할 수 있었던 사진 및 영화 필름 산업`,
+    "exp": `수많은 동물들을 보호할 수 있게한 최초의 플라스틱 셀룰로이드`,
+    "exp2": `플라스틱 덕분에 발전할 수 있었던 사진 및 영화 필름 산업`,
+    "img": ic_elephant
+  },
+  {
+    "year": 1889,
+    "value": 5,
+    "name": 'kodak 필름',
+    "exp": `영화의 대중화에 중요한 역할을 한 플라스틱 롤 필름`,
     "exp2": `플라스틱 덕분에 발전할 수 있었던 사진 및 영화 필름 산업`,
     "img": ic_camera
   },
   {
-    "year": 1940 - 20,
-    "value": 3,
+    "year": 1935,
+    "value": 7,
     "name": '군수 산업',
-    "exp": `플라스틱으로 대량 생산할 수 있었던 군수 산업`,
+    "exp": `가벼우면서 전기가 흐르지 않아 전자 기술의 발전을 도와준 플라스틱`,
     "exp2": `플라스틱으로 대량 생산할 수 있었던 군수 산업`,
-    "img": ic_bomb
+    "img": ic_plug
   },
   {
-    "year": 1946,
-    "value": 6,
+    "year": 1947,
+    "value": 1,
     "name": '포장용기',
-    "exp": `플라스틱으로 식품의 오염을 막고 보관이 용이해진 포장용기 산업`,
+    "exp": `외부 환경으로부터 식품 오염을 막을 수 있도록 도와준 플라스틱 식품용기`,
     "exp2": `플라스틱으로 식품의 오염을 막고 보관이 용이해진 포장용기 산업`,
     "img": ic_container
   },
   {
     "year": 1948 + 10,
-    "value": 4.5,
+    "value": 3,
     "name": '음반 산업',
-    "exp": `플라스틱의 특성 중 가볍고 변형이 쉬운 장점으로 발전한 음반 산업`,
+    "exp": `대량생산이 가능해지면서 대중화에 큰 도움을 주었던 플라스틱(PVC) LP판`,
     "exp2": `플라스틱의 특성 중 가볍고 변형이 쉬운 장점으로 발전한 음반 산업`,
     "img": ic_vynil
   },
   {
     "year": 1965,
-    "value": 2,
+    "value": 5,
     "name": '우주산업',
-    "exp": `우주의 높은 온도와 압력을 극복한 플라스틱 소재를 통한 우주산업 발전`,
+    "exp": `우주의 높은 온도와 압력을 극복한 플라스틱 소재로 발전한 우주산업`,
     "exp2": `우주의 높은 온도와 압력을 극복한 플라스틱 소재를 통한 우주산업 발전`,
     "img": ic_astronaut
   }

@@ -117,6 +117,7 @@ const Chapter2 = ({
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
   const [isVideo2Trigger, setIsVideo2Trigger] = useState(false);
   const [isChartActive, setIsChartActive] = useState(false);
+  const [currentReportStage,setCurrentReportStage] = useState(0);
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
@@ -252,11 +253,15 @@ const Chapter2 = ({
             <SpaceFullScreen
               numX={0.25}
             />
-            <Report reportData={reportData} />
+            <Report
+              reportData={reportData}
+              currentStage={currentReportStage}
+              setCurrentStage={setCurrentReportStage}
+            />
           </ViewportWrapper>
           {
             currentSection === 4 && <>
-              <PlasticVerticalStage />
+              <PlasticVerticalStage currentStage={currentReportStage} />
             </>
           }
           <SpaceFullScreen

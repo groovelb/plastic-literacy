@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-import LiveArea from "../layout/LiveArea";
+import LiveArea from "./LiveArea";
 
 const Container = styled(LiveArea)`
   /* width: 100%; */
@@ -16,7 +16,7 @@ const Container = styled(LiveArea)`
 
 const Title = styled.div`
 	width: 900px;
-	text-align: center;
+	text-align: left;
 	h1{
 		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.exp.bold}

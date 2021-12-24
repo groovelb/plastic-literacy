@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styled, {keyframes} from "styled-components";
 
 import ic_product from "../../assets/img/icon/PL/produce.svg";
@@ -42,6 +42,8 @@ const Stage = styled.div`
   display: flex;
   align-items: center;
   color: ${props => props.theme.color.brand.epGreen};
+  opacity: ${props => props.depthList.includes(props.index)?'1':'0.25'};
+  transition: opacity 0.3s ease-in;
   img{
     width: 56px;
     height: 56px;
@@ -64,13 +66,22 @@ const Link = styled.div`
   animation-delay: ${props => `${props.delay*0.5}s`};
   background-image: linear-gradient(0deg,#020F18, #04384A);
   background-size: 100% 400%;
-  opacity: 0.2;
   width: 24px;
   height: 120px;
   margin-left: 72px;
+  opacity: ${props => props.depthList.includes(props.index)?'0.25':'0.1'};
+  transition: opacity 0.3s ease-in;
 `;
 
-const PlsaticVerticalStage = ({}) => {
+const PlsaticVerticalStage = ({currentStage}) => {
+  const [depthList,setDepthList] = useState([0,1]);
+
+  useEffect(() => {
+    if(currentStage===0) setDepthList([0,1]);
+    if(currentStage===1) setDepthList([2]);
+    if(currentStage===2) setDepthList([3,4]);
+  },[currentStage])
+
   return (
     <Container>
       {
@@ -78,6 +89,8 @@ const PlsaticVerticalStage = ({}) => {
           <>
             <Stage
               key={index}
+              index={index}
+              depthList={depthList}
             >
               <img src={stage.img} alt='' />
               <p>
@@ -87,6 +100,8 @@ const PlsaticVerticalStage = ({}) => {
             {
               (arr.length-1)!==index&& <Link
                 key={index}
+                index={index}
+                depthList={depthList}
                 delay={index} />
             }
           </>

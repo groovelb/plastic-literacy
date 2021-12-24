@@ -121,7 +121,16 @@ const ChartTitle = styled.p`
 const ChartTitlePadding = styled.p`
   padding-left: 80px;
   margin-bottom: 12px;
-  ${props => props.theme.type.size.title3};
+  ${props => props.theme.type.size.title2};
+  ${props => props.theme.type.weight.prd.regular};
+  @media only screen and (max-width: 480px) {
+    padding-left: 24px;
+  }
+`;
+const ChartUnit = styled.p`
+  padding-left: 80px;
+  margin-bottom: 12px;
+  ${props => props.theme.type.size.body2};
   ${props => props.theme.type.weight.prd.regular};
   @media only screen and (max-width: 480px) {
     padding-left: 24px;
@@ -232,7 +241,7 @@ const ChartMsg = styled.div`
 const LegendList = styled.div`
   position: absolute;
   left: 80px;
-   bottom: -100px;
+  bottom: -130px;
   width: 100%;
   display: flex;
   ${props => props.theme.type.weight.prd.bold}
@@ -243,6 +252,8 @@ const Legend = styled.div`
   width: 224px;
   display: flex;
   align-items: center;
+  ${props => props.theme.type.size.body2};
+
 `;
 
 const Red = styled.div`
@@ -366,31 +377,36 @@ const Chapter1 = ({
       title: t("c1-s1-title"),
       exp: t("c1-s1-exp"),
       data: plastic_industry_timeline_1_1,
-      chartTitle: '플라스틱 산업 발전과정'
+      chartTitle: '플라스틱 산업 발전과정',
+      unit: '',
     },
     {
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
       data: plastic_production_1_3,
-      chartTitle: '전세계 연도별 플라스틱 생산량 (단위: million metric tons)'
+      chartTitle: '전세계 연도별 플라스틱 생산량',
+      unit: '(단위: million metric tons)'
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
-      chartTitle: '국내 1인당 연간 플라스틱 소비량 (단위: kilogram)'
+      chartTitle: '국내 1인당 연간 플라스틱 소비량',
+      unit: '(단위: kilogram)'
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
       data: plastic_waste_1_7,
-      chartTitle: '연도별 플라스틱 폐기물량 (단위: 1000 ton)'
+      chartTitle: '연도별 플라스틱 폐기물량',
+      unit: '(단위: 1000 ton)'
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
-      chartTitle: '연도별 플라스틱 누적 폐기물량 (단위: 1000 ton)'
+      chartTitle: '연도별 플라스틱 누적 폐기물량',
+      unit: '(단위: 1000 ton)'
     }
   ];
 
@@ -507,6 +523,9 @@ const Chapter1 = ({
               <ChartTitlePadding>
                 {content[currentSection - 1] && content[currentSection - 1].chartTitle}
               </ChartTitlePadding>
+              <ChartUnit>
+              {content[currentSection - 1] && content[currentSection - 1].unit}
+              </ChartUnit>
               <BarChart
                 data={data}
                 stage={currentSection}

@@ -3,12 +3,6 @@ import * as d3 from 'd3';
 import styled from "styled-components";
 import { isMobile } from 'react-device-detect';
 
-import ic_movie from "../../assets/img/icon/ic_movie.svg";
-import ic_music from "../../assets/img/icon/ic_music.svg";
-import ic_electric from "../../assets/img/icon/ic_electric.svg";
-import ic_medical from "../../assets/img/icon/ic_medical.svg";
-import ic_space from "../../assets/img/icon/ic_rocket.svg";
-
 const Container = styled.div`
   width: 100%;
   height: 100%;

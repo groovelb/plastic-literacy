@@ -16,6 +16,7 @@ import VideoBackground from "../components/videoBackground/VideoBackground";
 import bg_video_s1 from "../assets/video/video_c2_s1.mp4";
 import Report from "../components/report/Report";
 import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage";
+import TableImage from "../assets/img/illust/table.png";
 
 // report image
 import img_s1_s1 from "../assets/img/c2/report/c2-s2-p1-img.PNG";
@@ -71,6 +72,12 @@ const Wrapper = styled.div`
   position: relative;
   flex-direction: column;
   height: ${window.innerHeight * 2 + 'px'};
+  .table{
+    margin-left: calc(480px + 48px);
+    margin-top: 48px;
+    width: calc(100% - 480px - 48px);
+    height: auto;
+  }
   table{
     margin-left: calc(480px + 48px);
     margin-top: 48px;
@@ -100,6 +107,7 @@ const Chapter2 = ({
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
+  const [currentReportStage,setCurrentReportStage] = useState(0);
 
   const reportData = [
     {
@@ -294,32 +302,34 @@ const Chapter2 = ({
                   />
                   {
                     i===0&&
-                    <table>
-                      <tr>
-                      {
-                        categoryTableData.header.map((item,index) =>
-                          <th key={index}>
-                            {item}
-                          </th>
-                        )
-                      }
-                      </tr>
-                      {
-                        categoryTableData.data.map((row,index) =>
-                          <tr key={index}>
-                            {
-                              row.map((data,index) =>
-                                <td key={index}>
-                                  {data}
-                                </td>
-                              )
-                            }
-                          </tr>
-                        )
-                      }
+                    // <table>
+                    //   <tr>
+                    //   {
+                    //     categoryTableData.header.map((item,index) =>
+                    //       <th key={index}>
+                    //         {item}
+                    //       </th>
+                    //     )
+                    //   }
+                    //   </tr>
+                    //   {
+                    //     categoryTableData.data.map((row,index) =>
+                    //       <tr key={index}>
+                    //         {
+                    //           row.map((data,index) =>
+                    //             <td key={index}>
+                    //               {data}
+                    //             </td>
+                    //           )
+                    //         }
+                    //       </tr>
+                    //     )
+                    //   }
                       
-                    </table>
+                    // </table>
+                    <img className="table" src={TableImage} alt='' />
                   }
+                  
                 </ViewportWrapper>
               </Wrapper>
             )
@@ -332,11 +342,15 @@ const Chapter2 = ({
             <SpaceFullScreen
               numX={0.25}
             />
-            <Report reportData={reportData} />
+            <Report
+              reportData={reportData}
+              currentStage={currentReportStage}
+              setCurrentStage={setCurrentReportStage}
+            />
           </ViewportWrapper>
           {
             currentSection === 4 && <>
-              <PlasticVerticalStage />
+              <PlasticVerticalStage currentStage={currentReportStage} />
             </>
           }
           <ViewportWrapper

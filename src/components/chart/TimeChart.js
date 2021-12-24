@@ -109,8 +109,8 @@ const BarChart = ({
 
     const offsetY = isMobile ? 40 : 80;
     const r = isMobile?24:32;
-    const textX = isMobile?48:56;
-    const yearEnd = isMobile?2000:2000;
+    const textX = isMobile?48:52;
+    const yearEnd = isMobile?2000:2025;
     const expWidth = isMobile?96:148;
 
     // set the ranges
@@ -122,12 +122,12 @@ const BarChart = ({
     y = d3.scaleLinear()
       .range([height - offsetY, offsetY*2]);
 
-    x.domain([1880, yearEnd]);
+    x.domain([1850, yearEnd]);
     y.domain([0, d3.max(data, function (d) { return d.value; })]);
 
     d3.select(".xAxis.timeline").call(
       d3.axisBottom(x)
-        .tickValues([1900, 1950])
+        .tickValues([1850, 1900, 1950])
         .tickFormat((d) => { return d + '년대' })
     );
 
@@ -210,12 +210,16 @@ const BarChart = ({
     chart.selectAll(".marker2")
       .data(data)
       .enter()
-      .append("rect")
+      // .append("rect")
+      .append("circle")
       .attr("class", "marker2")
-      .attr("x", function (d) { return x(d.year) - 43; })
-      .attr("y", function (d) { return y(d.value) - 43; })
-      .attr("width", 86)
-      .attr("height",86)
+      // .attr("x", function (d) { return x(d.year) - 43; })
+      // .attr("y", function (d) { return y(d.value) - 43; })
+      .attr("cx", function (d) { return x(d.year); })
+      .attr("cy", function (d) { return y(d.value); })
+      // .attr("width", 86)
+      // .attr("height",86)
+      .attr("r",43)
       .attr("opacity",0)
       .transition(t)
       .ease(d3.easeBounce)
@@ -243,13 +247,13 @@ const BarChart = ({
       .attr("text-anchor", "start")
       .attr("class", "exp")
       .attr("x", function (d) { return x(d.year) + textX; })
-      .attr("y", function (d) { return y(d.value) - 20; })
+      .attr("y", function (d) { return y(d.value) - 24; })
       .attr("fill", "#fff")
       .text((d) =>{ 
         let text = isMobile?d.exp2:d.exp;
         return text;
       })
-      .attr("dy", "0.8em");
+      .attr("dy", "1em");
 
     d3.selectAll(".exp").call(wrap, expWidth)
     .attr("opacity",0)
@@ -257,19 +261,6 @@ const BarChart = ({
     .ease(d3.easeBounce)
     .delay((d,i) => delayStart + (i+1) *delayUnit)
     .attr("opacity",1);
-
-
-    // Add a <tspan class="text"> for every text line.
-    // text.selectAll("tspan.text")
-    //   .data(d => d.exp.split("\n"))
-    //   .enter()
-    //   .append("tspan")
-    //   .attr("class", "text")
-    //   .attr("fill","#fff")
-    //   .text(d => d)
-    //   .attr("x", function (d) { return x(d.year); })
-    //   // .attr("dx", 0)
-    //   .attr("dy", 22);
   }
 
   function wrap(text, width) {

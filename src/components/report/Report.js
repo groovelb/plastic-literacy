@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import useWindowSize from '../../hook/useWindowSize';
 import { Player } from 'video-react';
+import ViewportWrapper from '../../components/ViewportWrapper';
 
 const Container = styled.div`
   width: 100%;
@@ -49,38 +50,46 @@ const SectionExp = styled.p`
 `;
 
 const Report = ({
-  reportData
+  reportData,
+  currentStage,
+  setCurrentStage
 }) => {
   const windowSize = useWindowSize();
+  // const [currentStage, setCurrentStage] = useState(0);
 
   return (
     <Container>
       {
         reportData.map((stage, i) =>
-          <Stage minHeight={windowSize.height * 2}>
-            <StageTitle>{stage.title}</StageTitle>
-            {
-              stage.sectionList.map((section, j) =>
-                <Section>
-                  <SectionTitle>
-                    {section.title}
-                  </SectionTitle>
-                  <SectionExp>
-                    {section.exp}
-                  </SectionExp>
-                  {
-                    section.type === 'image' && <img src={section.src} alt='' />
-                  }
-                  {
-                    section.type === 'video' && <Player>
-                      <source src={section.src} />
-                    </Player>
-                  }
+          <ViewportWrapper
+            onEnterViewport={() => {setCurrentStage(i)}}
+          >
+            <Stage minHeight={windowSize.height * 2}>
+              <StageTitle>{stage.title}</StageTitle>
+              {
+                stage.sectionList.map((section, j) =>
+                  <Section>
+                    <SectionTitle>
+                      {section.title}
+                    </SectionTitle>
+                    <SectionExp>
+                      {section.exp}
+                    </SectionExp>
+                    {
+                      section.type === 'image' && <img src={section.src} alt='' />
+                    }
+                    {
+                      section.type === 'video' && <Player>
+                        <source src={section.src} />
+                      </Player>
+                    }
 
-                </Section>
-              )
-            }
-          </Stage>
+                  </Section>
+                )
+              }
+            </Stage>
+          </ViewportWrapper>
+
         )
       }
     </Container>

@@ -370,6 +370,7 @@ const Sankey = ({
       .data(graph.links)
       .enter().append("path")
       .attr("d", sankeyLinkHorizontal())
+      .attr("stroke","#3DDB87")
       .attr("stroke-width", function (d) { return d.width; });
 
     link.attr("class", (d, i) => {
@@ -475,30 +476,30 @@ const Sankey = ({
   useEffect(() => {
 
     if (isInitiate) {
-      link.style('stroke', (d, i) => {
+      // link.style('stroke', (d, i) => {
 
-        // make unique gradient  ids  
-        const gradientID = `gradient${i}`;
+      //   // make unique gradient  ids  
+      //   const gradientID = `gradient${i}`;
 
-        const startColor = d.source.color;
-        const stopColor = d.target.color;
-        const linearGradient = defs.append('linearGradient')
-          .attr('id', gradientID);
+      //   const startColor = d.source.color;
+      //   const stopColor = d.target.color;
+      //   const linearGradient = defs.append('linearGradient')
+      //     .attr('id', gradientID);
 
-        linearGradient.selectAll('stop')
-          .data([
-            { offset: '10%', color: startColor },
-            { offset: '90%', color: stopColor }
-          ])
-          .enter().append('stop')
-          .attr('offset', d => {
-            return d.offset;
-          })
-          .attr('stop-color', d => {
-            return d.color;
-          });
-        return `url(#${gradientID})`;
-      });
+      //   linearGradient.selectAll('stop')
+      //     .data([
+      //       { offset: '10%', color: startColor },
+      //       { offset: '90%', color: stopColor }
+      //     ])
+      //     .enter().append('stop')
+      //     .attr('offset', d => {
+      //       return d.offset;
+      //     })
+      //     .attr('stop-color', d => {
+      //       return d.color;
+      //     });
+      //   return `url(#${gradientID})`;
+      // });
     }
 
   }, [isInitiate])
@@ -510,8 +511,8 @@ const Sankey = ({
   function updateParticle() {
     if (1 <= currentStage && currentStage <= 3) {
       let depthList;
-      if (currentStage === 1) depthList = [0];
-      if (currentStage === 2) depthList = [1, 2];
+      if (currentStage === 1) depthList = [0,1];
+      if (currentStage === 2) depthList = [2];
       if (currentStage === 3) depthList = [3];
 
       if (count === 0) {
@@ -594,8 +595,8 @@ const Sankey = ({
 
   useEffect(() => {
     let depthList = [];
-    if (currentStage === 1) depthList = [0];
-    if (currentStage === 2) depthList = [1, 2];
+    if (currentStage === 1) depthList = [0,1];
+    if (currentStage === 2) depthList = [2];
     if (currentStage === 3) depthList = [3];
 
     d3.selectAll(`.link.land`)
