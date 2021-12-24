@@ -30,7 +30,7 @@ import img_c1_s4_5 from "../assets/img/image/c1/c1-s4_5.jpg";
 import img_c1_s5_1 from "../assets/img/image/c1/c1-s5_1.png";
 import img_c1_s5_2 from "../assets/img/image/c1/c1-s5_2.png";
 import img_c1_s5_3 from "../assets/img/image/c1/c1-s5_3.jpg";
-import illust_comparing_volume from "../assets/illust/c1/compare_volume.png";
+import illust_comparing_volume from "../assets/img/illust/c1/compare_volume.png";
 import illust_daily_consume from "../assets/img/illust/c1/daily_consume.png";
 import bg_c1 from "../assets/img/bg/title_bg_c1.jpg";
 import bg_c1_transition from "../assets/img/bg/c1_transition.jpg";
