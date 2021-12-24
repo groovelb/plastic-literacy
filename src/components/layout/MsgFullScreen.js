@@ -6,7 +6,7 @@ const Container = styled(LiveArea)`
   /* width: 100%; */
   min-height: ${props => props.height + 'px'};
   word-break: keep-all;
-  white-space: pre-line;
+  white-space: normal;
   display: flex;
   flex-direction: column;
   justify-content: center;
