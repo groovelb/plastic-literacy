@@ -107,7 +107,7 @@ const BarChart = ({
     let width = containerRef.current.clientWidth - margin.left - margin.right;
     let height = containerRef.current.clientHeight - margin.top - margin.bottom;
 
-    const offsetY = isMobile ? 40 : 80;
+    const offsetY = isMobile ? 40 : 20;
     const r = isMobile?24:32;
     const textX = isMobile?48:52;
     const yearEnd = isMobile?2000:2025;

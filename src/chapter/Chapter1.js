@@ -471,14 +471,22 @@ const Chapter1 = ({
         isFilter={true}
         isTrigger={isTitleTrigger}
       />
-      <SpaceFullScreen
-        numX={0.5}
-      />
+      <ViewportWrapper
+        onEnterViewport={() => {
+          setCurrentSection(0);
+        }}
+      >
+        <SpaceFullScreen
+          numX={0.5}
+        />
+
+      </ViewportWrapper>
+
       <Section>
         <LiveArea>
           {/* plastic history timeline */}
           {
-            isChart1Active &&
+            currentChapter === 1 &&
             <TimeChart
               isActive={isChart1Active}
             >
@@ -524,7 +532,7 @@ const Chapter1 = ({
                 {content[currentSection - 1] && content[currentSection - 1].chartTitle}
               </ChartTitlePadding>
               <ChartUnit>
-              {content[currentSection - 1] && content[currentSection - 1].unit}
+                {content[currentSection - 1] && content[currentSection - 1].unit}
               </ChartUnit>
               <BarChart
                 data={data}

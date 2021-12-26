@@ -729,7 +729,7 @@ const Chapter3 = ({
           >
             <MsgFullScreen
               title={t('c3-s7-title')}
-              exp={t('c3-s7-exp')}
+              // exp={t('c3-s7-exp')}
             />
           </ImageBackground>
         </ViewportWrapper>

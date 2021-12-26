@@ -7,8 +7,9 @@ import PL_logo from "../../assets/img/logo/PL_logo.png";
 const Container = styled.div`
   width: 100%;
   display: flex;
+  position: relative;
   z-index: 9999;
-  height: 104px;
+  height: 80px;
   justify-content: space-between;
   color: #fff;
   position: fixed;
@@ -36,8 +37,11 @@ const Bar = styled.div`
 `;
 
 const Logo = styled.div`
-  width: 104px;
-  height: 104px;
+  position: absolute;
+  top:0;
+  left:0;
+  width: 80px;
+  height: 80px;
   ${props => props.theme.layout.flexColCenter}
   img{
     width: 48px;
@@ -46,7 +50,7 @@ const Logo = styled.div`
 `;
 
 const MenuList = styled.div`
-  width: calc(100% - 80px);
+  width: calc(100% - 0px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +58,7 @@ const MenuList = styled.div`
 
 const Menu = styled.div`
   width: 256px;
+  text-align: center;
   p{
     ${props => props.theme.type.weight.exp.regular}
     ${props => props.theme.type.size.bttText}
