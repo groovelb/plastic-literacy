@@ -67,6 +67,7 @@ const Test = styled.div`
   left: 20px;
   font-size: 100px;
   color: #fff;
+  display: none;
 `;
 const TimeChart = styled.div`
   /* display: none; */
@@ -478,16 +479,19 @@ const Chapter1 = ({
           setCurrentSection(-1);
         }}
       >
-        <ChapterTitle
-          src={videoURL.c1.bg}
-          numChapter={1}
-          title={t("c1-title")}
-          subTitle={t("c1-subtitle")}
-          bgColor={'dark'}
-          exp={t("c1-exp")}
-          isFilter={true}
-          isTrigger={isTitleTrigger}
-        />
+        {
+          currentChapter === 1 &&
+          <ChapterTitle
+            src={videoURL.c1.bg}
+            numChapter={1}
+            title={t("c1-title")}
+            subTitle={t("c1-subtitle")}
+            bgColor={'dark'}
+            exp={t("c1-exp")}
+            isFilter={true}
+            isTrigger={isTitleTrigger}
+          />
+        }
       </ViewportWrapper>
 
       <SpaceFullScreen

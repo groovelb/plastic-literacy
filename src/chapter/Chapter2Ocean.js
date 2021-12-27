@@ -30,7 +30,7 @@ import { plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7 } fr
 import video_transition from "../assets/video/video_c1_transition.mp4";
 import video_transition2 from "../assets/video/video_c2_c3_transition.mp4";
 
-const sankeyHeight = 324;
+const sankeyHeight = 368;
 
 
 const Container = styled.div`

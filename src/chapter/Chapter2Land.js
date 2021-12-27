@@ -28,7 +28,7 @@ import img_s3_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
 import bg_transition from '../assets/img/bg/c2_land_transition.jpg';
 import { videoURL } from '../assets/mediaURL';
 
-const sankeyHeight = 348;
+const sankeyHeight = 368;
 
 const Container = styled.div`
   width: 100%;
@@ -107,7 +107,7 @@ const Chapter2 = ({
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
-  const [currentReportStage,setCurrentReportStage] = useState(0);
+  const [currentReportStage, setCurrentReportStage] = useState(0);
 
   const reportData = [
     {
@@ -184,16 +184,16 @@ const Chapter2 = ({
 
   const categoryTableData = {
     header: [
-      '번호','소재','재활용 여부','예시',
+      '번호', '소재', '재활용 여부', '예시',
     ],
     data: [
-      [1,'PETE','가능','생수병, 음료수병'],
-      [2,'HDPE','가능','유아용 장난감, 젖병, 세재용기'],
-      [3,'PVC','일부 가능','우비, 비닐, 고무호스'],
-      [4,'LDPE','가능','휴대폰 필름, 비닐봉지, 위생장갑 등 투명한 제품'],
-      [5,'PP','가능', '소주 상자, 주방 조리도구, 자동차 내장재'],
-      [6,'PS','가능', '요구르트병, 과자봉지'],
-      [7,'OTHER','불가능','비닐, 건축 외장재, 휴대폰 케이스'],
+      [1, 'PETE', '가능', '생수병, 음료수병'],
+      [2, 'HDPE', '가능', '유아용 장난감, 젖병, 세재용기'],
+      [3, 'PVC', '일부 가능', '우비, 비닐, 고무호스'],
+      [4, 'LDPE', '가능', '휴대폰 필름, 비닐봉지, 위생장갑 등 투명한 제품'],
+      [5, 'PP', '가능', '소주 상자, 주방 조리도구, 자동차 내장재'],
+      [6, 'PS', '가능', '요구르트병, 과자봉지'],
+      [7, 'OTHER', '불가능', '비닐, 건축 외장재, 휴대폰 케이스'],
     ]
   }
 
@@ -233,16 +233,19 @@ const Chapter2 = ({
           setIsTitleTrigger(true);
         }}
       >
-        <ChapterTitle
-          src={videoURL.c2.bg}
-          numChapter={2}
-          title={t("c2-title")}
-          subTitle={t("c2-subtitle")}
-          bgColor={'dark'}
-          exp={t("c2-exp")}
-          isTrigger={isTitleTrigger}
-          isFilter={true}
-        />
+        {
+          currentChapter === 2 &&
+          <ChapterTitle
+            src={videoURL.c2.bg}
+            numChapter={2}
+            title={t("c2-title")}
+            subTitle={t("c2-subtitle")}
+            bgColor={'dark'}
+            exp={t("c2-exp")}
+            isTrigger={isTitleTrigger}
+            isFilter={true}
+          />
+        }
       </ViewportWrapper>
       <SpaceFullScreen
         numX={0.75}
@@ -257,15 +260,15 @@ const Chapter2 = ({
         }}
       >
         <ImageBackground
-              isFilter={true}
-              img={videoURL.c2.s1.bg}
-              refObject={chapterObject.refSection[5]}
-              isTrigger={isTrigger1}
-            >
-              <MsgFullScreen
-                title={t('c2-s1-title')}
-              />
-            </ImageBackground>
+          isFilter={true}
+          img={videoURL.c2.s1.bg}
+          refObject={chapterObject.refSection[5]}
+          isTrigger={isTrigger1}
+        >
+          <MsgFullScreen
+            title={t('c2-s1-title')}
+          />
+        </ImageBackground>
       </ViewportWrapper>
       <SpaceFullScreen
         numX={0.75}
@@ -332,7 +335,7 @@ const Chapter2 = ({
                     // </table>
                     // <img className="table" src={TableImage} alt='' />
                   } */}
-                  
+
                 </ViewportWrapper>
               </Wrapper>
             )

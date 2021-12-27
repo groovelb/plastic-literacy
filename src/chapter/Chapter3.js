@@ -397,16 +397,20 @@ const Chapter3 = ({
           }
         }
       >
-        <ChapterTitle
-          numChapter={3}
-          title={t("c3-title")}
-          subTitle={t("c3-subtitle")}
-          bgColor={'dark'}
-          exp={t("c3-exp")}
-          isTrigger={isTitleTrigger}
-          isFilter={true}
-          src={videoURL.c3.bg}
-        />
+        {
+          currentChapter === 4 &&
+          <ChapterTitle
+            numChapter={3}
+            title={t("c3-title")}
+            subTitle={t("c3-subtitle")}
+            bgColor={'dark'}
+            exp={t("c3-exp")}
+            isTrigger={isTitleTrigger}
+            isFilter={true}
+            src={videoURL.c3.bg}
+          />
+        }
+
       </ViewportWrapper>
       <Section>
         <ViewportWrapper
@@ -747,7 +751,7 @@ const Chapter3 = ({
           >
             <MsgFullScreen
               title={t('c3-s7-title')}
-              // exp={t('c3-s7-exp')}
+            // exp={t('c3-s7-exp')}
             />
           </ImageBackground>
         </ViewportWrapper>

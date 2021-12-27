@@ -4,6 +4,8 @@ import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import { isMobile } from 'react-device-detect';
 import ViewportWarpper from "../components/ViewportWrapper";
 import GNB from "../components/navigation/GNB";
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 // Chapter
 import Title from "../chapter/TitleVer2";
@@ -119,7 +121,7 @@ function Main() {
 
   return (
     <>
-    <GNB/>
+      <GNB />
       <ViewportWarpper
         onEnterViewport={
           () => {
@@ -136,36 +138,40 @@ function Main() {
       <SpaceFullScreen
         numX={0.2}
       />
-      <ViewportWarpper
-        onEnterViewport={
-          () => {
-            setCurrentChapter(1);
+      <Element name="chapter1">
+        <ViewportWarpper
+          onEnterViewport={
+            () => {
+              setCurrentChapter(1);
+            }
           }
-        }
-      >
-        <Chapter1
-          currentChapter={currentChapter}
-          chapterObject={chapterList[1]}
-          refSection1={chapterList[1].refSection1}
-          refSection2={chapterList[1].refSection2}
-        />
-      </ViewportWarpper>
+        >
+          <Chapter1
+            currentChapter={currentChapter}
+            chapterObject={chapterList[1]}
+            refSection1={chapterList[1].refSection1}
+            refSection2={chapterList[1].refSection2}
+          />
+        </ViewportWarpper>
+      </Element>
       <SpaceFullScreen
         numX={0.2}
       />
-      <ViewportWarpper
-        onEnterViewport={
-          () => {
-            setCurrentChapter(2);
+      <Element name="chapter2">
+        <ViewportWarpper
+          onEnterViewport={
+            () => {
+              setCurrentChapter(2);
+            }
           }
-        }
-      >
-        <Chapter2Land
-          currentChapter={currentChapter}
-          chapterObject={chapterList[2]}
-          currentSection={chapter2LandCurrentSection}
-        />
-      </ViewportWarpper>
+        >
+          <Chapter2Land
+            currentChapter={currentChapter}
+            chapterObject={chapterList[2]}
+            currentSection={chapter2LandCurrentSection}
+          />
+        </ViewportWarpper>
+      </Element>
       <SpaceFullScreen
         numX={0.2}
       />
@@ -186,18 +192,20 @@ function Main() {
       <SpaceFullScreen
         numX={0.2}
       />
-      <ViewportWarpper
-        onEnterViewport={
-          () => {
-            setCurrentChapter(4);
+      <Element name="chapter3">
+        <ViewportWarpper
+          onEnterViewport={
+            () => {
+              setCurrentChapter(4);
+            }
           }
-        }
-      >
-        <Chapter3
-          chapterObject={chapterList[4]}
-          currentChapter={currentChapter}
-        />
-      </ViewportWarpper>
+        >
+          <Chapter3
+            chapterObject={chapterList[4]}
+            currentChapter={currentChapter}
+          />
+        </ViewportWarpper>
+      </Element>
     </>
   );
 }

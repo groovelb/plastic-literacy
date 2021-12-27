@@ -65,7 +65,7 @@ const GlobalStyle = createGlobalStyle`
   .stage_title{
     font-weight: bold;
     font-size: 20px;
-    fill: #fff;
+    fill: ${props => props.theme.color.brand.epGreen};
     opacity: 0.5;
   }
   .node_box{

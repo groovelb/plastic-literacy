@@ -3,6 +3,8 @@ import styled from "styled-components";
 import ProgressBar from "react-scroll-progress-bar";
 import theme from "../../assets/theme/theme";
 import PL_logo from "../../assets/img/logo/PL_logo.png";
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
 
 const Container = styled.div`
   width: 100%;
@@ -69,6 +71,12 @@ const Menu = styled.div`
   span{
     ${props => props.theme.type.weight.exp.bold}
   }
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 1s ease-out;
+  :hover{
+    opacity: 1;
+  }
 `;
 
 const GNB = ({
@@ -81,28 +89,34 @@ const GNB = ({
       </Logo>
       <MenuList>
         <Menu>
-          <p>
-            <span>Chapter1</span>
-          </p>
-          <p>
-            Plastic Dilemma
-          </p>
+          <Link to="chapter1">
+            <p>
+              <span>Chapter1</span>
+            </p>
+            <p>
+              Plastic Dilemma
+            </p>
+          </Link>
         </Menu>
         <Menu>
-          <p>
-            <span>Chapter2</span>
-          </p>
-          <p>
-            Journey Of Plastic
-          </p>
+          <Link to="chapter2">
+            <p>
+              <span>Chapter2</span>
+            </p>
+            <p>
+              Journey Of Plastic
+            </p>
+          </Link>
         </Menu>
         <Menu>
-          <p>
-            <span>Chapter3</span>
-          </p>
-          <p>
-            Circulation Of Plastic
-          </p>
+          <Link to="chapter3">
+            <p>
+              <span>Chapter3</span>
+            </p>
+            <p>
+              Circulation Of Plastic
+            </p>
+          </Link>
         </Menu>
       </MenuList>
       <Bar>

@@ -83,6 +83,16 @@ const Exp = styled.div`
 	}
 `;
 
+const ScrollGuide = styled.div`
+	/* position: fixed; */
+	width: 200px;
+	height: 200px;
+	${props => props.theme.layout.flexColCenter}
+	top: calc(50% - 100px);
+	left: calc(50% - 100px);
+	opacity: ${props => props.isTrigger?0:1};
+`;
+
 const ChapterTitle = ({
 	className,
 	bgColor,
@@ -91,7 +101,7 @@ const ChapterTitle = ({
 	exp,
 	colorMode,
 	numChapter,
-	src
+	src,
 }) => {
 
 	const [isTitleOn, setIsTitleOn] = useState(false);
@@ -118,6 +128,9 @@ const ChapterTitle = ({
 					isTrigger={isTrigger}
 					index={0}
 				> */}
+				{/* <ScrollGuide isTrigger={isTitleOn}>
+					keep scroll
+				</ScrollGuide> */}
 				<LiveArea>
 					<ViewportWrapper
 						onEnterViewport={() => {
