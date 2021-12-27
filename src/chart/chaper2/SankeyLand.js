@@ -5,11 +5,11 @@ import { useAnimationFrameLoop } from "react-timing-hooks";
 import { sankey, sankeyLinkHorizontal, sankeyJustify, sankeyLeft, sankeyCenter } from "d3-sankey";
 import { sankeyData } from "../data/public/dataSankeyChart";
 import theme from "../../assets/theme/theme";
-import ic_throw from "../../assets/img/icon/ic_throw.svg";
-import ic_discharge from "../../assets/img/icon/ic_ discharge.svg";
-import ic_collect from "../../assets/img/icon/ic_collect.svg";
-import ic_select from "../../assets/img/icon/ic_select.svg";
-import ic_proceed from "../../assets/img/icon/ic_proceed.svg";
+import ic_product from "../../assets/img/icon/PL/produce.svg";
+import ic_dispose from "../../assets/img/icon/PL/dispose.svg";
+import ic_collect from "../../assets/img/icon/PL/collect.svg";
+import ic_select from "../../assets/img/icon/PL/select.svg";
+import ic_recycle from "../../assets/img/icon/PL/recycle.svg";
 
 // img
 import illust_p1 from "../../assets/img/icon/particle/p1.svg";
@@ -269,7 +269,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 80, right: 10, bottom: 10, left: 24 };
+  const margin = { top: 116, right: 10, bottom: 10, left: 24 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -314,11 +314,11 @@ const Sankey = ({
       .attr("transform", "translate(0,0)");
 
     let nodeGroupTemp = [
-      { name: '생산', depth: 0, x: null, img: ic_throw },
-      { name: '배출', depth: 1, x: null, img: ic_discharge },
+      { name: '생산', depth: 0, x: null, img: ic_product },
+      { name: '배출', depth: 1, x: null, img: ic_dispose },
       { name: '수거', depth: 2, x: null, img: ic_collect },
       { name: '선별', depth: 3, x: null, img: ic_select },
-      { name: '처리', depth: 4, x: null, img: ic_proceed },
+      { name: '처리', depth: 4, x: null, img: ic_recycle },
     ];
 
     graph.nodes.forEach((node) => {
@@ -331,11 +331,18 @@ const Sankey = ({
         nodeGroupTemp[node.depth].x = node.x0;
 
         stage.append("text")
-          .attr("x", node.x0)
-          .attr("y", -64)
+          .attr("x", node.x0 + 48)
+          .attr("y", -76)
           .attr("class", "stage_title")
           .attr("text-anchor", "middle")
           .text(nodeGroupTemp[node.depth].name);
+
+        stage.append("svg:image")
+        .attr("xlink:href", nodeGroupTemp[node.depth].img)
+        .attr("x", node.x0 - 27)
+        .attr("y", -108)
+        .attr("width", 48)
+        .attr("height", 48);
 
         stage.append("line")
           .attr("class", "stage")
