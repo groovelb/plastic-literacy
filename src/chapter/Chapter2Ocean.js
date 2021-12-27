@@ -50,7 +50,7 @@ const Chart = styled.div`
   position: fixed;
   z-index: 9;
   top: 0px;
-  padding-top: 180px;
+  padding-top: 116px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
@@ -105,7 +105,7 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  height: ${window.innerHeight * 2 + 'px'};
+  height: ${window.innerHeight * 1.2 + 'px'};
 `;
 
 const Chapter2 = ({

@@ -24,7 +24,7 @@ import ToTop from "../components/motion/ToTop";
 import LiveArea from "../components/layout/LiveArea";
 import dual_circle from "../assets/img/shape/dual_circle.svg";
 
-import illust_arrow_purple from "../assets/img/illust/illust_arrow_cycle_purple.svg";
+import illust_arrow_white from "../assets/img/illust/illust_arrow_cycle_white.svg";
 
 const circleSize = {
   width: isMobile ? window.innerWidth : 900,
@@ -201,7 +201,7 @@ const PrincipleTitle = styled.div`
 const PricincpleList = styled(LiveArea)`
   display: flex;
   flex-wrap: wrap;
-  margin-top: -116px;
+  margin-top: -108px;
   width: 900px;
   justify-content: space-between;
    :before{
@@ -210,7 +210,7 @@ const PricincpleList = styled(LiveArea)`
     z-index: -1;
     top: 80px;
     left: 0px;
-    background-image: ${`url(${illust_arrow_purple})`};
+    background-image: ${`url(${illust_arrow_white})`};
     background-size: cover;
     width: 100%;
     height: 208px;
@@ -253,52 +253,6 @@ const Title = ({
   const windowSize = useWindowSize();
   const [isStart, setIsStart] = useState(false);
   const [s1TriggerStage, setS1TriggerStage] = useState(0);
-
-  const circleList = [
-    {
-      x: 1,
-      y: 0,
-      img: circle_product
-    },
-    {
-      x: 1,
-      y: 1,
-      img: circle_waste
-    },
-    {
-      x: 0,
-      y: 1,
-      img: circle_part
-    },
-    {
-      x: 0,
-      y: 0,
-      img: circle_flake
-    },
-  ];
-
-  const nodeList = [
-    {
-      x: circleSize.width / 2 - nodeSize.width / 2,
-      y: nodeSize.margin,
-      img: ic_production
-    },
-    {
-      x: circleSize.width - nodeSize.width - nodeSize.margin,
-      y: circleSize.height / 2 - nodeSize.height / 2,
-      img: ic_dispose
-    },
-    {
-      x: circleSize.width / 2 - nodeSize.width / 2,
-      y: circleSize.height - nodeSize.height - nodeSize.margin,
-      img: ic_collect
-    },
-    {
-      x: nodeSize.margin,
-      y: circleSize.height / 2 - nodeSize.height / 2,
-      img: ic_recycling
-    }
-  ];
 
   const principles = [
     {
@@ -384,7 +338,7 @@ const Title = ({
         } */}
       </Container>
       <SpaceFullScreen
-        numX={0.25}
+        numX={0.2}
       />
       <ViewportWrapper
         onEnterViewport={
@@ -398,7 +352,7 @@ const Title = ({
           exp={t('title-s1-exp')}
         >
           <PrincipleTitle>
-            플라스틱 생태계의 단계별 원칙
+            플라스틱의 라이프 싸이클
             </PrincipleTitle>
           <PricincpleList>
             {
@@ -422,9 +376,6 @@ const Title = ({
           }
         }
       >
-        <SpaceFullScreen
-          numX={0.25}
-        />
       </ViewportWrapper>
       <ToTop
         isTrigger={isStart}

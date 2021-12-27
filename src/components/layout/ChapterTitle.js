@@ -118,8 +118,8 @@ const ChapterTitle = ({
 					isTrigger={isTrigger}
 					index={0}
 				> */}
-						<LiveArea>
-						<ViewportWrapper
+				<LiveArea>
+					<ViewportWrapper
 						onEnterViewport={() => {
 							setIsTitleOn(true);
 							console.log('enter');
@@ -129,25 +129,25 @@ const ChapterTitle = ({
 							console.log('leave');
 						}}
 					>
-							<Top>
-								<ChapterMark>
-									{`CHAPTER${numChapter}`}
-								</ChapterMark>
-								<Title>
-									<h1>
-										{title}
-									</h1>
-									<h2>
-										{subTitle}
-									</h2>
-								</Title>
-								<Exp>
-									{exp}
-								</Exp>
-							</Top>
-							{/* <Illust /> */}
-							</ViewportWrapper>
-						</LiveArea>
+						<Top>
+							<ChapterMark>
+								{`CHAPTER${numChapter}`}
+							</ChapterMark>
+							<Title>
+								<h1>
+									{title}
+								</h1>
+								<h2>
+									{subTitle}
+								</h2>
+							</Title>
+							<Exp>
+								{exp}
+							</Exp>
+						</Top>
+						{/* <Illust /> */}
+					</ViewportWrapper>
+				</LiveArea>
 				{/* </ToTop> */}
 			</Container>
 		</>

@@ -49,7 +49,7 @@ const Chart = styled.div`
   position: fixed;
   z-index: 9;
   top: 0px;
-  padding-top: 180px;
+  padding-top: 116px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
@@ -71,7 +71,7 @@ const Wrapper = styled.div`
   display: flex;
   position: relative;
   flex-direction: column;
-  height: ${window.innerHeight * 2 + 'px'};
+  height: ${window.innerHeight * 1.2 + 'px'};
   .table{
     margin-left: calc(480px + 48px);
     margin-top: 48px;
@@ -123,7 +123,10 @@ const Chapter2 = ({
           title: t('c2-summary1-s2-title'),
           exp: t('c2-summary1-s2-exp'),
           type: 'video',
-          src: videoURL.c2.summary.video.s1_s2
+          src: videoURL.c2.summary.video.s1_s2,
+          extra: TableImage,
+          extraType: 'image',
+          extraCaption: '7가지 플라스틱 세부 분류체계'
         },
       ]
     },
@@ -300,7 +303,7 @@ const Chapter2 = ({
                     exp={section.exp}
                     index={i}
                   />
-                  {
+                  {/* {
                     i===0&&
                     // <table>
                     //   <tr>
@@ -327,8 +330,8 @@ const Chapter2 = ({
                     //   }
                       
                     // </table>
-                    <img className="table" src={TableImage} alt='' />
-                  }
+                    // <img className="table" src={TableImage} alt='' />
+                  } */}
                   
                 </ViewportWrapper>
               </Wrapper>

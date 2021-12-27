@@ -197,6 +197,12 @@ const ImageCo2 = styled.div`
   }
 `;
 
+const Blink = keyframes`
+  0%{opacity: 0.64}
+  50%{opacity: 1}
+  100%{opacity: 0.64}
+`;
+
 const ImageMark = styled.div`
   width: 32px;
   height: 32px;
@@ -209,6 +215,7 @@ const ImageMark = styled.div`
   position: absolute;
   top: ${props => `${props.top}px`};
   left: ${props => `${props.left}px`};
+  animation: ${Blink} 2s ease-in 0s infinite;
 `;
 
 const Row = styled.div`
@@ -308,6 +315,7 @@ const Chapter3 = ({
   const [isS2Trigger, setIsS2Trigger] = useState(false);
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
   const [isS8Trigger, setIsS8Trigger] = useState(false);
+  const [isS9Trigger, setIsS9Trigger] = useState(false);
   const [isS3Trigger, setIsS3Trigger] = useState(false);
   const [isLowTrigger, setIsLowTrigger] = useState(false);
   const [isS4Trigger, setIsS4Trigger] = useState(false);
@@ -474,6 +482,7 @@ const Chapter3 = ({
                     <ToTop
                       isTrigger={isS2Trigger}
                       index={3 + index}
+                      distance={'middle'}
                     >
                       <ImageCol key={index}>
 
@@ -495,6 +504,7 @@ const Chapter3 = ({
                     <ToTop
                       isTrigger={isS2Trigger}
                       index={6 + index}
+                      distance={'middle'}
                     >
                       <ImageCol key={index}>
                         <div className={'title'}>
@@ -520,6 +530,7 @@ const Chapter3 = ({
               <ToTop
                 isTrigger={isS3Trigger}
                 index={0}
+                distance={'middle'}
               >
                 <SectionContentHorizon
                   title={t('c3-s3-title')}
@@ -532,6 +543,7 @@ const Chapter3 = ({
             <ToTop
               isTrigger={isS3Trigger}
               index={2}
+              distance={'middle'}
             >
               <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_general} alt='' />
             </ToTop>
@@ -560,6 +572,7 @@ const Chapter3 = ({
                       <ToTop
                         isTrigger={isLowTrigger}
                         index={index + 1}
+                        distance={'middle'}
                       >
                         <ImageCol key={index}>
                           <img src={result.img} alt='' />
@@ -584,6 +597,7 @@ const Chapter3 = ({
               <ToTop
                 isTrigger={isS4Trigger}
                 index={0}
+                distance={'middle'}
               >
                 <SectionContentHorizon
                   title={t('c3-s5-title')}
@@ -596,6 +610,7 @@ const Chapter3 = ({
             <ToTop
               isTrigger={isS4Trigger}
               index={1}
+              distance={'middle'}
             >
               <img style={{ width: '100%', height: 'auto' }} src={illust_process_mr_gs} alt='' />
             </ToTop>
@@ -616,6 +631,7 @@ const Chapter3 = ({
                       <ToTop
                         isTrigger={isHighTrigger}
                         index={index + 2}
+                        distance={'middle'}
                       >
                         <ImageCo2 key={index}>
                           <img src={result.img} alt='' />
@@ -685,13 +701,14 @@ const Chapter3 = ({
             <ViewportWrapper
               onEnterViewport={
                 () => {
-                  setIsS4Trigger(true);
+                  setIsS5Trigger(true);
                 }
               }
             >
               <ToTop
-                isTrigger={isS4Trigger}
+                isTrigger={isS5Trigger}
                 index={0}
+                distance={'middle'}
               >
                 <SectionContentHorizon
                   title={t('c3-s6-title')}
@@ -702,8 +719,9 @@ const Chapter3 = ({
               </ToTop>
             </ViewportWrapper>
             <ToTop
-              isTrigger={isS4Trigger}
+              isTrigger={isS5Trigger}
               index={2}
+              distance={'middle'}
             >
               <img style={{ width: '100%', height: 'auto' }} src={illust_process_cr} alt='' />
             </ToTop>
@@ -753,6 +771,25 @@ const Chapter3 = ({
             <MsgFullScreen
               title={t('c3-s8-title')}
               exp={t('c3-s8-exp')}
+            />
+          </ImageBackground>
+        </ViewportWrapper>
+        <ViewportWrapper
+          onEnterViewport={() => {
+            setIsS9Trigger(true);
+          }}
+          onLeaveViewport={() => {
+            setIsS9Trigger(false);
+          }}
+        >
+          <ImageBackground
+            isFilter={true}
+            img={videoURL.c3.s8.bg}
+            refObject={chapterObject.refSection[5]}
+            isTrigger={isS9Trigger}
+          >
+            <MsgFullScreen
+              title={t('c3-s9-title')}
             />
           </ImageBackground>
         </ViewportWrapper>

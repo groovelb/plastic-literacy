@@ -24,6 +24,14 @@ const StageTitle = styled.p`
   margin-bottom: 32px;
 `;
 
+const Caption = styled.p`
+  width: 100%;
+  text-align: center;
+  ${props => props.theme.type.size.caption}
+  ${props => props.theme.type.weight.prd.bold}
+  color: ${props => props.theme.color.brand.white};
+`;
+
 const Section = styled.div`
   width: 100%;
   color: #fff;
@@ -32,6 +40,7 @@ const Section = styled.div`
   img{
     width: 100%;
     height: auto;
+    margin: 16px 0px;
   }
 `;
 
@@ -47,6 +56,8 @@ const SectionExp = styled.p`
   ${props => props.theme.type.size.body2}
   ${props => props.theme.type.weight.prd.regular}
   margin-bottom: 16px;
+  word-break: keep-all;
+  white-space: pre-line;
 `;
 
 const Report = ({
@@ -82,6 +93,16 @@ const Report = ({
                       section.type === 'video' && <Player>
                         <source src={section.src} />
                       </Player>
+                    }
+                    {
+                      section.extra&&section.extraType === 'image' && 
+                      <>
+                         <img src={section.extra} alt='' />
+                         <Caption>
+                           {section.extraCaption}
+                         </Caption>
+                      </>
+                    
                     }
 
                   </Section>

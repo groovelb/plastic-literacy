@@ -66,7 +66,7 @@ export const plastic_industry_timeline_1_1 = [
 export const plastic_production_1_3 = [
   {
     "year": 1950,
-    "value": 1.5
+    "value": 20
   },
   {
     "year": 1976,

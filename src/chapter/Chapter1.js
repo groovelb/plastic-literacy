@@ -61,18 +61,25 @@ const FadeIn = keyframes`
 
 
 // const chartHeight = 560;
+const Test = styled.div`
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  font-size: 100px;
+  color: #fff;
+`;
 const TimeChart = styled.div`
   /* display: none; */
   position: fixed;
   top: 0px;
   padding-top: 180px;
-  background-color: ${props => props.theme.color.ui.bg.dark};
+  /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => props.theme.size.liveArea}; */
   width: ${`${chartWidth}px`};
   height: calc(100% - 240px);
   opacity: ${props => props.isActive ? 1 : 0};
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
   @media only screen and (max-width: 480px) {
     width: 100%;
@@ -88,13 +95,13 @@ const Chart = styled.div`
   position: fixed;
   top: 0px;
   padding-top: 180px;
-  background-color: ${props => props.theme.color.ui.bg.dark};
+  /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => props.theme.size.liveArea}; */
   width: ${`${chartWidth}px`};
   height: calc(100% - 240px);
   opacity: ${props => props.isActive ? 1 : 0};
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
   @media only screen and (max-width: 480px) {
     width: 100%;
@@ -311,23 +318,28 @@ const Chapter1 = ({
   const videoList = [
     {
       src: videoURL.c1.s1.history1,
-      caption: "당구공의 원료로 사용되던 코끼리 상아를 대체하기 위해 John Wesley Hyatt이 셀룰로이드를 최초로 개발하면서, 동물 소재로 만들던 빗, 단추 등 제품에 플라스틱을 활용했고 그 결과 수많은 동물들을 보호할 수 있었습니다."
+      caption: "당구공의 원료로 사용되던 코끼리 상아를 대체하기 위해 John Wesley Hyatt이 셀룰로이드를 최초로 개발하면서, 동물 소재로 만들던 빗, 단추 등 제품에 플라스틱을 활용했고 그 결과 수많은 동물들을 보호할 수 있었습니다.",
+      ref: useRef(null)
     },
     {
       src: videoURL.c1.s1.history2,
-      caption: "George Eastman이 개발한 투명 셀룰로이드 롤필름은 영사기 사용이 어려웠던 약한 기존 종이 필름을 대체해, 오늘날 우리가 언제든 즐길 수 있는 영화 상영을 가능하게 했습니다."
+      caption: "George Eastman이 개발한 투명 셀룰로이드 롤필름은 영사기 사용이 어려웠던 약한 기존 종이 필름을 대체해, 오늘날 우리가 언제든 즐길 수 있는 영화 상영을 가능하게 했습니다.",
+      ref: useRef(null)
     },
     {
       src: videoURL.c1.s1.history3,
-      caption: "Tupperware에서 개발된 가볍고 단단한 플라스틱 용기 덕분에, 우리는 외부 환경으로부터 음식물을 안전하고 오랫동안 보관할 수 있게 되었습니다."
+      caption: "Tupperware에서 개발된 가볍고 단단한 플라스틱 용기 덕분에, 우리는 외부 환경으로부터 음식물을 안전하고 오랫동안 보관할 수 있게 되었습니다.",
+      ref: useRef(null)
     },
     {
       src: videoURL.c1.s1.history4,
-      caption: "미국 콜롬비아사에서 플라스틱으로 만들어진 비닐 LP판을 공개하며 기존 동물성수지로만 극소량 제작되던 레코딩이 대량생산될 수 있었고, 누구나 쉽게 음악을 즐길 수 있게 되었습니다."
+      caption: "미국 콜롬비아사에서 플라스틱으로 만들어진 비닐 LP판을 공개하며 기존 동물성수지로만 극소량 제작되던 레코딩이 대량생산될 수 있었고, 누구나 쉽게 음악을 즐길 수 있게 되었습니다.",
+      ref: useRef(null)
     },
     {
       src: videoURL.c1.s1.history5,
-      caption: "높은 온도와 압력을 극복할 수 있도록 개발된 플라스틱 덕분에 닐 암스트롱은 아폴로 계획당시 달에 갈 수 있었고 우주 환경에서도 안전할 수 있었습니다."
+      caption: "높은 온도와 압력을 극복할 수 있도록 개발된 플라스틱 덕분에 닐 암스트롱은 아폴로 계획당시 달에 갈 수 있었고 우주 환경에서도 안전할 수 있었습니다.",
+      ref: useRef(null)
     }
   ];
 
@@ -377,7 +389,7 @@ const Chapter1 = ({
       title: t("c1-s1-title"),
       exp: t("c1-s1-exp"),
       data: plastic_industry_timeline_1_1,
-      chartTitle: '플라스틱 산업 발전과정',
+      chartTitle: '인류 발전에 기여한 플라스틱',
       unit: '',
     },
     {
@@ -415,7 +427,7 @@ const Chapter1 = ({
   const [isTitleTrigger, setIsTitleTrigger] = useState(false);
   const [isChart1Active, setIsChart1Active] = useState(false);
   const [isChart2Active, setIsChart2Active] = useState(false);
-  const [currentSection, setCurrentSection] = useState(0);
+  const [currentSection, setCurrentSection] = useState(-1);
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
 
   // motion trigger
@@ -461,34 +473,37 @@ const Chapter1 = ({
 
   return (
     <Container ref={chapterObject.ref}>
-      <ChapterTitle
-        src={videoURL.c1.bg}
-        numChapter={1}
-        title={t("c1-title")}
-        subTitle={t("c1-subtitle")}
-        bgColor={'dark'}
-        exp={t("c1-exp")}
-        isFilter={true}
-        isTrigger={isTitleTrigger}
-      />
       <ViewportWrapper
         onEnterViewport={() => {
-          setCurrentSection(0);
+          setCurrentSection(-1);
         }}
       >
-        <SpaceFullScreen
-          numX={0.5}
+        <ChapterTitle
+          src={videoURL.c1.bg}
+          numChapter={1}
+          title={t("c1-title")}
+          subTitle={t("c1-subtitle")}
+          bgColor={'dark'}
+          exp={t("c1-exp")}
+          isFilter={true}
+          isTrigger={isTitleTrigger}
         />
-
       </ViewportWrapper>
+
+      <SpaceFullScreen
+        numX={0.5}
+      />
 
       <Section>
         <LiveArea>
+          <Test>
+            {currentSection}
+          </Test>
           {/* plastic history timeline */}
           {
-            currentChapter === 1 &&
+            currentChapter === 1 && 0 < currentSection &&
             <TimeChart
-              isActive={isChart1Active}
+              isActive={currentSection === 1}
             >
               <ChartTitle>
                 {content[0].chartTitle}
@@ -550,7 +565,6 @@ const Chapter1 = ({
               >
                 <ViewportWrapper
                   onEnterViewport={() => {
-                    console.log("enter: " + (i + 1));
                     setCurrentSection(i + 1);
                     if (i === 1) {
                       setIsTrigger1(true);
@@ -577,7 +591,7 @@ const Chapter1 = ({
                       i === 0 &&
                       <>
                         <VideoList
-                          imgList={videoList}
+                          videoList={videoList}
                           currentIndex={currentVideoIndexS1}
                           onNext={() => { setCurrentVideoIndexS1(currentVideoIndexS1 + 1) }}
                           onPrev={() => { setCurrentVideoIndexS1(currentVideoIndexS1 - 1) }}

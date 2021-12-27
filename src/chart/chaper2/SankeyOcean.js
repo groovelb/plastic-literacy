@@ -607,7 +607,7 @@ const Sankey = ({
         d3.selectAll(
           `.link_${depth}.ocean`)
           .transition()
-          .duration(1500)
+          .duration(500)
           .style("stroke-opacity", 0.25);
       });
     }

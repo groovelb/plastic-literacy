@@ -15,7 +15,7 @@ const Container = styled.div`
       case 'short':
         return props.isTrigger?'0px':props.theme.motion.transition.distance.short;
       default:
-        return props.isTrigger?'0px':props.theme.motion.transition.distance.big;
+        return props.isTrigger?'0px':props.theme.motion.transition.distance.middle;
     }
   }
   };

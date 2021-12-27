@@ -68,14 +68,20 @@ const Caption = styled.div`
 `;
 
 const VideoList = ({
-  imgList: videoList,
+  videoList,
   onNext,
   onPrev,
   currentIndex,
 }) => {
   const [current, setCurrent] = useState(0);
+
   useEffect(() => {
     setCurrent(currentIndex);
+    videoList.forEach((video,i) => {
+      if(i!==currentIndex){
+        video.ref.pause();
+      }
+    })
   }, [currentIndex])
   return (
     <>
@@ -89,7 +95,11 @@ const VideoList = ({
                 index={i}
                 currentIndex={current}
               >
-                <Player>
+                <Player
+                  ref={player => {
+                    video.ref = player
+                  }}
+                >
                   <source src={video.src} />
                 </Player>
               </VideoContainer>
