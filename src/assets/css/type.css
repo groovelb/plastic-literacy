@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800;400');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;900&display=swap');
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
 
 /* @font-face {
   font-family: noto_sans_kr_regular;
@@ -14,3 +15,24 @@
   font-family: Noto_Sans_KR_Black;
   src: url(../font/NotoSansKR-Black.otf);
 } */
+
+@font-face {
+  font-family: 'NanumBarunGothic';
+  src: url(https://hangeul.pstatic.net/hangeul_static/webfont/NanumBarunGothic/NanumBarunGothicWeb.eot);
+}
+@font-face {
+  font-family: 'NanumSquareExtraBold';
+  src: url(../font/NanumSquareEB.otf);
+}
+@font-face {
+  font-family: 'NanumSquareBold';
+  src: url(../font/NanumSquareB.otf);
+}
+@font-face {
+  font-family: 'NanumSquareLight';
+  src: url(../font/NanumSquareL.otf);
+}
+@font-face {
+  font-family: 'NanumSquareRegular';
+  src: url(../font/NanumSquareR.otf);
+}

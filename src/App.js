@@ -89,12 +89,14 @@ const GlobalStyle = createGlobalStyle`
   .bar.positive{
     /* fill: ${props => props.theme.color.brand.epGreen}; */
     fill: #30DF7A;
+    opacity: 0.75;
   }
   .bar.fade{
     opacity: 0.2 !important;
   }
   .bar.negative{
-    fill: ${props => props.theme.color.signal.warn};
+    fill: ${props => props.theme.color.brand.epPurple};
+    opacity: 0.75;
   }
   @keyframes blink{
     0%{opacity: 0;}
@@ -102,7 +104,8 @@ const GlobalStyle = createGlobalStyle`
     100%{opacity: 1;}
   }
   .bar.highlight{
-    fill: ${props => props.theme.color.signal.warn};
+    fill: ${props => props.theme.color.brand.epPurple};
+    opacity: 0.75;
     animation: blink 1s linear infinite;
   }
   .delay1{

@@ -75,7 +75,7 @@ const nodeSize = {
 const TitleCenter = styled.div`
   ${props => props.theme.type.size.title1};
   ${props => props.theme.type.weight.prd.bold};
-  margin-bottom: 96px;
+  margin-bottom: 48px;
   text-align: center;
 `;
 
@@ -84,8 +84,8 @@ const Text = styled.div`
   ${props => props.theme.type.weight.prd.regular};
   margin: 48px auto;
   width: 480px;
-  word-break: keep-all;
-  white-space: pre-line;
+  /* word-break: keep-all;
+  white-space: pre-line; */
   @media only screen and (max-width: 480px) {
     width: 100%;
   }
@@ -429,9 +429,6 @@ const Chapter3 = ({
             isTrigger={isS1Trigger}
             index={0}
           >
-            <TitleCenter>
-              {t('c3-s1-title')}
-            </TitleCenter>
             <Wrapper>
               <IllustContainer>
                 {
@@ -442,6 +439,9 @@ const Chapter3 = ({
                     currentChapter={currentChapter}
                   />
                 }
+                <TitleCenter>
+                  {t('c3-s1-title')}
+                </TitleCenter>
                 <Text>
                   {t('c3-s1-exp')}
                 </Text>

@@ -41,8 +41,6 @@ import { Player } from 'video-react';
 import { plastic_industry_timeline_1_1, plastic_production_1_3, plastic_consumption_1_6, plastic_waste_1_7, plastic_accumulated_waste_1_8 } from '../data/chapter1';
 import { videoURL } from '../assets/mediaURL';
 
-import video_transition from "../assets/video/video_c1_transition2.mp4";
-
 const chartWidth = 720;
 const Container = styled.div`
   width: 100%;
@@ -58,7 +56,6 @@ const FadeIn = keyframes`
     opacity: 1;
   }
 `;
-
 
 // const chartHeight = 560;
 const Test = styled.div`
@@ -128,9 +125,9 @@ const ChartTitle = styled.p`
 
 const ChartTitlePadding = styled.p`
   padding-left: 80px;
-  margin-bottom: 12px;
-  ${props => props.theme.type.size.title2};
-  ${props => props.theme.type.weight.prd.regular};
+  margin-bottom: 8px;
+  ${props => props.theme.type.size.title3}
+  ${props => props.theme.type.weight.prd.bold};
   @media only screen and (max-width: 480px) {
     padding-left: 24px;
   }
@@ -138,7 +135,7 @@ const ChartTitlePadding = styled.p`
 const ChartUnit = styled.p`
   padding-left: 80px;
   margin-bottom: 12px;
-  ${props => props.theme.type.size.body2};
+  ${props => props.theme.type.size.caption};
   ${props => props.theme.type.weight.prd.regular};
   @media only screen and (max-width: 480px) {
     padding-left: 24px;
@@ -148,7 +145,7 @@ const ChartUnit = styled.p`
 const Content = styled.div`
   position: relative;
   width: 100%;
-  background-color: ${props => props.theme.color.brand.darkNavy};
+  /* background-color: ${props => props.theme.color.brand.darkNavy}; */
   padding-bottom: 24px;
   p{
     margin-bottom: 48px;
@@ -173,21 +170,10 @@ const TextContent = styled.div`
   /* padding-top: 240px; */
   padding-left: ${`calc(${chartWidth}px + 24px)`};
   height: ${window.innerHeight * 2 + 'px'};
-  /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
   word-break: keep-all;
   white-space: pre-line;
   position: relative;
-  /* :before{
-    position: absolute;
-    content: '';
-    top: 0px;
-    left: ${`calc(${chartWidth}px + 24px + 228px)`};
-    width: 2px;
-    height: 100%;
-    background-color: ${props => props.theme.color.brand.epGreen};
-    opacity: 0.1; */
-  }
   p{
     /* width: calc(100% - 360px - 80px - 24px); */
     /* padding-left: 48px; */
@@ -253,7 +239,6 @@ const LegendList = styled.div`
   width: 100%;
   display: flex;
   ${props => props.theme.type.weight.prd.bold}
-  ${props => props.theme.type.size.caption}
 `;
 
 const Legend = styled.div`
@@ -261,13 +246,12 @@ const Legend = styled.div`
   display: flex;
   align-items: center;
   ${props => props.theme.type.size.body2};
-
 `;
 
 const Red = styled.div`
   width: 24px;
   height: 24px;
-  background-color: ${props => props.theme.color.signal.warn};
+  background-color: ${props => props.theme.color.brand.epPurple};
   margin-right: 12px;
 `
 
@@ -372,15 +356,15 @@ const Chapter1 = ({
   const imgListS5 = [
     {
       src: img_c1_s5_1,
-      caption: `반구대암각화* 앞 모래톱에서 27년간 썩지 않고 남아있다가 발견된 플라스틱 비닐 포장지`,
-    },
-    {
-      src: img_c1_s5_2,
-      caption: `국보 제 285호로, 세계에서 가장 오래된 고래사냥 암각화. ‘ㄱ’자 모양으로 꺾인 절벽암반에 육지동물과 사냥하는 장면 등 총 200여점의 그림이 새겨져 있는 신석기시대의 문화재. [출처: 문화재청]`,
+      caption: `반구대암각화* 앞 모래톱에서 27년간 썩지 않고 남아있다가 발견된 플라스틱 비닐 포장지
+
+      국보 제 285호로, 세계에서 가장 오래된 고래사냥 암각화. ‘ㄱ’자 모양으로 꺾인 절벽암반에 육지동물과 사냥하는 장면 등 총 200여점의 그림이 새겨져 있는 신석기시대의 문화재. [출처: 문화재청]`,
     },
     {
       src: img_c1_s5_3,
-      caption: '하와이 근처 쓰레기 지대에서 20년 된 한국 쓰레기 발견',
+      caption: `하와이 근처 쓰레기 지대*에서 20년 된 한국 쓰레기 발견
+
+      쓰레기 지대, 즉 GPGP(The Great Pacific Garbage Patch)는 북태평양에 위치한 거대한 쓰레기 섬. 바람과 해류의 영향으로 북아메리카, 아시아에서 흘러온 쓰레기가 모여 있는 지역 [출처: National Geographic]`,
     }
   ];
 
@@ -513,7 +497,7 @@ const Chapter1 = ({
                 {content[0].chartTitle}
               </ChartTitle>
               <TimelineChartC1S1
-                data={data}
+                data={content[0].data}
               />
             </TimeChart>
           }
@@ -563,7 +547,6 @@ const Chapter1 = ({
           {
             content.map((section, i) =>
               <TextContent
-                ref={chapterObject.refSection[i]}
                 currentSection={currentSection}
                 index={i}
               >
@@ -575,6 +558,11 @@ const Chapter1 = ({
                     }
                     if (i === 2) {
                       setIsTrigger2(true);
+                    }
+                  }}
+                  onLeaveViewport={() => {
+                    if(i === 0){
+                      setCurrentSection(-1);
                     }
                   }}
                 >
@@ -649,7 +637,6 @@ const Chapter1 = ({
             <ImageBackground
               isFilter={false}
               img={bg_c1_transition}
-              refObject={chapterObject.refSection[5]}
               isTrigger={isVideoTrigger}
             >
               <MsgFullScreen

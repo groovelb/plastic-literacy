@@ -47,20 +47,6 @@ function Main() {
       theme: 'light',
       isTrigger: false,
       ref: useRef(null),
-      refSection: [
-        // 1.plastic history
-        useRef(null),
-        // 2.plastic production
-        useRef(null),
-        // 3.plastic consumption
-        useRef(null),
-        // 4.plastic waste
-        useRef(null),
-        // 5.plastic waste2
-        useRef(null),
-        // 6.ending
-        useRef(null)
-      ],
     },
     // Chapter2: Journey Of Plastic - Land
     {
@@ -134,7 +120,6 @@ function Main() {
           currentChapter={currentChapter}
         />
       </ViewportWarpper>
-
       <SpaceFullScreen
         numX={0.2}
       />
@@ -149,8 +134,6 @@ function Main() {
           <Chapter1
             currentChapter={currentChapter}
             chapterObject={chapterList[1]}
-            refSection1={chapterList[1].refSection1}
-            refSection2={chapterList[1].refSection2}
           />
         </ViewportWarpper>
       </Element>

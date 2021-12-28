@@ -12,19 +12,24 @@ const type = {
     },
     prd: {
       light: `
-        // font-family: 'noto_sans_kr_light';
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 300;
+        // font-family: 'Noto Sans KR', sans-serif;
+        // font-weight: 300;
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        font-weight: 400;
       `,
       regular: `
-        // font-family: noto_sans_kr_regular;
-        font-family: 'Noto Sans KR', sans-serif;
+        // font-family: 'Noto Sans KR', sans-serif;
+        // font-weight: 400;
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
         font-weight: 400;
       `,
       bold: `
-        // font-family: 'noto_sans_kr_black';
-        font-family: 'Noto Sans KR', sans-serif;
-        font-weight: 900;
+        // font-family: 'Noto Sans KR', sans-serif;
+        // font-weight: 900;
+        // font-family: 'NanumSquareExtraBold';
+        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        font-weight: 700;
+        
       `
     },
     num: `
@@ -62,7 +67,7 @@ const type = {
     `,
     title1: `
     font-size: 32px;
-    line-height: 44px;
+    line-height: 48px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 22px;
@@ -101,7 +106,7 @@ const type = {
     }
     `,
     body1: `
-    font-size: 24px;
+    font-size: 20px;
     line-height: 40px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
@@ -111,8 +116,8 @@ const type = {
     }
     `,
     body2: `
-    font-size: 20px;
-    line-height: 32px;
+    font-size: 16px;
+    line-height: 28px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;
