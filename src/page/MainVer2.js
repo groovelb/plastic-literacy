@@ -107,7 +107,7 @@ function Main() {
 
   return (
     <>
-      <GNB />
+      <GNB setCurrentChapter={setCurrentChapter} />
       <ViewportWarpper
         onEnterViewport={
           () => {

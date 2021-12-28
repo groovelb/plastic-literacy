@@ -128,7 +128,7 @@ const BarChart = ({
     chart = svg.select(".chart.barChart");
 
     const t = chart.transition()
-      .duration(750)
+      .duration(500)
       .ease(d3.easeExpOut);
 
     d3.select(".xAxis.barChart").transition(t).call(xScaleData);
@@ -175,7 +175,7 @@ const BarChart = ({
       setTimeout(function () {
         chart.selectAll("rect")
           .transition()
-          .duration(2400)
+          .duration(1000)
           // .ease(d3.ease)
           .attr("opacity", (d, i, arr) => {
             if (i === 0 || i === (arr.length - 1)) {
@@ -210,7 +210,7 @@ const BarChart = ({
             .attr("y", height)
             .attr("height", 0)
             .call(enter => enter.transition(t)
-              .delay((d, i) => 600 + i * 50)
+              .delay((d, i) => 400 + i * 50)
               .attr("y", function (d) { return y(d.recycle); })
               .attr("height", function (d) { return height - y(d.recycle); })
             ),
@@ -221,7 +221,7 @@ const BarChart = ({
             .attr("y", height)
             .attr("height", 0)
             .call(enter => enter.transition(t)
-              .delay((d, i) => 600 + i * 50)
+              .delay((d, i) => 400 + i * 50)
               .attr("y", function (d) { return y(d.recycle); })
               .attr("height", function (d) { return height - y(d.recycle); })
             ),
@@ -243,7 +243,7 @@ const BarChart = ({
             .attr("opacity", 0)
             .text((d) => parseInt(d.recycle / d.value * 100) + '%')
             .call(enter => enter.transition(t)
-              .delay((d, i) => 1600)
+              .delay((d, i) => 1000)
               .attr("opacity", 1)
             )
           ,
@@ -254,7 +254,7 @@ const BarChart = ({
             .attr("opacity", 0)
             .text((d) => parseInt(d.recycle / d.value * 100) + '%')
             .call(enter => enter.transition(t)
-              .delay((d, i) => 1600)
+              .delay((d, i) => 1000)
               .attr("opacity", 1)
             )
           ,

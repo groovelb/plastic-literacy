@@ -12,13 +12,16 @@ const Container = styled(LiveArea)`
   justify-content: center;
   align-items: center;
   ${props => props.theme.layout.flexColCenter}
+  img{
+    margin-bottom: 24px;
+  }
 `;
 
 const Title = styled.div`
 	width: 900px;
 	text-align: center;
 	h1{
-		${props => props.theme.type.size.h1}
+		${props => props.theme.type.size.h2}
 		${props => props.theme.type.weight.exp.bold}
 		text-transform: capitalize;
 		margin-bottom: 48px;
@@ -45,6 +48,7 @@ const Exp = styled.div`
 	/* padding: 48px; */
 	transition: opacity 1s ease-in-out;
 	/* border: solid 1px #fff; */
+ 
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}

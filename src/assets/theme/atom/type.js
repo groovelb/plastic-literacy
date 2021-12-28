@@ -56,7 +56,7 @@ const type = {
       text-transform: capitalize;
     `,
     h1: `
-    font-size: 48px;
+    font-size: 44px;
     line-height: 64px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
@@ -65,8 +65,18 @@ const type = {
       letter-spacing:  0px;
     }
     `,
+    h2: `
+    font-size: 36px;
+    line-height: 56px;
+    letter-spacing: 0px;
+    @media only screen and (max-width: 480px) {
+      font-size: 26px;
+      line-height: 32px;
+      letter-spacing:  0px;
+    }
+    `,
     title1: `
-    font-size: 32px;
+    font-size: 28px;
     line-height: 48px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
@@ -116,7 +126,7 @@ const type = {
     }
     `,
     body2: `
-    font-size: 16px;
+    font-size: 18px;
     line-height: 28px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {

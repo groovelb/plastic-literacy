@@ -16,9 +16,8 @@ import SectionContentHorizon from "../components/textContainer/SectionContentHor
 import ImageBackground from "../components/videoBackground/ImageBackground";
 
 import { isMobile } from 'react-device-detect';
-import video_s4 from "../assets/video/video_c3_last.mp4";
-import bg_title from "../assets/img/bg/title_bg_c3.jpeg";
-import bg_transition from '../assets/img/bg/bg_c2_ocean_transition.jpg';
+import logo_white from "../assets/img/logo/logo_white.svg";
+import text_energy from "../assets/img/logo/text_energy.svg";
 
 import illust_result_mr from "../assets/illust/illust_result_mr.svg";
 import illust_result_cr from "../assets/illust/illust_result_cr.svg";
@@ -247,6 +246,7 @@ const Divider = styled.div`
   margin-top: 80px;
   margin-bottom: 320px;
 `;
+
 
 const carPartList = [
   {
@@ -794,7 +794,10 @@ const Chapter3 = ({
           >
             <MsgFullScreen
               title={t('c3-s9-title')}
-            />
+            >
+              <img src={text_energy} alt='' />
+              <img src={logo_white} alt='' />
+            </MsgFullScreen>
           </ImageBackground>
         </ViewportWrapper>
       </Section>

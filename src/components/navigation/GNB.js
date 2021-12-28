@@ -80,7 +80,7 @@ const Menu = styled.div`
 `;
 
 const GNB = ({
-
+  setCurrentChapter
 }) => {
   return (
     <Container>
@@ -88,7 +88,11 @@ const GNB = ({
         <img src={PL_logo} alt='' />
       </Logo>
       <MenuList>
-        <Menu>
+        <Menu onClick={
+          () => {
+            setCurrentChapter(1);
+          }
+        }>
           <Link to="chapter1">
             <p>
               <span>Chapter1</span>
@@ -98,7 +102,11 @@ const GNB = ({
             </p>
           </Link>
         </Menu>
-        <Menu>
+        <Menu onClick={
+          () => {
+            setCurrentChapter(2);
+          }
+        }>
           <Link to="chapter2">
             <p>
               <span>Chapter2</span>
@@ -108,7 +116,11 @@ const GNB = ({
             </p>
           </Link>
         </Menu>
-        <Menu>
+        <Menu onClick={
+          () => {
+            setCurrentChapter(4);
+          }
+        }>
           <Link to="chapter3">
             <p>
               <span>Chapter3</span>
