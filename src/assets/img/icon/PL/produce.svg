@@ -4,7 +4,7 @@
     <g id="element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="plastic-item" transform="translate(-101.000000, -2971.000000)">
             <g id="icon/PL/produce" transform="translate(101.000000, 2971.000000)">
-                <rect id="Rectangle" fill="#020F18" x="0" y="0" width="160" height="160.301668"></rect>
+                <rect id="Rectangle" fill="none" x="0" y="0" width="160" height="160.301668"></rect>
                 <rect id="Rectangle-Copy-2" x="0" y="0" width="160" height="160.301668"></rect>
                 <polygon id="Rectangle" fill="#3DDB87" transform="translate(80.000000, 80.150834) rotate(45.000000) translate(-80.000000, -80.150834) " points="70.9830312 71.1338653 89 71.1508342 89.0169688 89.167803 71 89.1508342"></polygon>
                 <path d="M137.305087,107.888795 L157.924412,128.546996 L137.305087,149.205198 L137.305087,138.562947 L97.8050865,138.563026 L97.8050865,117.52909 L137.305087,117.52895 L137.305087,107.888795 Z" id="Combined-Shape" stroke="#020F18" stroke-width="3" fill="#3DDB87" transform="translate(127.555087, 128.546996) rotate(45.000000) translate(-127.555087, -128.546996) "></path>

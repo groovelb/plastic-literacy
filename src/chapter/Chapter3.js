@@ -11,7 +11,7 @@ import VideoBackground from "../components/videoBackground/VideoBackground";
 import ToTop from '../components/motion/ToTop';
 import FadeIn from '../components/motion/FadeIn';
 import LiveArea from "../components/layout/LiveArea";
-import PlasticLiteracy from "../template/PlasticLiteracy";
+import PlasticLiteracy from "../template/Main/PlasticLiteracy";
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
 import ImageBackground from "../components/videoBackground/ImageBackground";
 

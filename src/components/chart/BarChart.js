@@ -196,7 +196,7 @@ const BarChart = ({
               return 'bar positive fade recycle'
             }
           })
-      }, 1500);
+      }, 1000);
     }
     // recycling mark
     if (stage === 4) {
@@ -243,7 +243,7 @@ const BarChart = ({
             .attr("opacity", 0)
             .text((d) => parseInt(d.recycle / d.value * 100) + '%')
             .call(enter => enter.transition(t)
-              .delay((d, i) => 1000)
+              .delay((d, i) => 800)
               .attr("opacity", 1)
             )
           ,
@@ -254,7 +254,7 @@ const BarChart = ({
             .attr("opacity", 0)
             .text((d) => parseInt(d.recycle / d.value * 100) + '%')
             .call(enter => enter.transition(t)
-              .delay((d, i) => 1000)
+              .delay((d, i) => 800)
               .attr("opacity", 1)
             )
           ,

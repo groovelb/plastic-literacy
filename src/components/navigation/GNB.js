@@ -72,7 +72,7 @@ const Menu = styled.div`
     ${props => props.theme.type.weight.exp.bold}
   }
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.75;
   transition: opacity 1s ease-out;
   :hover{
     opacity: 1;

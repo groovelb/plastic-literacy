@@ -14,7 +14,7 @@ import ViewportWrapper from '../components/ViewportWrapper';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
 import Report from "../components/report/Report";
 import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage";
-import bg_transition from '../assets/img/bg/bg_c2_ocean_transition.jpg';
+import bg_waste_ocean from "../assets/img/bg/bg_waste_ocean.jpg";
 
 
 // report image
@@ -46,18 +46,45 @@ const FadeIn = keyframes`
   }
 `;
 
+const Top = styled.div`
+   position: fixed;
+   z-index: 9;
+   top: 0px;
+   left: 0px;
+   padding-top: 116px;
+   padding-bottom: 48px;
+   box-sizing: content-box;
+   background-size: cover;
+   width: 100%;
+   height: ${sankeyHeight + 'px'};
+   background-image: url(${bg_waste_ocean});
+   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
+   opacity: ${props => props.isActive ? 1 : 0};
+   :before{
+     position: absolute;
+     content: '';
+     width: 100%;
+     height: 100%;
+     /* background-color: rgba(0,0,0,0.82); */
+     background-image: linear-gradient(rgba(2, 15, 24, 1), rgba(2, 15, 24, 0.75), rgba(2, 15, 24, 1));
+     top:0;
+     left:0;
+     z-index: -1;
+   }
+`;
+
 const Chart = styled.div`
   position: fixed;
-  z-index: 9;
+  z-index: 999;
   top: 0px;
   padding-top: 116px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
-  box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
+  /* box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`}; */
   height: ${sankeyHeight + 'px'};
-  background-color: ${props => props.theme.color.ui.bg.dark};
+  /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
   /* animation: ${FadeIn} 1s linear forwards; */
@@ -117,7 +144,7 @@ const Chapter2 = ({
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
   const [isVideo2Trigger, setIsVideo2Trigger] = useState(false);
   const [isChartActive, setIsChartActive] = useState(false);
-  const [currentReportStage,setCurrentReportStage] = useState(0);
+  const [currentReportStage, setCurrentReportStage] = useState(0);
 
   const { t } = useTranslation();
   const windowSize = useWindowSize();
@@ -216,16 +243,17 @@ const Chapter2 = ({
         <LiveArea>
           {
             currentChapter === 3 &&
-            <Chart
-              isActive={isChartActive}
-            >
-              <SankeyOcean
-                // width={1200}
-                // height={sankeyHeight}
-                currentStage={currentSection}
-                currentChapter={currentChapter}
-              />
-            </Chart>
+            <>
+              <Top isActive={isChartActive}></Top>
+              <Chart
+                isActive={isChartActive}
+              >
+                <SankeyOcean
+                  currentStage={currentSection}
+                  currentChapter={currentChapter}
+                />
+              </Chart>
+            </>
           }
           {
             contentOcean.map((section, i) =>

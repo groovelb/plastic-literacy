@@ -15,7 +15,7 @@ import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
-import PlasticLiteracy from "../template/PlasticLiteracy";
+import PlasticLiteracy from "../template/Main/PlasticLiteracy";
 import PlasticParticle from "../chart/title/PlasticParticle";
 import { isMobile } from 'react-device-detect';
 import useWindowSize from '../hook/useWindowSize';

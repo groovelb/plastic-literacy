@@ -29,6 +29,7 @@ const type = {
         // font-family: 'NanumSquareExtraBold';
         font-family: 'Spoqa Han Sans Neo', 'sans-serif';
         font-weight: 700;
+        // font-family: 'SpoqaHansBold';
         
       `
     },

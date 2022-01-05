@@ -235,17 +235,20 @@ const ChartMsg = styled.div`
 const LegendList = styled.div`
   position: absolute;
   left: 80px;
-  bottom: -130px;
+  bottom: -112px;
   width: 100%;
   display: flex;
   ${props => props.theme.type.weight.prd.bold}
 `;
 
 const Legend = styled.div`
-  width: 224px;
+  padding-right: 32px;
   display: flex;
   align-items: center;
-  ${props => props.theme.type.size.body2};
+  p{
+    ${props => props.theme.type.size.caption}
+  }
+  color: #fff;
 `;
 
 const Red = styled.div`

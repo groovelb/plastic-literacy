@@ -7,6 +7,7 @@ import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
 import styled from 'styled-components';
 import Scrollbar from 'smooth-scrollbar';
+import Router from "./router/Router";
 
 // Chapter
 import MainVer2 from "./page/MainVer2";
@@ -17,7 +18,8 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <MainVer2 />
+      {/* <MainVer2 /> */}
+      <Router />
     </ThemeProvider>
   );
 }
@@ -52,6 +54,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .text.recycle{
     fill: #004628;
+    font-size: 14px;
     font-weight: bold;
   }
   .link {

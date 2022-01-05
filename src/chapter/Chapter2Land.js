@@ -10,6 +10,7 @@ import SankeyLand from "../chart/chaper2/SankeyLand";
 import ViewportWrapper from '../components/ViewportWrapper';
 import bg_c2 from "../assets/img/bg/title_bg_c2.png";
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizon";
+import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackground";
 import useWindowSize from '../hook/useWindowSize';
 import VideoBackground from "../components/videoBackground/VideoBackground";
@@ -19,13 +20,7 @@ import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage"
 import TableImage from "../assets/img/illust/table.png";
 
 // report image
-import img_s1_s1 from "../assets/img/c2/report/c2-s2-p1-img.PNG";
-import img_s1_s2 from "../assets/img/c2/report/c2-s2-p2-img.PNG";
-import img_s2_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
-import img_s2_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
-import img_s3_s1 from "../assets/img/c2/report/c2-s3-p1-img.jpg";
-import img_s3_s2 from "../assets/img/c2/report/c2-s3-p2-img.PNG";
-import bg_transition from '../assets/img/bg/c2_land_transition.jpg';
+import bg_waste_land from "../assets/img/bg/bg_waste_land2.jpg";
 import { videoURL } from '../assets/mediaURL';
 
 const sankeyHeight = 368;
@@ -44,19 +39,47 @@ const FadeIn = keyframes`
   }
 `;
 
+const Top = styled.div`
+   position: fixed;
+   z-index: -1;
+   top: 0px;
+   left: 0px;
+   padding-top: 116px;
+   padding-bottom: 48px;
+   box-sizing: content-box;
+   background-size: cover;
+   width: 100%;
+   height: ${sankeyHeight + 'px'};
+   height: 100%;
+   background-image: url(${bg_waste_land});
+   box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
+   opacity: ${props => props.isActive ? 1 : 0};
+   :before{
+     position: absolute;
+     content: '';
+     width: 100%;
+     height: 100%;
+     /* background-color: rgba(0,0,0,0.82); */
+     background-image: linear-gradient(rgba(2, 15, 24, 1), rgba(2, 15, 24, 0.75), rgba(2, 15, 24, 1));
+     top:0;
+     left:0;
+     z-index: -1;
+   }
+`;
+
 const Chart = styled.div`
-  pointer-events: none;
   position: fixed;
-  z-index: 9;
+  /* z-index: 999; */
   top: 0px;
   padding-top: 116px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
-  box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
+  /* box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`}; */
-  height: ${sankeyHeight + 'px'};
-  background-color: ${props => props.theme.color.ui.bg.dark};
+  /* height: ${sankeyHeight + 'px'}; */
+  height: calc(100% - 360px);
+  /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
   /* animation: ${FadeIn} 1s linear forwards; */
@@ -282,14 +305,17 @@ const Chapter2 = ({
         <Section>
           {
             currentChapter === 2 &&
-            <Chart
-              isActive={isChartActive}
-            >
-              <SankeyLand
-                currentStage={currentSection}
-                currentChapter={currentChapter}
-              />
-            </Chart>
+            <Top isActive={isChartActive}>
+              <Chart
+                isActive={isChartActive}
+              >
+                <SankeyLand
+                  currentStage={currentSection}
+                  currentChapter={currentChapter}
+                />
+              </Chart>
+            </Top>
+
           }
 
           {
@@ -301,7 +327,7 @@ const Chapter2 = ({
                     setCurrentSection(i + 1);
                   }}
                 >
-                  <SectionContentHorizon
+                  <SectionContentVertical
                     title={section.title}
                     exp={section.exp}
                     index={i}

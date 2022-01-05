@@ -36,3 +36,7 @@
   font-family: 'NanumSquareRegular';
   src: url(../font/NanumSquareR.otf);
 }
+@font-face {
+  font-family: 'SpoqaHansBold';
+  src: url(../font/SpoqaHanSansNeo-Bold.otf);
+}

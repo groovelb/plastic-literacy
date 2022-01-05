@@ -4,7 +4,7 @@
     <g id="element" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="plastic-item" transform="translate(-296.000000, -2971.000000)">
             <g id="icon/PL/dispose" transform="translate(296.000000, 2971.000000)">
-                <rect id="Rectangle" fill="#020F18" x="0" y="0" width="160" height="160"></rect>
+                <rect id="Rectangle" fill="none" x="0" y="0" width="160" height="160"></rect>
                 <rect id="Rectangle-Copy" x="0" y="0" width="160" height="160"></rect>
                 <g id="Group-3" transform="translate(30.000000, 9.698332)" fill="#3DDB87" stroke="#020F18" stroke-width="3">
                     <path d="M61.3846231,-1.5 L61.3840078,117.566036 L75.3739628,117.56637 L49.5,146.238988 L23.6260332,117.566365 L38.3070087,117.566034 L38.307701,-1.5 L61.3846231,-1.5 Z" id="Combined-Shape"></path>
