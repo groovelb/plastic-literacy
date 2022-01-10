@@ -20,7 +20,8 @@ const Block = handleViewport(Wrapper);
 const ViwportWrapper = ({
   children,
   onEnterViewport,
-  onLeaveViewport
+  onLeaveViewport,
+  style
 }) => {
  
   return (

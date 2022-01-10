@@ -2,27 +2,23 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
 import Section from "../components/layout/Section";
-import MsgFullScreen from "../components/layout/MsgFullScreen";
+
+import FullScreen from '../components/layout/FullScreen';
 import VideoBackground from "../components/videoBackground/VideoBackground2";
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import ViewportWrapper from '../components/ViewportWrapper';
 
 import ProjectIntroduction from '../template/Main/ProjectIntroduction';
+import ChapterTItleList from '../template/Main/ChapterTItleList';
 
-import circle_product from "../assets/illust/title/circle_product.svg";
-import circle_waste from "../assets/illust/title/circle_waste.svg";
-import circle_part from "../assets/illust/title/circle_part.svg";
-import circle_flake from "../assets/illust/title/circle_flake.svg";
 import ic_production from "../assets/illust/title/ic_ep_produce.svg";
 import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
 import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
 import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
 import logo_gs from "../assets/img/logo/logo_gscaltex.png";
 import PlasticLiteracy from "../template/Main/PlasticLiteracy";
-import PlasticParticle from "../chart/title/PlasticParticle";
 import { isMobile } from 'react-device-detect';
 import useWindowSize from '../hook/useWindowSize';
-import video_earth from "../assets/video/earth_spin.mp4";
 import ToTop from "../components/motion/ToTop";
 import LiveArea from "../components/layout/LiveArea";
 import dual_circle from "../assets/img/shape/dual_circle.svg";
@@ -35,11 +31,6 @@ const circleSize = {
   margin: isMobile ? 0 : 20
 };
 
-const nodeSize = {
-  width: isMobile ? 54 : 108,
-  height: isMobile ? 54 : 108,
-  margin: isMobile ? 0 : 20
-};
 
 const Container = styled(Section)`
   height: ${props => props.innerHeight + 'px'};
@@ -116,58 +107,6 @@ const Rotate = keyframes`
   }
   to {
     transform: rotate( 360deg );
-  }
-`;
-
-const NodeContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  @media only screen and (max-width: 480px) {
-    position: absolute;
-    top: 20px;
-    left: 0;
-    padding-top: 20px;
-    height: auto;
-  }
-`;
-
-const Node = styled.div`
-  width: ${nodeSize.width + 'px'};
-  height:  ${nodeSize.height + 'px'};
-  position: absolute;
-  top: ${props => `${props.y}px`};
-  left: ${props => `${props.x}px`};
-  transform-origin: center center;
-  img{
-    width: 80%;
-    height: 80%;
-  }
-`;
-
-const NodeCircle = styled.div`
-  width: ${nodeSize.width + 'px'};
-  height:  ${nodeSize.height + 'px'};
-  background-color: ${props => props.theme.color.ui.bg.dark};
-  ${props => props.theme.layout.flexColCenter}
-  border-radius: 50%;
-  img{
-    width: 80%;
-    height: 80%;
-  }
-`;
-
-const DualEarth = styled.div`
-  width: 100%;
-  height: 502px;
-  background-image: url(${dual_circle});
-  background-size: cover;
-  margin-top: 80px;
-  display: flex;
-  align-items: center;
-  padding: 20px;
-  img{
-    width: auto;
-    height: 100%;
   }
 `;
 
@@ -300,7 +239,8 @@ const Title = ({
         >
           <IllustContainer>
             {
-              currentChapter === 0 && <PlasticLiteracy
+              currentChapter === 0 &&
+              <PlasticLiteracy
                 currentChapter={currentChapter}
                 starChatper={0}
                 id={'c0'}
@@ -352,6 +292,9 @@ const Title = ({
       >
         <ProjectIntroduction />
       </ViewportWrapper>
+      <FullScreen>
+        <ChapterTItleList />
+      </FullScreen>
       <ViewportWrapper
         onEnterViewport={
           () => {

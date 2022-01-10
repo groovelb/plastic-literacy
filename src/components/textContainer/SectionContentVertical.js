@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
+import LiveArea from '../layout/LiveArea';
 
-const Container = styled.div`
-  width: 100%;
+const Container = styled(LiveArea)`
+  /* width: 100%; */
   display: flex;
   justify-content: ${props => props.index === 0 ? 'flex-end' : 'flex-start'};
 `;
@@ -14,9 +15,9 @@ const TextContent = styled.div`
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding:32px;
+  padding:48px;
   /* background-color: ${props => props.theme.color.brand.darkNavy}; */
-  background-color: rgba(0,8,16,0.75);
+  background-color: rgba(0,8,16,0.92);
   /* padding-top: 240px; */
   /* opacity: ${props => props.currentSection === props.index ? 1 : 0}; */
   transition: opacity 0.3s ease-out;
@@ -73,11 +74,13 @@ const SectionContentVertical = ({
   title,
   exp,
   index,
+  themeType,
   isContentFit
 }) => {
   return (
     <Container
       index={index}
+      themeType={themeType}
     >
       <TextContent
         index={index}

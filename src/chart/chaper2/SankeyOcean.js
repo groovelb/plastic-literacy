@@ -458,7 +458,6 @@ const Sankey = ({
         else {
           return '추정치';
         }
-
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");

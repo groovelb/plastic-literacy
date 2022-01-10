@@ -7,7 +7,9 @@ import useWindowSize from '../../hook/useWindowSize';
 
 const Container = styled.div`
   display: flex;
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   pointer-events: none;
   height: ${props =>`${props.height}px`};
@@ -16,9 +18,6 @@ const Container = styled.div`
 const VideoBG = styled.div`
   width: 100%;
   height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
   opacity: ${props => props.isTrigger ? '1' : '0'};
   transition: opacity 0.4s ease-in-out;
   video{

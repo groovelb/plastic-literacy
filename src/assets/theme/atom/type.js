@@ -2,36 +2,45 @@ const type = {
   weight: {
     exp: {
       regular: `
-        font-family: 'Montserrat', sans-serif;
+      font-family: 'Pretendard Variable';
         font-weight: 400;
       `,
       bold: `
-        font-family: 'Montserrat', sans-serif;
-        font-weight: 800;
+        // font-family: 'Montserrat', sans-serif;
+        font-family: 'Pretendard Variable';
+        font-weight: 900;
       `
     },
     prd: {
       light: `
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 300;
-        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        font-family: 'Pretendard Variable';
         font-weight: 400;
       `,
       regular: `
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 400;
-        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+        font-family: 'Pretendard Variable';
         font-weight: 400;
       `,
       bold: `
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 900;
         // font-family: 'NanumSquareExtraBold';
-        font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-        font-weight: 700;
+        font-family: 'Pretendard Variable';
+        font-weight: 800;
         // font-family: 'SpoqaHansBold';
-        
-      `
+      `,
+      black: `
+        // font-family: 'Noto Sans KR', sans-serif;
+        // font-weight: 900;
+        // font-family: 'NanumSquareExtraBold';
+        font-family: 'Pretendard Variable';
+        font-weight: 900;
+      `,
     },
     num: `
       font-family: 'Roboto', sans-serif;
@@ -40,8 +49,18 @@ const type = {
   },
   size: {
     title: `
-    font-size: 64px;
-    line-height: 64px;
+    font-size: 100px;
+    line-height: 90px;
+    letter-spacing: 4px;
+    @media only screen and (max-width: 480px) {
+      font-size: 40px;
+      line-height: 46px;
+      letter-spacing:  1.5px;
+    }
+    `,
+    chapterTitle: `
+    font-size: 72px;
+    line-height: 90px;
     letter-spacing: 4px;
     @media only screen and (max-width: 480px) {
       font-size: 40px;
@@ -88,7 +107,7 @@ const type = {
       `,
     title2: `
     font-size: 24px;
-    line-height: 36px;
+    line-height: 34px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 20px;
@@ -117,8 +136,8 @@ const type = {
     }
     `,
     body1: `
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 18px;
+    line-height: 1.56;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;
@@ -127,8 +146,8 @@ const type = {
     }
     `,
     body2: `
-    font-size: 18px;
-    line-height: 28px;
+    font-size: 16px;
+    line-height: 1.56;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;

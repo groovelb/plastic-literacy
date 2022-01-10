@@ -317,7 +317,6 @@ const Chapter2 = ({
             </Top>
 
           }
-
           {
             contentLand.map((section, i) =>
               <Wrapper>
@@ -332,36 +331,6 @@ const Chapter2 = ({
                     exp={section.exp}
                     index={i}
                   />
-                  {/* {
-                    i===0&&
-                    // <table>
-                    //   <tr>
-                    //   {
-                    //     categoryTableData.header.map((item,index) =>
-                    //       <th key={index}>
-                    //         {item}
-                    //       </th>
-                    //     )
-                    //   }
-                    //   </tr>
-                    //   {
-                    //     categoryTableData.data.map((row,index) =>
-                    //       <tr key={index}>
-                    //         {
-                    //           row.map((data,index) =>
-                    //             <td key={index}>
-                    //               {data}
-                    //             </td>
-                    //           )
-                    //         }
-                    //       </tr>
-                    //     )
-                    //   }
-                      
-                    // </table>
-                    // <img className="table" src={TableImage} alt='' />
-                  } */}
-
                 </ViewportWrapper>
               </Wrapper>
             )

@@ -269,7 +269,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 116, right: 10, bottom: 10, left: 24 };
+  const margin = { top: 116, right: 10, bottom: 10, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -331,8 +331,8 @@ const Sankey = ({
         nodeGroupTemp[node.depth].x = node.x0;
 
         stage.append("text")
-          .attr("x", node.x0 + 48)
-          .attr("y", -76)
+          .attr("x", node.x0 + 24)
+          .attr("y", -48)
           .attr("class", "stage_title")
           .attr("text-anchor", "middle")
           .text(nodeGroupTemp[node.depth].name);
@@ -344,22 +344,22 @@ const Sankey = ({
         .attr("width", 48)
         .attr("height", 48);
 
-        stage.append("line")
-          .attr("class", "stage")
-          .attr("x1", node.x0 - 2)
-          .attr("x2", node.x0 - 2)
-          .attr("y1", -56)
-          .attr("y2", height + 40)
-          .attr("stroke", theme.color.brand.secondary600)
-          .attr("stroke-width", 4)
-          .attr("stroke-dasharray", 8)
-          .attr("opacity", 0.5)
-          .on("click", () => {
-            d3.selectAll(`.link.land`)
-              .style("stroke-opacity", 0.1);
-            d3.selectAll(`.link_${node.depth}.land`)
-              .style("stroke-opacity", 0.5);
-          });
+        // stage.append("line")
+        //   .attr("class", "stage")
+        //   .attr("x1", node.x0 - 2)
+        //   .attr("x2", node.x0 - 2)
+        //   .attr("y1", -56)
+        //   .attr("y2", height + 40)
+        //   .attr("stroke", theme.color.brand.secondary600)
+        //   .attr("stroke-width", 4)
+        //   .attr("stroke-dasharray", 8)
+        //   .attr("opacity", 0.5)
+        //   .on("click", () => {
+        //     d3.selectAll(`.link.land`)
+        //       .style("stroke-opacity", 0.1);
+        //     d3.selectAll(`.link_${node.depth}.land`)
+        //       .style("stroke-opacity", 0.5);
+        //   });
       }
     });
 
@@ -483,30 +483,30 @@ const Sankey = ({
   useEffect(() => {
 
     if (isInitiate) {
-      // link.style('stroke', (d, i) => {
+      link.style('stroke', (d, i) => {
 
-      //   // make unique gradient  ids  
-      //   const gradientID = `gradient${i}`;
+        // make unique gradient  ids  
+        const gradientID = `gradient${i}`;
 
-      //   const startColor = d.source.color;
-      //   const stopColor = d.target.color;
-      //   const linearGradient = defs.append('linearGradient')
-      //     .attr('id', gradientID);
+        const startColor = d.source.color;
+        const stopColor = d.target.color;
+        const linearGradient = defs.append('linearGradient')
+          .attr('id', gradientID);
 
-      //   linearGradient.selectAll('stop')
-      //     .data([
-      //       { offset: '10%', color: startColor },
-      //       { offset: '90%', color: stopColor }
-      //     ])
-      //     .enter().append('stop')
-      //     .attr('offset', d => {
-      //       return d.offset;
-      //     })
-      //     .attr('stop-color', d => {
-      //       return d.color;
-      //     });
-      //   return `url(#${gradientID})`;
-      // });
+        linearGradient.selectAll('stop')
+          .data([
+            { offset: '10%', color: startColor },
+            { offset: '90%', color: stopColor }
+          ])
+          .enter().append('stop')
+          .attr('offset', d => {
+            return d.offset;
+          })
+          .attr('stop-color', d => {
+            return d.color;
+          });
+        return `url(#${gradientID})`;
+      });
     }
 
   }, [isInitiate])

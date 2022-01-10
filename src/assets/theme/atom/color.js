@@ -11,7 +11,7 @@ const color = {
     epGreen: colorToken.epGreen,
     epBlue: colorToken.epBlue,
     epPurple: colorToken.epPurple,
-    darkNavy: colorToken.darkNavy,
+    darkNavy: colorToken.black,
     epDeepPurple: colorToken.epDeepPurple,
     primary900: colorToken.blue900,
     primary800: colorToken.blue800,
@@ -44,10 +44,10 @@ const color = {
   },
   ui: {
     bg: {
-      light: colorToken.white700,
-      dark: colorToken.darkNavy
+      light: colorToken.white,
+      dark: colorToken.black
     },
-    strong: colorToken.gray900,
+    strong: colorToken.black,
     middle1: colorToken.gray700,
     middle2: colorToken.gray600,
     low: colorToken.gray200,

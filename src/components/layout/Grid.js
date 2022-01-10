@@ -36,7 +36,8 @@ const Grid = ({
   children,
   isBorder,
   length,
-  spacing
+  spacing,
+  className
 }) => (
   <Container
     isBorder={isBorder}
@@ -45,6 +46,7 @@ const Grid = ({
     colMb={colMb}
     index={index}
     spacing={spacing}
+    className={className}
   >
     {children}
   </Container>

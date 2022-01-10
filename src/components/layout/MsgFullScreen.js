@@ -4,6 +4,8 @@ import LiveArea from "../layout/LiveArea";
 
 const Container = styled(LiveArea)`
   /* width: 100%; */
+  position: relative;
+  padding-top: 160px;
   min-height: ${props => props.height + 'px'};
   word-break: keep-all;
   white-space: normal;
@@ -15,19 +17,29 @@ const Container = styled(LiveArea)`
   img{
     margin-bottom: 24px;
   }
+  :after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.isFilter ? 'rgba(0,48,24,0.64)' : 'rgba(0,0,0,0)'};
+    z-index: 9;
+  }
 `;
 
 const Title = styled.div`
 	width: 900px;
 	text-align: center;
 	h1{
-		${props => props.theme.type.size.h2}
+		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.exp.bold}
 		text-transform: capitalize;
 		margin-bottom: 48px;
 	}
 	h2{
-		${props => props.theme.type.size.h2}
+		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.prd.light}
 		margin-bottom:48px;
 	}
@@ -59,7 +71,8 @@ const FullScreen = ({
   refObject,
   title,
   exp,
-  children
+  children,
+  isFilter
 }) => {
 
   const size = useWindowSize();
@@ -69,6 +82,7 @@ const FullScreen = ({
       ref={refObject}
       className={className}
       height={size.height}
+      isFilter={isFilter}
     >
       <Title>
         <h1>

@@ -62,17 +62,17 @@ const Menu = styled.div`
   width: 256px;
   text-align: center;
   p{
-    ${props => props.theme.type.weight.exp.regular}
+    ${props => props.theme.type.weight.exp.bold}
     ${props => props.theme.type.size.bttText}
   }
   p:first-of-type{
     margin-bottom: 8px;
   }
   span{
-    ${props => props.theme.type.weight.exp.bold}
+    ${props => props.theme.type.weight.exp.regular}
   }
   cursor: pointer;
-  opacity: 0.75;
+  /* opacity: 0.75; */
   transition: opacity 1s ease-out;
   :hover{
     opacity: 1;

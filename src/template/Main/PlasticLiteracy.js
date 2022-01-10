@@ -3,10 +3,10 @@ import styled, { keyframes } from "styled-components";
 import PlasticCirculation from "../../chart/title/PlasticCirculation";
 import PlasticCirculationC3 from "../../chart/title/PlasticCirculationC3";
 import { isMobile } from 'react-device-detect';
-import ic_production from "../assets/illust/title/ic_ep_produce.svg";
-import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
-import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
-import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
+import ic_production from "../../assets/illust/title/ic_ep_produce.svg";
+import ic_dispose from "../../assets/illust/title/ic_ep_dispose.svg";
+import ic_collect from "../../assets/illust/title/ic_ep_collect.svg";
+import ic_recycling from "../../assets/illust/title/ic_ep_recycle.svg";
 
 const circleSize = {
   width: isMobile ? window.innerWidth : 900,
@@ -24,7 +24,7 @@ const Illust = styled.div`
   position: absolute;
   width: ${`${circleSize.width}px`};
   height: ${`${circleSize.height}px`};
-  top: ${`calc((100% - ${circleSize.height}px)/2)`};
+  top: ${`calc((100% - ${circleSize.height}px)/2 + 24px)`};
   left: ${`calc((100% - ${circleSize.width}px)/2)`};
   @media only screen and (max-width: 480px) {
     padding-top: 20px;

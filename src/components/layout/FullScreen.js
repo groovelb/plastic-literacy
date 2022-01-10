@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Container = styled.div`
   width: 100%;
   height: ${props => props.height + 'px'};
+  /* padding: 48px; */
 `;
 
 const FullScreen = ({

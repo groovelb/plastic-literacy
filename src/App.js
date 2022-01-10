@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import './assets/font/pretendardvariable.css';
 import './translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
@@ -29,7 +30,7 @@ const GlobalStyle = createGlobalStyle`
     
   }
   body{
-    background-color: ${(props) => props.theme.color.ui.bg.dark};
+    /* background-color: ${(props) => props.theme.color.ui.bg.dark}; */
     color: #fff;
     overflow-x: hidden;
     margin: 0;
@@ -66,9 +67,10 @@ const GlobalStyle = createGlobalStyle`
     stroke-opacity: .75;
   }
   .stage_title{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 20px;
     fill: ${props => props.theme.color.brand.epGreen};
+    fill: #fff;
     opacity: 0.5;
   }
   .node_box{
@@ -76,7 +78,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .node_title{
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
   }
   .node_value{
     /* font-size: 20px; */
@@ -128,14 +130,17 @@ const GlobalStyle = createGlobalStyle`
       stroke: #fff;
       stroke-width: 0.5px;
       opacity: 0.3;
+      opacity: 0;
     }
   }
   .timeline.yAxis{
+    opacity: 0;
     path{
       stroke: #fff;
       stroke-width: 0.5px;
       opacity: 0.3;
       display: none;
+      opacity: 0;
     }
   }
   .tick{
@@ -144,6 +149,7 @@ const GlobalStyle = createGlobalStyle`
       stroke: #fff;
       stroke-width: 0.5px;
       opacity: 0.3;
+      opacity: 0;
     }
     @media only screen and (max-width: 480px) {
       font-size: 12px;
@@ -161,6 +167,10 @@ const GlobalStyle = createGlobalStyle`
   .exp{
     font-size: 14px;
     fill: #fff;
+  }
+  a{
+    color: inherit;
+    text-decoration: none;
   }
   @media only screen and (max-width: 480px) {
     .exp{

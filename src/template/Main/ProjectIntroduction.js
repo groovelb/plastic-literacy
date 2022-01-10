@@ -1,22 +1,24 @@
 import React from 'react';
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { useTranslation } from 'react-i18next';
 
-import MsgFullScreen from "../components/layout/MsgFullScreen";
-import LiveArea from "../components/layout/LiveArea";
+import MsgFullScreen from "../../components/layout/MsgFullScreen";
+import LiveArea from "../../components/layout/LiveArea";
 
-import ic_production from "../assets/illust/title/ic_ep_produce.svg";
-import ic_dispose from "../assets/illust/title/ic_ep_dispose.svg";
-import ic_collect from "../assets/illust/title/ic_ep_collect.svg";
-import ic_recycling from "../assets/illust/title/ic_ep_recycle.svg";
-import illust_arrow_white from "../assets/img/illust/illust_arrow_cycle_white.svg";
+import ic_production from "../../assets/illust/title/ic_ep_produce.svg";
+import ic_dispose from "../../assets/illust/title/ic_ep_dispose.svg";
+import ic_recycling from "../../assets/illust/title/ic_ep_recycle.svg";
+import ic_collect from "../../assets/illust/title/ic_ep_collect.svg";
+import illust_arrow_white from "../../assets/img/illust/illust_arrow_cycle_white.svg";
+
+
 
 const PrincipleTitle = styled.div`
   background-color: ${props => props.theme.color.brand.epGreen};
   color: ${props => props.theme.color.brand.darkNavy};
   ${props => props.theme.type.size.title2}
   ${props => props.theme.type.weight.prd.bold}
-  margin-top: 160px;
+  margin-top: 80px;
   padding: 4px 8px;
   text-align: center;
   width: fit-content;

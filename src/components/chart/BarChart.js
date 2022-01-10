@@ -5,7 +5,7 @@ import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: calc(100% - 42px - 20px);
   svg{
     width: 100%;
     height: 100%;
@@ -17,8 +17,8 @@ const BarChart = ({
   stage
 }) => {
 
-  const marginUnit = isMobile ? 10 : 20;
-  const margin = { top: marginUnit * 1, right: marginUnit * 2, bottom: marginUnit * 2, left: marginUnit * 4 };
+  const marginUnit = isMobile ? 10 : 24;
+  const margin = { top: marginUnit * 1, right: marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);
@@ -95,8 +95,11 @@ const BarChart = ({
 
   function update() {
     let tickValues = [];
-    data.forEach((item, i) => {
-      if (i % 3 === 0) {
+    data.forEach((item, i, arr) => {
+      if (i === 0) {
+        tickValues.push(item.year);
+      }
+      else if (i === arr.length-1) {
         tickValues.push(item.year);
       }
     })
