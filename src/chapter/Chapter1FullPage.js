@@ -114,7 +114,7 @@ const Chart = styled(LiveArea)`
   position: fixed;
   pointer-events: none;
   z-index: 0;
-  top:80px;
+  top:120px;
   padding-top: 120px;
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
@@ -301,6 +301,7 @@ const Timeline = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  margin-top: 114px;
   /* position: relative; */
 `;
 
