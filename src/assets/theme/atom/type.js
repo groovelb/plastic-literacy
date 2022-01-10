@@ -7,7 +7,7 @@ const type = {
       `,
       bold: `
         // font-family: 'Montserrat', sans-serif;
-        font-family: 'Pretendard Variable';
+        font-family: 'Pretendard';
         font-weight: 900;
       `
     },
@@ -16,21 +16,21 @@ const type = {
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 300;
         // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-        font-family: 'Pretendard Variable';
+        font-family: 'Pretendard';
         font-weight: 400;
       `,
       regular: `
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 400;
         // font-family: 'Spoqa Han Sans Neo', 'sans-serif';
-        font-family: 'Pretendard Variable';
+        font-family: 'Pretendard';
         font-weight: 400;
       `,
       bold: `
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 900;
         // font-family: 'NanumSquareExtraBold';
-        font-family: 'Pretendard Variable';
+        font-family: 'Pretendard';
         font-weight: 800;
         // font-family: 'SpoqaHansBold';
       `,
@@ -38,7 +38,7 @@ const type = {
         // font-family: 'Noto Sans KR', sans-serif;
         // font-weight: 900;
         // font-family: 'NanumSquareExtraBold';
-        font-family: 'Pretendard Variable';
+        font-family: 'Pretendard';
         font-weight: 900;
       `,
     },
