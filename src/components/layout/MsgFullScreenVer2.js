@@ -33,14 +33,15 @@ const Container = styled.div`
 const Title = styled.div`
 	width: 900px;
 	text-align: center;
+  white-space: pre-line;
 	h1{
-		${props => props.theme.type.size.h2}
-		${props => props.theme.type.weight.exp.bold}
+		${props => props.theme.type.size.h1}
+		${props => props.theme.type.weight.prd.black}
 		text-transform: capitalize;
-		margin-bottom: 48px;
+		margin-bottom: 80px;
 	}
 	h2{
-		${props => props.theme.type.size.h2}
+		${props => props.theme.type.size.h1}
 		${props => props.theme.type.weight.prd.light}
 		margin-bottom:48px;
 	}

@@ -23,6 +23,18 @@ const Container = styled.div`
 	background-image: url(${props => props.img});
 	background-size: cover;
   background-position: center;
+	position: relative;
+	:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.isFilter ? 'rgba(15,30,45,0.56)' : 'rgba(0,0,0,0)'};
+    z-index: 0;
+    pointer-events: none;
+  }
 	@media only screen and (max-width: 480px) {
 		
 	}
@@ -30,6 +42,7 @@ const Container = styled.div`
 
 const Content = styled(LiveArea)`
 	height: 100%;
+	width: 860px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -55,8 +68,8 @@ const ButtonScroll = styled.div`
 const Title = styled.div`
 	width: 100%;
 	text-align: center;
-	${props => props.theme.type.size.chapterTitle}
-	${props => props.theme.type.weight.exp.bold}
+	${props => props.theme.type.size.h1}
+	${props => props.theme.type.weight.prd.black}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
 	@media only screen and (max-width: 480px) {
@@ -74,8 +87,8 @@ const Divider = styled.div`
 
 const Exp = styled.div`
 	position: relative;
-	width: 75%;
-	${props => props.theme.type.size.title1}
+	width: 100%;
+	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.bold}
 	text-align: left;
 	margin-top: 12px;
@@ -88,24 +101,28 @@ const Exp = styled.div`
 
 const ChapterTitle = ({
 	img,
-	num,
 	title,
-	onClick
+	exp,
+	onClick,
+	isFilter
 }) => {
 
 	return (
-		<Container img={img}>
-			<ButtonScroll onClick={onClick}>
+		<Container
+			img={img}
+			isFilter={isFilter}
+		>
+			{/* <ButtonScroll onClick={onClick}>
 				<img src={ic_scroll} alt='' />
-			</ButtonScroll>
+			</ButtonScroll> */}
 			<Content>
-				<Title>
-				{`CHAPTER${num}`}
-				</Title>
-				<Divider />
 				<Title>
 				{title}
 				</Title>
+				<Divider />
+				<Exp>
+				{exp}
+				</Exp>
 			</Content>
 		</Container>
 	)

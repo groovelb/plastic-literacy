@@ -12,9 +12,9 @@ import VideoBackground from "../videoBackground/VideoBackground";
 
 
 const Container = styled.div`
-	width: calc(100% - 48px);
-	margin-left: 24px;
-	margin-right: 24px;
+	width: calc(100%);
+	/* margin-left: 24px;
+	margin-right: 24px; */
 	height: calc(100% - 16px);
 	border-radius: 8px;
 	overflow: hidden;
@@ -22,6 +22,7 @@ const Container = styled.div`
 	background-size: cover;
   background-position: center;
 	position: relative;
+	color: ${props => props.theme.color.brand.white};
 	:before{
 		position: absolute;
 		top: 0;
@@ -29,13 +30,22 @@ const Container = styled.div`
 		width: 100%;
 		height: 100%;
 		content: '';
-		background-color: rgba(0,0,0,0.4);
+		background-color: rgba(0,0,0,0.64);
 		z-index: 0;
-		transition: background-color 0.3s;
+		transition: background-color 0.4s;
 	}
+	.subtitle{
+			display: none;
+		}
 	:hover{
+		.title{
+			display: none;
+		}
+		.subtitle{
+			display: block;
+		}
 		:before{
-			background-color: rgba(0,0,0,0);
+			background-color: rgba(0,0,0,0.2);
 		}
 	}
 	@media only screen and (max-width: 480px) {
@@ -50,6 +60,12 @@ const Content = styled(LiveArea)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	opacity: 0.9;
+	:hover{
+		.divider{
+			width: 200px;
+		}
+	}
 `;
 
 const Title = styled.div`
@@ -64,11 +80,24 @@ const Title = styled.div`
 	}
 `;
 
+const SubTitle = styled.div`
+	width: 100%;
+	text-align: center;
+	${props => props.theme.type.size.title2}
+	${props => props.theme.type.weight.exp.bold}
+	text-transform: capitalize;
+	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
+`;
+
 const Divider = styled.div`
-	width: 160px;
+	width: 24px;
 	height: 4px;
 	background-color: #fff;
-	margin: 28px 0px;
+	margin: 16px 0px;
+	transition: width 0.4s;
 `;
 
 
@@ -90,7 +119,8 @@ const ChapterTitleLink = ({
 	img,
 	num,
 	title,
-	to
+	to,
+	exp
 }) => {
 
 	return (
@@ -98,17 +128,20 @@ const ChapterTitleLink = ({
 			img={img}
 		>
 			<Link to={to}>
-			<Content>
-				<Title>
-				{`CHAPTER${num}`}
-				</Title>
-				<Divider />
-				<Title>
-				{title}
-				</Title>
-			</Content>
+				<Content>
+					<SubTitle>
+						{`CHAPTER${num}`}
+					</SubTitle>
+					<Divider className="divider" />
+					<Title className='title'>
+						{title}
+					</Title>
+					<Title className='subtitle'>
+						{exp}
+					</Title>
+				</Content>
 			</Link>
-			
+
 		</Container>
 	)
 }

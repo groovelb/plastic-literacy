@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import Section from "./Section";
 import LiveArea from "./LiveArea";
 import handleViewport from 'react-in-viewport';
+import { useTranslation } from 'react-i18next';
 
 import ToTop from '../motion/ToTop';
 import ViewportWrapper from "../ViewportWrapper";
@@ -17,7 +18,8 @@ const Container = styled.div`
 	width: calc(100% - 48px);
 	margin-left: 24px;
 	margin-right: 24px;
-	height: 880px;
+	height: calc(100% - 48px);
+  max-height: 880px;
 	border-radius: 8px;
 	overflow: hidden;
 	background-image: url(${props => props.img});
@@ -50,7 +52,7 @@ const Button = styled.div`
 
 	height: 48px;
 	border-radius: 24px;
-	padding:0 48px;
+	padding:0 32px;
 	background-color: ${props => props.theme.color.brand.epGreen};
 	${props => props.theme.layout.flexColCenter}
 	${props => props.theme.type.size.bttText};
@@ -100,7 +102,8 @@ const Title = styled.div`
 
 const Exp = styled.div`
 	position: relative;
-	width: 75%;
+	width: 50%;
+	word-break: keep-all;
 	${props => props.theme.type.size.title1}
 	${props => props.theme.type.weight.prd.bold}
 	text-align: left;
@@ -122,6 +125,8 @@ const SiteTitle = ({
 	useEffect(() => {
 		setIsLoad(true);
 	}, []);
+
+	const { t } = useTranslation();
 
 	return (
 		<Container img={img}>
@@ -145,14 +150,14 @@ const SiteTitle = ({
 						index={6}
 						distance={'short'}
 					>
-						GS칼텍스가 제안하는 플라스틱 리터러시는 무엇일까요?
+						{t('title-subtitle')}
 					</ToTop>
 				</Exp>
 				<ToTop
 					isTrigger={isLoad}
 					index={7}
 					distance={'short'}
-					style={{alignItems:'flex-start'}}
+					style={{ alignItems: 'flex-start' }}
 				>
 					<Button onClick={onClick}>
 						플라스틱 리터러시 알아보기

@@ -15,7 +15,9 @@ const ChapterSummary = ({
   title,
   exp,
   sectionList,
-  themeType
+  themeType,
+  setCurrentPage,
+  page
 }) => {
   return (
     <LiveArea>
@@ -35,6 +37,9 @@ const ChapterSummary = ({
               index={index}
             >
               <CardChapterSection
+                onClick={() => {
+                  setCurrentPage(section.page)
+                }}
                 themeType={themeType}
                 num={index+1}
                 exp={section.title}

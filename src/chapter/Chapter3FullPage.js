@@ -7,16 +7,25 @@ import LiveArea from '../components/layout/LiveArea';
 import Page from '../components/layout/Page';
 import SectionTitle from '../components/textContainer/SectionTitle';
 import SectionContentVertical from '../components/textContainer/SectionContentVerticalVer2';
+// import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
+import ImageBackground from "../components/layout/ImageBackground";
 import ChapterSummary from '../components/layout/ChapterSummary';
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
 import Grid from '../components/layout/Grid';
 import CardRecycleTech from '../components/card/CardRecycleTech';
 import ToTop from '../components/motion/ToTop';
 import ToRight from '../components/motion/ToRight';
+import MsgFullScreen from "../components/layout/MsgFullScreenVer2";
+import { videoURL } from '../assets/mediaURL';
+import logo_white from "../assets/img/logo/logo_white.svg";
+import text_energy from "../assets/img/logo/text_energy.svg";
 
 import illust_result_mr from "../assets/illust/illust_result_mr.svg";
 import illust_result_cr from "../assets/illust/illust_result_cr.svg";
 import illust_result_tr from "../assets/illust/illust_result_tr.svg";
+import ic_mr_outliend from "../assets/img/icon/ic_mr_outlined.svg";
+import ic_cr_outliend from "../assets/img/icon/ic_cr_outlined.svg";
+import ic_tr_outliend from "../assets/img/icon/ic_tr_outlined.svg";
 import ic_arrow_next from "../assets/icon/ic_arrow_short_green.svg";
 
 import bg_c3 from "../assets/img/bg/chapter/bg_chapter3_ver2.png";
@@ -39,6 +48,7 @@ import illust_low3 from "../assets/img/illust/c3/mr/illust_low_product3.svg";
 
 import illust_high1 from "../assets/img/illust/c3/mr/illust_high_product1.svg";
 import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
+import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 
 
 const Container = styled.div`
@@ -59,11 +69,10 @@ const Chart = styled(LiveArea)`
   position: fixed;
   pointer-events: none;
   z-index: -1;
-  top:80px;
-  padding-top: 80px;
+  top:160px;
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
-  height: calc(100% - 268px);
+  height: calc(100% - 440px);
   max-height: 920px;
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.15s ease-out, transform 0.15s ease-out;
@@ -108,6 +117,7 @@ const SubTitle = styled.div`
   ${props => props.theme.type.weight.prd.black};
   color: ${props => props.theme.color.brand.epGreen};
   margin-bottom: 48px;
+  margin-top: 16px;
 `;
 
 const ContentCol = styled.div`
@@ -121,6 +131,21 @@ const Exp = styled.div`
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
+`;
+
+
+const CircularLoop = styled.div`
+  width: 100%;
+  position: relative;
+  margin: 24px 0;
+  ${props => props.theme.layout.flexColCenter}
+  img{
+    width: 90%;
+    margin: 0 auto;
+    height: auto;
+  }
+  transition: opacity 0.3s;
+  opacity: ${props => props.isActive ? 1 : 0};
 `;
 
 const mrProcessList = [
@@ -157,11 +182,61 @@ const mrProcessList = [
 ];
 
 const geMrProcess = {
-  title: '5 특수 첨가제 기반 플레이크',
+  title: '특수 첨가제 기반 플레이크',
   exp: `고무 등의 다른 고분자, 무기충진제 및 난연제, 핵제 등 GS칼텍스에서 자체 개발한 기능성 첨가제를 복합적으로  일반 폴리프로필렌에 비해 특정 물성을 강화하거나 변형시킬 수 있다.`,
   x: 3,
   stages: [3, 4]
 };
+
+const circularStageList = [
+  {
+    title: '고객사 최종 제품화',
+    img: '',
+    x: 3.2,
+    y: 0,
+  },
+  {
+    title: '소비자의 제품 사용',
+    img: '',
+    x: 4,
+    y: 1,
+  },
+  {
+    title: '플라스틱 폐기물 발생',
+    img: '',
+    x: 3.2,
+    y: 2,
+  },
+  {
+    title: '고순도 플레이크 생성',
+    img: '',
+    x: 0.8,
+    y: 0,
+  },
+  {
+    title: '고객별 최적화 recipe',
+    img: '',
+    x: 0,
+    y: 1,
+  },
+  {
+    title: '친환경 복합수지 생성',
+    img: '',
+    x: 0.8,
+    y: 2,
+  },
+];
+
+const CircularStage = styled.div`
+  width: 108px;
+  height: 108px;
+  border-radius: 54px;
+  background-color: #fff;
+  border: solid 1px ${props => props.theme.color.brand.epGreen};
+  position: absolute;
+  top: ${props => props.top};
+  left: ${props => props.left};
+`;
 
 const Stage = styled.div`
   position: relative;
@@ -173,14 +248,14 @@ const Stage = styled.div`
   background-color: ${props => props.isBlink ? props.theme.color.ui.bg.dark : ''};
   border-radius: 4px;
   transition: border 0.4s;
-  color: ${props => props.themeType==='light'?props.theme.color.ui.strong:props.theme.color.ui.white};
+  color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.white};
   .arrow{
     position: absolute;
     top: 50%;
     right: -38px;
   }
   p{
-    margin-top: 16px;
+    margin-top: 32px;
     ${props => props.theme.type.weight.prd.bold};
   }
   img.stage{
@@ -195,11 +270,18 @@ const Stage = styled.div`
       return 0;
     }
     if (props.status === 'pass') {
-      return 0.25;
+      return 0.1;
     }
   }
   }
   }
+`;
+const StageTitle = styled.p`
+  width: 100%;
+  text-align: center;
+  margin-top: 16px;
+  ${props => props.theme.type.weight.prd.bold};
+  color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
 `;
 
 const Chapter3 = ({
@@ -241,7 +323,7 @@ const Chapter3 = ({
       id: "mr",
       name: 'Mechanical\nRecycling',
       exp: `폐플라스틱을 물리적으로 분쇄하고\n가공해서 원료 생성`,
-      img: illust_result_mr,
+      img: ic_mr_outliend,
       result: {
         title: `플라스틱 플레이크\n(Plastic Flake)`,
         exp: `재생산되는 제품의 원료인 플라스틱 결정체`
@@ -251,7 +333,7 @@ const Chapter3 = ({
       id: "cr",
       name: 'Chemical\nRecycling',
       exp: `폐플라스틱을 화학적 열분해하여\n석유화학 공정 원료로 사용`,
-      img: illust_result_cr,
+      img: ic_cr_outliend,
       result: {
         title: `석유화학의 원제료\n(Petrochemical)`,
         exp: `친환경 복합수지 생성을 공정을 위한 공정 원료`
@@ -261,7 +343,7 @@ const Chapter3 = ({
       id: "tr",
       name: 'Thermal\nRecycling',
       exp: `재가공이 불가능한 폐기물들을 태워\n화력에너지로 활용`,
-      img: illust_result_tr,
+      img: ic_tr_outliend,
       result: {
         title: `열 발전 에너지 연료\n(Thermal Energy)`,
         exp: `화력발전 연소를 위한 연료`
@@ -275,15 +357,15 @@ const Chapter3 = ({
       img: mr_stage1
     },
     {
-      title: '1분쇄',
+      title: '분류',
       img: mr_stage2
     },
     {
-      title: '2차분쇄',
+      title: '분쇄',
       img: mr_stage3
     },
     {
-      title: '플레이크 합성',
+      title: '합성',
       img: mr_stage4
     },
     {
@@ -298,15 +380,15 @@ const Chapter3 = ({
       img: mr_stage1
     },
     {
-      title: '1분쇄',
+      title: '분류',
       img: mr_stage2
     },
     {
-      title: '2차분쇄',
+      title: '분쇄',
       img: mr_stage3
     },
     {
-      title: '플레이크 합성',
+      title: '합성',
       img: mr_stage4_2
     },
     {
@@ -437,6 +519,12 @@ const Chapter3 = ({
     if (number === 8) {
       setThemeType('light');
     }
+    if (number === 12) {
+      setThemeType('light');
+    }
+    if (number === 13) {
+      setThemeType('dark');
+    }
     setCurrentPage(number);
   }
 
@@ -497,10 +585,10 @@ const Chapter3 = ({
                       {
                         index < 3 && <img className='stage' src={stage.img} alt='' />
                       }
-                      <p>
-                        {stage.title}
-                      </p>
                     </Stage>
+                    <StageTitle>
+                      {stage.title}
+                    </StageTitle>
                   </ToRight>
                 </Grid>
               )
@@ -536,7 +624,7 @@ const Chapter3 = ({
                       index={index}
                       status={'on'}
                       isBlink={2 < index}
-                      themeType={2 < index?'dark':'light'}
+                      themeType={2 < index ? 'dark' : 'light'}
                     >
 
                       {
@@ -544,10 +632,10 @@ const Chapter3 = ({
                         <img className='arrow' src={ic_arrow_next} alt='' />
                       }
                       <img src={stage.img} alt='' />
-                      <p>
-                        {stage.title}
-                      </p>
                     </Stage>
+                    <StageTitle themeType={themeType}>
+                      {stage.title}
+                    </StageTitle>
                   </ToRight>
                 </Grid>
               )
@@ -579,8 +667,8 @@ const Chapter3 = ({
             themeType={'light'}
           />
         </Page>
-        <PageAlignTop>
-          <LiveArea className={'content'}>
+        <Page>
+          <LiveArea className={''}>
             <SectionTitle
               themeType={'light'}
               title={`1\n${t('c3-s2-title')}`}
@@ -610,7 +698,7 @@ const Chapter3 = ({
               </Exp>
             </Row>
           </LiveArea>
-        </PageAlignTop>
+        </Page>
         {
           mrProcessList.map((process, index) =>
             <PageAlignTop key={index}>
@@ -625,7 +713,7 @@ const Chapter3 = ({
           )
         }
         <Page>
-          <LiveArea className={'content'}>
+          <LiveArea className={''}>
             <Row>
               <TitleCol>
                 <SectionTitle title={`3\n${t('c3-s4-title')}`} />
@@ -661,7 +749,7 @@ const Chapter3 = ({
           </LiveArea>
         </Page>
         <PageAlignTop>
-          <LiveArea className={'content'}>
+          <LiveArea className={''}>
             <SectionContentVertical
               themeType={'light'}
               title={geMrProcess.title}
@@ -671,7 +759,7 @@ const Chapter3 = ({
           </LiveArea>
         </PageAlignTop>
         <Page>
-          <LiveArea className={'content'}>
+          <LiveArea className={''}>
             <Row>
               <TitleCol>
                 <SectionTitle
@@ -728,7 +816,7 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <PageAlignTop>
+        <Page>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
@@ -753,28 +841,103 @@ const Chapter3 = ({
                         index={index}
                         status={'on'}
                         isBlink={2 < index}
-                        themeType={index===3?'dark':'light'}
+                        themeType={index === 3 ? 'dark' : 'light'}
                       >
-
                         {
                           index !== 3 &&
                           <img className='arrow' src={ic_arrow_next} alt='' />
                         }
                         <img className='stage' src={stage.img} alt='' />
-                        <p>
-                          {stage.title}
-                        </p>
                       </Stage>
+                      <StageTitle themeType='light'>
+                        {stage.title}
+                      </StageTitle>
                     </ToRight>
                   </Grid>
                 )
               }
               <Exp themeType='light'>
-              {t('c3-s6-exp')}
+                {t('c3-s6-exp')}
               </Exp>
             </Row>
           </LiveArea>
-        </PageAlignTop>
+        </Page>
+        <Page>
+          <LiveArea>
+            <SectionTitle
+              themeType={'light'}
+              title={`순환경제의 규모와 질을\n향상시킨 MR 기술`}
+            />
+            <CircularLoop isActive={currentPage === 11}>
+              <img src={illust_circular_loop} alt='' />
+              {/* {
+                circularStageList.map((stage,index) => 
+                  <CircularStage
+                    top={`calc(${stage.y} * 50% - 54px)`}
+                    left={`calc(${stage.x} * 25% - 54px)`}
+                  >
+
+                  </CircularStage>
+                )
+              } */}
+            </CircularLoop>
+            <Exp themeType='light'>
+              cr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용.
+            </Exp>
+          </LiveArea>
+        </Page>
+        <Page>
+          <LiveArea>
+            <SectionTitle
+              themeType={'light'}
+              title={`소비재의 재활용율을 높이는 \nCR 기술 (추진 예정)`}
+            />
+            <CircularLoop isActive={currentPage === 12}>
+              <img src={illust_circular_loop} alt='' />
+              {/* {
+                circularStageList.map((stage,index) => 
+                  <CircularStage
+                    top={`calc(${stage.y} * 50% - 54px)`}
+                    left={`calc(${stage.x} * 25% - 54px)`}
+                  >
+
+                  </CircularStage>
+                )
+              } */}
+            </CircularLoop>
+            <Exp themeType='light'>
+              cr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용.
+            </Exp>
+          </LiveArea>
+        </Page>
+        <Page>
+          <ImageBackground
+            isFilter={true}
+            img={videoURL.c3.s7.bg}
+            isTrigger={true}
+            title={t('c3-s7-title')}
+            exp={t('c3-s7-exp')}
+          >
+          </ImageBackground>
+        </Page>
+        <Page>
+          <ImageBackground
+            isFilter={true}
+            img={videoURL.c3.s8.bg}
+            isTrigger={true}
+            title={t('c3-s8-title')}
+            exp={t('c3-s8-exp')}
+          >
+          </ImageBackground>
+        </Page>
+        <Page>
+          <MsgFullScreen
+            title={t('c3-s9-title')}
+          >
+            <img src={text_energy} style={{marginBottom: '48px'}} alt='' />
+            <img src={logo_white} alt='' />
+          </MsgFullScreen>
+        </Page>
       </ReactPageScroller>
     </Container>
   )

@@ -7,6 +7,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  .content{
+    height: 100%;
+  }
 `;
 
 const Page = ({children, className}) => (

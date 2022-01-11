@@ -50,6 +50,7 @@ import bg_c1_transition from "../assets/img/bg/c1_transition.jpg";
 import ToTop from "../components/motion/ToTop";
 
 import SectionTitle from '../components/textContainer/SectionTitle';
+import SectionTitleFloating from '../components/textContainer/SectionTitleFloating';
 import bg_c1 from '../assets/img/bg/chapter/bg_chapter1_ver2.png';
 
 // Data
@@ -123,14 +124,13 @@ const Chart = styled(LiveArea)`
   position: fixed;
   pointer-events: none;
   z-index: 0;
-  top:120px;
-  padding-top: 120px;
+  top:200px;
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => props.theme.size.liveArea}; */
   /* width: ${`${chartWidth}px`}; */
-  height: calc(100% - 268px);
-  max-height: 920px;
+  height: calc(100% - 440px);
+  /* max-height: 920px; */
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
@@ -144,6 +144,11 @@ const Chart = styled(LiveArea)`
   }
 `;
 
+
+const ChartSpacing = styled.div`
+  width: 100%;
+  height: ${props => props.height};
+`
 
 const ChartTitle = styled.p`
   padding-left: 44px;
@@ -339,11 +344,11 @@ const ExpFloating = styled.div`
   margin-top: 48px;
   /* padding: 24px; */
   /* background-color: rgba(15,30,45,0.80); */
-  ${props => props.theme.type.size.body1};
-  ${props => props.theme.type.weight.prd.bold};
+  ${props => props.theme.type.size.body1}
+  ${props => props.theme.type.weight.prd.bold}
   z-index: 9;
   position: absolute;
-  bottom: 64px;
+  bottom: 148px;
 `;
 
 const Chapter1 = ({
@@ -457,34 +462,39 @@ const Chapter1 = ({
       data: plastic_industry_timeline_1_1,
       chartTitle: '인류 발전에 기여한 플라스틱',
       unit: '',
+      page:2,
     },
     {
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
       data: plastic_production_1_3,
       chartTitle: '전세계 연도별 플라스틱 생산량',
-      unit: '(단위: million metric tons)'
+      unit: '(단위: million metric tons)',
+      page:3,
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
       chartTitle: '국내 1인당 연간 플라스틱 소비량',
-      unit: '(단위: kilogram)'
+      unit: '(단위: kilogram)',
+      page:4,
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
       data: plastic_waste_1_7,
       chartTitle: '연도별 플라스틱 폐기물량',
-      unit: '(단위: 1000 ton)'
+      unit: '(단위: 1000 ton)',
+      page:5,
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
       chartTitle: '연도별 플라스틱 누적 폐기물량',
-      unit: '(단위: 1000 ton)'
+      unit: '(단위: 1000 ton)',
+      page:6,
     }
   ];
 
@@ -639,15 +649,25 @@ const Chapter1 = ({
             title={t("c1-subtitle")}
             exp={t("c1-exp")}
             sectionList={content}
+            setCurrentPage={setCurrentPage}
           />
         </Page>
         {
           content.map((section, i) =>
-            <PageAlignTop>
-              <LiveArea className={'content'}>
-                <SectionTitle
-                  title={`${i + 1}\n${section.title}`}
-                />
+            <Page>
+              <LiveArea className={i !== 0 ? 'content' : ''}>
+                {
+                  i === 0 && <SectionTitle
+                    title={`${i + 1}\n${section.title}`}
+                  />
+                }
+                {
+                  i !== 0 && <SectionTitleFloating
+                    top={'48px'}
+                    title={`${i + 1}\n${section.title}`}
+                  />
+                }
+
                 {
                   i === 0 &&
                   <Timeline>
@@ -688,17 +708,24 @@ const Chapter1 = ({
                   </Timeline>
                 }
                 {
-                  i === 0 ?
-                    <Exp>
-                      {section.exp}
-                    </Exp> :
-                    <ExpFloating>
-                      {section.exp}
-                    </ExpFloating>
+                  i !== 0 &&
+                  <ChartSpacing height={windowSize.height - 268 - 120 - 120 + 'px'}>
+                  </ChartSpacing>
+                }
+                {
+                  i === 0 && <Exp>
+                    {section.exp}
+                  </Exp>
+                }
+                {
+                  i !== 0 && <ExpFloating>
+                    {section.exp}
+                  </ExpFloating>
                 }
 
+
               </LiveArea>
-            </PageAlignTop>
+            </Page>
           )
         }
         {/* <ImageBackground
@@ -716,6 +743,7 @@ const Chapter1 = ({
               num={2}
               img={bg_c2}
               to={'/chapter2'}
+              exp={t('c2-subtitle')}
             />
           </Row3>
         </MsgFullScreen>

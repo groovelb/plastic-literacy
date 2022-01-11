@@ -36,10 +36,14 @@ const Exp = styled.div`
 const CardChapterSection = ({ 
   themeType,
   num,
-  exp
+  exp,
+  onClick
  }) => {
   return (
-    <Container themeType={themeType}>
+    <Container
+      themeType={themeType}
+      onClick={onClick}
+    >
       <Num>
         {num}
       </Num>

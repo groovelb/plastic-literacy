@@ -22,10 +22,6 @@ import SectionContentHorizon from "../components/textContainer/SectionContentHor
 import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
 import useWindowSize from '../hook/useWindowSize';
-import VideoBackground from "../components/videoBackground/VideoBackground";
-import bg_video_s1 from "../assets/video/video_c2_s1.mp4";
-import Report from "../components/report/ReportVer2";
-import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage";
 import TableImage from "../assets/img/illust/table.png";
 import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
 
@@ -157,22 +153,22 @@ const Chapter2FullPage = ({
     {
       title: t("c2-s1-title"),
       exp: t("c2-s1-exp"),
+      page:2,
     },
     {
-      title: t("c2-s2-title"),
+      title: '지상 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s2-exp"),
-    },
-    {
-      title: t("c2-s3-title"),
-      exp: t("c2-s3-exp"),
-    },
-    {
-      title: t("c2-s4-title"),
-      exp: t("c2-s4-exp"),
+      page:6,
     },
     {
       title: t("c2-s5-title"),
-      exp: t("c2-s5-exp"),
+      exp: t("c2-s3-exp"),
+      page:7
+    },
+    {
+      title: '해양 플라스틱 폐기물 여정속 실태',
+      exp: t("c2-s4-exp"),
+      page:11
     }
   ];
 
@@ -366,6 +362,7 @@ const Chapter2FullPage = ({
             title={t("c2-subtitle")}
             exp={t("c2-exp")}
             sectionList={content}
+            setCurrentPage={setCurrentPage}
           />
         </Page>
         <ImageBackground
