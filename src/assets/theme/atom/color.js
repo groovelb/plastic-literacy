@@ -33,6 +33,7 @@ const color = {
     secondary200: colorToken.blueGray200,
     secondary100: colorToken.blueGray100,
     secondary50: colorToken.blueGray50,
+    white: colorToken.white,
   },
   gradient: {
     blue: `
@@ -51,6 +52,7 @@ const color = {
     middle1: colorToken.gray700,
     middle2: colorToken.gray600,
     low: colorToken.gray200,
+    white: colorToken.white,
     white700: colorToken.white700,
     white600: colorToken.white600,
     white500: colorToken.white500,

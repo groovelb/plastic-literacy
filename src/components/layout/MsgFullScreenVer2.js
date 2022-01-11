@@ -4,6 +4,7 @@ import LiveArea from "./LiveArea";
 
 const Container = styled.div`
   width: 100%;
+  height: 100%;
   /* padding-top: 160px; */
   position: relative;
   min-height: ${props => props.height + 'px'};
@@ -46,6 +47,10 @@ const Title = styled.div`
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
+`;
+
+const Children = styled.div`
+  width: 900px;
 `;
 
 

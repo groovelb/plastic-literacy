@@ -9,6 +9,9 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
+  top: 0;
+  left: 0;
+  /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   :before{
     position: absolute;
     z-index: 1;

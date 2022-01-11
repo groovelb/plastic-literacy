@@ -11,10 +11,13 @@ import ChapterSummary from '../components/layout/ChapterSummary';
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
 import Grid from '../components/layout/Grid';
 import CardRecycleTech from '../components/card/CardRecycleTech';
+import ToTop from '../components/motion/ToTop';
+import ToRight from '../components/motion/ToRight';
 
 import illust_result_mr from "../assets/illust/illust_result_mr.svg";
 import illust_result_cr from "../assets/illust/illust_result_cr.svg";
 import illust_result_tr from "../assets/illust/illust_result_tr.svg";
+import ic_arrow_next from "../assets/icon/ic_arrow_short_green.svg";
 
 import bg_c3 from "../assets/img/bg/chapter/bg_chapter3_ver2.png";
 import mr_stage1 from "../assets/img/illust/c3/mr/stage1.svg";
@@ -24,6 +27,11 @@ import mr_stage4 from "../assets/img/illust/c3/mr/stage4.svg";
 import mr_stage4_2 from "../assets/img/illust/c3/mr/stage4-2.svg";
 import mr_stage5 from "../assets/img/illust/c3/mr/stage5.svg";
 import mr_stage5_2 from "../assets/img/illust/c3/mr/stage5-2.svg";
+import cr_stage1 from "../assets/img/illust/c3/cr/stage1.svg";
+import cr_stage2 from "../assets/img/illust/c3/cr/stage2.svg";
+import cr_stage3 from "../assets/img/illust/c3/cr/stage3.svg";
+import cr_stage4 from "../assets/img/illust/c3/cr/stage4.svg";
+import cr_stage5 from "../assets/img/illust/c3/cr/stage5-2.svg";
 
 import illust_low1 from "../assets/img/illust/c3/mr/illust_low_product1.svg";
 import illust_low2 from "../assets/img/illust/c3/mr/illust_low_product2.svg";
@@ -108,7 +116,7 @@ const ContentCol = styled.div`
 `;
 
 const Exp = styled.div`
-  margin-top: 48px;
+  margin-top: 24px;
   width: 100%;
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
@@ -156,15 +164,29 @@ const geMrProcess = {
 };
 
 const Stage = styled.div`
+  position: relative;
   ${props => props.theme.layout.flexColCenter}
   width: 100%;
   height: 424px;
   border: solid 
   ${props => props.isBlink ? '2px ' : '1px '} ${props => props.isBlink ? props.theme.color.brand.epGreen : props.theme.color.brand.epPurple};
+  background-color: ${props => props.isBlink ? props.theme.color.ui.bg.dark : ''};
   border-radius: 4px;
   transition: border 0.4s;
-  img{
+  color: ${props => props.themeType==='light'?props.theme.color.ui.strong:props.theme.color.ui.white};
+  .arrow{
+    position: absolute;
+    top: 50%;
+    right: -38px;
+  }
+  p{
+    margin-top: 16px;
+    ${props => props.theme.type.weight.prd.bold};
+  }
+  img.stage{
     transition: opacity 0.5s;
+    height: 324px;
+    width: auto;
     opacity: ${props => {
     if (props.status === 'on') {
       return 1;
@@ -173,7 +195,7 @@ const Stage = styled.div`
       return 0;
     }
     if (props.status === 'pass') {
-      return 0.5;
+      return 0.25;
     }
   }
   }
@@ -267,6 +289,48 @@ const Chapter3 = ({
     {
       title: '완성',
       img: mr_stage5
+    },
+  ];
+
+  const gsMrStage = [
+    {
+      title: '수거',
+      img: mr_stage1
+    },
+    {
+      title: '1분쇄',
+      img: mr_stage2
+    },
+    {
+      title: '2차분쇄',
+      img: mr_stage3
+    },
+    {
+      title: '플레이크 합성',
+      img: mr_stage4_2
+    },
+    {
+      title: '완성',
+      img: mr_stage5_2
+    },
+  ];
+
+  const crStage = [
+    {
+      title: '수거',
+      img: cr_stage1
+    },
+    {
+      title: '열분해',
+      img: cr_stage2
+    },
+    {
+      title: '정제공정',
+      img: cr_stage4
+    },
+    {
+      title: '친환경 복합수지 합성',
+      img: cr_stage5
     },
   ];
 
@@ -379,7 +443,7 @@ const Chapter3 = ({
   return (
     <Container>
       {
-        2 < currentPage && currentPage < 7 &&
+        1 < currentPage && currentPage < 7 &&
         <Chart
           isActive={2 < currentPage}
         >
@@ -397,32 +461,47 @@ const Chapter3 = ({
                   length={arr}
                   spacing={48}
                 >
-                  <Stage
+                  <ToRight
+                    isTrigger={2 < currentPage}
                     index={index}
-                    status={
-                      mrProcessList[currentPage - 3].stages.includes(index) === true ? 'on' : index < currentPage - 1 ? 'pass' : 'off'
-                    }
-                    isBlink={
-                      currentPage === 7 && (index === 3 || index === 4)
-                    }
+                    distance={'short'}
                   >
-                    {
-                      index === 4 && currentPage === 7 && <img src={mr_stage5_2} alt='' />
-                    }
-                    {
-                      index === 3 && currentPage === 7 && <img src={mr_stage4_2} alt='' />
-                    }
-                    {
-                      index === 4 && currentPage !== 7 && <img src={stage.img} alt='' />
-                    }
-                    {
-                      index === 3 && currentPage !== 7 && <img src={stage.img} alt='' />
-                    }
-                    {
-                      index < 3 && <img src={stage.img} alt='' />
-                    }
-
-                  </Stage>
+                    <Stage
+                      index={index}
+                      themeType={'dark'}
+                      status={
+                        2 < currentPage ?
+                          mrProcessList[currentPage - 3].stages.includes(index) === true ? 'on' : index < currentPage - 1 ? 'pass' : 'off' :
+                          'off'
+                      }
+                      isBlink={
+                        currentPage === 7 && (index === 3 || index === 4)
+                      }
+                    >
+                      {
+                        index !== 4 &&
+                        <img className='arrow' src={ic_arrow_next} alt='' />
+                      }
+                      {
+                        index === 4 && currentPage === 7 && <img className='stage' src={mr_stage5_2} alt='' />
+                      }
+                      {
+                        index === 3 && currentPage === 7 && <img className='stage' src={mr_stage4_2} alt='' />
+                      }
+                      {
+                        index === 4 && currentPage !== 7 && <img className='stage' src={stage.img} alt='' />
+                      }
+                      {
+                        index === 3 && currentPage !== 7 && <img className='stage' src={stage.img} alt='' />
+                      }
+                      {
+                        index < 3 && <img className='stage' src={stage.img} alt='' />
+                      }
+                      <p>
+                        {stage.title}
+                      </p>
+                    </Stage>
+                  </ToRight>
                 </Grid>
               )
             }
@@ -430,7 +509,7 @@ const Chapter3 = ({
         </Chart>
       }
       {
-        currentPage === 8 &&
+        6 < currentPage &&
         <Chart
           isActive={currentPage === 8}
         >
@@ -440,7 +519,7 @@ const Chapter3 = ({
           />
           <Row>
             {
-              mrStage.map((stage, index, arr) =>
+              gsMrStage.map((stage, index, arr) =>
                 <Grid
                   colPC={5}
                   colMb={5}
@@ -448,13 +527,28 @@ const Chapter3 = ({
                   length={arr}
                   spacing={48}
                 >
-                  <Stage
+                  <ToRight
+                    isTrigger={currentPage === 8}
                     index={index}
-                    status={'on'}
-                    isBlink={2 < index}
+                    distance={'short'}
                   >
-                    <img src={stage.img} alt='' />
-                  </Stage>
+                    <Stage
+                      index={index}
+                      status={'on'}
+                      isBlink={2 < index}
+                      themeType={2 < index?'dark':'light'}
+                    >
+
+                      {
+                        index !== 4 &&
+                        <img className='arrow' src={ic_arrow_next} alt='' />
+                      }
+                      <img src={stage.img} alt='' />
+                      <p>
+                        {stage.title}
+                      </p>
+                    </Stage>
+                  </ToRight>
                 </Grid>
               )
             }
@@ -506,8 +600,8 @@ const Chapter3 = ({
                 )
               }
               <Exp themeType={'light'}>
-                    {t('c3-s2-exp')}
-                  </Exp>
+                {t('c3-s2-exp')}
+              </Exp>
             </Row>
           </LiveArea>
         </PageAlignTop>
@@ -577,7 +671,7 @@ const Chapter3 = ({
                 <SectionTitle
                   themeType={'light'}
                   title={`5\n${t('c3-s5-title')}`}
-                  />
+                />
               </TitleCol>
               <ContentCol>
                 <Row themeType={'light'}>
@@ -628,6 +722,53 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
+        <PageAlignTop>
+          <LiveArea>
+            <SectionTitle
+              themeType={'light'}
+              title={`4\n${t('c3-s6-title')}`}
+            />
+            <Row>
+              {
+                crStage.map((stage, index, arr) =>
+                  <Grid
+                    colPC={4}
+                    colMb={4}
+                    index={index}
+                    length={arr}
+                    spacing={48}
+                  >
+                    <ToRight
+                      isTrigger={currentPage === 10}
+                      index={index}
+                      distance={'short'}
+                    >
+                      <Stage
+                        index={index}
+                        status={'on'}
+                        isBlink={2 < index}
+                        themeType={index===3?'dark':'light'}
+                      >
+
+                        {
+                          index !== 3 &&
+                          <img className='arrow' src={ic_arrow_next} alt='' />
+                        }
+                        <img className='stage' src={stage.img} alt='' />
+                        <p>
+                          {stage.title}
+                        </p>
+                      </Stage>
+                    </ToRight>
+                  </Grid>
+                )
+              }
+              <Exp themeType='light'>
+              {t('c3-s6-exp')}
+              </Exp>
+            </Row>
+          </LiveArea>
+        </PageAlignTop>
       </ReactPageScroller>
     </Container>
   )

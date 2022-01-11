@@ -99,7 +99,7 @@ const BarChart = ({
       if (i === 0) {
         tickValues.push(item.year);
       }
-      else if (i === arr.length-1) {
+      else if (i === arr.length - 1) {
         tickValues.push(item.year);
       }
     })
@@ -196,13 +196,69 @@ const BarChart = ({
               return 'bar highlight delay2';
             }
             else {
-              return 'bar positive fade recycle'
+              return 'bar positive recycle'
             }
-          })
+          });
+
+        chart.append("g")
+          .attr("transform", `translate(${x(2020) + 40},${200})`)
+          .attr("class", "s1_text")
+          .append("text")
+          .attr("class", 'bar_value_text')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#fff")
+          .attr("transform", "rotate(-90)")
+          .text("3억 6700만톤");
+
+        chart.append("g")
+          .attr("class", "s1_text")
+          .attr("transform", `translate(${x(2020) + 8},${16})`)
+          .append("text")
+          .attr("class", 'bar_mark_text')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#fff")
+          .text("280배");
       }, 1000);
+    }
+    else{
+      chart.selectAll(".s1_text").remove();
+    }
+    
+    if (stage === 3) {
+      setTimeout(function () {
+        chart.selectAll("rect")
+          .transition()
+          .duration(1000)
+          .attr("class", (d, i, arr) => {
+            if (i === (arr.length - 1)) {
+              return 'bar mark delay2';
+            }
+            else {
+              return 'bar positive recycle'
+            }
+          });
+
+        chart.append("g")
+          .attr("transform", `translate(${x(2021) + 56},${200})`)
+          .attr("class", "s2_text")
+          .append("text")
+          .attr("class", 'bar_value_text')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#fff")
+          .attr("transform", "rotate(-90)")
+          .text("134 킬로그램");
+
+      }, 1000);
+    }
+    else{
+      chart.selectAll(".s2_text").remove();
     }
     // recycling mark
     if (stage === 4) {
+
       chart.selectAll("rect.recycle")
         .data(data)
         .join(
@@ -269,8 +325,41 @@ const BarChart = ({
               .remove()
             )
         );
+
+      setTimeout(function () {
+        chart.append("g")
+          .attr("transform", `translate(${x(2021) + 48},${160})`)
+          .attr("class", "s3_text")
+          .append("text")
+          .attr("class", 'bar_value_text')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#fff")
+          .attr("transform", "rotate(-90)")
+          .text("113.6만 톤");
+      }, 1000);
+
     } else {
       chart.selectAll("text.recycle").remove();
+      chart.selectAll(".s3_text").remove();
+    }
+
+    if (stage === 5) {
+      setTimeout(function () {
+        chart.append("g")
+          .attr("transform", `translate(${x(2017) + 64},${160})`)
+          .attr("class", "s4_text")
+          .append("text")
+          .attr("class", 'bar_value_text')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#fff")
+          .attr("transform", "rotate(-90)")
+          .text("881.2만 톤");
+      }, 1000);
+    }
+    else{
+      chart.selectAll(".s4_text").remove();
     }
   }
 

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="136px" height="329px" viewBox="0 0 136 329" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>illust/mr/stage3</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="illust/mr/on/stage3/on" transform="translate(-12.000000, -47.000000)">
+            <g id="illust/mr/stage3" transform="translate(16.000000, 51.000000)">
+                <path d="M131.5,257.5 C131.5,264.403329 125.90389,270 119,270 C112.096671,270 106.5,264.403329 106.5,257.5 C106.5,250.596671 112.096671,245 119,245 C125.90389,245 131.5,250.596671 131.5,257.5" id="Fill-1663" fill="#C5F5DB" transform="translate(119.000000, 257.500000) rotate(-90.000000) translate(-119.000000, -257.500000) "></path>
+                <path d="M66.5,163.5 C66.5,170.403329 60.9038902,176 54,176 C47.0966713,176 41.5,170.403329 41.5,163.5 C41.5,156.596671 47.0966713,151 54,151 C60.9038902,151 66.5,156.596671 66.5,163.5" id="Fill-1665" fill="#C5F5DB" transform="translate(54.000000, 163.500000) rotate(-90.000000) translate(-54.000000, -163.500000) "></path>
+                <path d="M44.5,215.5 C44.5,222.403329 38.9038902,228 32,228 C25.0966713,228 19.5,222.403329 19.5,215.5 C19.5,208.596671 25.0966713,203 32,203 C38.9038902,203 44.5,208.596671 44.5,215.5" id="Fill-1667" fill="#C5F5DB" transform="translate(32.000000, 215.500000) rotate(-90.000000) translate(-32.000000, -215.500000) "></path>
+                <path d="M26.5,47.5 C26.5,54.4033287 20.9038902,60 14,60 C7.09667131,60 1.5,54.4033287 1.5,47.5 C1.5,40.5966713 7.09667131,35 14,35 C20.9038902,35 26.5,40.5966713 26.5,47.5" id="Fill-1669" fill="#C5F5DB" transform="translate(14.000000, 47.500000) rotate(-90.000000) translate(-14.000000, -47.500000) "></path>
+                <path d="M14,321 C7.09667131,321 1.5,315.403329 1.5,308.5 C1.5,301.596671 7.09667131,296 14,296 C20.9038902,296 26.5,301.596671 26.5,308.5 C26.5,315.403329 20.9038902,321 14,321 Z" id="Fill-1669-Copy" fill="#C5F5DB" transform="translate(14.000000, 308.500000) rotate(-90.000000) translate(-14.000000, -308.500000) "></path>
+                <path d="M118.5,50.5 C118.5,57.4033287 112.90389,63 106,63 C99.0966713,63 93.5,57.4033287 93.5,50.5 C93.5,43.5966713 99.0966713,38 106,38 C112.90389,38 118.5,43.5966713 118.5,50.5" id="Fill-1671" fill="#C5F5DB" transform="translate(106.000000, 50.500000) rotate(-90.000000) translate(-106.000000, -50.500000) "></path>
+                <path d="M131.5,124.5 C131.5,131.403329 125.90389,137 119,137 C112.096671,137 106.5,131.403329 106.5,124.5 C106.5,117.596671 112.096671,112 119,112 C125.90389,112 131.5,117.596671 131.5,124.5" id="Fill-1673" fill="#C5F5DB" transform="translate(119.000000, 124.500000) rotate(-90.000000) translate(-119.000000, -124.500000) "></path>
+                <polyline id="Stroke-1675" stroke="#8AEAB7" stroke-width="9.894" transform="translate(44.000000, 30.500000) rotate(-90.000000) translate(-44.000000, -30.500000) " points="30.5 24 38.5940208 33.9902904 49.4048182 27.0097096 57.5 37"></polyline>
+                <polyline id="Stroke-1677" stroke="#8AEAB7" stroke-width="9.894" transform="translate(92.000000, 141.000000) rotate(-90.000000) translate(-92.000000, -141.000000) " points="85.5 154 95.3419452 146.277094 88.6580548 135.724031 98.5 128"></polyline>
+                <polyline id="Stroke-1679" stroke="#8AEAB7" stroke-width="9.894" transform="translate(37.500000, 105.000000) rotate(-90.000000) translate(-37.500000, -105.000000) " points="40.877506 119 43.5 106.914447 31.5 103.091124 34.1196502 91"></polyline>
+                <polyline id="Stroke-1681" stroke="#8AEAB7" stroke-width="9.894" transform="translate(15.000000, 251.000000) rotate(-90.000000) translate(-15.000000, -251.000000) " points="14.7250147 265 20.5 254.219257 9.5 247.781827 15.2749853 237"></polyline>
+                <polyline id="Stroke-1683" stroke="#8AEAB7" stroke-width="9.894" transform="translate(119.500000, 201.500000) rotate(-90.000000) translate(-119.500000, -201.500000) " points="108.5 193 113.977802 203.70963 125.021128 199.289826 130.5 210"></polyline>
+                <polyline id="Stroke-1685" stroke="#8AEAB7" stroke-width="9.894" transform="translate(121.000000, 13.500000) rotate(-90.000000) translate(-121.000000, -13.500000) " points="108.5 6 115.475748 16.445243 126.523125 10.554757 133.5 21"></polyline>
+                <polyline id="Stroke-1685-Copy" stroke="#8AEAB7" stroke-width="9.894" transform="translate(83.000000, 304.500000) rotate(-45.000000) translate(-83.000000, -304.500000) " points="70.5 297 77.4757483 307.445243 88.5231248 301.554757 95.5 312"></polyline>
+                <line x1="78.5" y1="21" x2="100.5" y2="27" id="Stroke-1689" stroke="#3CDC87" stroke-width="8.41" transform="translate(89.500000, 24.000000) rotate(-90.000000) translate(-89.500000, -24.000000) "></line>
+                <line x1="59.5" y1="92" x2="75.5" y2="76" id="Stroke-1691" stroke="#3CDC87" stroke-width="8.41" transform="translate(67.500000, 84.000000) rotate(-90.000000) translate(-67.500000, -84.000000) "></line>
+                <line x1="62.5" y1="201" x2="58.5" y2="179" id="Stroke-1693" stroke="#3CDC87" stroke-width="8.41" transform="translate(60.500000, 190.000000) rotate(-90.000000) translate(-60.500000, -190.000000) "></line>
+                <line x1="122.5" y1="322" x2="118.5" y2="300" id="Stroke-1693-Copy" stroke="#3CDC87" stroke-width="8.41" transform="translate(120.500000, 311.000000) rotate(200.304846) translate(-120.500000, -311.000000) "></line>
+                <line x1="78.5" y1="244" x2="100.5" y2="250" id="Stroke-1695" stroke="#3CDC87" stroke-width="8.41" transform="translate(89.500000, 247.000000) rotate(-90.000000) translate(-89.500000, -247.000000) "></line>
+                <line x1="-0.5" y1="166" x2="16.5" y2="150" id="Stroke-1697" stroke="#3CDC87" stroke-width="8.41" transform="translate(8.000000, 158.000000) rotate(-90.000000) translate(-8.000000, -158.000000) "></line>
+                <line x1="17.5" y1="-4" x2="5.5" y2="16" id="Stroke-1687" stroke="#3CDC87" stroke-width="8.41" transform="translate(11.500000, 6.000000) rotate(-90.000000) translate(-11.500000, -6.000000) "></line>
+                <line x1="53.5" y1="269" x2="41.5" y2="289" id="Stroke-1687-Copy" stroke="#3CDC87" stroke-width="8.41" transform="translate(47.500000, 279.000000) rotate(-90.000000) translate(-47.500000, -279.000000) "></line>
+            </g>
+        </g>
+    </g>
+</svg>

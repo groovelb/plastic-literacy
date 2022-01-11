@@ -79,9 +79,15 @@ const Title = ({
         // onBeforePageScroll={handleBeforeChange}
         animationTimer={750}
         transitionTimingFunction={'ease-in-out'}
+        customPageNumber={currentPage}
       >
         <Page>
-          <SiteTitle img={bg_title} />
+          <SiteTitle
+            img={bg_title}
+            onClick={() => {
+              setCurrentPage(1);
+            }}
+          />
         </Page>
         <Page>
           <LiveArea>

@@ -8,7 +8,10 @@ import ChapterSummary from '../components/layout/ChapterSummary';
 import CardChapterSection from '../components/card/CardChapterSection';
 import CardTimeline from '../components/card/CardTimeline';
 import Grid from '../components/layout/Grid';
+import ChapterTitleLink from '../components/layout/ChapterTitleLink';
 
+
+import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
 import img_timeline1 from '../assets/img/c1/timeline1.jpg';
 import img_timeline2 from '../assets/img/c1/timeline2.jpg';
 import img_timeline3 from '../assets/img/c1/timeline3.jpg';
@@ -71,10 +74,16 @@ const FadeIn = keyframes`
 
 const PageAlignTop = styled(Page)`
   justify-content: flex-start !important;
-  padding-top: 144px;
+  padding-top: 156px;
   .content{
     height: 100%;
   }
+`;
+
+const Row3 = styled.div`
+  margin-top: 48px;
+  width: 948px;
+  height: calc(100%/4);
 `;
 
 // const chartHeight = 560;
@@ -613,12 +622,16 @@ const Chapter1 = ({
           }
         }
         animationTimer={800}
+        customPageNumber={currentPage}
       >
         <Page>
           <ChapterTitle
             title={'플라스틱 딜레마'}
             num={1}
             img={bg_c1}
+            onClick={() => {
+              setCurrentPage(1);
+            }}
           />
         </Page>
         <Page>
@@ -688,16 +701,25 @@ const Chapter1 = ({
             </PageAlignTop>
           )
         }
-        <ImageBackground
+        {/* <ImageBackground
           isFilter={false}
           // img={bg_c1_transition}
           isTrigger={currentPage === 6}
+        > */}
+        <MsgFullScreen
+          title={t('c1-s6-title')}
+          exp={t('c1-s6-exp')}
         >
-          <MsgFullScreen
-            title={t('c1-s6-title')}
-            exp={t('c1-s6-exp')}
-          />
-        </ImageBackground>
+          <Row3>
+            <ChapterTitleLink
+              title={'플라스틱의 여정'}
+              num={2}
+              img={bg_c2}
+              to={'/chapter2'}
+            />
+          </Row3>
+        </MsgFullScreen>
+        {/* </ImageBackground> */}
       </ReactPageScroller>
     </>
   )

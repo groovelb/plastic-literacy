@@ -9,6 +9,8 @@ import ImageBackground from "../videoBackground/ImageBackground";
 import useWindowSize from '../../hook/useWindowSize';
 import VideoBackground from "../videoBackground/VideoBackground";
 
+import ic_scroll from "../../assets/icon/ic_keep_scroll_white.svg";
+
 
 const Container = styled.div`
 	width: calc(100% - 48px);
@@ -32,6 +34,22 @@ const Content = styled(LiveArea)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+`;
+
+const Blink = keyframes`
+	0% {opacity: 0}
+	100% {opacity: 1}
+`;
+
+const ButtonScroll = styled.div`
+	width: 64px;
+	height: 64px;
+	position: absolute;
+	left: calc(50% - 32px);
+	bottom: 48px;
+	animation: ${Blink} 2s ease-out 0s infinite;
+	cursor: pointer;
+	z-index: 99;
 `;
 
 const Title = styled.div`
@@ -71,11 +89,15 @@ const Exp = styled.div`
 const ChapterTitle = ({
 	img,
 	num,
-	title
+	title,
+	onClick
 }) => {
 
 	return (
 		<Container img={img}>
+			<ButtonScroll onClick={onClick}>
+				<img src={ic_scroll} alt='' />
+			</ButtonScroll>
 			<Content>
 				<Title>
 				{`CHAPTER${num}`}

@@ -34,6 +34,7 @@ const ImgBG = styled.div`
     height: 100%;
     background-color: ${props => props.isFilter ? 'rgba(15,30,45,0.48)' : 'rgba(0,0,0,0)'};
     z-index: 9;
+    pointer-events: none;
   }
 `;
 

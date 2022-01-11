@@ -6,6 +6,7 @@ import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
 import SectionTitle from '../components/textContainer/SectionTitle';
 import DynamicImageGrid from '../components/dynamicGrid/DynamicImageGrid';
+import ChapterTitleLink from '../components/layout/ChapterTitleLink';
 
 import Section from "../components/layout/Section";
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
@@ -26,6 +27,7 @@ import bg_video_s1 from "../assets/video/video_c2_s1.mp4";
 import Report from "../components/report/ReportVer2";
 import PlasticVerticalStage from "../components/navigation/PlasticVerticalStage";
 import TableImage from "../assets/img/illust/table.png";
+import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
 
 
 import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
@@ -40,6 +42,11 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const Row3 = styled.div`
+  margin-top: 48px;
+  width: 948px;
+  height: calc(100%/4);
+`;
 
 const FadeIn = keyframes`
   from {
@@ -340,14 +347,18 @@ const Chapter2FullPage = ({
       }
       <ReactPageScroller
         pageOnChange={handlePageChange}
-        animationTimerBuffer={200}
+        animationTimerBuffer={0}
         animationTimer={1000}
+        customPageNumber={currentPage}
       >
         <Page>
           <ChapterTitle
             title={'플라스틱의 여정'}
             num={2}
             img={bg_c2}
+            onClick={() => {
+              setCurrentPage(1);
+            }}
           />
         </Page>
         <Page>
@@ -419,16 +430,25 @@ const Chapter2FullPage = ({
             <DynamicImageGrid gridData={gridDataOcean} />
           </Wrapper2>
         </Page>
-        <ImageBackground
+        {/* <ImageBackground
           isFilter={true}
           img={videoURL.c2.s9.bg}
           isTrigger={currentPage === 12}
+        > */}
+        <MsgFullScreen
+          title={t('c2-s9-title')}
+          exp={t('c2-s9-exp')}
         >
-          <MsgFullScreen
-            title={t('c2-s9-title')}
-            exp={t('c2-s9-exp')}
-          />
-        </ImageBackground>
+          <Row3>
+            <ChapterTitleLink
+              title={'플라스틱 리터러시'}
+              num={3}
+              img={bg_c3}
+              to={'/chapter3'}
+            />
+          </Row3>
+        </MsgFullScreen>
+        {/* </ImageBackground> */}
       </ReactPageScroller>
     </Container>
   )

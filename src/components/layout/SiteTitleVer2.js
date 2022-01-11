@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 import Section from "./Section";
 import LiveArea from "./LiveArea";
 import handleViewport from 'react-in-viewport';
+
 import ToTop from '../motion/ToTop';
 import ViewportWrapper from "../ViewportWrapper";
 import ImageBackground from "../videoBackground/ImageBackground";
 import useWindowSize from '../../hook/useWindowSize';
 import VideoBackground from "../videoBackground/VideoBackground";
+
+import ic_scroll from "../../assets/icon/ic_keep_scroll.svg";
 
 
 const Container = styled.div`
@@ -25,11 +28,45 @@ const Container = styled.div`
 	}
 `;
 
+
+
+const Blink = keyframes`
+	0% {opacity: 0}
+	100% {opacity: 1}
+`;
+
+const ButtonScroll = styled.div`
+	width: 64px;
+	height: 64px;
+	position: absolute;
+	left: calc(50% - 32px);
+	bottom: 48px;
+	animation: ${Blink} 2s ease-out 0s infinite;
+	cursor: pointer;
+	z-index: 99;
+`;
+
+const Button = styled.div`
+
+	height: 48px;
+	border-radius: 24px;
+	padding:0 48px;
+	background-color: ${props => props.theme.color.brand.epGreen};
+	${props => props.theme.layout.flexColCenter}
+	${props => props.theme.type.size.bttText};
+	${props => props.theme.type.weight.prd.bold};
+	margin-top: 24px;
+	margin-bottom: 48px;
+	color: #fff;
+	cursor: pointer;
+`;
+
 const Content = styled(LiveArea)`
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	align-items: flex-start;
 `;
 
 const ViewportBlock = handleViewport(Container, /** options: {}, config: {} **/);
@@ -76,19 +113,51 @@ const Exp = styled.div`
 
 
 const SiteTitle = ({
-	img
+	img,
+	onClick
 }) => {
+
+	const [isLoad, setIsLoad] = useState(false);
+
+	useEffect(() => {
+		setIsLoad(true);
+	}, []);
 
 	return (
 		<Container img={img}>
+			<ButtonScroll onClick={onClick}>
+				<img src={ic_scroll} alt='' />
+			</ButtonScroll>
 			<Content>
 				<Title>
-					PLASTIC <br />
-					LITERACY
+					<ToTop
+						isTrigger={isLoad}
+						index={3}
+						distance={'middle'}
+					>
+						PLASTIC <br />
+						LITERACY
+					</ToTop>
 				</Title>
 				<Exp>
-					GS칼텍스가 제안하는 플라스틱 리터러시는 무엇일까요?
+					<ToTop
+						isTrigger={isLoad}
+						index={6}
+						distance={'short'}
+					>
+						GS칼텍스가 제안하는 플라스틱 리터러시는 무엇일까요?
+					</ToTop>
 				</Exp>
+				<ToTop
+					isTrigger={isLoad}
+					index={7}
+					distance={'short'}
+					style={{alignItems:'flex-start'}}
+				>
+					<Button onClick={onClick}>
+						플라스틱 리터러시 알아보기
+					</Button>
+				</ToTop>
 			</Content>
 		</Container>
 	)

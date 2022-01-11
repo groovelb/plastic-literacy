@@ -111,7 +111,12 @@ const GlobalStyle = createGlobalStyle`
   .bar.highlight{
     fill: ${props => props.theme.color.brand.epPurple};
     opacity: 0.75;
-    animation: blink 1s linear infinite;
+    animation: blink 2s linear infinite;
+  }
+
+  .bar.mark{
+    fill: ${props => props.theme.color.brand.epPurple};
+    opacity: 0.75;
   }
   .delay1{
     animation-delay: 0.5s;
@@ -171,6 +176,16 @@ const GlobalStyle = createGlobalStyle`
   a{
     color: inherit;
     text-decoration: none;
+  }
+  .bar_value_text{
+    fill: #fff;
+    ${props => props.theme.type.size.title2};
+    ${props => props.theme.type.weight.prd.black};
+  }
+  .bar_mark_text{
+    fill: #fff;
+    ${props => props.theme.type.size.body1};
+    ${props => props.theme.type.weight.prd.black};
   }
   @media only screen and (max-width: 480px) {
     .exp{
