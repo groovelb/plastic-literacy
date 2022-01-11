@@ -131,7 +131,7 @@ const mrProcessList = [
     stages: [0, 1]
   },
   {
-    title: '2 세척 및 정밀 분쇄',
+    title: '2 정밀 분쇄',
     exp: `1차 분쇄가 끝난 폐기물들은 다시한번 세척을 한뒤 플라스틱 플레이크를 합성하기 위한 정밀분쇄 과정을 다시 거칩니다.`,
     x: 1,
     stages: [1, 2]
@@ -557,12 +557,18 @@ const Chapter3 = ({
       }
       <ReactPageScroller
         pageOnChange={handlePageChange}
+        animationTimerBuffer={0}
+        animationTimer={1000}
+        customPageNumber={currentPage}
       >
         <Page>
           <ChapterTitle
             title={'플라스틱 리터러시'}
             num={3}
             img={bg_c3}
+            onClick={() => {
+              setCurrentPage(1);
+            }}
           />
         </Page>
         <Page>
