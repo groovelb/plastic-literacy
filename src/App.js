@@ -37,6 +37,10 @@ const GlobalStyle = createGlobalStyle`
     height:100vh;
     width:100vw;
   } 
+   // Title
+  .circle_path_whole.inner{
+    /* stroke-dasharray: 5; */
+  }
   .marker2{
     fill: #03233A;
     box-shadow: 0 0 16px 0 rgba(0,0,0,0.50);

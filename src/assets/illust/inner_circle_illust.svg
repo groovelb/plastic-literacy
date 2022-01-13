@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="628px" height="628px" viewBox="0 0 628 628" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>inner_circle_illust</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="inner_circle_illust" transform="translate(1.369000, 1.368389)" stroke-width="1.895">
+            <path d="M312.631,625.263222 C139.968889,625.263222 0,485.293111 0,312.632222 C0,139.970111 139.968889,5.68434189e-14 312.631,5.68434189e-14 C485.293111,5.68434189e-14 625.262,139.970111 625.262,312.632222 C625.262,485.293111 485.293111,625.263222 312.631,625.263222 Z" id="Stroke-3" stroke="#FFFFFF" stroke-dasharray="3.789,5.684"></path>
+            <polyline id="Stroke-336" stroke="#3CDC87" stroke-linejoin="round" points="537.113622 76.2913556 537.701511 95.5499111 518.442956 96.1378"></polyline>
+            <polyline id="Stroke-338" stroke="#3CDC87" stroke-linejoin="round" points="88.2440778 76.5810222 107.511189 76.5810222 107.511189 95.8481333"></polyline>
+            <polyline id="Stroke-340" stroke="#3CDC87" stroke-linejoin="round" points="90.1662667 551.128356 89.5783778 531.8698 108.835711 531.281911"></polyline>
+            <polyline id="Stroke-342" stroke="#3CDC87" stroke-linejoin="round" points="536.437367 549.075756 517.170256 549.075756 517.170256 529.808644"></polyline>
+        </g>
+    </g>
+</svg>

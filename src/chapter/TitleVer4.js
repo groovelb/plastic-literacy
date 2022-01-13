@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import Section from "../components/layout/Section";
 import ReactPageScroller from 'react-page-scroller';
 
+import PlasticLiteracy from '../template/Main/PlasticLiteracyVer2';
 import SiteTitle from '../components/layout/SiteTitleVer2';
 import ChapterTitleLink from '../components/layout/ChapterTitleLink';
 import SectionTitle from '../components/textContainer/SectionTitle';
@@ -53,6 +54,7 @@ const IllustCycle = styled.img`
   height: auto;
 `;
 
+
 const Title = ({
   setThemeType
 }) => {
@@ -64,7 +66,7 @@ const Title = ({
     console.log(number);
     setCurrentPage(number);
     if (number === 0) {
-      setThemeType('light');
+      setThemeType('dark');
     }
     if (number === 1) {
       setThemeType('dark');
@@ -90,8 +92,15 @@ const Title = ({
         customPageNumber={currentPage}
       >
         <Page>
-          <SiteTitle
+          {/* <SiteTitle
             img={bg_title}
+            onClick={() => {
+              setCurrentPage(1);
+            }}
+          /> */}
+          <PlasticLiteracy
+            currentChapter={0}
+            starChatper={0}
             onClick={() => {
               setCurrentPage(1);
             }}

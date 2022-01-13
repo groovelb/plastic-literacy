@@ -16,7 +16,7 @@ import { useTimeoutEffect } from 'react-timing-hooks';
 const Container = styled.div`
   width: 100%;
   z-index: 9999;
-  height: 120px;
+  height: 96px;
   /* justify-content: space-between; */
   color: ${props => props.themeType === 'light' ?
     theme.color.ui.strong :
@@ -49,7 +49,7 @@ const Logo = styled.div`
     position: absolute;
     content: '';
     left: 0;
-    top: -20px;
+    top: -16px;
     width: 100%;
     height: 2px;
     background-color: ${props => props.isCurrent ? props.theme.color.brand.epGreen : 'none'};
@@ -81,7 +81,7 @@ const Menu = styled.div`
     position: absolute;
     content: '';
     left: 0;
-    top: -20px;
+    top: -16px;
     width: 100%;
     height: 2px;
     background-color: ${props => props.isCurrent ? props.theme.color.brand.epGreen : 'none'};

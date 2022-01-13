@@ -51,6 +51,7 @@ import illust_low3 from "../assets/img/illust/c3/mr/illust_low_product3.svg";
 import illust_high1 from "../assets/img/illust/c3/mr/illust_high_product1.svg";
 import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
+import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
 
 
 const Container = styled.div`
@@ -903,7 +904,7 @@ const Chapter3 = ({
               title={`소비재의 재활용율을 높이는 \nCR 기술 (추진 예정)`}
             />
             <CircularLoop isActive={currentPage === 12}>
-              <img src={illust_circular_loop} alt='' />
+              <img src={illust_circular_loop2} alt='' />
               {/* {
                 circularStageList.map((stage,index) => 
                   <CircularStage
