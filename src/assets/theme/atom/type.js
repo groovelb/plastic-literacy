@@ -76,8 +76,8 @@ const type = {
       text-transform: capitalize;
     `,
     h1: `
-    font-size: 44px;
-    line-height: 64px;
+    font-size: 36px;
+    line-height: 1.5;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 30px;

@@ -4,8 +4,10 @@ import { useTranslation } from 'react-i18next';
 import ReactPageScroller from 'react-page-scroller';
 import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
+import ChapterIndicator from '../components/layout/ChapterIndicator';
 import SectionTitle from '../components/textContainer/SectionTitle';
 import DynamicImageGrid from '../components/dynamicGrid/DynamicImageGrid';
+import DynamicImageGrid2 from '../components/dynamicGrid/DynamicImageGrid2';
 import ChapterTitleLink from '../components/layout/ChapterTitleLink';
 
 import Section from "../components/layout/Section";
@@ -17,7 +19,7 @@ import SankeyLand from "../chart/chaper2/SankeyLandVer2";
 import SankeyOcean from '../chart/chaper2/SankeyOceanVer2';
 import ViewportWrapper from '../components/ViewportWrapper';
 
-import { gridDataLand, gridDataOcean } from '../data/dynamicGridData';
+import { gridDataLand, gridDataOcean, gridDataCategory } from '../data/dynamicGridData';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizonVer2";
 import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
@@ -26,7 +28,8 @@ import TableImage from "../assets/img/illust/table.png";
 import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
 
 
-import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
+// import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
+import bg_c2 from '../assets/img/bg/img_bg_c2.jpg';
 
 // report image
 import bg_waste_land from "../assets/img/bg/bg_waste_land2.jpg";
@@ -40,7 +43,7 @@ const Container = styled.div`
 
 const Row3 = styled.div`
   margin-top: 48px;
-  width: 948px;
+  width: 900px;
   height: calc(100%/4);
 `;
 
@@ -74,7 +77,7 @@ const Top = styled.div`
      width: 100%;
      height: 100%;
      /* background-color: rgba(0,0,0,0.82); */
-     background-image: linear-gradient(rgba(2, 15, 24, 1), rgba(2, 15, 24, 0.75), rgba(2, 15, 24, 1));
+     /* background-image: linear-gradient(rgba(2, 15, 24, 1), rgba(2, 15, 24, 0.75), rgba(2, 15, 24, 1)); */
      top:0;
      left:0;
      z-index: -1;
@@ -161,14 +164,19 @@ const Chapter2FullPage = ({
       page:6,
     },
     {
+      title: '플라스틱 분류체계의 실태',
+      exp: t("c2-s2-exp"),
+      page:7,
+    },
+    {
       title: t("c2-s5-title"),
       exp: t("c2-s3-exp"),
-      page:7
+      page:8
     },
     {
       title: '해양 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s4-exp"),
-      page:11
+      page:12
     }
   ];
 
@@ -314,6 +322,12 @@ const Chapter2FullPage = ({
 
   return (
     <Container>
+      <ChapterIndicator
+        sectionList={content}
+        isTrigger={1<currentPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
       {
         0 < currentPage && currentPage < 7 &&
         <Top isActive={1 < currentPage && currentPage < 6}>
@@ -393,6 +407,14 @@ const Chapter2FullPage = ({
               플라스틱과 관련된 <br /> 다양한 문제점들,<br /> 과연 정답일까요?
             </FloatingLeft>
             <DynamicImageGrid gridData={gridDataLand} />
+          </Wrapper2>
+        </Page>
+        <Page>
+          <Wrapper2>
+            <FloatingLeft>
+              플라스틱 분류체계는 잘 지켜지고 있을까요?
+            </FloatingLeft>
+            <DynamicImageGrid2 gridData={gridDataCategory} />
           </Wrapper2>
         </Page>
         <ImageBackground

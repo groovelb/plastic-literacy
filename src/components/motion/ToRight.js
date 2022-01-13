@@ -6,7 +6,7 @@ const Container = styled.div`
   // Transition
   right: ${props => props.isTrigger?'0px':'80px'};
   opacity: ${props => props.isTrigger?'1':'0'};
-  transition: all 1s ease-out;
+  transition: all 0.3s ease-out;
   transition-delay: ${props => `${props.index*0.2}s`};
 `;
 

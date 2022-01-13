@@ -21,11 +21,13 @@ const ViwportWrapper = ({
   children,
   onEnterViewport,
   onLeaveViewport,
-  style
+  style,
+  className
 }) => {
  
   return (
     <Block
+      className={className}
       onEnterViewport={onEnterViewport}
       onLeaveViewport={onLeaveViewport}
     >

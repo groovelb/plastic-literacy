@@ -139,7 +139,7 @@ const GNB = ({
             </Link>
           </Menu>
         </MenuList>
-        <img src={themeType === 'light' ? logo_black : logo_white} alt='' />
+        {/* <img src={themeType === 'light' ? logo_black : logo_white} alt='' /> */}
       </Content>
     </Container>
   )

@@ -75,6 +75,7 @@ const BttClose = styled.button`
   top: 12px;
   right: 12px;
   z-index: 9;
+  font-size: 20px;
   background-color: rgba(43, 51, 63, 0.7);
   color: #000;
   font-weight: bold;
@@ -92,6 +93,7 @@ const Caption = styled.div`
    }
    width: 100%;
    ${props => props.theme.type.size.body1}
+   ${props => props.theme.type.weight.exp.bold}
    color: #fff;
    bottom: -100%;
    left: 0;

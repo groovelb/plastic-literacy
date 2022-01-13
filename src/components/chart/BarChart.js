@@ -226,7 +226,7 @@ const BarChart = ({
       chart.selectAll(".s1_text").remove();
     }
     
-    if (stage === 3) {
+    if (stage === 4) {
       setTimeout(function () {
         chart.selectAll("rect")
           .transition()
@@ -257,7 +257,7 @@ const BarChart = ({
       chart.selectAll(".s2_text").remove();
     }
     // recycling mark
-    if (stage === 4) {
+    if (stage === 6) {
 
       chart.selectAll("rect.recycle")
         .data(data)
@@ -344,7 +344,7 @@ const BarChart = ({
       chart.selectAll(".s3_text").remove();
     }
 
-    if (stage === 5) {
+    if (stage === 7) {
       setTimeout(function () {
         chart.append("g")
           .attr("transform", `translate(${x(2017) + 64},${160})`)

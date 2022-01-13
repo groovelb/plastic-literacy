@@ -1,6 +1,6 @@
 const motion = {
   transition: {
-    duration: '1s',
+    duration: '0.4s',
     delayRate: 0.25,
     distance: {
       big: '320px',
