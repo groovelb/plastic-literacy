@@ -179,28 +179,28 @@ const nodeList = [
     x: circleSize.width / 2 - nodeSize.width / 2,
     y: nodeSize.margin,
     img: illust_produce,
-    title: '순환생산',
+    title: '순환 생산',
     exp: 'GS칼텍스만의 재활용 기술로 기존에 불가능했던 가전.자동차 부품의 순환생산이 가능합니다.'
   },
   {
     x: circleSize.width - nodeSize.width - nodeSize.margin,
     y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_dispose,
-    title: '배출.분해',
+    title: '배출 분해',
     exp: '폐기물들은 플라스틱 생태계의 배출 단계를 거쳐 재활용 공정의 첫단계로 분해에 들어갑니다.'
   },
   {
     x: circleSize.width / 2 - nodeSize.width / 2,
     y: circleSize.height - nodeSize.height - nodeSize.margin,
     img: illust_crush,
-    title: '정렬.분쇄',
+    title: '정렬 분쇄',
     exp: '분해된 폐기물들은 재질에 따라 분류후 고순도 플레이크 제작을 위해 분쇄과정을 거칩니다.'
   },
   {
     x: nodeSize.margin,
     y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_synthesis,
-    title: '처리.합성',
+    title: '처리 합성',
     exp: 'GS칼텍스만의 특수 공정이 만들어낸 고순도 플레이크는 고품질 제품의 부품으로 사용됩니다.'
   }
 ];
@@ -249,8 +249,8 @@ const PlasticLiteracy = ({
   return (
     <Illust>
       <ButtonScroll onClick={onClick}>
-				<img src={ic_scroll} alt='' />
-			</ButtonScroll>
+        <img src={ic_scroll} alt='' />
+      </ButtonScroll>
       <Cycle>
         <PlasticCirculation
           currentChapter={currentChapter}
@@ -265,8 +265,21 @@ const PlasticLiteracy = ({
         isFilter={hoverIndex !== 0}
       >
         <h1>
-          PLASTIC <br />
-          LITERACY
+          {
+            hoverIndex === 0 &&
+            <>
+              PLASTIC <br />
+              LITERACY
+            </>
+          }
+          {
+            hoverIndex !== 0 &&
+            <>
+              {hoverIndex} <br />
+              {nodeList[hoverIndex - 1].title}
+            </>
+          }
+
         </h1>
         <p>
           {
