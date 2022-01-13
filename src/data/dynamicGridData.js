@@ -176,7 +176,9 @@ export const gridDataCategory = [
     answer2:`우리가 가장 자주 만날 수 있는 플라스틱인 PETE는 투명한 경우에 제대로 된 재활용을 할 수 있습니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: true
+    isRecycle: true,
+    title:'페트병',
+    category:'PETE'
   },
   {
     type: 'image',
@@ -187,7 +189,9 @@ export const gridDataCategory = [
     answer2:`용기에 보관되었던 내용물을 깨끗이 씻고 스티커를 제거해서 배출해야만 재활용할 수 있습니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: false
+    isRecycle: false,
+    title:'세제 용기',
+    category:'HDPE'
   },
   {
     type: 'image',
@@ -199,6 +203,8 @@ export const gridDataCategory = [
     unitWidth: 1,
     unitHeight: 1,
     isRecycle: false,
+    title:'합성피혁',
+    category:'PVC'
   },
   //Row3
   {
@@ -210,7 +216,9 @@ export const gridDataCategory = [
     answer2:`재활용을 위해 내용물을 깨끗이 씻고 스티커를 제거해서 배출하면 재활용할 수 있습니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: true
+    isRecycle: true,
+    title:'비닐봉투',
+    category:'LDPE'
   },
   {
     type: 'image',
@@ -221,7 +229,9 @@ export const gridDataCategory = [
     answer2:`열에 강한 PP는 환경호르몬도 배출하지 않아 안전하고, 내용물을 잘 씻어 배출하면 재활용을 할 수 있습니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: true
+    isRecycle: true,
+    title:'도시락용기',
+    category:'PP'
   },
   {
     type: 'image',
@@ -232,7 +242,9 @@ export const gridDataCategory = [
     answer2:`PS는 고온에 쉽게 녹아 변형되고, 발암물질이 발생되지만 잘 씻어서 배출하면 재활용이 가능합니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: true
+    isRecycle: true,
+    title:'일회용 수저',
+    category:'PS'
   },
   {
     type: 'image',
@@ -243,7 +255,9 @@ export const gridDataCategory = [
     answer2:`OTHER는 소재가 다양하게 섞여 매번 판별이 어렵기 때문에 재활용이 불가능합니다.`,
     unitWidth: 1,
     unitHeight: 1,
-    isRecycle: false
+    isRecycle: false,
+    title:'아기 젖병',
+    category:'OTHER'
   },
 ]; 
 

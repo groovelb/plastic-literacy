@@ -23,6 +23,7 @@ const Container = styled.div`
 	background-image: url(${props => props.img});
 	background-size: cover;
   background-position: center;
+	position: relative;
 	:after{
     content: '';
     position: absolute;

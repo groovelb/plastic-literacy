@@ -10,6 +10,7 @@ import SectionContentVertical from '../components/textContainer/SectionContentVe
 // import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
 import ImageBackground from "../components/layout/ImageBackground";
 import ChapterSummary from '../components/layout/ChapterSummary';
+import ChapterIndicator from '../components/layout/ChapterIndicator';
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
 import Grid from '../components/layout/Grid';
 import CardRecycleTech from '../components/card/CardRecycleTech';
@@ -298,24 +299,24 @@ const Chapter3 = ({
   // String
   const content = [
     {
-      title: t("c3-s1-title"),
-      exp: t("c3-s1-exp"),
-    },
-    {
       title: t("c3-s2-title"),
       exp: t("c3-s2-exp"),
+      page:2,
     },
     {
       title: t("c3-s3-title"),
       exp: t("c3-s3-exp"),
+      page:3,
     },
     {
       title: t("c3-s4-title"),
       exp: t("c3-s4-exp"),
+      page:7,
     },
     {
       title: t("c3-s5-title"),
       exp: t("c3-s5-exp"),
+      page:8,
     }
   ];
 
@@ -531,6 +532,13 @@ const Chapter3 = ({
 
   return (
     <Container>
+      <ChapterIndicator
+        sectionList={content}
+        isTrigger={1<currentPage}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        themeType={themeType}
+      />
       {
         1 < currentPage && currentPage < 7 &&
         <Chart
@@ -666,6 +674,7 @@ const Chapter3 = ({
             exp={t("c3-exp")}
             sectionList={content}
             themeType={'light'}
+            setCurrentPage={setCurrentPage}
           />
         </Page>
         <Page>
@@ -765,7 +774,7 @@ const Chapter3 = ({
               <TitleCol>
                 <SectionTitle
                   themeType={'light'}
-                  title={`5\n${t('c3-s5-title')}`}
+                  title={`GS 칼텍스 MR 공정의 \n 하이 앤드 제품`}
                 />
               </TitleCol>
               <ContentCol>
@@ -821,7 +830,7 @@ const Chapter3 = ({
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={`4\n${t('c3-s6-title')}`}
+              title={`6\n${t('c3-s6-title')}`}
             />
             <Row>
               {

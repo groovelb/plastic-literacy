@@ -13,6 +13,7 @@ const Container = styled.div`
   top: 120px;
   right: ${props => props.isTrigger ? '8px' : '-100%'};
   z-index: 999;
+  color: ${props => props.themeType==='light'?props.theme.color.ui.strong:props.theme.color.ui.white};
   :hover{
     width: 144px;
   }
@@ -72,6 +73,7 @@ const ChapterSummary = ({
   return (
     <Container
       isTrigger={isTrigger}
+      themeType={themeType}
     >
       {
         sectionList.map((section, index, arr) =>

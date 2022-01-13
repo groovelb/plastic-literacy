@@ -45,6 +45,7 @@ export default () => {
             <Title
               currentChapter={0}
               setThemeType={setThemeType}
+              themeType={themeType}
             />}
         />
         <Route
@@ -53,6 +54,7 @@ export default () => {
           <Chapter1 
             currentChapter={1}
             setThemeType={setThemeType}
+            themeType={themeType}
           />}
         />
         <Route
@@ -61,6 +63,7 @@ export default () => {
             <Chapter2Ver2
               currentChapter={2}
               setThemeType={setThemeType}
+              themeType={themeType}
             />}
           />
         <Route
@@ -69,6 +72,7 @@ export default () => {
           <Chapter3Ver2
             currentChapter={3}
             setThemeType={setThemeType}
+            themeType={themeType}
             themeType={themeType}
           />} />
       </Routes>

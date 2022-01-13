@@ -79,6 +79,21 @@ const Answer = styled.div`
   }
 `;
 
+const Title = styled.div`
+  color: #fff;
+  text-shadow: 0px 0px  8px rgba(0,0,0,0.24);
+  h3{
+    ${props => props.theme.type.size.title3}
+    ${props => props.theme.type.weight.bold}
+    margin-bottom: 4px;
+    margin: 0px;
+  }
+  p{
+    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.weight.regular}
+  }
+`;
+
 
 const GridXNum = 4;
 const GridYNum = 3;
@@ -123,6 +138,14 @@ const DynamicImageGrid2 = ({ gridData }) => {
             {
               grid.type === 'image' &&
               <>
+                <Title>
+                  <h3>
+                    {grid.title}
+                  </h3> 
+                  <p>
+                    {grid.category}
+                  </p>
+                </Title>
                 <Answer
                   className={'answer'}
                 >

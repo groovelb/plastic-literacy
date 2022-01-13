@@ -143,7 +143,8 @@ const FloatingLeft = styled.div`
 const Chapter2FullPage = ({
   chapterObject,
   currentChapter,
-  setThemeType
+  setThemeType,
+  themeType
 }) => {
 
   const { t } = useTranslation();
@@ -313,7 +314,7 @@ const Chapter2FullPage = ({
   }, [currentSection]);
 
   const handlePageChange = (number) => {
-    // console.log(number);
+    console.log(number);
     setCurrentPage(number);
     if (number === 0) {
       setThemeType('dark');
@@ -327,13 +328,14 @@ const Chapter2FullPage = ({
         isTrigger={1<currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        themeType={themeType}
       />
       {
-        0 < currentPage && currentPage < 8 &&
-        <Top isActive={1 < currentPage && currentPage < 7}>
+        0 < currentPage && currentPage < 7 &&
+        <Top isActive={1 < currentPage && currentPage < 6}>
           <Chart
             isFilter={currentPage === 2}
-            isActive={1 < currentPage && currentPage < 7}
+            isActive={1 < currentPage && currentPage < 6}
           >
             <SankeyLand
               currentStage={currentPage - 2}
@@ -420,7 +422,7 @@ const Chapter2FullPage = ({
         <ImageBackground
           isFilter={true}
           img={videoURL.c2.s5.bg}
-          isTrigger={currentPage === 7}
+          isTrigger={currentPage === 8}
         >
           <MsgFullScreen
             title={t('c2-s5-title')}
