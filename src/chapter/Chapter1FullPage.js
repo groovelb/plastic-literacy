@@ -774,6 +774,7 @@ const Chapter1 = ({
       >
         <Page>
           <ChapterTitle
+            isFilter={true}
             title={'플라스틱 딜레마'}
             num={1}
             img={bg_c1}

@@ -19,6 +19,7 @@ const Top = styled.div`
     ${props => props.theme.type.size.h1}
     ${props => props.theme.type.weight.prd.black}
     color: ${props => props.theme.color.brand.epGreen};
+    white-space: break-spaces;
   }
   p{
   ${props => props.theme.type.size.body1}

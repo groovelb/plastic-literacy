@@ -25,8 +25,8 @@ import SectionContentVertical from "../components/textContainer/SectionContentVe
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
 import useWindowSize from '../hook/useWindowSize';
 import TableImage from "../assets/img/illust/table.png";
-import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
-
+// import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
+import bg_c3 from '../assets/img/bg/img_bg_c3.jpg';
 
 // import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
 import bg_c2 from '../assets/img/bg/img_bg_c2.jpg';
@@ -329,11 +329,11 @@ const Chapter2FullPage = ({
         setCurrentPage={setCurrentPage}
       />
       {
-        0 < currentPage && currentPage < 7 &&
-        <Top isActive={1 < currentPage && currentPage < 6}>
+        0 < currentPage && currentPage < 8 &&
+        <Top isActive={1 < currentPage && currentPage < 7}>
           <Chart
             isFilter={currentPage === 2}
-            isActive={1 < currentPage && currentPage < 6}
+            isActive={1 < currentPage && currentPage < 7}
           >
             <SankeyLand
               currentStage={currentPage - 2}
@@ -343,13 +343,13 @@ const Chapter2FullPage = ({
         </Top>
       }
       {
-        6 < currentPage && currentPage < 12 &&
-        <Top isActive={7 < currentPage && currentPage < 11}>
+        7 < currentPage && currentPage < 13 &&
+        <Top isActive={8 < currentPage && currentPage < 12}>
           <Chart
-            isActive={7 < currentPage && currentPage < 11}
+            isActive={8 < currentPage && currentPage < 12}
           >
             <SankeyOcean
-              currentStage={currentPage - 7}
+              currentStage={currentPage - 8}
               currentChapter={3}
             />
           </Chart>

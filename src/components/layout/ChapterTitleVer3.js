@@ -23,6 +23,19 @@ const Container = styled.div`
 	background-image: url(${props => props.img});
 	background-size: cover;
   background-position: center;
+	:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.32)' : 'rgba(0,0,0,0)'};
+    /* background-color: ${props => props.isFilter ? 'rgba(0,48,24,0.64)' : 'rgba(0,0,0,0)'}; */
+  }
+	*{
+		z-index: 9;
+	}
 	@media only screen and (max-width: 480px) {
 		
 	}
@@ -90,11 +103,15 @@ const ChapterTitle = ({
 	img,
 	num,
 	title,
-	onClick
+	onClick,
+	isFilter
 }) => {
 
 	return (
-		<Container img={img}>
+		<Container
+			img={img}
+			isFilter={isFilter}
+		>
 			<ButtonScroll onClick={onClick}>
 				<img src={ic_scroll} alt='' />
 			</ButtonScroll>

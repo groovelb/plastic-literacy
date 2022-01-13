@@ -28,7 +28,8 @@ import ic_cr_outliend from "../assets/img/icon/ic_cr_outlined.svg";
 import ic_tr_outliend from "../assets/img/icon/ic_tr_outlined.svg";
 import ic_arrow_next from "../assets/icon/ic_arrow_short_green.svg";
 
-import bg_c3 from "../assets/img/bg/chapter/bg_chapter3_ver2.png";
+// import bg_c3 from "../assets/img/bg/chapter/bg_chapter3_ver2.png";
+import bg_c3 from '../assets/img/bg/img_bg_c3.jpg';
 import mr_stage1 from "../assets/img/illust/c3/mr/stage1.svg";
 import mr_stage2 from "../assets/img/illust/c3/mr/stage2.svg";
 import mr_stage3 from "../assets/img/illust/c3/mr/stage3.svg";
@@ -693,9 +694,9 @@ const Chapter3 = ({
                   </Grid>
                 )
               }
-              <Exp themeType={'light'}>
+              {/* <Exp themeType={'light'}>
                 {t('c3-s2-exp')}
-              </Exp>
+              </Exp> */}
             </Row>
           </LiveArea>
         </Page>

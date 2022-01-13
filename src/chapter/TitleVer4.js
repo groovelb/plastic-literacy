@@ -13,9 +13,10 @@ import Page from '../components/layout/Page';
 import bg_title from '../assets/img/bg/chapter/bg_title1_ver2.png';
 import bg_c1 from '../assets/img/bg/img_bg_c1.jpg';
 import bg_c2 from '../assets/img/bg/img_bg_c2.jpg';
+import bg_c3 from '../assets/img/bg/img_bg_c3.jpg';
 // import bg_c1 from '../assets/img/bg/chapter/bg_chapter1_ver2.png';
 // import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
-import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
+// import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
 import illust_cycle_main from '../assets/illust/title/illust_cycle_main.png';
 
 
