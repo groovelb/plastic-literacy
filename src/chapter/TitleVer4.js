@@ -11,6 +11,8 @@ import SectionTitle from '../components/textContainer/SectionTitle';
 import LiveArea from '../components/layout/LiveArea';
 import Page from '../components/layout/Page';
 
+import PlasticEcoCycle from '../components/cycle/PlasticEcoCycle';
+
 import bg_title from '../assets/img/bg/chapter/bg_title1_ver2.png';
 import bg_c1 from '../assets/img/bg/img_bg_c1.jpg';
 import bg_c2 from '../assets/img/bg/img_bg_c2.jpg';
@@ -112,7 +114,8 @@ const Title = ({
               title={t('title-s1-title')}
               exp={t('title-s1-exp')}
             />
-            <IllustCycle src={illust_cycle_main} alt='' />
+            {/* <IllustCycle src={illust_cycle_main} alt='' /> */}
+            <PlasticEcoCycle />
           </LiveArea>
         </Page>
         <Page>
