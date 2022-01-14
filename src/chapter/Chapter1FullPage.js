@@ -7,6 +7,7 @@ import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
 import ChapterIndicator from '../components/layout/ChapterIndicator';
 import CardChapterSection from '../components/card/CardChapterSection';
+
 import CardTimeline from '../components/card/CardTimeline';
 import Grid from '../components/layout/Grid';
 import ChapterTitleLink from '../components/layout/ChapterTitleLink';
@@ -38,6 +39,7 @@ import useWindowSize from '../hook/useWindowSize';
 import ViewportWrapper from '../components/ViewportWrapper';
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
 import ImagePreview from "../components/media/ImagePreview";
+import ImagePreviewFull from "../components/media/ImagePreviewFull";
 import VideoList from '../components/media/VideoListFull';
 import img_kodak from "../assets/img/image/c1/kodak.jpg";
 import img_container from "../assets/img/image/c1/container.jpg";
@@ -238,10 +240,7 @@ const TextContent = styled(LiveArea)`
   position: relative;
   padding-top: 240px;
   p{
-    /* width: calc(100% - 360px - 80px - 24px); */
-    /* padding-left: 48px; */
     width: 100%;
-    /* padding-right: 120px; */
     ${props => props.theme.type.size.body2}
     ${props => props.theme.type.weight.prd.regular}
     word-break: break-all;
@@ -337,6 +336,8 @@ const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
   margin-top: 156px;
+  margin-bottom: ${props => props.isFull?'128px':'auto'};
+  height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'};
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
 `;
@@ -562,12 +563,28 @@ const Chapter1 = ({
       page: 7,
     },
     {
+      title: '플라스틱 폐기물이\n자연에 끼친 피해',
+      exp: '',
+      data: plastic_waste_1_7,
+      chartTitle: '연도별 플라스틱 폐기물량',
+      unit: '(단위: 1000 ton)',
+      page: 8,
+    },
+    {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
       chartTitle: '연도별 플라스틱 누적 폐기물량',
       unit: '(단위: 1000 ton)',
-      page: 8,
+      page: 9,
+    },
+    {
+      title: '썩지 않는 플라스틱',
+      exp: '',
+      data: plastic_accumulated_waste_1_8,
+      chartTitle: '연도별 플라스틱 누적 폐기물량',
+      unit: '(단위: 1000 ton)',
+      page: 10,
     }
   ];
 
@@ -665,7 +682,7 @@ const Chapter1 = ({
       setIsChart1Active(false);
       setIsChart2Active(true);
       setData(content[4].data);
-    } 
+    }
     else if (currentSection === 6) {
       setIsChart1Active(false);
       setIsChart2Active(true);
@@ -684,10 +701,10 @@ const Chapter1 = ({
     setCurrentPage(number);
     if (2 < number && number < 9) {
       // setData(content[number - 2].data);
-      if(number===3 || number===4) setData(content[1].data);
-      if(number===5 || number===6) setData(content[3].data);
-      if(number===7) setData(content[5].data);
-      if(number===8) setData(content[6].data);
+      if (number === 3 || number === 4) setData(content[1].data);
+      if (number === 5 || number === 6) setData(content[3].data);
+      if (number === 7) setData(content[5].data);
+      if (number === 8) setData(content[6].data);
     }
   }
 
@@ -730,13 +747,13 @@ const Chapter1 = ({
     <>
       <ChapterIndicator
         sectionList={content}
-        isTrigger={1<currentPage}
+        isTrigger={1 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
       <Chart
-        isActive={2 < currentPage && currentPage < 9}
-        isFilter={currentPage === 4 || currentPage === 6}
+        isActive={2 < currentPage && currentPage < 11}
+        isFilter={currentPage === 4 || currentPage === 6 || currentPage === 8 || currentPage === 10}
       >
         <BarChart
           data={data}
@@ -860,14 +877,14 @@ const Chapter1 = ({
                           length={3}
                         >
                           <ToTop
-                            index={index*3}
+                            index={index * 3}
                             isTrigger={currentPage === 4}
                             distance={'short'}
                           >
                             <ViewportWrapper
                               onEnterViewport={() => {
                                 console.log('enter');
-                               
+
                               }
                               }>
                               {
@@ -878,7 +895,7 @@ const Chapter1 = ({
                                   unit={building.unit}
                                   img={building.img}
                                   isTrigger={currentPage === 4}
-                                  delay={index*0.5}
+                                  delay={index * 0.5}
                                 />
                               }
                               {
@@ -889,7 +906,7 @@ const Chapter1 = ({
                                   unit={building.unit}
                                   img={building.img}
                                   isTrigger={currentPage === 4}
-                                  delay={index*0.5}
+                                  delay={index * 0.5}
                                 />
                               }
                             </ViewportWrapper>
@@ -903,7 +920,37 @@ const Chapter1 = ({
                 {
                   i === 4 &&
                   <Row isFilter={true}>
-                    <FlagChart isTrigger={currentPage===6} />
+                    <FlagChart isTrigger={currentPage === 6} />
+                  </Row>
+                }
+                {/* 자연 피해 */}
+                {
+                  i === 6 &&
+                  <Row
+                    isFilter={true}
+                    isFull={true}
+                  >
+                    <ImagePreviewFull
+                      imgList={imgListS4}
+                      currentIndex={currentImageIndexS4}
+                      onNext={() => { setCurrentImageIndexS4(currentImageIndexS4 + 1) }}
+                      onPrev={() => { setCurrentImageIndexS4(currentImageIndexS4 - 1) }}
+                    />
+                  </Row>
+                }
+                {/* 자연 피해 */}
+                {
+                  i === 8 &&
+                  <Row
+                    isFilter={true}
+                    isFull={true}
+                  >
+                    <ImagePreviewFull
+                      imgList={imgListS5}
+                      currentIndex={currentImageIndexS5}
+                      onNext={() => { setCurrentImageIndexS5(currentImageIndexS5 + 1) }}
+                      onPrev={() => { setCurrentImageIndexS5(currentImageIndexS5 - 1) }}
+                    />
                   </Row>
                 }
                 {
