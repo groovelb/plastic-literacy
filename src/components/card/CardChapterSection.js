@@ -5,7 +5,7 @@ const Container = styled.div`
   width: 100%;
   border-radius: 8px;
   padding: 20px;
-  height: 164px;
+  height: ${props => props.length<6?'164px':'124px'};
   cursor: pointer;
   background-color: ${props => props.themeType === 'light' ?
     props.theme.color.brand.darkNavy : props.theme.color.brand.epPurple
@@ -37,12 +37,14 @@ const CardChapterSection = ({
   themeType,
   num,
   exp,
-  onClick
+  onClick,
+  length
  }) => {
   return (
     <Container
       themeType={themeType}
       onClick={onClick}
+      length={length}
     >
       <Num>
         {num}

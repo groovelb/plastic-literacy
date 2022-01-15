@@ -406,7 +406,7 @@ const Chapter2FullPage = ({
         <Page>
           <Wrapper2>
             <FloatingLeft>
-              플라스틱과 관련된 <br /> 다양한 문제점들,<br /> 과연 정답일까요?
+              {t('c2-summary1-title')}
             </FloatingLeft>
             <DynamicImageGrid gridData={gridDataLand1} />
           </Wrapper2>
@@ -446,7 +446,7 @@ const Chapter2FullPage = ({
         <Page>
           <Wrapper2>
             <FloatingLeft>
-              해양 플라스틱 폐기물의 <br /> 관리가 더 어려운 이유는<br /> 과연 무엇일까요?
+              {t('c2-summary2-title')}
             </FloatingLeft>
             <DynamicImageGrid gridData={gridDataOcean1} />
           </Wrapper2>
@@ -462,7 +462,7 @@ const Chapter2FullPage = ({
         >
           <Row3>
             <ChapterTitleLink
-              title={'플라스틱 리터러시'}
+              title={'플라스틱의 순환'}
               num={3}
               img={bg_c3}
               to={'/chapter3'}

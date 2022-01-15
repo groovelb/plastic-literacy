@@ -142,6 +142,9 @@ const GlobalStyle = createGlobalStyle`
       opacity: 0;
     }
   }
+  .cycle_image{
+    filter: brightness(95%);
+  }
   .timeline.yAxis{
     opacity: 0;
     path{

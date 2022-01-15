@@ -551,7 +551,7 @@ const Chapter1 = ({
     },
     {
       title: '1인당 소비량이\n제일 많은 국가는?',
-      exp: t("c1-s3-exp"),
+      exp: '',
       data: plastic_consumption_1_6,
       chartTitle: '국내 1인당 연간 플라스틱 소비량',
       unit: '(단위: kilogram)',

@@ -28,12 +28,12 @@ const ChapterSummary = ({
       />
       <SectionList>
         {
-          sectionList.map((section,index) => 
+          sectionList.map((section,index,arr) => 
             <Grid
               colPC={2}
               colMb={2}
               length={5}
-              spacing={24}
+              spacing={12}
               index={index}
             >
               <CardChapterSection
@@ -43,6 +43,7 @@ const ChapterSummary = ({
                 themeType={themeType}
                 num={index+1}
                 exp={section.title}
+                length={arr.length}
               />
             </Grid>
           )

@@ -251,9 +251,9 @@ const PlasticCycle = ({
         let num = 100;
         for (let i = 0; i < num; i++) {
           let img;
-          if (i % 3 === 0) img = illust_part;
-          if (i % 3 === 1) img = illust_washing;
-          if (i % 3 === 2) img = illust_car;
+          // if (i % 3 === 0) img = illust_part;
+          if (i % 2 === 0) img = illust_washing;
+          if (i % 2 === 1) img = illust_car;
 
           let instance = {
             x: parseInt(Math.random() * strokeWidth/2)  - bottleSize.width / 2,

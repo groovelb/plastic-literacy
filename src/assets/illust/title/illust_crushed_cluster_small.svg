@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>illust_crushed_cluster_small</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="illust_crushed_cluster_small">
+            <rect id="Rectangle" x="0" y="0" width="32" height="32"></rect>
+            <path d="M15.7558712,8.45609609 C15.7558712,10.5779454 14.0358167,12.2981726 11.9137947,12.2981726 C9.79194538,12.2981726 8.07171824,10.5779454 8.07171824,8.45609609 C8.07171824,6.33424674 9.79194538,4.6140196 11.9137947,4.6140196 C14.0358167,4.6140196 15.7558712,6.33424674 15.7558712,8.45609609" id="Fill-1667" fill="#C5F5DB" transform="translate(11.913795, 8.456096) rotate(-90.000000) translate(-11.913795, -8.456096) "></path>
+            <polygon id="Stroke-1681" fill="#8AEAB7" fill-rule="nonzero" points="9.41496174 19 14 21.6504957 12.5700478 24.5312171 10.555752 23.3663323 8.58534516 27 4 24.3495935 5.42984042 21.4688075 7.44480431 22.6333943"></polygon>
+            <polygon id="Stroke-1695" fill="#3CDC87" fill-rule="nonzero" points="23.7004798 15 26 15.7311226 24.2995202 23 22 22.2688774"></polygon>
+        </g>
+    </g>
+</svg>

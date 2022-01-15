@@ -14,6 +14,10 @@ import ChapterIndicator from '../components/layout/ChapterIndicator';
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
 import Grid from '../components/layout/Grid';
 import CardRecycleTech from '../components/card/CardRecycleTech';
+
+import PlasticEcoCycleMR from '../components/cycle/PlasticEcoCycleMR';
+import PlasticEcoCycleCR from '../components/cycle/PlasticEcoCycleCR';
+
 import ToTop from '../components/motion/ToTop';
 import ToRight from '../components/motion/ToRight';
 import MsgFullScreen from "../components/layout/MsgFullScreenVer2";
@@ -52,6 +56,7 @@ import illust_high1 from "../assets/img/illust/c3/mr/illust_high_product1.svg";
 import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
+import { t } from 'i18next';
 
 
 const Container = styled.div`
@@ -136,11 +141,23 @@ const Exp = styled.div`
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
 `;
 
+const ExpCenter = styled.div`
+  margin-top: -160px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 33%;
+  word-break: keep-all;
+  /* text-align: center; */
+  ${props => props.theme.type.size.body1};
+  ${props => props.theme.type.weight.prd.bold};
+  color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
+`;
+
 
 const CircularLoop = styled.div`
   width: 100%;
   position: relative;
-  margin: 24px 0;
+  margin: 120px 0;
   ${props => props.theme.layout.flexColCenter}
   img{
     width: 90%;
@@ -153,26 +170,26 @@ const CircularLoop = styled.div`
 
 const mrProcessList = [
   {
-    title: '1 분류 및 분쇄',
-    exp: `Mechanical  Recycling의 첫번째 단계는 폐기물을 동일한  플라스틱 유형으로 분류.세척 후 1차 분쇄를 하는것으로 시작합니다.`,
+    title: t('c3-s2-p1-subtitle'),
+    exp: t('c3-s2-p1-exp'),
     x: 0,
     stages: [0, 1]
   },
   {
-    title: '2 정밀 분쇄',
-    exp: `1차 분쇄가 끝난 폐기물들은 다시한번 세척을 한뒤 플라스틱 플레이크를 합성하기 위한 정밀분쇄 과정을 다시 거칩니다.`,
+    title: t('c3-s2-p2-subtitle'),
+    exp: t('c3-s2-p2-exp'),
     x: 1,
     stages: [1, 2]
   },
   {
-    title: '3 플레이크 합성',
-    exp: `정밀 분쇄가 끝난 산출물들은 특수 과정을 거쳐 비로서 플라스틱 플레이크로 합성됩니다.`,
+    title: t('c3-s2-p3-subtitle'),
+    exp: t('c3-s2-p3-exp'),
     x: 2,
     stages: [2, 3]
   },
   {
-    title: '4 일반적인 플레이크의 특성',
-    exp: `일반적으인 플레이크는 이물질이 혼합될 수 있기 때문에, 기존 새 플라스틱에 비해 품질이 떨어지고 생산이 가능한 제품군이 제한되는 단점이 있습니다.`,
+    title: t('c3-s2-p4-subtitle'),
+    exp: t('c3-s2-p4-exp'),
     x: 3,
     stages: [3, 4]
   },
@@ -185,8 +202,8 @@ const mrProcessList = [
 ];
 
 const geMrProcess = {
-  title: '특수 첨가제 기반 플레이크',
-  exp: `고무 등의 다른 고분자, 무기충진제 및 난연제, 핵제 등 GS칼텍스에서 자체 개발한 기능성 첨가제를 복합적으로  일반 폴리프로필렌에 비해 특정 물성을 강화하거나 변형시킬 수 있다.`,
+  title: t('c3-s4-p1-subtitle'),
+  exp: t('c3-s4-p1-exp'),
   x: 3,
   stages: [3, 4]
 };
@@ -300,24 +317,44 @@ const Chapter3 = ({
   // String
   const content = [
     {
-      title: t("c3-s2-title"),
+      title: t("c3-s1-title"),
       exp: t("c3-s2-exp"),
       page:2,
     },
     {
+      title: t("c3-s2-title"),
+      exp: t("c3-s2-exp"),
+      page:3,
+    },
+    {
       title: t("c3-s3-title"),
       exp: t("c3-s3-exp"),
-      page:3,
+      page:7,
     },
     {
       title: t("c3-s4-title"),
       exp: t("c3-s4-exp"),
-      page:7,
+      page:8,
     },
     {
       title: t("c3-s5-title"),
       exp: t("c3-s5-exp"),
-      page:8,
+      page:9,
+    },
+    {
+      title: t("c3-s6-title"),
+      exp: t("c3-s6-exp"),
+      page:10,
+    },
+    {
+      title: t("c3-s7-title"),
+      exp: t("c3-s7-exp"),
+      page:11,
+    },
+    {
+      title: t("c3-s8-title"),
+      exp: t("c3-s8-exp"),
+      page:12,
     }
   ];
 
@@ -325,7 +362,7 @@ const Chapter3 = ({
     {
       id: "mr",
       name: 'Mechanical\nRecycling',
-      exp: `폐플라스틱을 물리적으로 분쇄하고\n가공해서 원료 생성`,
+      exp: `물리적 재활용(MR)은 플라스틱 쓰레기를 물리적으로 분쇄해서 플라스틱의 원료를 만드는 방법으로, 가장 효율적인 재활용 기술입니다. `,
       img: ic_mr_outliend,
       result: {
         title: `플라스틱 플레이크\n(Plastic Flake)`,
@@ -335,17 +372,19 @@ const Chapter3 = ({
     {
       id: "cr",
       name: 'Chemical\nRecycling',
-      exp: `폐플라스틱을 화학적 열분해하여\n석유화학 공정 원료로 사용`,
+      exp: `화학적 재활용(CR)은 MR이 불가능한 플라스틱 쓰레기를 화학적으로 분해해서 석유화학의 원재료(재생원료, 재생유)를 생산하는 재활용 기술입니다. 
+      `,
       img: ic_cr_outliend,
       result: {
-        title: `석유화학의 원제료\n(Petrochemical)`,
+        title: `석유 정제 공정의 원재료\n(Petrochemical)`,
         exp: `친환경 복합수지 생성을 공정을 위한 공정 원료`
       }
     },
     {
       id: "tr",
       name: 'Thermal\nRecycling',
-      exp: `재가공이 불가능한 폐기물들을 태워\n화력에너지로 활용`,
+      exp: `재가공이 불가능한 폐기물을 연소 시켜 열에너지로 활용합니다. 다만, 플라스틱의 원료를 만들어내지 못해서 재활용으로 보지 않는 경우도 있습니다.
+      `,
       img: ic_tr_outliend,
       result: {
         title: `열 발전 에너지 연료\n(Thermal Energy)`,
@@ -547,7 +586,7 @@ const Chapter3 = ({
         >
           <SectionTitle
             themeType={'dark'}
-            title={`2\n${t('c3-s3-title')}`}
+            title={`2\n${t('c3-s2-title')}`}
           />
           <Row>
             {
@@ -613,7 +652,7 @@ const Chapter3 = ({
         >
           <SectionTitle
             themeType={'light'}
-            title={`4\n${t('c3-s5-title')}`}
+            title={`4\n${t('c3-s4-title')}`}
           />
           <Row>
             {
@@ -661,8 +700,9 @@ const Chapter3 = ({
       >
         <Page>
           <ChapterTitle
-            title={'플라스틱 리터러시'}
+            title={'플라스틱의 순환'}
             num={3}
+            isFilter={true}
             img={bg_c3}
             onClick={() => {
               setCurrentPage(1);
@@ -682,7 +722,7 @@ const Chapter3 = ({
           <LiveArea className={''}>
             <SectionTitle
               themeType={'light'}
-              title={`1\n${t('c3-s2-title')}`}
+              title={`1\n${t('c3-s1-title')}`}
             />
             <Row>
               {
@@ -775,7 +815,7 @@ const Chapter3 = ({
               <TitleCol>
                 <SectionTitle
                   themeType={'light'}
-                  title={`GS 칼텍스 MR 공정의 \n 하이 앤드 제품`}
+                  title={`5\n${t('c3-s5-title')}`}
                 />
               </TitleCol>
               <ContentCol>
@@ -877,10 +917,11 @@ const Chapter3 = ({
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={`순환경제의 규모와 질을\n향상시킨 MR 기술`}
+              title={t('c3-s7-title')}
             />
             <CircularLoop isActive={currentPage === 11}>
-              <img src={illust_circular_loop} alt='' />
+              <PlasticEcoCycleMR isStop={currentPage !== 11}/>
+              {/* <img src={illust_circular_loop} alt='' /> */}
               {/* {
                 circularStageList.map((stage,index) => 
                   <CircularStage
@@ -892,33 +933,23 @@ const Chapter3 = ({
                 )
               } */}
             </CircularLoop>
-            <Exp themeType='light'>
-              cr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용.
-            </Exp>
+            <ExpCenter themeType='light'>
+              {t('c3-s7-exp')}
+            </ExpCenter>
           </LiveArea>
         </Page>
         <Page>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={`소비재의 재활용율을 높이는 \nCR 기술 (추진 예정)`}
+              title={t('c3-s8-title')}
             />
             <CircularLoop isActive={currentPage === 12}>
-              <img src={illust_circular_loop2} alt='' />
-              {/* {
-                circularStageList.map((stage,index) => 
-                  <CircularStage
-                    top={`calc(${stage.y} * 50% - 54px)`}
-                    left={`calc(${stage.x} * 25% - 54px)`}
-                  >
-
-                  </CircularStage>
-                )
-              } */}
+              <PlasticEcoCycleCR isStop={currentPage !== 12}/>
             </CircularLoop>
-            <Exp themeType='light'>
-              cr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용. mr관련 경제 순환고리에 관련된 내용.
-            </Exp>
+            <ExpCenter themeType='light'>
+              {t('c3-s8-exp')}
+            </ExpCenter>
           </LiveArea>
         </Page>
         <Page>
@@ -926,8 +957,8 @@ const Chapter3 = ({
             isFilter={true}
             img={videoURL.c3.s7.bg}
             isTrigger={true}
-            title={t('c3-s7-title')}
-            exp={t('c3-s7-exp')}
+            title={t('c3-s9-title')}
+            exp={t('c3-s9-exp')}
           >
           </ImageBackground>
         </Page>
@@ -936,14 +967,14 @@ const Chapter3 = ({
             isFilter={true}
             img={videoURL.c3.s8.bg}
             isTrigger={true}
-            title={t('c3-s8-title')}
-            exp={t('c3-s8-exp')}
+            title={t('c3-s10-title')}
+            exp={t('c3-s10-exp')}
           >
           </ImageBackground>
         </Page>
         <Page>
           <MsgFullScreen
-            title={t('c3-s9-title')}
+            title={t('c3-s10-ending')}
           >
             <img src={text_energy} style={{marginBottom: '48px'}} alt='' />
             <img src={logo_white} alt='' />

@@ -8,6 +8,7 @@ const Title = styled.div`
   ${props => props.theme.type.weight.prd.black};
   margin-bottom: 24px;
   white-space: break-spaces;
+  word-break: keep-all;
   color: ${props => props.themeType === 'light' ?
     props.theme.color.ui.strong : props.theme.color.brand.white
   };
