@@ -179,29 +179,29 @@ const nodeList = [
     x: circleSize.width / 2 - nodeSize.width / 2,
     y: nodeSize.margin,
     img: illust_produce,
-    title: '순환 생산',
-    exp: 'GS칼텍스만의 재활용 기술로 기존에 불가능했던 가전.자동차 부품의 순환생산이 가능합니다.'
+    title: '배출',
+    exp: '친환경 복합수지는 고객사의 자동차나 가전제품에 부품 원료로 활용되고 소비자의 사용 이후 배출됩니다.'
   },
   {
     x: circleSize.width - nodeSize.width - nodeSize.margin,
     y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_dispose,
-    title: '배출 분해',
-    exp: '폐기물들은 플라스틱 생태계의 배출 단계를 거쳐 재활용 공정의 첫단계로 분해에 들어갑니다.'
+    title: '수거',
+    exp: '동일한 품질의 플라스틱 쓰레기를 대량으로 수급하기 위해서 수거업체와 파트너십을 맺고 자원을 회수합니다.'
   },
   {
     x: circleSize.width / 2 - nodeSize.width / 2,
     y: circleSize.height - nodeSize.height - nodeSize.margin,
     img: illust_crush,
-    title: '정렬 분쇄',
-    exp: '분해된 폐기물들은 재질에 따라 분류후 고순도 플레이크 제작을 위해 분쇄과정을 거칩니다.'
+    title: '처리',
+    exp: '파트너십을 체결한 전처리업체를 통해 친환경 복합수지로 재활용할 수 있도록 자원을 선별 및 분쇄합니다.'
   },
   {
     x: nodeSize.margin,
     y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_synthesis,
-    title: '처리 합성',
-    exp: 'GS칼텍스만의 특수 공정이 만들어낸 고순도 플레이크는 고품질 제품의 부품으로 사용됩니다.'
+    title: '생산',
+    exp: '고객사의 요구사항에 따라 자원의 품질 보완을 위해 첨가제를 추가해서 친환경 복합수지로 재활용합니다.'
   }
 ];
 

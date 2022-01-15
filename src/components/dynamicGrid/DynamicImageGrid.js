@@ -30,8 +30,8 @@ const Grid = styled.div`
   background-size: cover;
   background-position: center;
   opacity: 0.75;
-  h2{
-    ${props => props.theme.type.size.title2}
+  h2.question{
+    ${props => props.theme.type.size.title3}
     ${props => props.theme.type.weight.bold}
     max-width: 240px;
   }
@@ -41,6 +41,9 @@ const Grid = styled.div`
   }
   cursor: pointer;
   :hover{
+    h2.question{
+      display: none;
+    }
     background-color: ${props => props.type==='question'?props.theme.color.brand.epGreen:'rgba(0,0,0,0.8)'};
     opacity: 1;
     .answer{
@@ -53,13 +56,13 @@ const Grid = styled.div`
 
 const Answer = styled.div`
   h2{
-    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.size.body2}
     ${props => props.theme.type.weight.bold}
     margin-bottom: 4px;
   }
   p{
-    ${props => props.theme.type.size.body1}
-    ${props => props.theme.type.weight.regular}
+    ${props => props.theme.type.size.caption}
+    ${props => props.theme.type.weight.caption}
   }
 `;
 
@@ -84,7 +87,7 @@ const DynamicImageGrid = ({gridData}) => {
           >
             {grid.type==='question'&&
             <>
-            <h2>
+            <h2 className={'question'}>
               {grid.question}
             </h2>
             <Answer className={'answer'}>

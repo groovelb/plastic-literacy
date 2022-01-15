@@ -43,6 +43,13 @@ const Container = styled.div`
     height: 100%;
     /* position: absolute; */
   }
+  .caption{
+    position: absolute;
+    left: 0;
+    bottom: -48px;
+    ${props => props.theme.type.size.caption}
+    ${props => props.theme.type.weight.prd.regular}
+  }
 `;
 
 const FadeIn = keyframes`
@@ -309,8 +316,8 @@ const Sankey = ({
       .attr("transform", "translate(0,0)");
 
     let nodeGroupTemp = [
-      { name: '생산', depth: 0, x: null, img: ic_product },
-      { name: '배출', depth: 1, x: null, img: ic_dispose },
+      { name: '유입', depth: 0, x: null, img: ic_product },
+      { name: '발생', depth: 1, x: null, img: ic_dispose },
       { name: '수거', depth: 2, x: null, img: ic_collect },
       { name: '선별', depth: 3, x: null, img: ic_select },
       { name: '처리', depth: 4, x: null, img: ic_recycle },
@@ -695,6 +702,9 @@ const Sankey = ({
       ref={containerRef}
       id="container_land">
       <svg ref={svgRef} />
+      <p className="caption">
+        (출처: 해양수산부 ‘국가 해안쓰레기 모니터링 및 해양쓰레기 수거량’, 단위: 톤)
+      </p>
     </Container>
   )
 }

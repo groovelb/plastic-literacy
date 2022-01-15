@@ -19,7 +19,7 @@ import SankeyLand from "../chart/chaper2/SankeyLandVer2";
 import SankeyOcean from '../chart/chaper2/SankeyOceanVer2';
 import ViewportWrapper from '../components/ViewportWrapper';
 
-import { gridDataLand, gridDataOcean, gridDataCategory } from '../data/dynamicGridData';
+import { gridDataLand, gridDataLand1, gridDataOcean, gridDataOcean1, gridDataCategory } from '../data/dynamicGridData';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizonVer2";
 import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
@@ -386,7 +386,7 @@ const Chapter2FullPage = ({
           isTrigger={currentPage === 1}
         >
           <MsgFullScreen
-            title={`${t('c2-s1-title')} \n 지상 플라스틱 폐기물의 5단계 여정속에 재활용을 방해하는 문제점들이 존재합니다.`}
+            title={`${t('c2-s1-title')}`}
           />
         </ImageBackground>
         {
@@ -408,7 +408,7 @@ const Chapter2FullPage = ({
             <FloatingLeft>
               플라스틱과 관련된 <br /> 다양한 문제점들,<br /> 과연 정답일까요?
             </FloatingLeft>
-            <DynamicImageGrid gridData={gridDataLand} />
+            <DynamicImageGrid gridData={gridDataLand1} />
           </Wrapper2>
         </Page>
         <Page>
@@ -448,7 +448,7 @@ const Chapter2FullPage = ({
             <FloatingLeft>
               해양 플라스틱 폐기물의 <br /> 관리가 더 어려운 이유는<br /> 과연 무엇일까요?
             </FloatingLeft>
-            <DynamicImageGrid gridData={gridDataOcean} />
+            <DynamicImageGrid gridData={gridDataOcean1} />
           </Wrapper2>
         </Page>
         {/* <ImageBackground

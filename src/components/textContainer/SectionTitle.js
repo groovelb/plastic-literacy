@@ -17,6 +17,7 @@ const Exp = styled.div`
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
   margin-bottom: 56px;
+  white-space: break-spaces;
   width: 60%;
   color: ${props => props.themeType === 'light' ?
     props.theme.color.ui.strong : props.theme.color.brand.white

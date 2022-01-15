@@ -134,7 +134,7 @@ const GNB = ({
                 Chapter3
               </p>
               <p className="title">
-                플라스틱 리터러시
+                플라스틱의 순환
               </p>
             </Link>
           </Menu>

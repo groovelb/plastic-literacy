@@ -137,7 +137,7 @@ const type = {
     `,
     body1: `
     font-size: 18px;
-    line-height: 1.56;
+    line-height: 1.64;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 14px;

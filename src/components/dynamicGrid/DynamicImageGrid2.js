@@ -31,7 +31,7 @@ const Grid = styled.div`
   background-position: center;
   opacity: 0.75;
   h2{
-    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.size.title3}
     ${props => props.theme.type.weight.bold}
     max-width: 240px;
   }
@@ -61,6 +61,9 @@ const Grid = styled.div`
     background-color: ${props => props.type === 'image' ? 'rgba(0,0,0,0.1)' : 'none'};
   }
   :hover{
+    h2.question{
+      display: none;
+    }
     :before{
       background-color: ${props => props.isRecycle ? 'rgba(60, 220, 135, 0.8)' : 'rgba(250, 77, 86, 0.8)'};
     }
@@ -69,13 +72,13 @@ const Grid = styled.div`
 
 const Answer = styled.div`
   h2{
-    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.size.body2}
     ${props => props.theme.type.weight.bold}
     margin-bottom: 4px;
   }
   p{
-    ${props => props.theme.type.size.body1}
-    ${props => props.theme.type.weight.regular}
+    ${props => props.theme.type.size.caption}
+    ${props => props.theme.type.weight.caption}
   }
 `;
 

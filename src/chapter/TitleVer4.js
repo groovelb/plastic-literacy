@@ -152,7 +152,7 @@ const Title = ({
               isNotSelected={selectedRow!==0&selectedRow!==3}
             >
               <ChapterTitleLink
-                title={'플라스틱 리터러시'}
+                title={'플라스틱의 순환'}
                 num={3}
                 img={bg_c3}
                 to={'/chapter3'}

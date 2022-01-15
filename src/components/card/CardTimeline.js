@@ -81,6 +81,7 @@ const Num = styled.div`
 const Exp = styled.div`
   ${props => props.theme.type.size.body1}
   ${props => props.theme.type.weight.prd.bold}
+  word-break: keep-all;
 `;
 
 const CardTimeline = ({

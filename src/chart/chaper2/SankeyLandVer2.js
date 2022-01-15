@@ -36,6 +36,7 @@ const particleIllustList = [
 
 const Container = styled.div`
   /* padding: 48px; */
+  position: relative;
   width: 100%;
   height: 100%;
   svg{
@@ -43,7 +44,15 @@ const Container = styled.div`
     height: 100%;
     /* position: absolute; */
   }
+  .caption{
+    position: absolute;
+    left: 0;
+    bottom: -48px;
+    ${props => props.theme.type.size.caption}
+    ${props => props.theme.type.weight.prd.regular}
+  }
 `;
+
 
 const FadeIn = keyframes`
   from {
@@ -91,7 +100,7 @@ let data = {
     },
     {
       "node": 7,
-      "name": "분리배출"
+      "name": "분리수거함"
     },
     {
       "node": 8,
@@ -103,7 +112,7 @@ let data = {
     },
     {
       "node": 10,
-      "name": "건설 폐기물"
+      "name": "건설 재활용"
     },
     {
       "node": 11,
@@ -472,7 +481,7 @@ const Sankey = ({
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
-    const valueScale = d3.scaleLinear().domain(linkExtent).range([10, 24]);
+    const valueScale = d3.scaleLinear().domain(linkExtent).range([14, 20]);
 
     node.append("text")
       .attr("class", "node_value")
@@ -490,7 +499,10 @@ const Sankey = ({
         return valueScale(d.value);
       })
       .style("fill", "#ffffff")
-      .text(function (d) { return d.value; })
+      .text(function (d) { 
+        let value = parseInt(d.value/10) + '만';
+        return value; 
+      })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
@@ -693,6 +705,9 @@ const Sankey = ({
       ref={containerRef}
       id="container_land">
       <svg ref={svgRef} />
+      <p className="caption">
+        (출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤)
+      </p>
     </Container>
   )
 }

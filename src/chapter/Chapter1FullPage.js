@@ -335,6 +335,7 @@ const Row = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: 156px;
   margin-bottom: ${props => props.isFull?'128px':'auto'};
   height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'};
@@ -359,11 +360,13 @@ const Exp = styled.div`
   padding-left: calc(100% - 712px);
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
+  white-space: break-spaces;
 `;
 
 const ExpFloating = styled.div`
   width: 100%;
   padding-left: calc(100% - 720px);
+  white-space: break-spaces;
   margin-top: 48px;
   /* padding: 24px; */
   /* background-color: rgba(15,30,45,0.80); */
@@ -866,7 +869,10 @@ const Chapter1 = ({
                 {/* 총 생산량 비교 인포그래픽 */}
                 {
                   i === 2 &&
-                  <Row isFilter={true}>
+                  <Row
+                    isFull={true}
+                    isFilter={true}
+                  >
                     {
                       buildingList.map((building, index) =>
                         <Grid
@@ -919,7 +925,10 @@ const Chapter1 = ({
                 {/* 1인 소비량 인포그래픽 */}
                 {
                   i === 4 &&
-                  <Row isFilter={true}>
+                  <Row
+                    isFilter={true}
+                    isFull={true}
+                  >
                     <FlagChart isTrigger={currentPage === 6} />
                   </Row>
                 }

@@ -32,7 +32,7 @@ const Image = styled.div`
   width: 100%;
   height: calc(100% - 24px);
   background-image: ${props => `url(${props.src})`};
-  background-size: 102%;
+  background-size: cover;
   background-position: center;
   border-radius: 8px;
   overflow: hidden;
