@@ -28,6 +28,9 @@ const Container = styled.div`
     background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.32)' : 'rgba(0,0,0,0)'};
     z-index: -1;
   }
+  @media only screen and (max-width: 480px) {
+    padding:0 24px;
+  }
 `;
 
 const Title = styled.div`

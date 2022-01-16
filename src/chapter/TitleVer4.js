@@ -90,12 +90,6 @@ const Title = ({
         customPageNumber={currentPage}
       >
         <Page>
-          {/* <SiteTitle
-            img={bg_title}
-            onClick={() => {
-              setCurrentPage(1);
-            }}
-          /> */}
           <PlasticLiteracy
             currentChapter={0}
             starChatper={0}
@@ -105,13 +99,13 @@ const Title = ({
           />
         </Page>
         <Page>
-          <LiveArea>
+          <LiveArea className={'content'}>
             <SectionTitle
               title={t('title-s1-title')}
               exp={t('title-s1-exp')}
             />
             {/* <IllustCycle src={illust_cycle_main} alt='' /> */}
-            <PlasticEcoCycle />
+            <PlasticEcoCycle isStop={currentPage!==1} />
           </LiveArea>
         </Page>
         <Page>

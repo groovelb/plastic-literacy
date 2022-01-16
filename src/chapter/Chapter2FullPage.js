@@ -103,7 +103,7 @@ const Chart = styled.div`
   filter: ${props => props.isFilter ? 'blur(2px)' : 'blur(0px)'};
   transition: filter 0.3s;
   @media only screen and (max-width: 480px) {
-    width: 100%;
+    width: 200%;
     left: 0%;
   }
 `;

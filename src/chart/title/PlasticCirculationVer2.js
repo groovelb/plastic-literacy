@@ -62,7 +62,7 @@ const PlasticCycle = ({
   // SVG group 마진
   const margin = { top: isMobile ? 0 : 25, right: isMobile ? 0 : 25, bottom: isMobile ? 0 : 25, left: isMobile ? 0 : 25 };
   // Cycle Stroke
-  const strokeWidth = isMobile ? 54 : 100;
+  const strokeWidth = isMobile ? 80 : 100;
 
   const particleOffset = isMobile ? 10 : 40;
   const duration = isMobile ? 10000 : 16000;
@@ -242,8 +242,8 @@ const PlasticCycle = ({
   function randerPlastic() {
     // Product
     const bottleSize = {
-      width: isMobile ? 10 : 60,
-      hegiht: isMobile ? 32 : 60
+      width: isMobile ? 40 : 60,
+      hegiht: isMobile ? 40 : 60
     }
     const bottleGroup = d3.select(`.cycle_${id}`).selectAll(`.bottle_${id}`)
       .data(() => {
@@ -301,8 +301,8 @@ const PlasticCycle = ({
 
     // Trash
     const trashSize = {
-      width: isMobile ? 15 : 44,
-      hegiht: isMobile ? 34 : 44
+      width: isMobile ? 32 : 44,
+      hegiht: isMobile ? 32 : 44
     }
     const trashGroup = d3.select(`.cycle_${id}`).selectAll(".trash")
       .data(() => {

@@ -50,6 +50,11 @@ const Container = styled.div`
       opacity: 1;
     }
   }
+  @media only screen and (max-width: 480px) {
+    padding: 16px;
+		height: 120px;
+    margin-top: 0px !important;
+	}
 `;
 
 const Play = styled.button`
@@ -76,12 +81,21 @@ const Num = styled.div`
   font-size: 44px;
   ${props => props.theme.type.weight.prd.black}
   margin-bottom: 24px;
+  @media only screen and (max-width: 480px) {
+    font-size: 20px;
+    margin-bottom: 0px;
+  }
 `;
 
 const Exp = styled.div`
   ${props => props.theme.type.size.body1}
   ${props => props.theme.type.weight.prd.bold}
   word-break: keep-all;
+  @media only screen and (max-width: 480px) {
+    ${props => props.theme.type.size.caption}
+    ${props => props.theme.type.weight.prd.regular}
+    display: none;
+  }
 `;
 
 const CardTimeline = ({

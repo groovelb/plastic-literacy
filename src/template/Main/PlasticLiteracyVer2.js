@@ -25,11 +25,16 @@ const circleSize = {
   margin: isMobile ? 0 : 20
 };
 
+const Wrapper = styled.div`
+
+`;
+
 const nodeSize = {
-  width: isMobile ? 54 : 160,
-  height: isMobile ? 54 : 160,
+  width: isMobile ? 80 : 160,
+  height: isMobile ? 80 : 160,
   margin: isMobile ? 0 : 0
 };
+
 
 const rotate = keyframes`
   0%{transform: rotate(0deg); opacity: 0;}
@@ -54,6 +59,12 @@ const Earth = styled.div`
   animation-fill-mode: forwards;
   animation-delay: 2s;
   opacity: 0;
+  @media only screen and (max-width: 480px) {
+    width: ${`calc(100% - ${nodeSize.width * 2}px)`};
+    height: ${`calc(100% - ${nodeSize.width * 2}px)`};
+    top: ${nodeSize.height + 10}px;
+    left: ${nodeSize.width}px;
+  }
   h1{
     ${props => props.theme.type.weight.prd.black}
     font-size: 60px;
@@ -63,6 +74,10 @@ const Earth = styled.div`
     text-shadow: 0 0 20px rgba(15,30,45,0.34);
     margin-bottom: 16px;
     z-index: 9;
+    @media only screen and (max-width: 480px) {
+      font-size: 28px;
+      line-height: 1.2;
+    }
   }
   img{
     position: absolute;
@@ -78,6 +93,9 @@ const Earth = styled.div`
     ${props => props.theme.type.weight.prd.bold}
     text-shadow: 0 0 20px rgba(15,30,45,0.34);
     z-index: 9;
+    @media only screen and (max-width: 480px) {
+      display: none;
+    }
   }
   :before{
     content: '';
@@ -104,6 +122,13 @@ const InnerCircle = styled.div`
     width: 100%;
     height: 100%;
   }
+  @media only screen and (max-width: 480px) {
+    /* z-index: 9; */
+    width: ${`calc(100% - ${nodeSize.width * 2}px + 16px)`};
+    height: ${`calc(100% - ${nodeSize.width * 2}px + 16px)`};
+    top: ${nodeSize.height + 10 - 8}px;
+    left: ${nodeSize.width - 8}px;
+  }
 `;
 
 const Illust = styled.div`
@@ -116,7 +141,7 @@ const Illust = styled.div`
     padding-top: 20px;
     width: 100%;
     height: auto;
-    top: ${`${circleSize.margin}px`};
+    top: 108px;
     left: 0%;
   }
 `;
@@ -171,7 +196,27 @@ const NodeCircle = styled.div`
     width: auto;
     margin-bottom: 8px;
     margin-top: 16px;
+    @media only screen and (max-width: 480px) {
+      height: 32px;
+      width: auto;
+    }
   }
+  @media only screen and (max-width: 480px) {
+    p{
+      ${props => props.theme.type.size.caption}
+      margin-bottom: 12px;
+    }
+  }
+`;
+
+const ExpFloating = styled.div`
+  width: 100%;
+  position: absolute;
+  left: 0;
+  padding:0 48px;
+  bottom: -120px;
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.title3}
 `;
 
 const nodeList = [
@@ -232,9 +277,10 @@ const ButtonScroll = styled.div`
   img{
     width: 48px;
   }
+  @media only screen and (max-width: 480px) {
+    bottom: -200px;
+  }
 `;
-
-
 
 const PlasticLiteracy = ({
   currentChapter,
@@ -247,79 +293,92 @@ const PlasticLiteracy = ({
   const [hoverIndex, setHoverIndex] = useState(0);
 
   return (
-    <Illust>
-      <ButtonScroll onClick={onClick}>
-        <img src={ic_scroll} alt='' />
-      </ButtonScroll>
-      <Cycle>
-        <PlasticCirculation
-          currentChapter={currentChapter}
-          starChatper={starChatper}
-          id={id}
-        />
-      </Cycle>
-      <InnerCircle>
-        <img src={illust_inner_circle} alt='' />Î
-      </InnerCircle>
-      <Earth
-        isFilter={hoverIndex !== 0}
-      >
-        <h1>
-          {
-            hoverIndex === 0 &&
-            <>
-              PLASTIC <br />
-              LITERACY
-            </>
-          }
-          {
-            hoverIndex !== 0 &&
-            <>
-              {hoverIndex} <br />
-              {nodeList[hoverIndex - 1].title}
-            </>
-          }
+    <>
+      <Illust>
+        <ButtonScroll onClick={onClick}>
+          <img src={ic_scroll} alt='' />
+        </ButtonScroll>
+        <Cycle>
+          <PlasticCirculation
+            currentChapter={currentChapter}
+            starChatper={starChatper}
+            id={id}
+          />
+        </Cycle>
+        <InnerCircle>
+          <img src={illust_inner_circle} alt='' />Î
+        </InnerCircle>
+        <Earth
+          isFilter={hoverIndex !== 0}
+        >
+          <h1>
+            {
+              hoverIndex === 0 &&
+              <>
+                PLASTIC <br />
+                LITERACY
+              </>
+            }
+            {
+              hoverIndex !== 0 &&
+              <>
+                {hoverIndex} <br />
+                {nodeList[hoverIndex - 1].title}
+              </>
+            }
 
-        </h1>
-        <p>
+          </h1>
+          <p>
+            {
+              hoverIndex === 0 && t('title-subtitle')
+            }
+            {
+              hoverIndex !== 0 && nodeList[hoverIndex - 1].exp
+            }
+          </p>
+          <img src={illust_earth_green} alt=' ' />
+        </Earth>
+        <NodeContainer>
           {
-            hoverIndex === 0 && t('title-subtitle')
+            nodeList.map((node, i) =>
+              <Node
+                x={node.x}
+                y={node.y}
+                index={i + 1}
+                onMouseOver={
+                  () => {
+                    setHoverIndex(i + 1);
+                  }
+                }
+                onMouseLeave={
+                  () => {
+                    setHoverIndex(0);
+                  }
+                }
+              >
+                <NodeCircle>
+                  <img src={node.img} />
+                  <p>
+                    {node.title}
+                  </p>
+                </NodeCircle>
+              </Node>
+            )
           }
-          {
-            hoverIndex !== 0 && nodeList[hoverIndex - 1].exp
-          }
-        </p>
-        <img src={illust_earth_green} alt=' ' />
-      </Earth>
-      <NodeContainer>
+        </NodeContainer>
         {
-          nodeList.map((node, i) =>
-            <Node
-              x={node.x}
-              y={node.y}
-              index={i + 1}
-              onMouseOver={
-                () => {
-                  setHoverIndex(i + 1);
-                }
-              }
-              onMouseLeave={
-                () => {
-                  setHoverIndex(0);
-                }
-              }
-            >
-              <NodeCircle>
-                <img src={node.img} />
-                <p>
-                  {node.title}
-                </p>
-              </NodeCircle>
-            </Node>
-          )
+          isMobile &&
+          <ExpFloating>
+            {
+              hoverIndex === 0 && t('title-subtitle')
+            }
+            {
+              hoverIndex !== 0 && nodeList[hoverIndex - 1].exp
+            }
+          </ExpFloating>
         }
-      </NodeContainer>
-    </Illust>
+      </Illust>
+    </>
   )
 }
 

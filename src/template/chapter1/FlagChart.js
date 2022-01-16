@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from "styled-components";
+import { isMobile } from 'react-device-detect';
 
 import flag_kr from "../../assets/img/c1/flag_korea.jpg";
 import flag_us from "../../assets/img/c1/flag_usa.jpg";
@@ -46,6 +47,9 @@ const consumptionList = [
 const Container = styled.div`
   width: 100%;
   padding: 0 48px;
+  @media only screen and (max-width: 480px) {
+    padding: 0;
+  }
 `;
 
 const List = styled.div`
@@ -53,6 +57,9 @@ const List = styled.div`
   width: 100%;
   height: 80px;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    height: 64px;
+  }
 `;
 
 const Flag = styled.div`
@@ -60,6 +67,9 @@ const Flag = styled.div`
   img{
     width: 100%;
     height: auto;
+  }
+  @media only screen and (max-width: 480px) {
+    width: 48px;
   }
 `;
 
@@ -77,6 +87,17 @@ const Bottles = styled.div`
     img{
       width: 16px;
     }
+  }
+  @media only screen and (max-width: 480px) {
+    margin-left: 8px;
+    margin-right: 8px;
+    .bottle{
+      width: 16px;
+      img{
+        width: 12px;
+      }
+    }
+    width: calc(100% - 32px - 24px);
   }
 `;
 
@@ -96,7 +117,8 @@ const Value = styled.div`
 `;
 
 const RenderBottle = (number) => {
-  let num = parseInt(number / 3.5);
+  let divide = isMobile?12:3.5;
+  let num = parseInt(number / divide);
   let array = [];
   for (let i = 0; i < num; i++) {
     array.push(i);

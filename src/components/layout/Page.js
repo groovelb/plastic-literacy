@@ -10,6 +10,9 @@ const Container = styled.div`
   .content{
     height: 100%;
   }
+  @media only screen and (max-width: 480px) {
+    padding-top: 80px;
+  }
 `;
 
 const Page = ({children, className}) => (

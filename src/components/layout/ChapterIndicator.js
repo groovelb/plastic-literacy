@@ -18,6 +18,9 @@ const Container = styled.div`
     width: 144px;
   }
   transition: all 0.4s ease-in-out;
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Section = styled.div`

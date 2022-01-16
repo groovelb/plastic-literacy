@@ -23,6 +23,11 @@ const Exp = styled.div`
   color: ${props => props.themeType === 'light' ?
     props.theme.color.ui.strong : props.theme.color.brand.white
   };
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    white-space: inherit;
+    word-break: break-all;
+  }
 `;
 
 const SectionTitle = ({

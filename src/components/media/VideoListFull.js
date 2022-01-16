@@ -27,6 +27,9 @@ const Wrapper = styled(LiveArea)`
   position: relative;
   overflow: hidden;
   height: 100%;
+  @media only screen and (max-width: 480px) {
+    height: 248px;
+  }
 `;
 
 const VideoContainer = styled.div`
@@ -34,6 +37,7 @@ const VideoContainer = styled.div`
   top:0;
   left: ${props => `calc((${props.index - props.currentIndex})*100%)`};
   transition: left 0.3s ease-in-out;
+  padding:0 16px;
   width: 100%;
   height: 100%;
   background-image: ${props => `url(${props.src})`};
@@ -41,8 +45,12 @@ const VideoContainer = styled.div`
   background-position: center;
   .video-react{
     border-radius: 8px;
-  overflow: hidden;
+    overflow: hidden;
   }
+  @media only screen and (max-width: 480px) {
+    height: auto;
+  }
+  
 `;
 
 const ActionBar = styled.div`
@@ -85,6 +93,12 @@ const BttClose = styled.button`
   :hover{
     background-color: rgba(255, 255, 255, 0.4);
   }
+  @media only screen and (max-width: 480px) {
+		width: 32px;
+    height: 32px;
+    top: 12px;
+    right: 24px;
+	}
 `;
 
 const Caption = styled.div`
@@ -104,6 +118,9 @@ const Caption = styled.div`
      ${props => props.theme.type.weight.exp.bold}
      color: ${props => props.theme.color.brand.epGreen};
    }
+   @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const VideoList = ({

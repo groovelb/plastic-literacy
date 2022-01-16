@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from "styled-components";
 import ViewportWrapper from '../ViewportWrapper';
+import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
@@ -10,6 +11,11 @@ const Container = styled.div`
   justify-content: center;
   position: relative;
   overflow: hidden;
+  @media only screen and (max-width: 480px) {
+    height: auto;
+    padding: 8px 0;
+    margin: 24px 0px;
+  }
 `;
 
 const BG = styled.div`
@@ -19,6 +25,11 @@ const BG = styled.div`
   bottom: 24px;
   left: 120px;
   z-index: -1;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    height: 120px;
+    display: none;
+  }
 `;
 
 const Content = styled.div`
@@ -26,10 +37,20 @@ const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 320px;
+  @media only screen and (max-width: 480px) {
+    height: auto;
+  }
 `;
 
 const Img = styled.div`
   width: 100%;
+  @media only screen and (max-width: 480px) {
+    img{
+      margin-top: 32px;
+      width: auto;
+      height: 32px;
+    }
+  }
 `;
 
 const ImgBg = styled.img`
@@ -105,7 +126,9 @@ const CardComparingInfo = ({
       <Content>
         <Text>
           <Number>
-            {`✕ ${num}`}
+            {`✕`}
+            {isMobile&&<br/>}
+            {num}
           </Number>
           <Title>
             {title}<br />

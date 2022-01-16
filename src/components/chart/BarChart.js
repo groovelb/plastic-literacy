@@ -17,8 +17,8 @@ const BarChart = ({
   stage
 }) => {
 
-  const marginUnit = isMobile ? 10 : 24;
-  const margin = { top: marginUnit * 1, right: marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
+  const marginUnit = isMobile ? 24 : 24;
+  const margin = { top: marginUnit * 1, right: isMobile?marginUnit * 0.5:marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
 import ReactPageScroller from 'react-page-scroller';
+import { isMobile } from 'react-device-detect';
 
 import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
@@ -101,6 +102,9 @@ const Row3 = styled.div`
   margin-top: 48px;
   width: 900px;
   height: calc(100%/4);
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 // const chartHeight = 560;
@@ -161,7 +165,7 @@ const Chart = styled(LiveArea)`
     width: 100%;
     height: 55%;
     left: 0;
-    top: 0px;
+    top: 164px;
     padding-top: 48px;
     background-color: ${props => props.theme.color.ui.bg.dark};
   }
@@ -341,6 +345,25 @@ const Row = styled.div`
   height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'};
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
+  @media only screen and (max-width: 480px) {
+		margin-top: 0px;
+	}
+`;
+
+const Row2 = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 156px;
+  margin-bottom: ${props => props.isFull?'128px':'auto'};
+  height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'};
+  /* position: relative; */
+  /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
+  @media only screen and (max-width: 480px) {
+		margin-top: 120px;
+    height: auto;
+	}
 `;
 
 const VideoContainer = styled.div`
@@ -361,6 +384,10 @@ const Exp = styled.div`
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
   white-space: break-spaces;
+  @media only screen and (max-width: 480px) {
+    white-space: normal;
+    padding:0 24px;
+  }
 `;
 
 const ExpFloating = styled.div`
@@ -377,6 +404,10 @@ const ExpFloating = styled.div`
   position: absolute;
   /* bottom: 124px; */
   top: calc(100% - 400px + 120px + 24px);
+  @media only screen and (max-width: 480px) {
+    white-space: normal;
+    padding:0 24px;
+  }
 `;
 
 const consumptionList = [
@@ -834,10 +865,10 @@ const Chapter1 = ({
                       timelineData.map((time, index) => (
                         <Grid
                           colPC={5}
-                          colMb={1}
+                          colMb={2}
                           index={index}
                           length={5}
-                          spacing={24}
+                          spacing={isMobile?8:24}
                         >
                           <ToTop
                             isTrigger={currentPage === 2}
@@ -869,7 +900,7 @@ const Chapter1 = ({
                 {/* 총 생산량 비교 인포그래픽 */}
                 {
                   i === 2 &&
-                  <Row
+                  <Row2
                     isFull={true}
                     isFilter={true}
                   >
@@ -877,9 +908,9 @@ const Chapter1 = ({
                       buildingList.map((building, index) =>
                         <Grid
                           colPC={3}
-                          colMb={3}
+                          colMb={2}
                           index={index}
-                          spacing={0}
+                          spacing={isMobile?0:0}
                           length={3}
                         >
                           <ToTop
@@ -920,17 +951,17 @@ const Chapter1 = ({
                         </Grid>
                       )
                     }
-                  </Row>
+                  </Row2>
                 }
                 {/* 1인 소비량 인포그래픽 */}
                 {
                   i === 4 &&
-                  <Row
+                  <Row2
                     isFilter={true}
                     isFull={true}
                   >
                     <FlagChart isTrigger={currentPage === 6} />
-                  </Row>
+                  </Row2>
                 }
                 {/* 자연 피해 */}
                 {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { isMobile } from 'react-device-detect';
 import styled from "styled-components";
 import LiveArea from './LiveArea';
 import SectionTitle from '../textContainer/SectionTitle';
@@ -28,7 +29,7 @@ const ChapterSummary = ({
       />
       <SectionList>
         {
-          sectionList.map((section,index,arr) => 
+          !isMobile && sectionList.map((section,index,arr) => 
             <Grid
               colPC={2}
               colMb={2}

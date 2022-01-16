@@ -25,7 +25,7 @@ import illust_pressed2 from "../../assets/illust/title/pressed_simple_2.svg";
 import illust_pressed3 from "../../assets/illust/title/pressed_simple_3.svg";
 import illust_crushed_cluster from "../../assets/illust/title/illust_crushed_cluster_small.svg";
 
-import ic_stage1 from '../../assets/icon/cycle/ic_mr_product.svg';
+import ic_stage1 from '../../assets/icon/cycle/ic_factory.svg';
 import ic_stage2 from '../../assets/icon/cycle/ic_mr_use.svg';
 import ic_stage3 from '../../assets/icon/cycle/ic_mr_waste.svg';
 import ic_stage4 from '../../assets/icon/cycle/ic_mr_grind.svg';
@@ -345,7 +345,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   }
 
   const updateParticle = () => {
-    if (count === 0) {
+    if (count === 1) {
       renderParticle();
     }
     else if (count % 300 === 0) {

@@ -8,6 +8,9 @@ const Container = styled.div`
   position: absolute;
   top: ${props => props.top};
   left: 0;
+  @media only screen and (max-width: 480px) {
+    left: 24px;
+  }
 `;
 const Title = styled.div`
   ${props => props.theme.type.size.h1};
