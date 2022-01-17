@@ -155,28 +155,33 @@ const Chapter2FullPage = ({
   // String
   const content = [
     {
-      title: t("c2-s1-title"),
+      title: '지상 플라스틱 폐기물의 여정',
       exp: t("c2-s1-exp"),
+      pageList:[2,3,4,5],
       page:2,
     },
     {
       title: '지상 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s2-exp"),
+      pageList:[6],
       page:6,
     },
     {
       title: '플라스틱 분류체계의 실태',
       exp: t("c2-s2-exp"),
+      pageList:[7],
       page:7,
     },
     {
       title: t("c2-s5-title"),
       exp: t("c2-s3-exp"),
+      pageList:[8,9,10,11],
       page:8
     },
     {
       title: '해양 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s4-exp"),
+      pageList:[12],
       page:12
     }
   ];
@@ -328,6 +333,8 @@ const Chapter2FullPage = ({
         isTrigger={1<currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
         themeType={themeType}
       />
       {

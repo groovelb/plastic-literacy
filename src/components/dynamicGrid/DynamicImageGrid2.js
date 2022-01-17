@@ -77,8 +77,8 @@ const Answer = styled.div`
     margin-bottom: 4px;
   }
   p{
-    ${props => props.theme.type.size.caption}
-    ${props => props.theme.type.weight.caption}
+    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.weight.prd.bold}
   }
 `;
 
@@ -129,9 +129,9 @@ const DynamicImageGrid2 = ({ gridData }) => {
                   className={'answer'}
                   isRecycle={true}
                 >
-                  <h2>
+                  {/* <h2>
                     {grid.answer1}
-                  </h2>
+                  </h2> */}
                   <p>
                     {grid.answer2}
                   </p>
@@ -152,9 +152,9 @@ const DynamicImageGrid2 = ({ gridData }) => {
                 <Answer
                   className={'answer'}
                 >
-                  <h2>
+                  {/* <h2>
                     {grid.answer1}
-                  </h2>
+                  </h2> */}
                   <p>
                     {grid.answer2}
                   </p>

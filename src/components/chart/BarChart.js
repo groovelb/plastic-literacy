@@ -241,7 +241,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", `translate(${x(2021) + 56},${200})`)
+          .attr("transform", `translate(${x(2020) + 56},${200})`)
           .attr("class", "s2_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -249,7 +249,7 @@ const BarChart = ({
           .attr("y", 0)
           .attr("fill", "#fff")
           .attr("transform", "rotate(-90)")
-          .text("134 킬로그램");
+          .text("145 킬로그램");
 
       }, 1000);
     }

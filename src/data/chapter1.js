@@ -137,49 +137,53 @@ export const plastic_production_1_3 = [
 
 export const plastic_consumption_1_6 = [
   {
+    "year": 2009,
+    "value": 111
+  },
+  {
+    "year": 2010,
+    "value": 119.3
+  },
+  {
     "year": 2011,
-    "value": 105.3
+    "value": 122.1
   },
   {
     "year": 2012,
-    "value": 105.8
+    "value": 123.2
   },
   {
     "year": 2013,
-    "value": 107.7
+    "value": 125.8
   },
   {
     "year": 2014,
-    "value": 108.5
+    "value": 130.8
   },
   {
     "year": 2015,
-    "value": 113.3
+    "value": 132.7
   },
   {
     "year": 2016,
-    "value": 126.1
+    "value": 135.5
   },
   {
     "year": 2017,
-    "value": 127.5
+    "value": 138.2
   },
   // 2018부터 추정치
   {
     "year": 2018,
-    "value": 122
+    "value": 141
   },
   {
     "year": 2019,
-    "value": 128
+    "value": 143.6
   },
   {
     "year": 2020,
-    "value": 132
-  },
-  {
-    "year": 2021,
-    "value": 134
+    "value": 145.9
   }
 ];
 

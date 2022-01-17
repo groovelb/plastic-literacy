@@ -626,27 +626,32 @@ const Chapter1 = ({
     {
       title: t("c1-s1-title"),
       exp: t("c1-s1-exp"),
+      pageList:[2],
       page: 2,
     },
     {
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
+      pageList:[3,4],
       page: 3,
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
+      pageList:[5,6],
       page: 5,
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
+      pageList:[7,8],
       page: 7,
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
-      page: 8,
+      pageList:[9,10],
+      page: 9,
     }
   ];
 
@@ -676,7 +681,6 @@ const Chapter1 = ({
   const [isTitleTrigger, setIsTitleTrigger] = useState(false);
   const [isChart1Active, setIsChart1Active] = useState(false);
   const [isChart2Active, setIsChart2Active] = useState(false);
-  const [currentSection, setCurrentSection] = useState(-1);
   const [isVideoTrigger, setIsVideoTrigger] = useState(false);
 
   // motion trigger
@@ -684,48 +688,11 @@ const Chapter1 = ({
   const [isTrigger2, setIsTrigger2] = useState(false);
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [currentSection, setCurrentSection] = useState(0);
 
   useEffect(() => {
     setInnterHeight(window.innerHeight);
   }, [window]);
-
-  useEffect(() => {
-    console.log(currentSection);
-    if (currentSection === 0) {
-      setIsChart1Active(false);
-      setIsChart2Active(false);
-    }
-    else if (currentSection === 1) {
-      setData(content[0].data);
-      setIsChart1Active(true);
-      setIsChart2Active(false);
-    }
-    else if (currentSection === 2) {
-      setIsChart1Active(false);
-      setIsChart2Active(true);
-      setData(content[1].data);
-    } else if (currentSection === 3) {
-      setIsChart1Active(false);
-      setIsChart2Active(true);
-      setData(content[2].data);
-    } else if (currentSection === 4) {
-      setIsChart1Active(false);
-      setIsChart2Active(true);
-      setData(content[3].data);
-    } else if (currentSection === 5) {
-      setIsChart1Active(false);
-      setIsChart2Active(true);
-      setData(content[4].data);
-    }
-    else if (currentSection === 6) {
-      setIsChart1Active(false);
-      setIsChart2Active(true);
-      setData(content[5].data);
-    } else if (currentSection === 7) {
-      setIsChart2Active(false);
-      setIsChart1Active(false);
-    }
-  }, [currentSection]);
 
   const handlePageChange = (number) => {
     console.log(number);
@@ -733,12 +700,13 @@ const Chapter1 = ({
       setThemeType('dark');
     }
     setCurrentPage(number);
-    if (2 < number && number < 9) {
+    if (2 < number && number < 11) {
       // setData(content[number - 2].data);
       if (number === 3 || number === 4) setData(content[1].data);
       if (number === 5 || number === 6) setData(content[3].data);
       if (number === 7) setData(content[5].data);
       if (number === 8) setData(content[6].data);
+      if (number === 9) setData(content[7].data);
     }
   }
 
@@ -780,10 +748,12 @@ const Chapter1 = ({
   return (
     <>
       <ChapterIndicator
-        sectionList={content}
+        sectionList={summary}
         isTrigger={1 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
       />
       <Chart
         isActive={2 < currentPage && currentPage < 11}

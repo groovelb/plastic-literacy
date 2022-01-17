@@ -41,6 +41,9 @@ const Grid = styled.div`
   }
   cursor: pointer;
   :hover{
+    z-index: 9;
+     width: ${props => props.type==='question'?`calc(2*${props.width})`:props.width};
+     /* width: 200px; */
     h2.question{
       display: none;
     }
@@ -56,13 +59,13 @@ const Grid = styled.div`
 
 const Answer = styled.div`
   h2{
-    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.size.title3}
     ${props => props.theme.type.weight.bold}
     margin-bottom: 4px;
   }
   p{
-    ${props => props.theme.type.size.caption}
-    ${props => props.theme.type.weight.caption}
+    ${props => props.theme.type.size.body2}
+    ${props => props.theme.type.weight.bold}
   }
 `;
 

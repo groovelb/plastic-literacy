@@ -313,47 +313,56 @@ const Chapter3 = ({
 
   const { t } = useTranslation();
   const [currentPage, setCurrentPage] = useState(0);
+  const [currentSection, setCurrentSection] = useState(0);
 
   // String
   const content = [
     {
       title: t("c3-s1-title"),
       exp: t("c3-s2-exp"),
+      pageList:[2],
       page:2,
     },
     {
       title: t("c3-s2-title"),
       exp: t("c3-s2-exp"),
+      pageList:[3,4,5,6],
       page:3,
     },
     {
       title: t("c3-s3-title"),
       exp: t("c3-s3-exp"),
+      pageList:[7],
       page:7,
     },
     {
       title: t("c3-s4-title"),
       exp: t("c3-s4-exp"),
+      pageList:[8],
       page:8,
     },
     {
       title: t("c3-s5-title"),
       exp: t("c3-s5-exp"),
+      pageList:[9],
       page:9,
     },
     {
       title: t("c3-s6-title"),
       exp: t("c3-s6-exp"),
+      pageList:[10],
       page:10,
     },
     {
       title: t("c3-s7-title"),
       exp: t("c3-s7-exp"),
+      pageList:[11],
       page:11,
     },
     {
       title: t("c3-s8-title"),
       exp: t("c3-s8-exp"),
+      pageList:[12],
       page:12,
     }
   ];
@@ -577,6 +586,8 @@ const Chapter3 = ({
         isTrigger={1<currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
+        currentSection={currentSection}
+        setCurrentSection={setCurrentSection}
         themeType={themeType}
       />
       {
@@ -792,7 +803,7 @@ const Chapter3 = ({
                     ))
                   }
                   <Exp>
-                    {t('c3-s4-exp')}
+                    {t('c3-s3-exp')}
                   </Exp>
                 </Row>
               </ContentCol>

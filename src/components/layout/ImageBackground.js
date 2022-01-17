@@ -72,6 +72,7 @@ const Title = styled.div`
 	${props => props.theme.type.weight.prd.black}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	white-space: break-spaces;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
@@ -93,6 +94,8 @@ const Exp = styled.div`
 	text-align: left;
 	margin-top: 12px;
 	/* border: solid 1px #fff; */
+	white-space: pre-line;
+	text-align: center;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}

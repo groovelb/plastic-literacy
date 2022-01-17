@@ -71,7 +71,9 @@ const ChapterSummary = ({
   themeType,
   setCurrentPage,
   isTrigger,
-  currentPage
+  currentPage,
+  currentSection,
+  setCurrentSection
 }) => {
   return (
     <Container
@@ -81,10 +83,11 @@ const ChapterSummary = ({
       {
         sectionList.map((section, index, arr) =>
           <Section
-            isCurrent={currentPage - 2 === index}
+            isCurrent={section.pageList.includes(currentPage)}
             height={`calc(100%/${arr.length})`}
             onClick={() => {
               setCurrentPage(section.page);
+              setCurrentSection(section.index);
             }}
           >
             <Title>
