@@ -322,7 +322,6 @@ const PlasticLiteracy = ({
             {
               hoverIndex !== 0 &&
               <>
-                {hoverIndex} <br />
                 {nodeList[hoverIndex - 1].title}
               </>
             }

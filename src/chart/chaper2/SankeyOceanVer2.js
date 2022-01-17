@@ -138,119 +138,119 @@ let data = {
       "name": "육상 배출1",
       "source": 0,
       "target": 2,
-      "value": 270000 / 2,
+      "value": 111592 / 2,
       "isReal": false
     },
     {
       "name": "육상 배출2",
       "source": 0,
       "target": 3,
-      "value": 19500,
+      "value": 8558 / 2,
       "isReal": false
     },
     {
       "name": "육상 배출3",
       "source": 0,
       "target": 4,
-      "value": 55000,
+      "value": 9106,
       "isReal": false
     },
     {
       "name": "해상 배출1",
       "source": 1,
       "target": 2,
-      "value": 270000 / 2,
+      "value": 111592 / 2,
       "isReal": false
     },
     {
       "name": "해상 배출2",
       "source": 1,
       "target": 3,
-      "value": 19500,
+      "value": 8558 / 2,
       "isReal": false
     },
     {
       "name": "해상 배출3",
       "source": 1,
       "target": 4,
-      "value": 55000,
+      "value": 9106,
       "isReal": false
     },
     {
       "name": "해안 수거",
       "source": 2,
       "target": 5,
-      "value": 270000,
+      "value": 111592,
       "isReal": true
     },
     {
       "name": "부유 수거",
       "source": 3,
       "target": 5,
-      "value": 39000,
+      "value": 8558,
       "isReal": true
     },
     {
       "name": "침적 수거",
       "source": 4,
       "target": 5,
-      "value": 110000,
+      "value": 18212,
       "isReal": true
     },
     {
       "name": "폐기물 선별1",
       "source": 5,
       "target": 6,
-      "value": 419000 * 7 / 10,
+      "value": 138362 * 7 / 10,
       "isReal": false
     },
     {
       "name": "폐기물 선별2",
       "source": 5,
       "target": 7,
-      "value": 419000 * 3 / 10,
+      "value": 138362 * 3 / 10,
       "isReal": false
     },
     {
       "name": "플라스틱 처리1",
       "source": 6,
       "target": 8,
-      "value": 419000 * 7 / 30,
+      "value": 138362 * 7 / 30,
       "isReal": false
     },
     {
       "name": "플라스틱 처리2",
       "source": 6,
       "target": 9,
-      "value": 419000 * 7 / 30,
+      "value": 138362 * 7 / 30,
       "isReal": false
     },
     {
       "name": "플라스틱 처리3",
       "source": 6,
       "target": 10,
-      "value": 419000 * 7 / 30,
+      "value": 138362 * 7 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 9,
-      "value": 419000 * 3 / 30,
+      "value": 138362 * 3 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 10,
-      "value": 419000 * 3 / 30,
+      "value": 138362 * 3 / 30,
       "isReal": false
     },
     {
       "name": "기타 처리",
       "source": 7,
       "target": 11,
-      "value": 419000 * 3 / 30,
+      "value": 138362 * 3 / 30,
       "isReal": false
     },
   ]
@@ -494,7 +494,8 @@ const Sankey = ({
       .style("fill", "#ffffff")
       .text(function (d) {
         if (d.isReal) {
-          return d.value;
+          let value = parseFloat(d.value/10000).toFixed(1) + '만';
+          return value;
         }
         else {
           return '추정치';
@@ -703,7 +704,7 @@ const Sankey = ({
       id="container_land">
       <svg ref={svgRef} />
       <p className="caption">
-        (출처: 해양수산부 ‘국가 해안쓰레기 모니터링 및 해양쓰레기 수거량’, 단위: 톤)
+        출처: 해양수산부 ‘국가 해안쓰레기 모니터링 및 해양쓰레기 수거량’, 단위: 톤
       </p>
     </Container>
   )

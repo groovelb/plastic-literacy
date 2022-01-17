@@ -160,6 +160,7 @@ const Chart = styled(LiveArea)`
     width: 100%;
     height: 100%;
     background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : 'rgba(15, 30, 45,0)'};
+    z-index: 9;
   }
   @media only screen and (max-width: 480px) {
     width: 100%;
@@ -187,13 +188,21 @@ const ChartTitle = styled.p`
   }
 `;
 
-const ChartTitlePadding = styled.p`
+const ChartTitlePadding = styled.div`
+  position: relative;
   /* padding-left: 80px; */
   margin-top: -16px;
   margin-bottom: 8px;
   ${props => props.theme.type.size.title3}
   ${props => props.theme.type.weight.prd.bold};
   text-align: center;
+  p.caption{
+    position: absolute;
+    top:68px;
+    left:0;
+    width: fit-content;
+    text-align: left;
+  }
   @media only screen and (max-width: 480px) {
     padding-left: 24px;
   }
@@ -262,7 +271,7 @@ const TextContent = styled(LiveArea)`
 const SectionTitle2 = styled.div`
   width: 100%;
   display: flex;
-  margin-bottom: 72px;
+  margin-bottom: 70px;
   h1{
     ${props => props.theme.type.size.title}
     ${props => props.theme.type.weight.prd.num}
@@ -554,6 +563,7 @@ const Chapter1 = ({
       data: plastic_industry_timeline_1_1,
       chartTitle: '인류 발전에 기여한 플라스틱',
       unit: '',
+      from: '',
       page: 2,
     },
     {
@@ -562,6 +572,7 @@ const Chapter1 = ({
       data: plastic_production_1_3,
       chartTitle: '전세계 연도별 플라스틱 생산량',
       unit: '(단위: million metric tons)',
+      from: '출처: 유럽플라스틱산업협회(Plastics Europe)',
       page: 3,
     },
     {
@@ -570,6 +581,7 @@ const Chapter1 = ({
       data: plastic_production_1_3,
       chartTitle: '전세계 연도별 플라스틱 생산량',
       unit: '(단위: million metric tons)',
+      from: '',
       page: 4,
     },
     {
@@ -578,6 +590,7 @@ const Chapter1 = ({
       data: plastic_consumption_1_6,
       chartTitle: '국내 1인당 연간 플라스틱 소비량',
       unit: '(단위: kilogram)',
+      from: '출처: 유럽플라스틱제조자협회(EUROMAP)',
       page: 5,
     },
     {
@@ -586,38 +599,43 @@ const Chapter1 = ({
       data: plastic_consumption_1_6,
       chartTitle: '국내 1인당 연간 플라스틱 소비량',
       unit: '(단위: kilogram)',
+      from: '',
       page: 6,
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
       data: plastic_waste_1_7,
-      chartTitle: '연도별 플라스틱 폐기물량',
+      chartTitle: '국내 연도별 플라스틱 폐기물량',
       unit: '(단위: 1000 ton)',
+      from: '출처: 환경부',
       page: 7,
     },
     {
       title: '플라스틱 폐기물이\n자연에 끼친 피해',
       exp: '',
       data: plastic_waste_1_7,
-      chartTitle: '연도별 플라스틱 폐기물량',
+      chartTitle: '국내 연도별 플라스틱 폐기물량',
       unit: '(단위: 1000 ton)',
+      from: '',
       page: 8,
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
       data: plastic_accumulated_waste_1_8,
-      chartTitle: '연도별 플라스틱 누적 폐기물량',
+      chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
       unit: '(단위: 1000 ton)',
+      from: '출처: 환경부',
       page: 9,
     },
     {
       title: '썩지 않는 플라스틱',
       exp: '',
       data: plastic_accumulated_waste_1_8,
-      chartTitle: '연도별 플라스틱 누적 폐기물량',
+      chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
       unit: '(단위: 1000 ton)',
+      from: '',
       page: 10,
     }
   ];
@@ -765,6 +783,9 @@ const Chapter1 = ({
         />
         <ChartTitlePadding>
           {content[currentPage - 2] && content[currentPage - 2].chartTitle}
+          <p className="caption">
+            {content[currentPage - 2] && content[currentPage - 2].from}
+          </p>
         </ChartTitlePadding>
         {/* <ChartUnit>
           {content[currentPage - 2] && content[currentPage - 2].unit}

@@ -13,6 +13,42 @@ import category6 from '../assets/img/c2/grid/category_ps.jpg';
 import category7 from '../assets/img/c2/grid/category_other.jpg';
 import color from '../assets/theme/atom/color';
 
+import land1 from '../assets/img/girdLand/1.jpg';
+import land2 from '../assets/img/girdLand/2.jpg';
+import land3 from '../assets/img/girdLand/3.jpg';
+import land4 from '../assets/img/girdLand/4.jpg';
+import land5 from '../assets/img/girdLand/5.jpg';
+import land6 from '../assets/img/girdLand/6.jpg';
+import land7 from '../assets/img/girdLand/7.jpg';
+import land8 from '../assets/img/girdLand/8.jpg';
+import land9 from '../assets/img/girdLand/9.jpg';
+import land10 from '../assets/img/girdLand/10.jpg';
+import land11 from '../assets/img/girdLand/11.jpg';
+import land12 from '../assets/img/girdLand/12.jpg';
+import land13 from '../assets/img/girdLand/13.jpg';
+
+import ocean1 from '../assets/img/gridOcean/1.jpg';
+import ocean2 from '../assets/img/gridOcean/2.jpg';
+import ocean3 from '../assets/img/gridOcean/3.jpg';
+import ocean4 from '../assets/img/gridOcean/4.jpg';
+import ocean5 from '../assets/img/gridOcean/5.jpg';
+import ocean6 from '../assets/img/gridOcean/6.jpg';
+import ocean7 from '../assets/img/gridOcean/7.jpg';
+import ocean8 from '../assets/img/gridOcean/8.jpg';
+import ocean9 from '../assets/img/gridOcean/9.jpg';
+import ocean10 from '../assets/img/gridOcean/10.jpg';
+import ocean11 from '../assets/img/gridOcean/11.jpg';
+import ocean12 from '../assets/img/gridOcean/12.jpg';
+import ocean13 from '../assets/img/gridOcean/13.jpg';
+
+import HDPE from '../assets/img/plasticType/Plastics_HDPE.jpg';
+import LDPE from '../assets/img/plasticType/Plastics_LDPE.jpg';
+import OTHER from '../assets/img/plasticType/Plastics_OTHER.jpg';
+import PETE from '../assets/img/plasticType/Plastics_PETE.jpg';
+import PP from '../assets/img/plasticType/Plastics_PP.jpg';
+import PS from '../assets/img/plasticType/Plastics_PS.jpg';
+import PVC from '../assets/img/plasticType/Plastics_PVC.jpg';
+
 export const gridDataLand = [
   //Row1
   {
@@ -155,7 +191,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid4,
+    src: land1,
     x: 2,
     y: 0,
     unitWidth: 2,
@@ -163,7 +199,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: land2,
     x: 4,
     y: 0,
     unitWidth: 1,
@@ -171,7 +207,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: land3,
     x: 5,
     y: 0,
     unitWidth: 1,
@@ -180,7 +216,7 @@ export const gridDataLand1 = [
   //Row2
   {
     type: 'image',
-    src: img_grid3,
+    src: land4,
     x: 0,
     y: 1,
     unitWidth: 1,
@@ -188,7 +224,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: land5,
     x: 1,
     y: 1,
     unitWidth: 1,
@@ -206,7 +242,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: land6,
     x: 4,
     y: 1,
     unitWidth: 1,
@@ -214,7 +250,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: land7,
     x: 5,
     y: 1,
     unitWidth: 1,
@@ -233,7 +269,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: land8,
     x: 2,
     y: 2,
     unitWidth: 1,
@@ -241,7 +277,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: land9,
     x: 3,
     y: 2,
     unitWidth: 1,
@@ -249,7 +285,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: land10,
     x: 4,
     y: 2,
     unitWidth: 2,
@@ -258,7 +294,7 @@ export const gridDataLand1 = [
   //Row4
   {
     type: 'image',
-    src: img_grid4,
+    src: land11,
     x: 0,
     y: 3,
     unitWidth: 2,
@@ -277,7 +313,7 @@ export const gridDataLand1 = [
   
   {
     type: 'image',
-    src: img_grid2,
+    src: land12,
     x: 4,
     y: 3,
     unitWidth: 1,
@@ -285,7 +321,7 @@ export const gridDataLand1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: land13,
     x: 5,
     y: 3,
     unitWidth: 1,
@@ -322,7 +358,7 @@ export const gridDataCategory = [
   //Row2
   {
     type: 'image',
-    src: category1,
+    src: PETE,
     x: 1,
     y: 1,
     answer1:`가능합니다`,
@@ -337,7 +373,7 @@ export const gridDataCategory = [
   },
   {
     type: 'image',
-    src: category2,
+    src: HDPE,
     x: 2,
     y: 1,
     answer1:`불가능합니다`,
@@ -351,7 +387,7 @@ export const gridDataCategory = [
   },
   {
     type: 'image',
-    src: category3,
+    src: PVC,
     x: 3,
     y: 1,
     answer1:`불가능합니다.`,
@@ -365,7 +401,7 @@ export const gridDataCategory = [
   //Row3
   {
     type: 'image',
-    src: category4,
+    src: LDPE,
     x: 0,
     y: 2,
     answer1:`가능합니다`,
@@ -378,7 +414,7 @@ export const gridDataCategory = [
   },
   {
     type: 'image',
-    src: category5,
+    src: PP,
     x: 1,
     y: 2,
     answer1:`가능합니다`,
@@ -391,7 +427,7 @@ export const gridDataCategory = [
   },
   {
     type: 'image',
-    src: category6,
+    src: PS,
     x: 2,
     y: 2,
     answer1:`가능합니다`,
@@ -404,7 +440,7 @@ export const gridDataCategory = [
   },
   {
     type: 'image',
-    src: category7,
+    src: OTHER,
     x: 3,
     y: 2,
     answer1:`불가능합니다`,
@@ -556,7 +592,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid4,
+    src: ocean1,
     x: 2,
     y: 0,
     unitWidth: 2,
@@ -564,7 +600,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: ocean2,
     x: 4,
     y: 0,
     unitWidth: 1,
@@ -572,7 +608,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: ocean3,
     x: 5,
     y: 0,
     unitWidth: 1,
@@ -581,7 +617,7 @@ export const gridDataOcean1 = [
   //Row2
   {
     type: 'image',
-    src: img_grid3,
+    src: ocean4,
     x: 0,
     y: 1,
     unitWidth: 1,
@@ -589,7 +625,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: ocean5,
     x: 1,
     y: 1,
     unitWidth: 1,
@@ -607,7 +643,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: ocean6,
     x: 4,
     y: 1,
     unitWidth: 1,
@@ -615,7 +651,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid1,
+    src: ocean7,
     x: 5,
     y: 1,
     unitWidth: 1,
@@ -634,7 +670,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: ocean8,
     x: 2,
     y: 2,
     unitWidth: 1,
@@ -642,7 +678,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: ocean9,
     x: 3,
     y: 2,
     unitWidth: 1,
@@ -650,7 +686,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid2,
+    src: ocean10,
     x: 4,
     y: 2,
     unitWidth: 2,
@@ -660,7 +696,7 @@ export const gridDataOcean1 = [
   //Row4
   {
     type: 'image',
-    src: img_grid4,
+    src: ocean11,
     x: 0,
     y: 3,
     unitWidth: 2,
@@ -679,7 +715,7 @@ export const gridDataOcean1 = [
   
   {
     type: 'image',
-    src: img_grid2,
+    src: ocean12,
     x: 4,
     y: 3,
     unitWidth: 1,
@@ -687,7 +723,7 @@ export const gridDataOcean1 = [
   },
   {
     type: 'image',
-    src: img_grid3,
+    src: ocean13,
     x: 5,
     y: 3,
     unitWidth: 1,

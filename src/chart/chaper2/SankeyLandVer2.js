@@ -706,7 +706,7 @@ const Sankey = ({
       id="container_land">
       <svg ref={svgRef} />
       <p className="caption">
-        (출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤)
+        출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
       </p>
     </Container>
   )

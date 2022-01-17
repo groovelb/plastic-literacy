@@ -778,7 +778,7 @@ const Chapter3 = ({
           <LiveArea className={''}>
             <Row>
               <TitleCol>
-                <SectionTitle title={`3\n${t('c3-s4-title')}`} />
+                <SectionTitle title={`3\n${t('c3-s3-title')}`} />
               </TitleCol>
               <ContentCol>
                 <Row>
