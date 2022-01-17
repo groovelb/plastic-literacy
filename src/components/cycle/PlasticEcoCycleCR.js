@@ -17,6 +17,8 @@ import logo_gs from "../../assets/img/logo/logo_gs_black.svg";
 
 import illust_washing from "../../assets/illust/title/product_washing.svg";
 import illust_car from "../../assets/illust/title/product_car.svg";
+import illust_cup from "../../assets/illust/title/illust_cup.svg";
+import illust_bottle from "../../assets/illust/title/illust_bottle.svg";
 import illust_product1 from "../../assets/illust/title/product_simple_1.svg";
 import illust_product2 from "../../assets/illust/title/product_simple_2.svg";
 import illust_product3 from "../../assets/illust/title/product_simple_3.svg";
@@ -275,8 +277,8 @@ const PlasticEcoCycleCR = ({ isStop }) => {
 
           // 생산
           if (i === 0) {
-            if (j % 2 === 0) img = illust_washing;
-            if (j % 2 === 1) img = illust_car;
+            if (j % 2 === 0) img = illust_cup;
+            if (j % 2 === 1) img = illust_bottle;
           }
           // 배출
           if (i === 1) {
