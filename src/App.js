@@ -32,17 +32,17 @@ const GlobalStyle = createGlobalStyle`
   html{
     /* overflow: hidden; */
     width: 100%;
+    height: 100%;
   }
   body{
     /* background-color: ${(props) => props.theme.color.ui.bg.dark}; */
     color: #fff;
     overflow-x: hidden;
     margin: 0;
-    height:100vh;
-    width:100vw;
-    position: fixed;
+    height:100%;
+    width:100%;
+    /* position: fixed; */
     /* prevent overscroll bounce*/
-    background-color: lightgreen;
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     } 
