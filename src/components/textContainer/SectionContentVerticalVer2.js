@@ -13,7 +13,7 @@ const TextContent = styled.div`
   display: flex;
   position: absolute;
   left: ${props => props.left};
-  top: 680px;
+  top: 616px;
   flex-direction: column;
   justify-content: space-between;
   flex-wrap: wrap;

@@ -148,7 +148,7 @@ const ExpCenter = styled.div`
   width: 33%;
   word-break: keep-all;
   /* text-align: center; */
-  ${props => props.theme.type.size.body1};
+  ${props => props.theme.type.size.body1}
   ${props => props.theme.type.weight.prd.bold};
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
 `;
@@ -262,7 +262,7 @@ const Stage = styled.div`
   position: relative;
   ${props => props.theme.layout.flexColCenter}
   width: 100%;
-  height: 424px;
+  height: 386px;
   border: solid 
   ${props => props.isBlink ? '2px ' : '1px '} ${props => props.isBlink ? props.theme.color.brand.epGreen : props.theme.color.brand.epPurple};
   background-color: ${props => props.isBlink ? props.theme.color.ui.bg.dark : ''};
