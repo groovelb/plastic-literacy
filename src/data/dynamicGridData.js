@@ -329,6 +329,101 @@ export const gridDataLand1 = [
   },
 ]; 
 
+export const gridDataLand1Mobile = [
+  //Row1
+  {
+    type: 'question',
+    question: `서로 다른 플라스틱 재질은 하나하나 분리해서 배출해야 할까요? `,
+    answer1:`분리배출이 원칙이지만, 예외도 존재합니다. `,
+    answer2:`페트병과 뚜껑은 서로 다른 재질이지만, 뚜껑을 닫고 배출해도 괜찮습니다. 수거 과정에서 페트병의 오염을 방지할 수 있고, 분쇄 후 세척 과정에서 뚜껑 재질은 물에 뜨기 때문에 쉽게 분리가 가능합니다.`,
+    x: 0,
+    y: 0,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'image',
+    src: land1,
+    x: 3,
+    y: 0,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  //Row2
+  {
+    type: 'image',
+    src: land4,
+    x: 0,
+    y: 1,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: land5,
+  //   x: 2,
+  //   y: 1,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  {
+    type: 'question',
+    question: `음식물이 묻은 플라스틱은 분리수거 하면 안 된다고 하던데, 깨끗이 씻으면 재활용이 가능할까요?`,
+    answer1:`음식물 색이 남아있으면 불가능합니다.`,
+    answer2:`사용했던 플라스틱에 남아있는 염분 등 이물질은 재활용을 어렵게 하기 때문에, 물로 깨끗이 헹궈서 배출해야 합니다. 다만, 스티로폼 재질의 컵라면 용기처럼 아무리 씻어도 음식물 색이 남아있으면 종량제 봉투로 배출해야 합니다.`,
+    x: 3,
+    y: 1,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  //Row3
+  {
+    type: 'question',
+    question: `빨대, 칫솔 등 작은 플라스틱도 분리수거 해야 할까요?`,
+    answer1:`종량제 봉투에 배출이 적합합니다.`,
+    answer2:`플라스틱을 배출하면 빠르게 이동하는 컨베어 벨트 위에서 선별해야 하는데, 작은 플라스틱은 수거될 가능성이 적고, 크기가 작아 재활용의 수익성이 떨어집니다. 또한, 기계를 고장낼 수도 있기 때문에 종량제 봉투에 배출해야 합니다.`,
+    x: 0,
+    y: 2,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'image',
+    src: land8,
+    x: 3,
+    y: 2,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: land9,
+  //   x: 3,
+  //   y: 2,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  //Row4
+  {
+    type: 'image',
+    src: land11,
+    x: 0,
+    y: 3,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'question',
+    question: `플라스틱 처리시설을 늘리면 심각한 플라스틱 쓰레기 문제를 해결할 수 있지 않나요?`,
+    answer1:`쓰레기를 줄이는 것이 우선입니다.`,
+    answer2:`쓰레기 처리 과정에서 발생하는 환경오염 등의 이유로 주민반대가 심하기 때문에 새로운 처리 시설을 찾기 쉽지 않습니다. 대표적 예로 서울과 경기권의 쓰레기를 처리하던 인천시는 2025년부터 인천시 안에서 발생하는 쓰레기만 처리하겠다고 선언해, 지자체 간 갈등이 고조되고 있습니다. 결국, 새로운 처리시설 보다는 쓰레기를 줄이는 것이 우선입니다.`,
+    x: 3,
+    y: 3,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+]; 
+
 export const gridDataCategory = [
   //Row1
   {

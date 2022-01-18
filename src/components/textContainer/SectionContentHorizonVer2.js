@@ -32,10 +32,11 @@ const TextContent = styled.div`
   @media only screen and (max-width: 480px) {
     padding-left: 0px;
     flex-direction: column;
+    padding-top: 104px;
     p{
       width: 100%;
       padding:0;
-     
+      bottom: 48px;
     }
   }
 `;
@@ -53,6 +54,11 @@ const SectionTitle = styled.div`
     ${props => props.theme.type.weight.prd.bold}
     width: calc(480px - 80px);
     margin-top: -8px;
+  }
+  @media only screen and (max-width: 480px) {
+    h2{
+      width: calc(100% - 120px);
+    }
   }
 `;
 

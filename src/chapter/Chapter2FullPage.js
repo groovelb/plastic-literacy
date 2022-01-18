@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
+import { isMobile } from 'react-device-detect';
 import ReactPageScroller from 'react-page-scroller';
 import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
@@ -19,7 +20,7 @@ import SankeyLand from "../chart/chaper2/SankeyLandVer2";
 import SankeyOcean from '../chart/chaper2/SankeyOceanVer2';
 import ViewportWrapper from '../components/ViewportWrapper';
 
-import { gridDataLand, gridDataLand1, gridDataOcean, gridDataOcean1, gridDataCategory } from '../data/dynamicGridData';
+import { gridDataLand, gridDataLand1, gridDataLand1Mobile, gridDataOcean, gridDataOcean1, gridDataCategory } from '../data/dynamicGridData';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizonVer2";
 import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
@@ -82,6 +83,9 @@ const Top = styled.div`
      left:0;
      z-index: -1;
    }
+   @media only screen and (max-width: 480px) {
+      height: calc(100% - 386px);
+   }
 `;
 
 const Chart = styled.div`
@@ -103,9 +107,21 @@ const Chart = styled.div`
   filter: ${props => props.isFilter ? 'blur(2px)' : 'blur(0px)'};
   transition: filter 0.3s;
   @media only screen and (max-width: 480px) {
-    width: 200%;
-    left: 0%;
+    top: 32px;
+    width: calc(200% - 128px);
+    height: calc(100% - 386px);
+    left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
+    transition: all 0.2s ease-in-out;
   }
+`;
+
+const Source = styled.p`
+  position: absolute;
+  left: 24px;
+  bottom: -48px;
+  ${props => props.theme.type.size.caption}
+  ${props => props.theme.type.weight.prd.regular}
+  opacity: 0.86;
 `;
 
 const Wrapper = styled(LiveArea)`
@@ -119,7 +135,7 @@ const Wrapper = styled(LiveArea)`
 `;
 
 const Wrapper2 = styled(LiveArea)`
-  /* width: 100%; */
+  width: 100%;
   height: 100%;
   display: flex;
   position: relative;
@@ -127,6 +143,10 @@ const Wrapper2 = styled(LiveArea)`
   padding-left:240px;
   justify-content: end;
   /* padding-bottom: 64px; */
+  @media only screen and (max-width: 480px) {
+    flex-direction: column;
+    padding-left: 0px;
+  }
 `;
 
 const FloatingLeft = styled.div`
@@ -138,6 +158,10 @@ const FloatingLeft = styled.div`
   ${props => props.theme.type.weight.prd.black}
   color: ${props => props.theme.color.brand.epGreen};
   cursor: pointer;
+  @media only screen and (max-width: 480px) {
+    left: 24px;
+  }
+  
 `;
 
 const Chapter2FullPage = ({
@@ -157,32 +181,32 @@ const Chapter2FullPage = ({
     {
       title: '지상 플라스틱 폐기물의 여정',
       exp: t("c2-s1-exp"),
-      pageList:[2,3,4,5],
-      page:2,
+      pageList: [2, 3, 4, 5],
+      page: 2,
     },
     {
       title: '지상 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s2-exp"),
-      pageList:[6],
-      page:6,
+      pageList: [6],
+      page: 6,
     },
     {
       title: '플라스틱 분류체계의 실태',
       exp: t("c2-s2-exp"),
-      pageList:[7],
-      page:7,
+      pageList: [7],
+      page: 7,
     },
     {
       title: t("c2-s5-title"),
       exp: t("c2-s3-exp"),
-      pageList:[8,9,10,11],
-      page:8
+      pageList: [8, 9, 10, 11],
+      page: 8
     },
     {
       title: '해양 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s4-exp"),
-      pageList:[12],
-      page:12
+      pageList: [12],
+      page: 12
     }
   ];
 
@@ -330,7 +354,7 @@ const Chapter2FullPage = ({
     <Container>
       <ChapterIndicator
         sectionList={content}
-        isTrigger={1<currentPage}
+        isTrigger={1 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentSection={currentSection}
@@ -341,6 +365,10 @@ const Chapter2FullPage = ({
         0 < currentPage && currentPage < 7 &&
         <Top isActive={1 < currentPage && currentPage < 6}>
           <Chart
+            step={
+              currentPage === 1 || currentPage === 2 || currentPage === 3 ? 0 :
+                1
+            }
             isFilter={currentPage === 2}
             isActive={1 < currentPage && currentPage < 6}
           >
@@ -348,7 +376,13 @@ const Chapter2FullPage = ({
               currentStage={currentPage - 2}
               currentChapter={2}
             />
+            <p className="caption">
+              
+            </p>
           </Chart>
+          <Source>
+          출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
+          </Source>
         </Top>
       }
       {
@@ -416,7 +450,7 @@ const Chapter2FullPage = ({
             <FloatingLeft>
               {t('c2-summary1-title')}
             </FloatingLeft>
-            <DynamicImageGrid gridData={gridDataLand1} />
+            <DynamicImageGrid gridData={isMobile?gridDataLand1Mobile:gridDataLand1} />
           </Wrapper2>
         </Page>
         <Page>

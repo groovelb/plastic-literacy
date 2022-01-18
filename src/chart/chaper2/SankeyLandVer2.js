@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 import styled, { keyframes } from "styled-components";
+import { isMobile } from 'react-device-detect';
 import { useAnimationFrameLoop } from "react-timing-hooks";
 import { sankey, sankeyLinkHorizontal, sankeyJustify, sankeyLeft, sankeyCenter } from "d3-sankey";
 import { sankeyData } from "../data/public/dataSankeyChart";
@@ -80,62 +81,58 @@ let data = {
     },
     {
       "node": 2,
-      "name": "지정 플라스틱"
-    },
-    {
-      "node": 3,
       "name": "건설 플라스틱"
     },
     {
-      "node": 4,
+      "node": 3,
       "name": "공동.단독 주택"
     },
     {
-      "node": 5,
+      "node": 4,
       "name": "배출 사업장"
     },
     {
-      "node": 6,
+      "node": 5,
       "name": "건설공사"
     },
     {
-      "node": 7,
+      "node": 6,
       "name": "분리수거함"
     },
     {
-      "node": 8,
+      "node": 7,
       "name": "종량제 봉투"
     },
     {
-      "node": 9,
+      "node": 8,
       "name": "사업장 폐기물"
     },
     {
-      "node": 10,
+      "node": 9,
       "name": "건설 재활용"
     },
     {
-      "node": 11,
+      "node": 10,
       "name": "플라스틱"
     },
     {
-      "node": 12,
+      "node": 11,
       "name": "폐기물(잔재물 등)"
     },
     {
-      "node": 13,
+      "node": 12,
       "name": "재활용"
     },
     {
-      "node": 14,
+      "node": 13,
       "name": "매립"
     },
     {
-      "node": 15,
+      "node": 14,
       "name": "소각"
     },
     {
-      "node": 16,
+      "node": 15,
       "name": "건설폐기물 재활용"
     },
   ],
@@ -143,121 +140,115 @@ let data = {
     {
       "name": "소비-배출1",
       "source": 0,
-      "target": 4,
+      "target": 3,
       "value": 4642
     },
     {
       "name": "소비-배출2",
       "source": 1,
-      "target": 5,
+      "target": 4,
       "value": 5577
     },
     {
       "name": "소비-배출3",
       "source": 2,
       "target": 5,
-      "value": 20
-    },
-    {
-      "name": "소비-배출4",
-      "source": 3,
-      "target": 6,
       "value": 586
     },
     {
       "name": "배출-수거1",
-      "source": 4,
-      "target": 7,
+      "source": 3,
+      "target": 6,
       "value": 1930
     },
     {
       "name": "배출-수거2",
-      "source": 4,
-      "target": 8,
+      "source": 3,
+      "target": 7,
       "value": 2712
     },
     {
       "name": "배출-수거3",
-      "source": 5,
-      "target": 9,
-      "value": 5597
+      "source": 4,
+      "target": 8,
+      "value": 5577
     },
     {
       "name": "배출-수거4",
-      "source": 6,
-      "target": 10,
+      "source": 5,
+      "target": 9,
       "value": 586
     },
     {
       "name": "수거-선별1",
-      "source": 7,
-      "target": 11,
+      "source": 6,
+      "target": 10,
       "value": 1308
     },
     {
       "name": "수거-선별2",
-      "source": 7,
-      "target": 12,
+      "source": 6,
+      "target": 11,
       "value": 622
     },
     {
       "name": "수거-선별3",
-      "source": 8,
-      "target": 12,
+      "source": 7,
+      "target": 11,
       "value": 2712
     },
     {
       "name": "수거-선별4",
-      "source": 9,
-      "target": 11,
-      "value": 4476
+      "source": 8,
+      "target": 10,
+      "value": 4456
     },
     {
       "name": "수거-선별5",
-      "source": 9,
-      "target": 12,
+      "source": 8,
+      "target": 11,
       "value": 1121
     },
     {
       "name": "수거-선별6",
-      "source": 10,
-      "target": 11,
+      "source": 9,
+      "target": 10,
       "value": 385
     },
     {
       "name": "수거-선별7",
-      "source": 10,
-      "target": 12,
+      "source": 9,
+      "target": 11,
       "value": 201
     },
     {
       "name": "선별-처리1",
-      "source": 11,
-      "target": 13,
+      "source": 10,
+      "target": 12,
       "value": 5784
     },
     {
       "name": "선별-처리2",
-      "source": 11,
-      "target": 16,
+      "source": 10,
+      "target": 15,
       "value": 386
     },
     {
       "name": "선별-처리3",
-      "source": 12,
-      "target": 13,
+      "source": 11,
+      "target": 12,
       "value": 1340
     },
     {
       "name": "선별-처리4",
-      "source": 12,
-      "target": 14,
+      "source": 11,
+      "target": 13,
       "value": 2836
     },
     {
       "name": "선별-처리5",
-      "source": 12,
-      "target": 15,
+      "source": 11,
+      "target": 14,
       "value": 479
     }
   ]
@@ -308,7 +299,7 @@ const Sankey = ({
 
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
-      .nodeWidth(80)
+      .nodeWidth(isMobile?64:80)
       .nodePadding(56)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
@@ -481,7 +472,9 @@ const Sankey = ({
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
-    const valueScale = d3.scaleLinear().domain(linkExtent).range([14, 20]);
+    const valueScale = isMobile?
+    d3.scaleLinear().domain(linkExtent).range([14, 14]):
+    d3.scaleLinear().domain(linkExtent).range([14, 20]);
 
     node.append("text")
       .attr("class", "node_value")
@@ -705,9 +698,9 @@ const Sankey = ({
       ref={containerRef}
       id="container_land">
       <svg ref={svgRef} />
-      <p className="caption">
+      {/* <p className="caption">
         출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
-      </p>
+      </p> */}
     </Container>
   )
 }
