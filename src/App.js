@@ -78,9 +78,13 @@ const GlobalStyle = createGlobalStyle`
   .stage_title{
     /* font-weight: bold; */
     font-size: 20px;
-    fill: ${props => props.theme.color.brand.epGreen};
     fill: #fff;
-    opacity: 0.5;
+    opacity: 0.92;
+    @media only screen and (max-width: 480px) {
+      fill: ${props => props.theme.color.brand.epGreen};
+      font-size: 14px;
+      font-weight: bold;
+    }
   }
   .node_box{
     

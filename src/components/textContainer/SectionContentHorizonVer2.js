@@ -32,11 +32,11 @@ const TextContent = styled.div`
   @media only screen and (max-width: 480px) {
     padding-left: 0px;
     flex-direction: column;
-    padding-top: 104px;
+    padding-top: 80px;
     p{
       width: 100%;
       padding:0;
-      bottom: 48px;
+      bottom: 24px;
     }
   }
 `;

@@ -108,8 +108,9 @@ const Chart = styled.div`
   transition: filter 0.3s;
   @media only screen and (max-width: 480px) {
     top: 32px;
+    padding-top: 108px;
     width: calc(200% - 128px);
-    height: calc(100% - 386px);
+    height: calc(100% - 300px);
     left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
     transition: all 0.2s ease-in-out;
   }
@@ -118,10 +119,10 @@ const Chart = styled.div`
 const Source = styled.p`
   position: absolute;
   left: 24px;
-  bottom: -48px;
+  bottom: -85px;
   ${props => props.theme.type.size.caption}
   ${props => props.theme.type.weight.prd.regular}
-  opacity: 0.86;
+  opacity: 0.48;
 `;
 
 const Wrapper = styled(LiveArea)`

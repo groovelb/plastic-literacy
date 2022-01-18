@@ -269,7 +269,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 96, right: 10, bottom: 10, left: 0 };
+  const margin = { top: isMobile?72:96, right: 10, bottom: 10, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -300,7 +300,7 @@ const Sankey = ({
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
       .nodeWidth(isMobile?64:80)
-      .nodePadding(56)
+      .nodePadding(isMobile?24:56)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 
@@ -332,7 +332,7 @@ const Sankey = ({
 
         stage.append("text")
           .attr("x", node.x0)
-          .attr("y", -36)
+          .attr("y", isMobile?-28:-36)
           .attr("class", "stage_title")
           .attr("text-anchor", "left")
           .text(nodeGroupTemp[node.depth].name);
