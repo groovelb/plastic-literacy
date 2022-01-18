@@ -7,14 +7,14 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   padding: 48px;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
   position: relative;
   overflow: hidden;
   @media only screen and (max-width: 480px) {
     height: auto;
     padding: 8px 0;
-    margin: 24px 0px;
+    margin-top: 24px;
   }
 `;
 

@@ -21,16 +21,26 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   transition: color 0.3s, background-color 0.3s;
+  @media only screen and (max-width: 480px) {
+    padding: 8px;
+    height: 116px !important;
+  }
 `;
 
 const Num = styled.div`
   font-size: 44px;
   ${props => props.theme.type.weight.prd.black}
+  @media only screen and (max-width: 480px) {
+    font-size: 24px;
+  }
 `;
 
 const Exp = styled.div`
   font-size: 18px;
   ${props => props.theme.type.weight.prd.bold}
+  @media only screen and (max-width: 480px) {
+    font-size: 14px;
+  }
 `;
 
 const CardChapterSection = ({ 

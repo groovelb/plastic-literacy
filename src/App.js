@@ -61,6 +61,11 @@ const GlobalStyle = createGlobalStyle`
     fill: #004628;
     font-size: 14px;
     font-weight: bold;
+    @media only screen and (max-width: 480px) {
+      font-size: 10px;
+      font-weight: black;
+      letter-spacing: -0.4px;
+    }
   }
   .link {
     fill: none;
@@ -188,6 +193,10 @@ const GlobalStyle = createGlobalStyle`
     fill: #fff;
     ${props => props.theme.type.size.title2};
     ${props => props.theme.type.weight.prd.black};
+    @media only screen and (max-width: 480px) {
+      font-size: 12px !important;
+    }
+
   }
   .bar_mark_text{
     fill: #fff;

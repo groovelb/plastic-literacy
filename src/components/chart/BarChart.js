@@ -18,7 +18,7 @@ const BarChart = ({
 }) => {
 
   const marginUnit = isMobile ? 24 : 24;
-  const margin = { top: marginUnit * 1, right: isMobile?marginUnit * 0.5:marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
+  const margin = { top: marginUnit * 1, right: isMobile?marginUnit * 0.25:marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);
@@ -201,7 +201,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", `translate(${x(2020) + 40},${200})`)
+          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.8},${200})`:`translate(${x(2020) + 40},${200})`)
           .attr("class", "s1_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -217,9 +217,10 @@ const BarChart = ({
           .append("text")
           .attr("class", 'bar_mark_text')
           .attr("x", 0)
-          .attr("y", 0)
+          .attr("y", isMobile?-16:0)
           .attr("fill", "#fff")
-          .text("280배");
+          .text("280배")
+          .attr("text-anchor",isMobile?"middle":"center")
       }, 1000);
     }
     else{
@@ -241,7 +242,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", `translate(${x(2020) + 56},${200})`)
+          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.8},${80})`:`translate(${x(2020) + 40},${200})`)
           .attr("class", "s2_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -308,10 +309,13 @@ const BarChart = ({
           ,
           update => update
             .attr("class", `text recycle`)
-            .attr("x", function (d) { return x(d.year) + 4; })
+            .attr("x", function (d) { 
+              let xPosition = isMobile?x(d.year)-2: x(d.year)+4;
+              return xPosition;
+            })
             .attr("y", function (d) { return y(d.recycle) + 24; })
             .attr("opacity", 0)
-            .text((d) => parseInt(d.recycle / d.value * 100) + '%')
+            .text((d) => parseInt(d.recycle / d.value * 100) + '%%')
             .call(enter => enter.transition(t)
               .delay((d, i) => 800)
               .attr("opacity", 1)

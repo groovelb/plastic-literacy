@@ -27,6 +27,7 @@ const Exp = styled.div`
     width: 100%;
     white-space: inherit;
     word-break: break-all;
+    margin-bottom: 16px;
   }
 `;
 

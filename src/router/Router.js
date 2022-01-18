@@ -9,7 +9,7 @@ import {
 import Main from '../page/MainVer2';
 import GNB from '../components/navigation/GNBVer2';
 import Title from '../chapter/TitleVer4';
-import Chapter1 from '../chapter/Chapter1FullPage';
+import Chapter1 from '../chapter/Chapter1FullPageVer2';
 import Chapter2Ver2 from '../chapter/Chapter2FullPage';
 import Chapter3Ver2 from '../chapter/Chapter3FullPage';
 

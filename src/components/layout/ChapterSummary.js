@@ -29,7 +29,7 @@ const ChapterSummary = ({
       />
       <SectionList>
         {
-          !isMobile && sectionList.map((section,index,arr) => 
+          sectionList.map((section,index,arr) => 
             <Grid
               colPC={2}
               colMb={2}

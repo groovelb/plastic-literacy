@@ -5,10 +5,9 @@ import ic_prev from "../../assets/img/icon/navigation/prev/white.svg";
 
 const Container = styled.div`
   width: 100%;
-  height: calc(100% - 24px);
+  height: 100%;
   position: relative;
   overflow: hidden;
-  margin-top: 24px;
   border-radius: 8px;
   overflow: hidden;
   :before{
