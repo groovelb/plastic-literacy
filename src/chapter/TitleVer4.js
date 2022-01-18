@@ -88,6 +88,7 @@ const Title = ({
         animationTimer={750}
         transitionTimingFunction={'ease-in-out'}
         customPageNumber={currentPage}
+        renderAllPagesOnFirstRender={true}
       >
         <Page>
           <PlasticLiteracy

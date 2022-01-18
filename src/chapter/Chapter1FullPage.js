@@ -813,6 +813,7 @@ const Chapter1 = ({
         }
         animationTimer={800}
         customPageNumber={currentPage}
+        renderAllPagesOnFirstRender={true}
       >
         <Page>
           <ChapterTitle
