@@ -29,6 +29,10 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     
   }
+  html{
+    overflow: hidden;
+    width: 100%;
+  }
   body{
     /* background-color: ${(props) => props.theme.color.ui.bg.dark}; */
     color: #fff;
@@ -36,7 +40,12 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height:100vh;
     width:100vw;
-  } 
+    position: fixed;
+    /* prevent overscroll bounce*/
+    background-color: lightgreen;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    } 
    // Title
   .circle_path_whole.inner{
     /* stroke-dasharray: 5; */
