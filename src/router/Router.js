@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
+import Div100vh from 'react-div-100vh'
 import {
   BrowserRouter as Router,
   Route,
@@ -29,53 +30,55 @@ export default () => {
   const [themeType, setThemeType] = useState('light');
 
   return (
-    <Router>
-      <GNB
-        themeType={themeType}
-      />
-      <Background themeType={themeType} />
-      <Routes>
-        <Route
-          path="/old"
-          exactelement={<Main setThemeType={setThemeType} />}
+    <Div100vh>
+      <Router>
+        <GNB
+          themeType={themeType}
         />
-        <Route
-          path="/"
-          exact element={
-            <Title
-              currentChapter={0}
-              setThemeType={setThemeType}
-              themeType={themeType}
-            />}
-        />
-        <Route
-          path="/chapter1"
-          exact element={
-          <Chapter1 
-            currentChapter={1}
-            setThemeType={setThemeType}
-            themeType={themeType}
-          />}
-        />
-        <Route
-          path="/chapter2"
-          exact element={
-            <Chapter2Ver2
-              currentChapter={2}
-              setThemeType={setThemeType}
-              themeType={themeType}
-            />}
+        <Background themeType={themeType} />
+        <Routes>
+          <Route
+            path="/old"
+            exactelement={<Main setThemeType={setThemeType} />}
           />
-        <Route
-          path="/chapter3"
-          exact element={
-          <Chapter3Ver2
-            currentChapter={3}
-            setThemeType={setThemeType}
-            themeType={themeType}
-            themeType={themeType}
-          />} />
-      </Routes>
-    </Router>
+          <Route
+            path="/"
+            exact element={
+              <Title
+                currentChapter={0}
+                setThemeType={setThemeType}
+                themeType={themeType}
+              />}
+          />
+          <Route
+            path="/chapter1"
+            exact element={
+              <Chapter1
+                currentChapter={1}
+                setThemeType={setThemeType}
+                themeType={themeType}
+              />}
+          />
+          <Route
+            path="/chapter2"
+            exact element={
+              <Chapter2Ver2
+                currentChapter={2}
+                setThemeType={setThemeType}
+                themeType={themeType}
+              />}
+          />
+          <Route
+            path="/chapter3"
+            exact element={
+              <Chapter3Ver2
+                currentChapter={3}
+                setThemeType={setThemeType}
+                themeType={themeType}
+                themeType={themeType}
+              />} />
+        </Routes>
+      </Router>
+    </Div100vh>
   )
 };
