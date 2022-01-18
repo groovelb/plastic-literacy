@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import * as d3 from 'd3';
 import styled, { keyframes } from "styled-components";
+import { isMobile } from 'react-device-detect';
 import { useAnimationFrameLoop } from "react-timing-hooks";
 import { sankey, sankeyLinkHorizontal, sankeyJustify, sankeyLeft, sankeyCenter } from "d3-sankey";
 import { sankeyData } from "../data/public/dataSankeyChart";
@@ -271,7 +272,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: 96, right: 10, bottom: 10, left: 0 };
+  const margin = { top: isMobile ? 72 : 96, right: 10, bottom: 10, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -301,8 +302,8 @@ const Sankey = ({
 
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
-      .nodeWidth(80)
-      .nodePadding(56)
+      .nodeWidth(isMobile ? 64 : 80)
+      .nodePadding(isMobile ? 24 : 56)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 
@@ -334,7 +335,7 @@ const Sankey = ({
 
         stage.append("text")
           .attr("x", node.x0)
-          .attr("y", -36)
+          .attr("y", isMobile ? -28 : -36)
           .attr("class", "stage_title")
           .attr("text-anchor", "left")
           .text(nodeGroupTemp[node.depth].name);
@@ -474,7 +475,9 @@ const Sankey = ({
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
-    const valueScale = d3.scaleLinear().domain(linkExtent).range([10, 24]);
+    const valueScale = isMobile ?
+      d3.scaleLinear().domain(linkExtent).range([14, 14]) :
+      d3.scaleLinear().domain(linkExtent).range([14, 20]);
 
     node.append("text")
       .attr("class", "node_value")
@@ -494,7 +497,7 @@ const Sankey = ({
       .style("fill", "#ffffff")
       .text(function (d) {
         if (d.isReal) {
-          let value = parseFloat(d.value/10000).toFixed(1) + '만';
+          let value = parseFloat(d.value / 10000).toFixed(1) + '만';
           return value;
         }
         else {
@@ -703,9 +706,9 @@ const Sankey = ({
       ref={containerRef}
       id="container_land">
       <svg ref={svgRef} />
-      <p className="caption">
+      {/* <p className="caption">
         출처: 해양수산부 ‘국가 해안쓰레기 모니터링 및 해양쓰레기 수거량’, 단위: 톤
-      </p>
+      </p> */}
     </Container>
   )
 }

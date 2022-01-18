@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
-
-import img_grid1 from '../../assets/img/c2/grid/img_grid_mixed.jpg';
-import img_grid2 from '../../assets/img/c2/grid/img_grid_polluted.jpg';
-import img_grid3 from '../../assets/img/c2/grid/img_grid_polluted2.jpg';
-import img_grid4 from '../../assets/img/c2/grid/img_grid_7category.jpg';
+import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
   height: 100%;
   /* background-color: #484848; */
   position: relative;
+  @media only screen and (max-width: 480px) {
+    margin-top: 120px;
+    width: calc(100% + 24px);
+    height: calc(100% - 120px);
+    position: relative;
+  }
 `;
 
 const Grid = styled.div`
@@ -99,7 +101,7 @@ const Title = styled.div`
 
 
 const GridXNum = 4;
-const GridYNum = 3;
+const GridYNum = isMobile?4:3;
 
 
 const DynamicImageGrid2 = ({ gridData }) => {

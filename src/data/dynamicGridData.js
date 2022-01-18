@@ -547,6 +547,129 @@ export const gridDataCategory = [
     category:'OTHER'
   },
 ]; 
+export const gridDataCategoryMobile = [
+  //Row1
+  // {
+  //   type: 'question',
+  //   bg: color.brand.white,
+  //   themeType:'light',
+  //   question: `플라스틱은 총 7개의 분류체계가 있습니다.`,
+  //   // answer1:`불가능합니다`,
+  //   answer2:`플라스틱은 우리가 흔히 알고있는 PETE부터 재질에 따라 총 7가지 분류체계가 있으며, 경우에 따라 재활용이 불가능,일부가능,가능 여부가 결정됩니다.`,
+  //   x: 0,
+  //   y: 0,
+  //   unitWidth: 2,
+  //   unitHeight: 1
+  // },
+  {
+    type: 'question',
+    bg: color.brand.epPurple,
+    themeType:'dark',
+    question: `다음중 재활용이 가능한 플라스틱 분류는 무엇일까요?`,
+    // answer1:`불가능합니다`,
+    answer2:`아래의 7가지 플라스틱 제품의 재활용 여부를 확인해보세요.`,
+    x: 0,
+    y: 0,
+    unitWidth: 2,
+    unitHeight: 1
+  },
+  //Row2
+  {
+    type: 'image',
+    src: PETE,
+    x: 2,
+    y: 0,
+    answer1:`가능합니다`,
+    answer2:`생수병을 만드는 PETE 소재는 재활용이 가능합니다. 
+    물로 깨끗이 세척 후 라벨을 분리해서 배출하면 됩니다.
+    `,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: true,
+    title:'음료수가 담겨있던 페트병',
+    category:'PETE'
+  },
+  {
+    type: 'image',
+    src: HDPE,
+    x: 0,
+    y: 1,
+    answer1:`불가능합니다`,
+    answer2:`세탁, 설거지를 위한 세제 용기는 일반적으로 HDPE로 만들어져 재활용이 가능합니다. 하지만 세제가 다른 플라스틱을 오염시킬 수 있기 때문에 반드시 깨끗이 씻어서 배출해야 합니다.
+    `,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: true,
+    title:'세자가 담겨있던 주방 세제통',
+    category:'HDPE'
+  },
+  {
+    type: 'image',
+    src: PVC,
+    x: 2,
+    y: 1,
+    answer1:`불가능합니다.`,
+    answer2:`국내에는 파이프의 원료인 PVC에 함유된 염소를 제거할 수 있는 별도의 공정이 없기 때문에, 일반적으로 재활용이 어렵습니다.`,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: false,
+    title:'플라스틱 파이프',
+    category:'PVC'
+  },
+  //Row3
+  {
+    type: 'image',
+    src: LDPE,
+    x: 0,
+    y: 2,
+    answer1:`가능합니다`,
+    answer2:`랩이나 지퍼백 같은 LDPE 소재는 깨끗이 씻어 이물질을 제거하고 배출하면 재활용할 수 있습니다.`,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: true,
+    title:'투명 포장재',
+    category:'LDPE'
+  },
+  {
+    type: 'image',
+    src: PP,
+    x: 2,
+    y: 2,
+    answer1:`가능합니다`,
+    answer2:`배달음식을 주로 담는 PP 소재는 재활용이 가능합니다. 하지만 음식물을 반드시 깨끗이 씻어서 배출해야 합니다.`,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: true,
+    title:'배달 도시락 용기',
+    category:'PP'
+  },
+  {
+    type: 'image',
+    src: PS,
+    x: 0,
+    y: 3,
+    answer1:`가능합니다`,
+    answer2:`요구르트와 바나나 우유병, 그리고 스티로폼은 모두 PS 재질입니다. 이 재질은 오염 물질을 제거하면 재활용이 가능합니다.`,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: true,
+    title:'바나나맛 우유병',
+    category:'PS'
+  },
+  {
+    type: 'image',
+    src: OTHER,
+    x: 2,
+    y: 3,
+    answer1:`불가능합니다`,
+    answer2:`화장품 용기, 아기 젖병 등의 OTHER는 두 가지 이상의 재질이 섞인 복합재질을 의미합니다. 이 소재는 재활용할 수 없으며, 종량제 봉투에 배출해야 합니다.`,
+    unitWidth: 2,
+    unitHeight: 1,
+    isRecycle: false,
+    title:'화장품 용기',
+    category:'OTHER'
+  },
+]; 
 
 export const gridDataOcean = [
   //Row1
@@ -824,4 +947,156 @@ export const gridDataOcean1 = [
     unitWidth: 1,
     unitHeight: 1
   },
+]; 
+
+export const gridDataOcean1Mobile = [
+  //Row1
+  {
+    type: 'question',
+    question: `테트라포드 내부에 쌓여 있는 플라스틱 쓰레기가 많이 보이는데, 바로 수거해야 할까요?`,
+    answer1:`썰물에 빠져 나온 쓰레기들을 수거해야 합니다.`,
+    answer2:`경사면으로 이루어진 테트라포드에 올라서거나 구조물 속으로 들어가는 것은 매우 위험합니다. 2019년에는 17명이 추락해 사망하기도 했습니다. 테트라포드 내 쓰레기 수거를 위해서는 전문장비로 구조물을 드러내거나, 썰물에 빠져 나온 쓰레기들을 수거해야 합니다. 이런 구조물이 해양 쓰레기 수거를 어렵게 하는 이유 중 하나입니다.`,
+    x: 0,
+    y: 0,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'image',
+    src: ocean1,
+    x: 3,
+    y: 0,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: ocean2,
+  //   x: 4,
+  //   y: 0,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  // {
+  //   type: 'image',
+  //   src: ocean3,
+  //   x: 5,
+  //   y: 0,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  //Row2
+  // {
+  //   type: 'image',
+  //   src: ocean4,
+  //   x: 0,
+  //   y: 1,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  {
+    type: 'image',
+    src: ocean5,
+    x: 0,
+    y: 1,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'question',
+    question: `자원봉사 잠수부들이 바닷속에서 플라스틱 쓰레기를 수거할 때 두려워하는 것은 무엇일까요?`,
+    answer1:`플라스틱 쓰레기가 목숨을 위협할 수 있습니다.`,
+    answer2:`바다에는 언제나 생명을 위협하는 변수들이 존재합니다. 국내에서만 매년 4만톤 이상의 플라스틱 폐그물이 바다에 버려지고 있습니다. 바닷속에서 쓰레기를 수거할 때, 폐그물에 몸이 감길수도 있고, 폐그물에 달린 낚시바늘에 피부가 찢기는 상처를 입을 수도 있습니다.`,
+    x: 3,
+    y: 1,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: ocean6,
+  //   x: 4,
+  //   y: 1,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  // {
+  //   type: 'image',
+  //   src: ocean7,
+  //   x: 5,
+  //   y: 1,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  //Row3
+  {
+    type: 'question',
+    question: `해양에서 수거되는 플라스틱 쓰레기도 우리 생활에서 발생하는 플라스틱과 같은 과정으로 재활용될까요?`,
+    answer1:`해양쓰레기 재활용의 가장 큰 걸림돌은 염분입니다.`,
+    answer2:`불행히도 지상에서 수거되는 쓰레기와 달리 바다에서 수거되는 쓰레기는 염분을 제거해야 합니다. 게다가 바다에서 처리장까지 이동거리가 길고, 전문 장비를 통해 수거해야 하고, 여름철 집중호우 기간이나 수산물 어획시기같이 특정 기간에 해양쓰레기가 한꺼번에 발생하기 때문에 지상 쓰레기에 비해 2배 이상의 처리비용이 필요합니다.`,
+    x: 0,
+    y: 2,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'image',
+    src: ocean8,
+    x: 3,
+    y: 2,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: ocean9,
+  //   x: 3,
+  //   y: 2,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  // {
+  //   type: 'image',
+  //   src: ocean10,
+  //   x: 4,
+  //   y: 2,
+  //   unitWidth: 2,
+  //   unitHeight: 1
+  // },
+ 
+  //Row4
+  {
+    type: 'image',
+    src: ocean11,
+    x: 0,
+    y: 3,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  {
+    type: 'question',
+    question: `해양쓰레기 문제는 지속적인 관심이 중요합니다.`,
+    answer1:`그렇지 않습니다.`,
+    answer2:`생활 속에서 플라스틱 쓰레기를 줄이려는 노력은 아주 중요하지만, 우리가 쓰레기를 버리지 않는다고 해양쓰레기 문제가 다 해결되지는 않습니다. 지난 3년간 해양쓰레기의 60%는 폐어구와 폐부표같이 바다에서 사용하는 쓰레기입니다. 특히 폐어구나 폐선박 같이 부피가 큰 쓰레기들은 특별한 장비가 꼭 필요하고, 수거가 더 어렵습니다.`,
+    x: 3,
+    y: 3,
+    unitWidth: 3,
+    unitHeight: 1
+  },
+  // {
+  //   type: 'image',
+  //   src: ocean12,
+  //   x: 4,
+  //   y: 3,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
+  // {
+  //   type: 'image',
+  //   src: ocean13,
+  //   x: 5,
+  //   y: 3,
+  //   unitWidth: 1,
+  //   unitHeight: 1
+  // },
 ]; 

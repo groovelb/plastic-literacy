@@ -20,7 +20,7 @@ import SankeyLand from "../chart/chaper2/SankeyLandVer2";
 import SankeyOcean from '../chart/chaper2/SankeyOceanVer2';
 import ViewportWrapper from '../components/ViewportWrapper';
 
-import { gridDataLand, gridDataLand1, gridDataLand1Mobile, gridDataOcean, gridDataOcean1, gridDataCategory } from '../data/dynamicGridData';
+import { gridDataLand, gridDataLand1, gridDataLand1Mobile, gridDataOcean, gridDataOcean1, gridDataOcean1Mobile, gridDataCategory, gridDataCategoryMobile } from '../data/dynamicGridData';
 import SectionContentHorizon from "../components/textContainer/SectionContentHorizonVer2";
 import SectionContentVertical from "../components/textContainer/SectionContentVertical";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
@@ -46,6 +46,9 @@ const Row3 = styled.div`
   margin-top: 48px;
   width: 900px;
   height: calc(100%/4);
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const FadeIn = keyframes`
@@ -382,7 +385,7 @@ const Chapter2FullPage = ({
             </p>
           </Chart>
           <Source>
-          출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
+            출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
           </Source>
         </Top>
       }
@@ -391,12 +394,19 @@ const Chapter2FullPage = ({
         <Top isActive={8 < currentPage && currentPage < 12}>
           <Chart
             isActive={8 < currentPage && currentPage < 12}
+            step={
+              currentPage === 8|| currentPage === 9 ? 0 :
+                1
+            }
           >
             <SankeyOcean
               currentStage={currentPage - 8}
               currentChapter={3}
             />
           </Chart>
+          <Source>
+          출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
+          </Source>
         </Top>
       }
       <ReactPageScroller
@@ -459,7 +469,7 @@ const Chapter2FullPage = ({
             <FloatingLeft>
               플라스틱 분류체계는 잘 지켜지고 있을까요?
             </FloatingLeft>
-            <DynamicImageGrid2 gridData={gridDataCategory} />
+            <DynamicImageGrid2 gridData={isMobile?gridDataCategoryMobile:gridDataCategory} />
           </Wrapper2>
         </Page>
         <ImageBackground
@@ -491,7 +501,7 @@ const Chapter2FullPage = ({
             <FloatingLeft>
               {t('c2-summary2-title')}
             </FloatingLeft>
-            <DynamicImageGrid gridData={gridDataOcean1} />
+            <DynamicImageGrid gridData={isMobile?gridDataOcean1Mobile:gridDataOcean1} />
           </Wrapper2>
         </Page>
         {/* <ImageBackground
