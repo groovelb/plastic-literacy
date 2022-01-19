@@ -71,7 +71,7 @@ const Top = styled.div`
    background-size: cover;
    width: 100%;
    height: ${sankeyHeight + 'px'};
-   height: 100%;
+   height: calc(100% - 386px);
    /* background-image: url(${bg_waste_land}); */
    box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark};
    opacity: ${props => props.isActive ? 1 : 0};
@@ -121,11 +121,14 @@ const Chart = styled.div`
 
 const Source = styled.p`
   position: absolute;
-  left: 24px;
+  left: 48px;
   bottom: -85px;
   ${props => props.theme.type.size.caption}
   ${props => props.theme.type.weight.prd.regular}
   opacity: 0.48;
+  @media only screen and (max-width: 480px) {
+    left: 24px;
+  }
 `;
 
 const Wrapper = styled(LiveArea)`
