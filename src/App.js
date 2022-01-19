@@ -216,6 +216,11 @@ const GlobalStyle = createGlobalStyle`
     ${props => props.theme.type.size.body1};
     ${props => props.theme.type.weight.prd.black};
   }
+  .RowCol{
+    @media only screen and (max-width: 480px) {
+      flex-direction: column;
+    } 
+  }
   @media only screen and (max-width: 480px) {
     .exp{
       font-size: 12px;

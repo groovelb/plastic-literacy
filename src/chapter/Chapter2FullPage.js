@@ -60,7 +60,7 @@ const FadeIn = keyframes`
   }
 `;
 
-const Top = styled.div`
+const Top = styled(LiveArea)`
    position: fixed;
    z-index: -1;
    top: 0px;
@@ -121,7 +121,7 @@ const Chart = styled.div`
 
 const Source = styled.p`
   position: absolute;
-  left: 48px;
+  left: calc(50% - 600px);
   bottom: -85px;
   ${props => props.theme.type.size.caption}
   ${props => props.theme.type.weight.prd.regular}

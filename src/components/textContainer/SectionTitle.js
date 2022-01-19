@@ -12,6 +12,9 @@ const Title = styled.div`
   color: ${props => props.themeType === 'light' ?
     props.theme.color.ui.strong : props.theme.color.brand.white
   };
+  @media only screen and (max-width: 480px) {
+    white-space: normal;
+  }
 `;
 
 const Exp = styled.div`

@@ -42,6 +42,10 @@ const TextContent = styled.div`
       padding:0;
      
     }
+    left: 24px;
+    top: unset;
+    bottom: 48px;
+    width: calc(100% - 48px);
   }
 `;
 

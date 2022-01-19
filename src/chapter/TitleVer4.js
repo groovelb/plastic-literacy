@@ -15,9 +15,6 @@ import PlasticEcoCycle from '../components/cycle/PlasticEcoCycle';
 import bg_c1 from '../assets/img/bg/img_bg_c1.jpg';
 import bg_c2 from '../assets/img/bg/img_bg_c2.jpg';
 import bg_c3 from '../assets/img/bg/img_bg_c3.jpg';
-// import bg_c1 from '../assets/img/bg/chapter/bg_chapter1_ver2.png';
-// import bg_c2 from '../assets/img/bg/chapter/bg_chapter2_ver2.png';
-// import bg_c3 from '../assets/img/bg/chapter/bg_chapter3_ver2.png';
 
 const Container = styled(Section)`
   height: ${props => props.innerHeight + 'px'};

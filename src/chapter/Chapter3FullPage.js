@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
 import ReactPageScroller from 'react-page-scroller';
+import { isMobile } from 'react-device-detect';
 
 import LiveArea from '../components/layout/LiveArea';
 import Page from '../components/layout/Page';
@@ -25,9 +26,6 @@ import { videoURL } from '../assets/mediaURL';
 import logo_white from "../assets/img/logo/logo_white.svg";
 import text_energy from "../assets/img/logo/text_energy.svg";
 
-import illust_result_mr from "../assets/illust/illust_result_mr.svg";
-import illust_result_cr from "../assets/illust/illust_result_cr.svg";
-import illust_result_tr from "../assets/illust/illust_result_tr.svg";
 import ic_mr_outliend from "../assets/img/icon/ic_mr_outlined.svg";
 import ic_cr_outliend from "../assets/img/icon/ic_cr_outlined.svg";
 import ic_tr_outliend from "../assets/img/icon/ic_tr_outlined.svg";
@@ -87,11 +85,11 @@ const Chart = styled(LiveArea)`
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
   @media only screen and (max-width: 480px) {
     width: 100%;
-    height: 55%;
+    height: auto;
     left: 0;
     top: 0px;
     padding-top: 48px;
-    background-color: ${props => props.theme.color.ui.bg.dark};
+    /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   }
 `;
 
@@ -107,6 +105,16 @@ const Row = styled.div`
     justify-content: flex-end;
     img{
       margin-bottom: 48px;
+      @media only screen and (max-width: 480px) {
+        width: 86px;
+        height: auto;
+      }
+    }
+  }
+  .product.high{
+    img{
+      height: 80px !important;
+      width: auto !important;
     }
   }
   .legend{
@@ -117,6 +125,9 @@ const Row = styled.div`
 
 const TitleCol = styled.div`
   width: 360px;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 const SubTitle = styled.div`
@@ -131,6 +142,10 @@ const SubTitle = styled.div`
 const ContentCol = styled.div`
   width: calc(100% - 360px - 48px);
   margin-left: 48px;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    margin: 0px;
+  }
 `;
 
 const Exp = styled.div`
@@ -151,6 +166,9 @@ const ExpCenter = styled.div`
   ${props => props.theme.type.size.body1}
   ${props => props.theme.type.weight.prd.bold};
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+  }
 `;
 
 
@@ -269,10 +287,16 @@ const Stage = styled.div`
   border-radius: 4px;
   transition: border 0.4s;
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.white};
+  @media only screen and (max-width: 480px) {
+    height: 180px
+  }
   .arrow{
     position: absolute;
     top: 50%;
     right: -38px;
+    @media only screen and (max-width: 480px) {
+      display: none;
+    }
   }
   p{
     margin-top: 32px;
@@ -293,7 +317,11 @@ const Stage = styled.div`
       return 0.1;
     }
   }
-  }
+  };
+    @media only screen and (max-width: 480px) {
+      height: 164px;
+      width: auto;
+    }
   }
 `;
 const StageTitle = styled.p`
@@ -302,6 +330,9 @@ const StageTitle = styled.p`
   margin-top: 16px;
   ${props => props.theme.type.weight.prd.bold};
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
+  @media only screen and (max-width: 480px) {
+    
+  }
 `;
 
 const Chapter3 = ({
@@ -320,50 +351,50 @@ const Chapter3 = ({
     {
       title: t("c3-s1-title"),
       exp: t("c3-s2-exp"),
-      pageList:[2],
-      page:2,
+      pageList: [2],
+      page: 2,
     },
     {
       title: t("c3-s2-title"),
       exp: t("c3-s2-exp"),
-      pageList:[3,4,5,6],
-      page:3,
+      pageList: [3, 4, 5, 6],
+      page: 3,
     },
     {
       title: t("c3-s3-title"),
       exp: t("c3-s3-exp"),
-      pageList:[7],
-      page:7,
+      pageList: [7],
+      page: 7,
     },
     {
       title: t("c3-s4-title"),
       exp: t("c3-s4-exp"),
-      pageList:[8],
-      page:8,
+      pageList: [8],
+      page: 8,
     },
     {
       title: t("c3-s5-title"),
       exp: t("c3-s5-exp"),
-      pageList:[9],
-      page:9,
+      pageList: [9],
+      page: 9,
     },
     {
       title: t("c3-s6-title"),
       exp: t("c3-s6-exp"),
-      pageList:[10],
-      page:10,
+      pageList: [10],
+      page: 10,
     },
     {
       title: t("c3-s7-title"),
       exp: t("c3-s7-exp"),
-      pageList:[11],
-      page:11,
+      pageList: [11],
+      page: 11,
     },
     {
       title: t("c3-s8-title"),
       exp: t("c3-s8-exp"),
-      pageList:[12],
-      page:12,
+      pageList: [12],
+      page: 12,
     }
   ];
 
@@ -583,7 +614,7 @@ const Chapter3 = ({
     <Container>
       <ChapterIndicator
         sectionList={content}
-        isTrigger={1<currentPage}
+        isTrigger={1 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentSection={currentSection}
@@ -604,10 +635,10 @@ const Chapter3 = ({
               mrStage.map((stage, index, arr) =>
                 <Grid
                   colPC={5}
-                  colMb={5}
+                  colMb={3}
                   index={index}
                   length={arr}
-                  spacing={48}
+                  spacing={isMobile ? 16 : 48}
                 >
                   <ToRight
                     isTrigger={2 < currentPage}
@@ -647,7 +678,7 @@ const Chapter3 = ({
                       }
                     </Stage>
                     <StageTitle>
-                      {stage.title}
+                      {(index + 1) + stage.title}
                     </StageTitle>
                   </ToRight>
                 </Grid>
@@ -670,10 +701,10 @@ const Chapter3 = ({
               gsMrStage.map((stage, index, arr) =>
                 <Grid
                   colPC={5}
-                  colMb={5}
+                  colMb={3}
                   index={index}
                   length={arr}
-                  spacing={48}
+                  spacing={isMobile? 16 : 48}
                 >
                   <ToRight
                     isTrigger={currentPage === 8}
@@ -691,7 +722,7 @@ const Chapter3 = ({
                         index !== 4 &&
                         <img className='arrow' src={ic_arrow_next} alt='' />
                       }
-                      <img src={stage.img} alt='' />
+                      <img className={'stage'} src={stage.img} alt='' />
                     </Stage>
                     <StageTitle themeType={themeType}>
                       {stage.title}
@@ -743,7 +774,7 @@ const Chapter3 = ({
                     colPC={3}
                     colMb={1}
                     index={index}
-                    spacing={24}
+                    spacing={isMobile ? 8 : 24}
                     length={arr.length}
                   >
                     <CardRecycleTech
@@ -777,7 +808,7 @@ const Chapter3 = ({
         }
         <Page>
           <LiveArea className={''}>
-            <Row>
+            <Row className={'RowCol'}>
               <TitleCol>
                 <SectionTitle title={`3\n${t('c3-s3-title')}`} />
               </TitleCol>
@@ -791,7 +822,7 @@ const Chapter3 = ({
                       <Grid
                         colPC={3}
                         colMb={3}
-                        spacing={24}
+                        spacing={isMobile ? 8 : 24}
                         length={arr.length}
                         index={index}
                         className={'product'}
@@ -811,8 +842,8 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <PageAlignTop>
-          <LiveArea className={''}>
+        <Page>
+          <LiveArea className={'content'}>
             <SectionContentVertical
               themeType={'light'}
               title={geMrProcess.title}
@@ -820,7 +851,7 @@ const Chapter3 = ({
               left={geMrProcess.x * 248 + 'px'}
             />
           </LiveArea>
-        </PageAlignTop>
+        </Page>
         <Page>
           <LiveArea className={''}>
             <Row>
@@ -843,7 +874,7 @@ const Chapter3 = ({
                         spacing={24}
                         length={arr.length}
                         index={index}
-                        className={'product'}
+                        className={'product high'}
                       >
                         <img src={product.img} alt='' />
                         <p>
@@ -890,10 +921,10 @@ const Chapter3 = ({
                 crStage.map((stage, index, arr) =>
                   <Grid
                     colPC={4}
-                    colMb={4}
+                    colMb={2}
                     index={index}
                     length={arr}
-                    spacing={48}
+                    spacing={isMobile?8:48}
                   >
                     <ToRight
                       isTrigger={currentPage === 10}
@@ -932,7 +963,7 @@ const Chapter3 = ({
               title={t('c3-s7-title')}
             />
             <CircularLoop isActive={currentPage === 11}>
-              <PlasticEcoCycleMR isStop={currentPage !== 11}/>
+              <PlasticEcoCycleMR isStop={currentPage !== 11} />
               {/* <img src={illust_circular_loop} alt='' /> */}
               {/* {
                 circularStageList.map((stage,index) => 
@@ -957,7 +988,7 @@ const Chapter3 = ({
               title={t('c3-s8-title')}
             />
             <CircularLoop isActive={currentPage === 12}>
-              <PlasticEcoCycleCR isStop={currentPage !== 12}/>
+              <PlasticEcoCycleCR isStop={currentPage !== 12} />
             </CircularLoop>
             <ExpCenter themeType='light'>
               {t('c3-s8-exp')}
@@ -988,7 +1019,7 @@ const Chapter3 = ({
           <MsgFullScreen
             title={t('c3-s10-ending')}
           >
-            <img src={text_energy} style={{marginBottom: '48px'}} alt='' />
+            <img src={text_energy} style={{ marginBottom: '48px' }} alt='' />
             <img src={logo_white} alt='' />
           </MsgFullScreen>
         </Page>

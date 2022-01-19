@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { isMobile } from 'react-device-detect';
 import styled from "styled-components";
 import * as d3 from 'd3';
 import { cyclePathData2 } from '../../data/cyclePathData';
@@ -41,6 +42,10 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    width: 100%;
+    display: none;
+  }
 `;
 
 const Title = styled.div`
@@ -58,6 +63,11 @@ const Container = styled.div`
    position: absolute;
    top: -24px;
    left: -24px;
+   @media only screen and (max-width: 480px) {
+    width: calc(100% + 32px);
+    top:80px;
+    left:-16px;
+  }
 `;
 
 const Arrow = styled.div`
@@ -200,12 +210,19 @@ const arrowList = [
 ];
 
 const PlasticEcoCycleMR = ({ isStop }) => {
+  let containerRef = useRef(null);
   let svgRef = useRef(null);
   let svg;
   let g;
 
   const [stop, setStop] = useState(false);
   const [count, setCount] = useState(0);
+  let widthMobile = 0;
+
+  useEffect(() => {
+    widthMobile = containerRef.current.clientWidth;
+    console.log(widthMobile);
+  },[]);
 
   useEffect(() => {
     if (isStop === true) {
@@ -220,11 +237,12 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
   useEffect(() => {
     svg = d3.select(svgRef.current)
-      .attr("width", 1200 + margin.left + margin.right)
-      .attr("height", 498 + margin.top + margin.bottom);
+    .attr("width", isMobile?widthMobile:1200 + margin.left + margin.right)
+    .attr("height", isMobile?widthMobile/2:498 + margin.top + margin.bottom);
 
     g = svg.append('g')
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+    .attr("transform", 
+      isMobile?`scale(${widthMobile/1248}, ${widthMobile/1248}) translate(24,24)`: `translate(${margin.left},${margin.top})`);
 
     cyclePathData2.forEach((path, index, arr) => {
       g.append('path')
@@ -363,7 +381,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
         Circular<br />
         Economy System
       </Title>
-      <Container>
+      <Container ref={containerRef}>
         <CycleFill
           top={'calc((546px - 276px)/2)'}
           left={'120px'}

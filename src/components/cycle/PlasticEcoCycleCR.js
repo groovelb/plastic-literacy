@@ -43,6 +43,9 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  @media only screen and (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const Title = styled.div`
@@ -282,8 +285,8 @@ const PlasticEcoCycleCR = ({ isStop }) => {
           }
           // 배출
           if (i === 1) {
-            if (j % 2 === 0) img = illust_washing;
-            if (j % 2 === 1) img = illust_car;
+            if (j % 2 === 0) img = illust_cup;
+            if (j % 2 === 1) img = illust_bottle;
           }
           // 수거
           if (i === 2) {

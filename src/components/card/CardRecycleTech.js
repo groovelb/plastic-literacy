@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from "styled-components";
+import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
@@ -11,6 +12,9 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  @media only screen and (max-width: 480px) {
+    height: auto !important;
+  }
 `;
 
 const Top = styled.div`
@@ -20,11 +24,27 @@ const Top = styled.div`
     ${props => props.theme.type.weight.prd.black}
     color: ${props => props.theme.color.brand.epGreen};
     white-space: break-spaces;
+    @media only screen and (max-width: 480px) {
+      display: flex;
+      align-items: center;
+      white-space: normal;
+      margin-bottom:16px;
+      font-size: 22px;
+      line-height: 1.5;
+      img{
+        width: 44px;
+        height: 44px;
+        margin-right: 4px;
+      }
+    }
   }
   p{
-  ${props => props.theme.type.size.body1}
-  ${props => props.theme.type.weight.prd.bold}
-  white-space: break-spaces;
+    ${props => props.theme.type.size.body1}
+    ${props => props.theme.type.weight.prd.bold}
+    white-space: break-spaces;
+    @media only screen and (max-width: 480px) {
+      white-space: normal;
+    }
   }
 `;
 
@@ -62,6 +82,9 @@ const Bottom = styled.div`
       ${props => props.theme.type.weight.prd.bold}
     }
   }
+  @media only screen and (max-width: 480px) {
+      display: none;
+    }
 `;
 
 const CardRecycleTech = ({
@@ -78,6 +101,7 @@ const CardRecycleTech = ({
     >
       <Top>
         <h2>
+          {isMobile&&<img src={img} alt='' />}
           {title}
         </h2>
         <p>
