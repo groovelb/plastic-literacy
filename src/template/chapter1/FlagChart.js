@@ -37,16 +37,16 @@ const consumptionList = [
     img: flag_uk,
     value: 50.4
   },
-  {
-    title: '러시아',
-    img: flag_rs,
-    value: 44.3
-  }
+  // {
+  //   title: '러시아',
+  //   img: flag_rs,
+  //   value: 44.3
+  // }
 ];
 
 const Container = styled.div`
   width: 100%;
-  padding: 0 48px;
+  padding: 0;
   @media only screen and (max-width: 480px) {
     padding: 0;
   }

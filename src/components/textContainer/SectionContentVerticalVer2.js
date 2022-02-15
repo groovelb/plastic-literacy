@@ -81,11 +81,13 @@ const SectionContentVertical = ({
   index,
   isContentFit,
   left,
-  themeType
+  themeType,
+  className
 }) => {
   return (
 
       <TextContent
+        className={className}
         index={index}
         isContentFit={isContentFit}
         left={left}

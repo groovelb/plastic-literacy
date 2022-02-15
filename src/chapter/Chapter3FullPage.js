@@ -74,7 +74,7 @@ const Chart = styled(LiveArea)`
   /* display: none; */
   position: fixed;
   pointer-events: none;
-  z-index: -1;
+  z-index: 1;
   top:160px;
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
@@ -113,7 +113,7 @@ const Row = styled.div`
   }
   .product.high{
     img{
-      height: 80px !important;
+      height: 200px !important;
       width: auto !important;
     }
   }
@@ -335,6 +335,11 @@ const StageTitle = styled.p`
   }
 `;
 
+const StageContent = styled(SectionContentVertical)`
+  position: static;
+  margin-left: ${props => props.left};
+`;
+
 const Chapter3 = ({
   currentChapter,
   chapterObject,
@@ -351,51 +356,51 @@ const Chapter3 = ({
     {
       title: t("c3-s1-title"),
       exp: t("c3-s2-exp"),
-      pageList: [2],
-      page: 2,
+      pageList: [1],
+      page: 1,
     },
     {
       title: t("c3-s2-title"),
       exp: t("c3-s2-exp"),
-      pageList: [3, 4, 5, 6],
-      page: 3,
+      pageList: [2, 3, 4, 5],
+      page: 2,
     },
     {
       title: t("c3-s3-title"),
       exp: t("c3-s3-exp"),
-      pageList: [7],
-      page: 7,
+      pageList: [6],
+      page: 6,
     },
     {
       title: t("c3-s4-title"),
       exp: t("c3-s4-exp"),
-      pageList: [8],
-      page: 8,
+      pageList: [7],
+      page: 7,
     },
     {
       title: t("c3-s5-title"),
       exp: t("c3-s5-exp"),
-      pageList: [9],
-      page: 9,
+      pageList: [8, 9],
+      page: 8,
     },
     {
       title: t("c3-s6-title"),
       exp: t("c3-s6-exp"),
-      pageList: [10],
+      pageList: [10, 11, 12],
       page: 10,
     },
-    {
-      title: t("c3-s7-title"),
-      exp: t("c3-s7-exp"),
-      pageList: [11],
-      page: 11,
-    },
-    {
-      title: t("c3-s8-title"),
-      exp: t("c3-s8-exp"),
-      pageList: [12],
-      page: 12,
-    }
+    // {
+    //   title: t("c3-s7-title"),
+    //   exp: t("c3-s7-exp"),
+    //   pageList: [11],
+    //   page: 11,
+    // },
+    // {
+    //   title: t("c3-s8-title"),
+    //   exp: t("c3-s8-exp"),
+    //   pageList: [12],
+    //   page: 12,
+    // }
   ];
 
   const recycleMethods = [
@@ -433,6 +438,7 @@ const Chapter3 = ({
     }
   ];
 
+  const [isMrStageShow, setIsMrStageShow] = useState(false);
   const mrStage = [
     {
       title: '수거',
@@ -455,6 +461,7 @@ const Chapter3 = ({
       img: mr_stage5
     },
   ];
+  const [isMrStageShow2, setIsMrStageShow2] = useState(false);
 
   const gsMrStage = [
     {
@@ -590,15 +597,15 @@ const Chapter3 = ({
       setThemeType('light');
     }
     if (number === 2) {
-      setThemeType('light');
+      setThemeType('dark');
     }
     if (number === 3) {
       setThemeType('dark');
     }
-    if (number === 7) {
+    if (number === 6) {
       setThemeType('dark');
     }
-    if (number === 8) {
+    if (number === 7) {
       setThemeType('light');
     }
     if (number === 12) {
@@ -607,6 +614,25 @@ const Chapter3 = ({
     if (number === 13) {
       setThemeType('dark');
     }
+
+    if (1 < number && number < 6) {
+      setIsMrStageShow(true);
+    }
+    if (number === 7) {
+      setIsMrStageShow2(true);
+    }
+    setCurrentPage(number);
+  }
+
+  const handleBeforePageChange = (number) => {
+    console.log(number);
+    if (!(1 < number && number < 6)) {
+      // setThemeType('dark');
+      setIsMrStageShow(false);
+    }
+    if (number !== 7) {
+      setIsMrStageShow2(false);
+    }
     setCurrentPage(number);
   }
 
@@ -614,7 +640,7 @@ const Chapter3 = ({
     <Container>
       <ChapterIndicator
         sectionList={content}
-        isTrigger={1 < currentPage}
+        isTrigger={0 < currentPage && currentPage < 12}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentSection={currentSection}
@@ -622,9 +648,9 @@ const Chapter3 = ({
         themeType={themeType}
       />
       {
-        1 < currentPage && currentPage < 7 &&
+        0 < currentPage && currentPage < 6 &&
         <Chart
-          isActive={2 < currentPage}
+          isActive={isMrStageShow}
         >
           <SectionTitle
             themeType={'dark'}
@@ -641,7 +667,7 @@ const Chapter3 = ({
                   spacing={isMobile ? 16 : 48}
                 >
                   <ToRight
-                    isTrigger={2 < currentPage}
+                    isTrigger={1 < currentPage}
                     index={index}
                     distance={'short'}
                   >
@@ -649,8 +675,8 @@ const Chapter3 = ({
                       index={index}
                       themeType={'dark'}
                       status={
-                        2 < currentPage ?
-                          mrProcessList[currentPage - 3].stages.includes(index) === true ? 'on' : index < currentPage - 1 ? 'pass' : 'off' :
+                        1 < currentPage ?
+                          mrProcessList[currentPage - 2].stages.includes(index) === true ? 'on' : index < currentPage - 1 ? 'pass' : 'off' :
                           'off'
                       }
                       isBlink={
@@ -678,7 +704,7 @@ const Chapter3 = ({
                       }
                     </Stage>
                     <StageTitle>
-                      {(index + 1) + stage.title}
+                      {stage.title}
                     </StageTitle>
                   </ToRight>
                 </Grid>
@@ -687,10 +713,10 @@ const Chapter3 = ({
           </Row>
         </Chart>
       }
-      {
+      {/* {
         6 < currentPage &&
         <Chart
-          isActive={currentPage === 8}
+          isActive={isMrStageShow2}
         >
           <SectionTitle
             themeType={'light'}
@@ -707,7 +733,7 @@ const Chapter3 = ({
                   spacing={isMobile? 16 : 48}
                 >
                   <ToRight
-                    isTrigger={currentPage === 8}
+                    isTrigger={currentPage === 7}
                     index={index}
                     distance={'short'}
                   >
@@ -733,9 +759,10 @@ const Chapter3 = ({
             }
           </Row>
         </Chart>
-      }
+      } */}
       <ReactPageScroller
         pageOnChange={handlePageChange}
+        onBeforePageScroll={handleBeforePageChange}
         animationTimerBuffer={0}
         animationTimer={1000}
         customPageNumber={currentPage}
@@ -744,6 +771,8 @@ const Chapter3 = ({
         <Page>
           <ChapterTitle
             title={'플라스틱의 순환'}
+            subTitle={t("c3-subtitle")}
+            exp={t("c3-exp")}
             num={3}
             isFilter={true}
             img={bg_c3}
@@ -752,7 +781,7 @@ const Chapter3 = ({
             }}
           />
         </Page>
-        <Page>
+        {/* <Page>
           <ChapterSummary
             title={t("c3-subtitle")}
             exp={t("c3-exp")}
@@ -760,8 +789,11 @@ const Chapter3 = ({
             themeType={'light'}
             setCurrentPage={setCurrentPage}
           />
-        </Page>
-        <Page>
+        </Page> */}
+        <Page
+          themeType={'light'}
+          isOverlap={true}
+        >
           <LiveArea className={''}>
             <SectionTitle
               themeType={'light'}
@@ -795,7 +827,10 @@ const Chapter3 = ({
         </Page>
         {
           mrProcessList.map((process, index) =>
-            <PageAlignTop key={index}>
+            <PageAlignTop
+              themeType='dark'
+              key={index}
+            >
               <LiveArea className={'content'}>
                 <SectionContentVertical
                   title={process.title}
@@ -806,7 +841,7 @@ const Chapter3 = ({
             </PageAlignTop>
           )
         }
-        <Page>
+        <Page themeType={'dark'}>
           <LiveArea className={''}>
             <Row className={'RowCol'}>
               <TitleCol>
@@ -842,9 +877,52 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <Page>
-          <LiveArea className={'content'}>
-            <SectionContentVertical
+        <Page themeType={'light'}>
+          <LiveArea className={''}>
+            <SectionTitle
+              themeType={'light'}
+              title={`4\n${t('c3-s4-title')}`}
+            />
+            <Row>
+              {
+                gsMrStage.map((stage, index, arr) =>
+                  <Grid
+                    colPC={5}
+                    colMb={3}
+                    index={index}
+                    length={arr}
+                    spacing={isMobile ? 16 : 48}
+                  >
+                    <ToRight
+                      isTrigger={currentPage === 7}
+                      index={index}
+                      distance={'short'}
+                    >
+                      <Stage
+                        index={index}
+                        status={'on'}
+                        isBlink={2 < index}
+                        themeType={2 < index ? 'dark' : 'light'}
+                      >
+
+                        {
+                          index !== 4 &&
+                          <img className='arrow' src={ic_arrow_next} alt='' />
+                        }
+                        <img className={'stage'} src={stage.img} alt='' />
+                      </Stage>
+                      <StageTitle themeType={themeType}>
+                        {stage.title}
+                      </StageTitle>
+                    </ToRight>
+                  </Grid>
+                )
+              }
+            </Row>
+            {/* <Exp themeType='light'>
+              {geMrProcess.exp}
+            </Exp> */}
+            <StageContent
               themeType={'light'}
               title={geMrProcess.title}
               exp={geMrProcess.exp}
@@ -914,6 +992,31 @@ const Chapter3 = ({
           <LiveArea>
             <SectionTitle
               themeType={'light'}
+              title={t('c3-s7-title')}
+            />
+            <CircularLoop isActive={true}>
+              <PlasticEcoCycleMR isStop={currentPage !== 9} />
+              {/* <img src={illust_circular_loop} alt='' /> */}
+              {/* {
+                circularStageList.map((stage,index) => 
+                  <CircularStage
+                    top={`calc(${stage.y} * 50% - 54px)`}
+                    left={`calc(${stage.x} * 25% - 54px)`}
+                  >
+
+                  </CircularStage>
+                )
+              } */}
+            </CircularLoop>
+            <ExpCenter themeType='light'>
+              {t('c3-s7-exp')}
+            </ExpCenter>
+          </LiveArea>
+        </Page>
+        <Page>
+          <LiveArea>
+            <SectionTitle
+              themeType={'light'}
               title={`6\n${t('c3-s6-title')}`}
             />
             <Row>
@@ -924,7 +1027,7 @@ const Chapter3 = ({
                     colMb={2}
                     index={index}
                     length={arr}
-                    spacing={isMobile?8:48}
+                    spacing={isMobile ? 8 : 48}
                   >
                     <ToRight
                       isTrigger={currentPage === 10}
@@ -960,35 +1063,10 @@ const Chapter3 = ({
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={t('c3-s7-title')}
-            />
-            <CircularLoop isActive={currentPage === 11}>
-              <PlasticEcoCycleMR isStop={currentPage !== 11} />
-              {/* <img src={illust_circular_loop} alt='' /> */}
-              {/* {
-                circularStageList.map((stage,index) => 
-                  <CircularStage
-                    top={`calc(${stage.y} * 50% - 54px)`}
-                    left={`calc(${stage.x} * 25% - 54px)`}
-                  >
-
-                  </CircularStage>
-                )
-              } */}
-            </CircularLoop>
-            <ExpCenter themeType='light'>
-              {t('c3-s7-exp')}
-            </ExpCenter>
-          </LiveArea>
-        </Page>
-        <Page>
-          <LiveArea>
-            <SectionTitle
-              themeType={'light'}
               title={t('c3-s8-title')}
             />
-            <CircularLoop isActive={currentPage === 12}>
-              <PlasticEcoCycleCR isStop={currentPage !== 12} />
+            <CircularLoop isActive={true}>
+              <PlasticEcoCycleCR isStop={currentPage !== 11} />
             </CircularLoop>
             <ExpCenter themeType='light'>
               {t('c3-s8-exp')}

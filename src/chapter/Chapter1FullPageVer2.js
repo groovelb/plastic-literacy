@@ -36,6 +36,7 @@ import LiveArea from "../components/layout/LiveArea";
 import TimelineChartC1S1 from "../components/chart/TimeChart";
 import BarChart from "../components/chart/BarChart";
 import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
+import VideoBackground from '../components/videoBackground/VideoBackground3';
 import useWindowSize from '../hook/useWindowSize';
 import ViewportWrapper from '../components/ViewportWrapper';
 import SpaceFullScreen from "../components/layout/SpaceFullScreen";
@@ -159,7 +160,8 @@ const Chart = styled(LiveArea)`
     content: '';
     width: 100%;
     height: 100%;
-    background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : 'rgba(15, 30, 45,0)'};
+    background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,1)' : 'rgba(15, 30, 45,0)'};
+    transition: background-color 0.1s ease-out;
     z-index: 9;
   }
   @media only screen and (max-width: 480px) {
@@ -191,6 +193,7 @@ const ChartTitle = styled.p`
 const ChartTitlePadding = styled.div`
   position: relative;
   /* padding-left: 80px; */
+  z-index: 99;
   margin-top: -16px;
   margin-bottom: 8px;
   ${props => props.theme.type.size.title3}
@@ -198,10 +201,14 @@ const ChartTitlePadding = styled.div`
   text-align: center;
   p.caption{
     position: absolute;
-    top:68px;
+    top:72px;
     left:0;
     width: fit-content;
     text-align: left;
+    span{
+      ${props => props.theme.type.size.title3}
+      ${props => props.theme.type.weight.prd.bold};
+    }
     @media only screen and (max-width: 480px) {
       top:48px;
       left: 16px;
@@ -356,8 +363,8 @@ const Row = styled.div`
   flex-wrap: wrap;
   align-items: center;
   margin-top: 156px;
-  margin-bottom: ${props => props.isFull?'128px':'auto'};
-  /* height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'}; */
+  margin-bottom: ${props => props.isFull ? '128px' : 'auto'};
+  /* height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'}; */
   height: calc(100% - 440px);
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
@@ -372,8 +379,8 @@ const RowBig = styled.div`
   flex-wrap: wrap;
   align-items: center;
   margin-top: 156px;
-  margin-bottom: ${props => props.isFull?'128px':'auto'};
-  /* height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'}; */
+  margin-bottom: ${props => props.isFull ? '128px' : 'auto'};
+  /* height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'}; */
   height: calc(100% - 280px);
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
@@ -389,8 +396,8 @@ const RowAuto = styled.div`
   flex-wrap: wrap;
   align-items: center;
   margin-top: 156px;
-  margin-bottom: ${props => props.isFull?'128px':'auto'};
-  height:  ${props => props.isFull?'calc(100% - 156px - 128px)':'auto'};
+  margin-bottom: ${props => props.isFull ? '128px' : 'auto'};
+  height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'};
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
   @media only screen and (max-width: 480px) {
@@ -399,11 +406,34 @@ const RowAuto = styled.div`
 	}
 `;
 
+const RowAutoBG = styled.div`
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 156px;
+  /* background-color: ${props => props.theme.color.darkNavy}; */
+  margin-bottom: ${props => props.isFull ? '128px' : 'auto'};
+  height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'};
+  /* position: relative; */
+  /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
+  @media only screen and (max-width: 480px) {
+		margin-top: 120px;
+    height: auto;
+	}
+`;
+
+const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
 const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: 172px;
-  padding-bottom: 120px;
+  padding-top: calc(50% - 640px);
+  padding-bottom: calc(50% - 640px);
   position: fixed;
   z-index: 999;
   top: 0;
@@ -605,7 +635,7 @@ const Chapter1 = ({
       title: '3억 6700만 톤\n얼마나 무거운걸까?',
       exp: '3억 6700만 톤은 국내에서 가장 높은 잠실 L 타워 500개, 남산타워 2만5천개 그리고 KTX 52만4천개와 맞먹는 무게입니다.',
       data: plastic_production_1_3,
-      chartTitle: '전세계 연도별 플라스틱 생산량',
+      // chartTitle: '전세계 연도별 플라스틱 생산량',
       unit: '(단위: million metric tons)',
       from: '',
       page: 4,
@@ -614,20 +644,20 @@ const Chapter1 = ({
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
-      chartTitle: '국내 1인당 연간 플라스틱 소비량',
+      chartTitle: '국가별 1인당 플라스틱 소비량',
       unit: '(단위: kilogram)',
       from: '출처: 유럽플라스틱제조자협회(EUROMAP)',
       page: 5,
     },
-    {
-      title: '1인당 소비량이\n제일 많은 국가는?',
-      exp: '',
-      data: plastic_consumption_1_6,
-      chartTitle: '국내 1인당 연간 플라스틱 소비량',
-      unit: '(단위: kilogram)',
-      from: '',
-      page: 6,
-    },
+    // {
+    //   title: '1인당 소비량이\n제일 많은 국가는?',
+    //   exp: '',
+    //   data: plastic_consumption_1_6,
+    //   chartTitle: '국내 1인당 연간 플라스틱 소비량',
+    //   unit: '(단위: kilogram)',
+    //   from: '',
+    //   page: 6,
+    // },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
@@ -635,7 +665,7 @@ const Chapter1 = ({
       chartTitle: '국내 연도별 플라스틱 폐기물량',
       unit: '(단위: 1000 ton)',
       from: '출처: 환경부',
-      page: 7,
+      page: 6,
     },
     {
       title: '플라스틱 폐기물이\n자연에 끼친 피해',
@@ -644,19 +674,19 @@ const Chapter1 = ({
       chartTitle: '국내 연도별 플라스틱 폐기물량',
       unit: '(단위: 1000 ton)',
       from: '',
-      page: 8,
+      page: 7,
     },
+    // {
+    //   title: t("c1-s5-title"),
+    //   exp: t("c1-s5-exp"),
+    //   data: plastic_accumulated_waste_1_8,
+    //   chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
+    //   unit: '(단위: 1000 ton)',
+    //   from: '출처: 환경부',
+    //   page: 8,
+    // },
     {
-      title: t("c1-s5-title"),
-      exp: t("c1-s5-exp"),
-      data: plastic_accumulated_waste_1_8,
-      chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
-      unit: '(단위: 1000 ton)',
-      from: '출처: 환경부',
-      page: 9,
-    },
-    {
-      title: '썩지 않는 플라스틱',
+      title: '500연간\n썩지 않는 플라스틱',
       exp: '',
       data: plastic_accumulated_waste_1_8,
       chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
@@ -670,39 +700,39 @@ const Chapter1 = ({
     {
       title: t("c1-s1-title"),
       exp: t("c1-s1-exp"),
-      pageList:[2],
-      page: 2,
+      pageList: [1],
+      page: 1,
     },
     {
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
-      pageList:[3,4],
-      page: 3,
+      pageList: [2,3],
+      page: 2,
     },
     {
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
-      pageList:[5,6],
-      page: 5,
+      pageList: [4],
+      page: 4,
     },
     {
       title: t("c1-s4-title"),
       exp: t("c1-s4-exp"),
-      pageList:[7,8],
-      page: 7,
+      pageList: [5],
+      page: 4,
     },
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
-      pageList:[9,10],
-      page: 9,
+      pageList: [6,7],
+      page: 6,
     }
   ];
 
   const buildingList = [
     {
       num: 500,
-      title: '롯데타워',
+      title: '잠실 L 타워',
       unit: '74만t',
       img: img_lotte_tower
     },
@@ -740,17 +770,26 @@ const Chapter1 = ({
 
   const handlePageChange = (number) => {
     console.log(number);
-    if (number === 0) {
+    let num = number;
+    if(num<0){
+      console.log(`it's minus! set number 0!`);
+      num = 0;
+    }
+    if(8<num){
+      console.log(`it's overflow! set number 8!`);
+      num = 8;
+    }
+    if (num === 0) {
       setThemeType('dark');
     }
-    setCurrentPage(number);
-    if (2 < number && number < 11) {
+    setCurrentPage(num);
+    if (1 < num && num < 11) {
       // setData(content[number - 2].data);
-      if (number === 3 || number === 4) setData(content[1].data);
-      if (number === 5 || number === 6) setData(content[3].data);
-      if (number === 7) setData(content[5].data);
-      if (number === 8) setData(content[6].data);
-      if (number === 9) setData(content[7].data);
+      if (num === 2 ) setData(content[1].data);
+      // if (number === 5 || number === 6) setData(content[3].data);
+      if (num === 5) setData(content[5].data);
+      // if (number === 7) setData(content[6].data);
+      // if (number === 8) setData(content[7].data);
     }
   }
 
@@ -793,24 +832,24 @@ const Chapter1 = ({
     <>
       <ChapterIndicator
         sectionList={summary}
-        isTrigger={1 < currentPage}
+        isTrigger={0 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentSection={currentSection}
         setCurrentSection={setCurrentSection}
       />
       <Chart
-        isActive={2 < currentPage && currentPage < 11}
-        isFilter={currentPage === 4 || currentPage === 6 || currentPage === 8 || currentPage === 10}
+        isActive={1 < currentPage && currentPage < 6}
+        isFilter={currentPage === 3 || currentPage === 4 || currentPage === 8 || currentPage === 10}
       >
         <BarChart
           data={data}
           stage={currentPage - 1}
         />
         <ChartTitlePadding>
-          {content[currentPage - 2] && content[currentPage - 2].chartTitle}
           <p className="caption">
-            {content[currentPage - 2] && content[currentPage - 2].from}
+            <span>{content[currentPage - 1] && content[currentPage - 1].chartTitle}</span><br/>
+            {content[currentPage - 1] && content[currentPage - 1].from}
           </p>
         </ChartTitlePadding>
         {/* <ChartUnit>
@@ -845,19 +884,13 @@ const Chapter1 = ({
           <ChapterTitle
             isFilter={true}
             title={'플라스틱 딜레마'}
+            subTitle={t("c1-subtitle")}
+            exp={t("c1-exp")}
             num={1}
             img={bg_c1}
             onClick={() => {
               setCurrentPage(1);
             }}
-          />
-        </Page>
-        <Page>
-          <ChapterSummary
-            title={t("c1-subtitle")}
-            exp={t("c1-exp")}
-            sectionList={summary}
-            setCurrentPage={setCurrentPage}
           />
         </Page>
         {
@@ -886,10 +919,10 @@ const Chapter1 = ({
                           colMb={2}
                           index={index}
                           length={5}
-                          spacing={isMobile?8:24}
+                          spacing={isMobile ? 8 : 24}
                         >
                           <ToTop
-                            isTrigger={currentPage === 2}
+                            isTrigger={currentPage === section.page - 1}
                             distance={'middle'}
                             index={index}
                           >
@@ -928,12 +961,12 @@ const Chapter1 = ({
                           colPC={3}
                           colMb={2}
                           index={index}
-                          spacing={isMobile?0:0}
+                          spacing={isMobile ? 0 : 0}
                           length={3}
                         >
                           <ToTop
                             index={index * 3}
-                            isTrigger={currentPage === 4}
+                            isTrigger={currentPage === 3}
                             distance={'short'}
                           >
                             <ViewportWrapper
@@ -949,7 +982,7 @@ const Chapter1 = ({
                                   title={building.title}
                                   unit={building.unit}
                                   img={building.img}
-                                  isTrigger={currentPage === 4}
+                                  isTrigger={currentPage === 3}
                                   delay={index * 0.5}
                                 />
                               }
@@ -960,7 +993,7 @@ const Chapter1 = ({
                                   title={building.title}
                                   unit={building.unit}
                                   img={building.img}
-                                  isTrigger={currentPage === 4}
+                                  isTrigger={currentPage === 3}
                                   delay={index * 0.5}
                                 />
                               }
@@ -973,17 +1006,17 @@ const Chapter1 = ({
                 }
                 {/* 1인 소비량 인포그래픽 */}
                 {
-                  i === 4 &&
+                  i === 3 &&
                   <RowAuto
                     isFilter={true}
                     isFull={true}
                   >
-                    <FlagChart isTrigger={currentPage === 6} />
+                    <FlagChart isTrigger={currentPage === 4} />
                   </RowAuto>
                 }
                 {/* 자연 피해 */}
                 {
-                  i === 6 &&
+                  i === 5 &&
                   <RowBig
                     isFilter={true}
                     isFull={true}
@@ -998,7 +1031,7 @@ const Chapter1 = ({
                 }
                 {/* 자연 피해 */}
                 {
-                  i === 8 &&
+                  i === 6 &&
                   <RowBig
                     isFilter={true}
                     isFull={true}

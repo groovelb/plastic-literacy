@@ -75,11 +75,25 @@ const Arrow = styled.div`
    position: absolute;
    width: 48px;
    left: 0;
-   top: ${props => props.position === 'top' ? '32px' : '-40px'};
+   top: ${props => props.position === 'top' ? '48px' : '-56px'};
  }
  @media only screen and (max-width: 480px) {
   display: none;
  }
+`;
+
+const ArrowHead = styled.div`
+  width: 0; 
+  height: 0; 
+  border-top: 60px solid transparent;
+  border-bottom: 60px solid transparent;
+  opacity: 0.1;
+  border-left: 60px solid ${props => props.theme.color.brand.epGreen};
+  position: absolute;
+  top: 279px;
+  left: 526px;
+  transform: rotate(-45deg);
+  /* border-radius: 4px; */
 `;
 
 const arrowList = [
@@ -126,7 +140,7 @@ const PlasticEcoCycle = ({ isStop }) => {
   useEffect(() => {
     widthMobile = containerRef.current.clientWidth;
     console.log(widthMobile);
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (isStop === true) {
@@ -140,12 +154,12 @@ const PlasticEcoCycle = ({ isStop }) => {
 
   useEffect(() => {
     svg = d3.select(svgRef.current)
-      .attr("width", isMobile?widthMobile:1200 + margin.left + margin.right)
-      .attr("height", isMobile?widthMobile/2:498 + margin.top + margin.bottom);
+      .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
+      .attr("height", isMobile ? widthMobile / 2 : 498 + margin.top + margin.bottom);
 
     g = svg.append('g')
-      .attr("transform", 
-        isMobile?`scale(${widthMobile/1248}, ${widthMobile/1248}) translate(24,24)`: `translate(${margin.left},${margin.top})`);
+      .attr("transform",
+        isMobile ? `scale(${widthMobile / 1248}, ${widthMobile / 1248}) translate(24,24)` : `translate(${margin.left},${margin.top})`);
 
     cyclePathData.forEach((path, index, arr) => {
       g.append('path')
@@ -153,7 +167,9 @@ const PlasticEcoCycle = ({ isStop }) => {
         .attr("class", `path_${index}`)
         .attr("stroke", color.brand.epGreen)
         .attr("fill", 'none')
-        .attr("stroke-width", 2);
+        .attr("opacity", 0.1)
+        // .attr("marker-end","url(#arrow)")
+        .attr("stroke-width", 48);
 
       g.append('g')
         .attr("class", `particleGroup_${index}`);
@@ -179,11 +195,11 @@ const PlasticEcoCycle = ({ isStop }) => {
 
       let size = 48;
 
-      if (i === 0) size = isMobile?72:48;
-      if (i === 1) size = isMobile?56:32;
-      if (i === 2) size = isMobile?72:48;
-      if (i === 3) size = isMobile?48:24;
-      if (i === 4) size = isMobile?48:24;
+      if (i === 0) size = isMobile ? 72 : 48;
+      if (i === 1) size = isMobile ? 56 : 32;
+      if (i === 2) size = isMobile ? 72 : 48;
+      if (i === 3) size = isMobile ? 48 : 24;
+      if (i === 4) size = isMobile ? 48 : 24;
 
       particleGroup.append("svg:image")
         .attr("xlink:href", (d, j) => {
@@ -270,6 +286,7 @@ const PlasticEcoCycle = ({ isStop }) => {
         플라스틱의<br />라이프 사이클
       </Title>
       <Container ref={containerRef}>
+        <ArrowHead />
         {
           arrowList.map((arrow, index) =>
             <Arrow
@@ -278,7 +295,7 @@ const PlasticEcoCycle = ({ isStop }) => {
               deg={arrow.deg}
               position={arrow.position}
             >
-              <img src={ic_arrow} alt='' alt='' />
+              {/* <img src={ic_arrow} alt='' alt='' /> */}
               <p>
                 {arrow.title}
               </p>
@@ -288,7 +305,8 @@ const PlasticEcoCycle = ({ isStop }) => {
         <svg
           className={'plastic_cycle'}
           ref={svgRef}
-        />
+        >
+        </svg>
       </Container>
     </Wrapper>
   );

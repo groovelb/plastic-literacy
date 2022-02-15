@@ -37,7 +37,7 @@ const VideoContainer = styled.div`
   top:0;
   left: ${props => `calc((${props.index - props.currentIndex})*100%)`};
   transition: left 0.3s ease-in-out;
-  padding:0 16px;
+  /* padding:0 16px; */
   width: 100%;
   height: 100%;
   background-image: ${props => `url(${props.src})`};
@@ -57,6 +57,7 @@ const ActionBar = styled.div`
   position: absolute;
   left: 0;
   bottom: calc(50% - 24px);
+  padding: 0 8px;
   height: 48px;
   display: flex;
   justify-content: space-between;
@@ -65,9 +66,13 @@ const ActionBar = styled.div`
 `;
 
 const Btt = styled.button`
-  width: 64px;
-  height: 64px;
+  width: 48px;
+  height: 48px;
   ${props => props.theme.layout.flexColCenter}
+  img{
+    width: auto;
+    height: 100%;
+  }
   background: none;
   outline: none;
   border: none;
@@ -81,7 +86,7 @@ const BttClose = styled.button`
   height: 48px;
   position: absolute;
   top: 12px;
-  right: 12px;
+  right: 24px;
   z-index: 9;
   font-size: 20px;
   background-color: rgba(43, 51, 63, 0.7);
@@ -106,11 +111,10 @@ const Caption = styled.div`
      margin-left: -20px;
    }
    width: 100%;
+   margin-top: 32px;
    ${props => props.theme.type.size.body1}
    ${props => props.theme.type.weight.exp.bold}
    color: #fff;
-   bottom: -100%;
-   left: 0;
    /* position: absolute; */
    width: 60%;
    span{

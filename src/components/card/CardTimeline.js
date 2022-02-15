@@ -64,7 +64,7 @@ const Play = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0px 24px;
+  /* padding: 0px 16px; */
   background: none;
   outline: none;
   border-radius: 4px;

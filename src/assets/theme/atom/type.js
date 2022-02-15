@@ -2,7 +2,7 @@ const type = {
   weight: {
     exp: {
       regular: `
-      font-family: 'Pretendard Variable';
+      font-family: 'Pretendard';
         font-weight: 400;
       `,
       bold: `
@@ -59,8 +59,8 @@ const type = {
     }
     `,
     chapterTitle: `
-    font-size: 72px;
-    line-height: 90px;
+    font-size: 64px;
+    line-height: 64px;
     letter-spacing: 4px;
     @media only screen and (max-width: 480px) {
       font-size: 40px;
@@ -97,7 +97,7 @@ const type = {
     `,
     title1: `
     font-size: 28px;
-    line-height: 48px;
+    line-height: 40px;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
       font-size: 22px;

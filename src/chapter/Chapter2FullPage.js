@@ -65,10 +65,12 @@ const Top = styled(LiveArea)`
    z-index: -1;
    top: 0px;
    left: 0px;
-   padding-top: 116px;
+   padding-top: 108px;
    padding-bottom: 48px;
    box-sizing: content-box;
    background-size: cover;
+   display: flex;
+   flex-direction: column;
    width: 100%;
    height: ${sankeyHeight + 'px'};
    height: calc(100% - 386px);
@@ -94,8 +96,10 @@ const Top = styled(LiveArea)`
 const Chart = styled.div`
   position: fixed;
   /* z-index: 999; */
-  top: 160px;
-  padding-top: 148px;
+  top: 348px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left:10px;
   box-sizing: content-box;
   width: ${props => props.theme.size.liveArea};
   /* box-shadow: 0px 40px 80px 60px ${props => props.theme.color.ui.bg.dark}; */
@@ -107,7 +111,7 @@ const Chart = styled.div`
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
   /* animation: ${FadeIn} 1s linear forwards; */
-  filter: ${props => props.isFilter ? 'blur(2px)' : 'blur(0px)'};
+  /* filter: ${props => props.isFilter ? 'blur(2px)' : 'blur(0px)'}; */
   transition: filter 0.3s;
   @media only screen and (max-width: 480px) {
     top: 32px;
@@ -121,7 +125,7 @@ const Chart = styled.div`
 
 const Source = styled.p`
   position: absolute;
-  left: calc(50% - 600px);
+  right: calc(50% - 600px);
   bottom: -85px;
   ${props => props.theme.type.size.caption}
   ${props => props.theme.type.weight.prd.regular}
@@ -134,6 +138,7 @@ const Source = styled.p`
 const Wrapper = styled(LiveArea)`
   /* width: 100%; */
   height: 100%;
+  padding-bottom: 24px;
   display: flex;
   position: relative;
   flex-direction: column;
@@ -159,7 +164,7 @@ const Wrapper2 = styled(LiveArea)`
 const FloatingLeft = styled.div`
   width: 224px;
   position: absolute;
-  top: 20px;
+  top: 0px;
   left: 0;
   ${props => props.theme.type.size.title2}
   ${props => props.theme.type.weight.prd.black}
@@ -188,32 +193,32 @@ const Chapter2FullPage = ({
     {
       title: '지상 플라스틱 폐기물의 여정',
       exp: t("c2-s1-exp"),
-      pageList: [2, 3, 4, 5],
-      page: 2,
+      pageList: [1, 2, 3, 4],
+      page: 1,
     },
     {
       title: '지상 플라스틱 폐기물 여정속 실태',
+      exp: t("c2-s2-exp"),
+      pageList: [5],
+      page: 5,
+    },
+    {
+      title: '플라스틱 분류체계의 실태',
       exp: t("c2-s2-exp"),
       pageList: [6],
       page: 6,
     },
     {
-      title: '플라스틱 분류체계의 실태',
-      exp: t("c2-s2-exp"),
-      pageList: [7],
-      page: 7,
-    },
-    {
       title: t("c2-s5-title"),
       exp: t("c2-s3-exp"),
-      pageList: [8, 9, 10, 11],
-      page: 8
+      pageList: [7, 8, 9, 10],
+      page: 7
     },
     {
       title: '해양 플라스틱 폐기물 여정속 실태',
       exp: t("c2-s4-exp"),
-      pageList: [12],
-      page: 12
+      pageList: [11],
+      page: 11
     }
   ];
 
@@ -361,7 +366,7 @@ const Chapter2FullPage = ({
     <Container>
       <ChapterIndicator
         sectionList={content}
-        isTrigger={1 < currentPage}
+        isTrigger={0 < currentPage}
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
         currentSection={currentSection}
@@ -370,17 +375,17 @@ const Chapter2FullPage = ({
       />
       {
         0 < currentPage && currentPage < 7 &&
-        <Top isActive={1 < currentPage && currentPage < 6}>
+        <Top isActive={1 < currentPage && currentPage < 5}>
           <Chart
             step={
               currentPage === 1 || currentPage === 2 || currentPage === 3 ? 0 :
                 1
             }
             isFilter={currentPage === 2}
-            isActive={1 < currentPage && currentPage < 6}
+            isActive={1 < currentPage && currentPage < 5}
           >
             <SankeyLand
-              currentStage={currentPage - 2}
+              currentStage={currentPage - 1}
               currentChapter={2}
             />
             <p className="caption">
@@ -393,22 +398,22 @@ const Chapter2FullPage = ({
         </Top>
       }
       {
-        7 < currentPage && currentPage < 13 &&
-        <Top isActive={8 < currentPage && currentPage < 12}>
+        6 < currentPage && currentPage < 12 &&
+        <Top isActive={7 < currentPage && currentPage < 11}>
           <Chart
-            isActive={8 < currentPage && currentPage < 12}
+            isActive={7 < currentPage && currentPage < 11}
             step={
               currentPage === 8|| currentPage === 9 ? 0 :
                 1
             }
           >
             <SankeyOcean
-              currentStage={currentPage - 8}
+              currentStage={currentPage - 7}
               currentChapter={3}
             />
           </Chart>
           <Source>
-          출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
+          출처 : 해양수산부 (2020) 「2018~2020 국가 해안쓰레기 모니터링 및 해양쓰레기 수거량」
           </Source>
         </Top>
       }
@@ -422,6 +427,8 @@ const Chapter2FullPage = ({
         <Page>
           <ChapterTitle
             title={'플라스틱의 여정'}
+            subTitle={t("c2-subtitle")}
+            exp={t("c2-exp")}
             num={2}
             img={bg_c2}
             onClick={() => {
@@ -429,20 +436,21 @@ const Chapter2FullPage = ({
             }}
           />
         </Page>
-        <Page>
+        {/* <Page>
           <ChapterSummary
             title={t("c2-subtitle")}
             exp={t("c2-exp")}
             sectionList={content}
             setCurrentPage={setCurrentPage}
           />
-        </Page>
+        </Page> */}
         <ImageBackground
           isFilter={true}
-          isTrigger={currentPage === 1}
+          img={videoURL.c2.s5.bg}
+          isTrigger={true}
         >
           <MsgFullScreen
-            title={`${t('c2-s1-title')}`}
+            title={t('c2-s1-title')}
           />
         </ImageBackground>
         {
@@ -454,6 +462,7 @@ const Chapter2FullPage = ({
               <SectionContentHorizon
                 title={section.title}
                 exp={section.exp}
+                isLeft={true}
                 index={i}
               />
             </Wrapper>
@@ -478,7 +487,7 @@ const Chapter2FullPage = ({
         <ImageBackground
           isFilter={true}
           img={videoURL.c2.s5.bg}
-          isTrigger={currentPage === 8}
+          isTrigger={true}
         >
           <MsgFullScreen
             title={t('c2-s5-title')}
@@ -494,6 +503,7 @@ const Chapter2FullPage = ({
               <SectionContentHorizon
                 title={section.title}
                 exp={section.exp}
+                isLeft={true}
                 index={i}
               />
             </Wrapper>

@@ -25,6 +25,9 @@ function App() {
   );
 }
 const GlobalStyle = createGlobalStyle`
+  ::-webkit-scrollbar {
+    display: none;
+  }
   *{
     box-sizing: border-box;
     
@@ -151,6 +154,9 @@ const GlobalStyle = createGlobalStyle`
   }
   .bar.recycle{
     opacity: 0.92;
+  }
+  .bar.secondary{
+    fill: #30DF7A;
   }
   .barChart{
     path{

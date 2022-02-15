@@ -33,6 +33,7 @@ const Container = styled.div`
 		background-color: rgba(0,0,0,0.64);
 		z-index: 0;
 		transition: background-color 0.4s;
+		pointer-events: none;
 	}
 	.subtitle{
 			display: none;
@@ -45,6 +46,7 @@ const Container = styled.div`
 			display: block;
 		}
 		:before{
+			pointer-events: none;
 			background-color: rgba(0,0,0,0.2);
 		}
 	}

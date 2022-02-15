@@ -40,7 +40,8 @@ const Image = styled.div`
 const ActionBar = styled.div`
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: calc(50% - 24px);
+  padding: 0 8px;
   height: 48px;
   display: flex;
   justify-content: space-between;
@@ -52,6 +53,10 @@ const Btt = styled.button`
   width: 48px;
   height: 48px;
   ${props => props.theme.layout.flexColCenter}
+  img{
+    width: auto;
+    height: 100%;
+  }
   background: none;
   outline: none;
   border: none;

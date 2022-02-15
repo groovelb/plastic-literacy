@@ -31,7 +31,7 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.32)' : 'rgba(0,0,0,0)'};
+    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.48)' : 'rgba(0,0,0,0)'};
     /* background-color: ${props => props.isFilter ? 'rgba(0,48,24,0.64)' : 'rgba(0,0,0,0)'}; */
   }
 	*{
@@ -78,22 +78,38 @@ const Title = styled.div`
 	}
 `;
 
+const SubTitle = styled.div`
+	width: 100%;
+	text-align: center;
+	${props => props.theme.type.size.h1}
+	${props => props.theme.type.weight.exp.regular}
+	text-transform: capitalize;
+	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	span{
+		${props => props.theme.type.weight.exp.regular}
+	}
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
+`;
+
 const Divider = styled.div`
 	width: 160px;
 	height: 4px;
 	background-color: #fff;
-	margin: 28px 0px;
+	margin: 24px 0px;
 `;
 
 
 const Exp = styled.div`
 	position: relative;
-	width: 75%;
-	${props => props.theme.type.size.title1}
+	width: 800px;
+	${props => props.theme.type.size.title2}
 	${props => props.theme.type.weight.prd.bold}
 	text-align: left;
 	margin-top: 12px;
 	/* border: solid 1px #fff; */
+	margin-top: 80px;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
@@ -104,6 +120,8 @@ const ChapterTitle = ({
 	img,
 	num,
 	title,
+	subTitle,
+	exp,
 	onClick,
 	isFilter
 }) => {
@@ -118,12 +136,21 @@ const ChapterTitle = ({
 			</ButtonScroll>
 			<Content>
 				<Title>
-				{`CHAPTER${num}`}
+					{`${title}`}
 				</Title>
 				<Divider />
-				<Title>
-				{title}
-				</Title>
+				<SubTitle>
+					<span>
+						❝
+					</span>
+					{` ${subTitle} `}
+					<span>
+						❞
+					</span>
+				</SubTitle>
+				<Exp>
+					{exp}
+				</Exp>
 			</Content>
 		</Container>
 	)

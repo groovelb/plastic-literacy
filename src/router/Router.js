@@ -13,6 +13,7 @@ import Title from '../chapter/TitleVer4';
 import Chapter1 from '../chapter/Chapter1FullPageVer2';
 import Chapter2Ver2 from '../chapter/Chapter2FullPage';
 import Chapter3Ver2 from '../chapter/Chapter3FullPage';
+import FullPageTest from '../page/FullPageTest';
 
 const Background = styled.div`
   position: fixed;
@@ -77,6 +78,12 @@ export default () => {
                 themeType={themeType}
                 themeType={themeType}
               />} />
+          <Route
+            path="/test"
+            exect element={
+              <FullPageTest/>
+            }
+          />
         </Routes>
       </Router>
     </Div100vh>

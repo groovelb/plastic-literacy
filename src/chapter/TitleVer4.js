@@ -32,9 +32,9 @@ const Row3 = styled.div`
   width: 100%;
   transition: height 0.6s ease-out;
   height: ${props=>props.isNotSelected?'calc(100%/4)':'calc(100%/3)'};
-  :hover{
+  /* :hover{
     height: calc(100%/2);
-  }
+  } */
 `;
 
 // const Page = styled.div`
@@ -59,11 +59,20 @@ const Title = ({
 
   const handlePageChange = (number) => {
     console.log(number);
-    setCurrentPage(number);
-    if (number === 0) {
+    let num = number;
+    if(num<0){
+      console.log(`it's minus! set number 0!`);
+      num = 0;
+    }
+    if(2<num){
+      console.log(`it's overflow! set number 0!`);
+      num = 2;
+    }
+    setCurrentPage(num);
+    if (num === 0) {
       setThemeType('dark');
     }
-    if (number === 1) {
+    if (num === 1) {
       setThemeType('dark');
     }
   }
@@ -109,8 +118,8 @@ const Title = ({
         <Page>
           <LiveArea className={'content'}>
             <Row3
-              onMouseOver={() => {setSelectedRow(1)}}
-              onMouseLeave={() => {setSelectedRow(0)}}
+              // onMouseOver={() => {setSelectedRow(1)}}
+              // onMouseLeave={() => {setSelectedRow(0)}}
               isNotSelected={selectedRow!==0&selectedRow!==1}
             >
               <ChapterTitleLink
@@ -122,8 +131,8 @@ const Title = ({
               />
             </Row3>
             <Row3
-              onMouseOver={() => {setSelectedRow(2)}}
-              onMouseLeave={() => {setSelectedRow(0)}}
+              // onMouseOver={() => {setSelectedRow(2)}}
+              // onMouseLeave={() => {setSelectedRow(0)}}
               isNotSelected={selectedRow!==0&selectedRow!==2}
             >
               <ChapterTitleLink
@@ -135,8 +144,8 @@ const Title = ({
               />
             </Row3>
             <Row3
-              onMouseOver={() => {setSelectedRow(3)}}
-              onMouseLeave={() => {setSelectedRow(0)}}
+              // onMouseOver={() => {setSelectedRow(3)}}
+              // onMouseLeave={() => {setSelectedRow(0)}}
               isNotSelected={selectedRow!==0&selectedRow!==3}
             >
               <ChapterTitleLink

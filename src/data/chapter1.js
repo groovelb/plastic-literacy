@@ -188,77 +188,102 @@ export const plastic_consumption_1_6 = [
 ];
 
 export const plastic_waste_1_7 = [
+  // {
+  //   "year": 1996,
+  //   "value": 2870506
+  // },
+  {
+    "year": 1997,
+    "value": 2369324
+  },
+  {
+    "year": 1998,
+    "value": 2222996
+  },
+  {
+    "year": 1999,
+    "value": 2517003
+  },
+  {
+    "year": 2000,
+    "value": 2976064
+  },
+  {
+    "year": 2001,
+    "value": 3422057
+  },
+  {
+    "year": 2002,
+    "value": 3435599
+  },
+  {
+    "year": 2003,
+    "value": 3548603
+  },
+  {
+    "year": 2004,
+    "value": 3772092
+  },
+  {
+    "year": 2005,
+    "value": 3968316
+  },
+  {
+    "year": 2006,
+    "value": 4146108
+  },
+  {
+    "year": 2007,
+    "value": 4512057
+  },
   {
     "year": 2008,
-    "value": 739,
-    "recycle": 244,
+    "value": 4474608
   },
   {
     "year": 2009,
-    "value": 755,
-    "recycle": 258,
+    "value": 4609767
   },
   {
     "year": 2010,
-    "value": 770,
-    "recycle": 277,
+    "value": 4718720
   },
   {
     "year": 2011,
-    "value": 798,
-    "recycle": 289,
+    "value": 5063754
   },
   {
     "year": 2012,
-    "value": 883,
-    "recycle": 353,
+    "value": 6008666
   },
   {
     "year": 2013,
-    "value": 883,
-    "recycle": 369,
+    "value": 6041699
   },
   {
     "year": 2014,
-    "value": 924,
-    "recycle": 419,
+    "value": 6394909
   },
   {
     "year": 2015,
-    "value": 963,
-    "recycle": 454,
+    "value": 6908391
   },
   {
     "year": 2016,
-    "value": 1007,
-    "recycle": 498,
+    "value": 7147612
   },
   {
     "year": 2017,
-    "value": 1090,
-    "recycle": 566,
+    "value": 7961197
   },
-  // 2018 부터 추정치
   {
     "year": 2018,
-    "value": 1096,
-    "recycle": 590,
+    "value": 8222866
   },
   {
     "year": 2019,
-    "value": 1112,
-    "recycle": 624,
-  },
-  {
-    "year": 2020,
-    "value": 1124,
-    "recycle": 632,
-  },
-  {
-    "year": 2021,
-    "value": 1136,
-    "recycle": 648,
-  },
+    "value": 10183281
+  }
 ];
 
 export const plastic_accumulated_waste_1_8 = [

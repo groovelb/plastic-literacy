@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import PlasticCirculation from "../../chart/title/PlasticCirculationVer2";
+import VideoEarth from "../../components/videoBackground/VideoEarth";
 import PlasticCirculationC3 from "../../chart/title/PlasticCirculationC3";
 import illust_inner_circle from "../../assets/illust/inner_circle_illust.svg";
 import { useTranslation } from 'react-i18next';
@@ -15,6 +16,7 @@ import illust_produce from "../../assets/illust/illust_produce.svg";
 import illust_dispose from "../../assets/illust/illust_dispose.svg";
 import illust_crush from "../../assets/illust/illust_crush.svg";
 import illust_synthesis from "../../assets/illust/illust_synthesis.svg";
+import video_earth from "../../assets/video/earth_spin.mp4"
 
 import ic_scroll from "../../assets/icon/ic_keep_scroll_white.svg";
 
@@ -335,7 +337,15 @@ const PlasticLiteracy = ({
               hoverIndex !== 0 && nodeList[hoverIndex - 1].exp
             }
           </p>
-          <img src={illust_earth_green} alt=' ' />
+          {/* <img src={illust_earth_green} alt=' ' /> */}
+          <VideoEarth
+            isVideoPlay={true}
+            width={780}
+            height={780}
+            isFilter={true}
+            videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/earth_spin.mp4?alt=media&token=7d0b37cd-0a3b-4398-ba2c-692a33a07299'}
+            isTrigger={true}
+          />
         </Earth>
         <NodeContainer>
           {
@@ -346,12 +356,12 @@ const PlasticLiteracy = ({
                 index={i + 1}
                 onMouseOver={
                   () => {
-                    setHoverIndex(i + 1);
+                    // setHoverIndex(i + 1);
                   }
                 }
                 onMouseLeave={
                   () => {
-                    setHoverIndex(0);
+                    // setHoverIndex(0);
                   }
                 }
               >

@@ -269,7 +269,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile?72:96, right: 10, bottom: 10, left: 0 };
+  const margin = { top: isMobile?72:96, right: 24, bottom: 10, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -300,7 +300,7 @@ const Sankey = ({
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
       .nodeWidth(isMobile?64:80)
-      .nodePadding(isMobile?24:56)
+      .nodePadding(isMobile?24:24)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 
@@ -314,7 +314,7 @@ const Sankey = ({
       .attr("transform", "translate(0,0)");
 
     let nodeGroupTemp = [
-      { name: '생산', depth: 0, x: null, img: ic_product },
+      { name: '사용', depth: 0, x: null, img: ic_product },
       { name: '배출', depth: 1, x: null, img: ic_dispose },
       { name: '수거', depth: 2, x: null, img: ic_collect },
       { name: '선별', depth: 3, x: null, img: ic_select },
@@ -454,7 +454,7 @@ const Sankey = ({
     node.append("text")
       .attr("class", "node_title")
       .attr("x", function (d) { return d.x0; })
-      .attr("y", function (d) { return d.y0 - 14 })
+      .attr("y", function (d) { return d.y0 - 8 })
       .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {

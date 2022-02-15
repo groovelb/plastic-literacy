@@ -27,7 +27,7 @@ const ChapterSummary = ({
         exp={exp}
         themeType={themeType}
       />
-      <SectionList>
+      {/* <SectionList>
         {
           sectionList.map((section,index,arr) => 
             <Grid
@@ -49,7 +49,7 @@ const ChapterSummary = ({
             </Grid>
           )
         }
-      </SectionList>
+      </SectionList> */}
     </LiveArea>
   )
 }

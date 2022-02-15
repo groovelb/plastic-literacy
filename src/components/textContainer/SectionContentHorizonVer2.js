@@ -4,7 +4,7 @@ import styled from "styled-components";
 const TextContent = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: 180px;
+  padding-top: 148px;
   display: flex;
   position: relative;
   flex-direction: row;
@@ -22,12 +22,23 @@ const TextContent = styled.div`
     /* width: 100%; */
     /* padding-right: 120px; */
     ${props => props.theme.type.size.body1}
-    ${props => props.theme.type.weight.prd.bold}
+    ${props => props.theme.type.weight.prd.regular}
     word-break: break-all;
-    margin-top: -8px;
     position: absolute;
-    bottom: 96px;
-    right: 0;
+    top: 240px;
+    ${
+      props => props.isLeft?`left: 0`:`right: 0`
+    };
+    padding-left: 16px;
+    :before{
+      position: absolute;
+      content: '';
+      top: 6px;
+      left: 0px;
+      width: 3px;
+      height: calc(100% - 10px);
+      background-color: ${props => props.theme.color.brand.epGreen};
+    }
   }
   @media only screen and (max-width: 480px) {
     padding-left: 0px;
@@ -67,17 +78,19 @@ const SectionContainerHorizon = ({
   title,
   exp,
   index,
-  isContentFit
+  isContentFit,
+  isLeft
 }) => {
   return (
     <TextContent
       index={index}
       isContentFit={isContentFit}
+      isLeft={isLeft}
     >
       <SectionTitle>
-        <h1>
+        {/* <h1>
           {index + 1}
-        </h1>
+        </h1> */}
         <h2>
           {title}
         </h2>
