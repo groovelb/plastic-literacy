@@ -654,7 +654,7 @@ const Chapter3 = ({
         >
           <SectionTitle
             themeType={'dark'}
-            title={`2\n${t('c3-s2-title')}`}
+            title={`${t('c3-s2-title')}`}
           />
           <Row>
             {
@@ -797,7 +797,7 @@ const Chapter3 = ({
           <LiveArea className={''}>
             <SectionTitle
               themeType={'light'}
-              title={`1\n${t('c3-s1-title')}`}
+              title={`${t('c3-s1-title')}`}
             />
             <Row>
               {
@@ -845,7 +845,7 @@ const Chapter3 = ({
           <LiveArea className={''}>
             <Row className={'RowCol'}>
               <TitleCol>
-                <SectionTitle title={`3\n${t('c3-s3-title')}`} />
+                <SectionTitle title={`${t('c3-s3-title')}`} />
               </TitleCol>
               <ContentCol>
                 <Row>
@@ -881,7 +881,7 @@ const Chapter3 = ({
           <LiveArea className={''}>
             <SectionTitle
               themeType={'light'}
-              title={`4\n${t('c3-s4-title')}`}
+              title={`${t('c3-s4-title')}`}
             />
             <Row>
               {
@@ -936,7 +936,7 @@ const Chapter3 = ({
               <TitleCol>
                 <SectionTitle
                   themeType={'light'}
-                  title={`5\n${t('c3-s5-title')}`}
+                  title={`${t('c3-s5-title')}`}
                 />
               </TitleCol>
               <ContentCol>
@@ -1017,7 +1017,7 @@ const Chapter3 = ({
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={`6\n${t('c3-s6-title')}`}
+              title={`${t('c3-s6-title')}`}
             />
             <Row>
               {

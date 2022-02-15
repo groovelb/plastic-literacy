@@ -26,7 +26,7 @@ const Container = styled.div`
 const Wrapper = styled(LiveArea)`
   position: relative;
   overflow: hidden;
-  height: 100%;
+  height: 680px;
   @media only screen and (max-width: 480px) {
     height: 248px;
   }
@@ -39,13 +39,22 @@ const VideoContainer = styled.div`
   transition: left 0.3s ease-in-out;
   /* padding:0 16px; */
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   background-image: ${props => `url(${props.src})`};
   background-size: 102%;
   background-position: center;
   .video-react{
     border-radius: 8px;
     overflow: hidden;
+  }
+  :before{
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, rgba(0,0,0,0.38) 0%, rgba(0,0,0,0) 25%, rgba(0,0,0,0) 75%, rgba(0,0,0,0.38) 100%);
   }
   @media only screen and (max-width: 480px) {
     height: auto;
@@ -63,6 +72,7 @@ const ActionBar = styled.div`
   justify-content: space-between;
   width: 100%;
   display: flex;
+  z-index: 9;
 `;
 
 const Btt = styled.button`
@@ -161,6 +171,9 @@ const VideoList = ({
                   currentIndex={current}
                 >
                   <Player
+                    fluid={false}
+                    height={680}
+                    width={'100%'}
                     ref={player => {
                       video.ref = player
                     }}

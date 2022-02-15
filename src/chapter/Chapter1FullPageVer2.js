@@ -432,12 +432,10 @@ const Wrapper = styled.div`
 const VideoContainer = styled.div`
   width: 100%;
   height: 100%;
-  padding-top: calc(50% - 640px);
-  padding-bottom: calc(50% - 640px);
+  top: 0;
+  padding-top: 100px;
   position: fixed;
   z-index: 999;
-  top: 0;
-  left: 0;
   background-color: ${props => props.theme.color.ui.bg.dark};
 `;
 
