@@ -50,8 +50,10 @@ import illust_low1 from "../assets/img/illust/c3/mr/illust_low_product1.svg";
 import illust_low2 from "../assets/img/illust/c3/mr/illust_low_product2.svg";
 import illust_low3 from "../assets/img/illust/c3/mr/illust_low_product3.svg";
 
-import illust_high1 from "../assets/img/illust/c3/mr/illust_high_product1.svg";
-import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
+// import illust_high1 from "../assets/img/illust/c3/mr/illust_high_product1.svg";
+// import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
+import img_high1 from "../assets/img/illust/c3/mr/highend_car.png";
+import img_high2 from "../assets/img/illust/c3/mr/highend_washing.png";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
 import { t } from 'i18next';
@@ -102,9 +104,9 @@ const Row = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
+    /* justify-content: flex-end; */
     img{
-      margin-bottom: 48px;
+      margin-bottom: 24px;
       @media only screen and (max-width: 480px) {
         width: 86px;
         height: auto;
@@ -119,7 +121,44 @@ const Row = styled.div`
   }
   .legend{
     text-align: left;
-    margin-top: 24px;
+    margin-top: 16px;
+    span{
+      font-weight: bold;
+      color: rgba(100, 100, 255, 1);
+    }
+  }
+`;
+
+const PartName = styled.p`
+  opacity: ${props => props.isSelected ? 1 : 0.6};
+  cursor: pointer;
+  :hover{
+    opacity: 1;
+  }
+`;
+
+const Blink = keyframes`
+  0%{opacity: 0.64}
+  50%{opacity: 1}
+  100%{opacity: 0.64}
+`;
+
+const ImageMark = styled.div`
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  ${props => props.theme.layout.flexColCenter}
+  color: ${props => props.theme.color.brand.epGreen};
+  background-color: rgba(100, 100, 255, 1);
+  ${props => props.theme.type.weight.prd.bold}
+  ${props => props.theme.type.size.caption}
+  position: absolute;
+  top: ${props => `${props.top}px`};
+  left: ${props => `${props.left}px`};
+  cursor: pointer;
+  opacity: 0.75;
+  :hover{
+    opacity: 1;
   }
 `;
 
@@ -523,66 +562,63 @@ const Chapter3 = ({
   const highProductList = [
     {
       title: '자동차 부품',
-      img: illust_high1
+      img: img_high1
     },
     {
       title: '세탁기 부품',
-      img: illust_high2
+      img: img_high2
     }
   ];
 
+  const [partIndex1, setPartIndex1] = useState(0);
+  const [partIndex2, setPartIndex2] = useState(0);
+
   const carPartList = [
     {
-      title: 'Side Garnish',
-      id: 'A',
-      top: 145,
-      left: 80,
-    },
-    {
       title: 'Lamp Housing',
+      id: 'A',
+      top: 70,
+      left: -47,
+    },
+    {
+      title: 'Engine Under Cover',
       id: 'B',
-      top: 115,
-      left: 140,
+      top: 110,
+      left: -30,
     },
     {
-      title: 'Door Module',
+      title: 'Mud Guard',
       id: 'C',
-      top: 125,
-      left: 230,
+      top: 144,
+      left: 86,
     },
     {
-      title: 'Sunroof Frame',
+      title: 'Wheel Guard',
       id: 'D',
-      top: 25,
-      left: 100,
+      top: 96,
+      left: 340,
     },
   ];
 
   const washingPartList = [
     {
-      title: 'Drum Tube',
+      title: 'Drawer Panel',
       id: 'A',
-      top: 125,
-      left: 130,
+      top: 8,
+      left: 128,
     },
     {
-      title: 'Blower Housing',
+      title: 'Control Panel',
       id: 'B',
-      top: 15,
-      left: 90,
+      top: 8,
+      left: 224,
     },
     {
-      title: 'Body Drawer',
+      title: 'Carbinet Base',
       id: 'C',
-      top: -5,
-      left: 160,
-    },
-    {
-      title: 'Gasket',
-      id: 'D',
-      top: 95,
-      left: 190,
-    },
+      top: 180,
+      left: 180,
+    }
   ];
 
 
@@ -954,26 +990,53 @@ const Chapter3 = ({
                         index={index}
                         className={'product high'}
                       >
+                        {
+                          index === 0 && carPartList.map((part, index) =>
+                            <ImageMark
+                              top={part.top}
+                              left={part.left}
+                              key={index}
+                              onMouseOver={() => setPartIndex1(index + 1)}
+                              onMouseLeave={() => setPartIndex1(0)}
+                            >
+                              {part.id}
+                            </ImageMark>
+                          )
+                        }
+                        {
+                          index === 1 && washingPartList.map((part, index) =>
+                            <ImageMark
+                              top={part.top}
+                              left={part.left}
+                              key={index}
+                              onMouseOver={() => setPartIndex2(index + 1)}
+                              onMouseLeave={() => setPartIndex2(0)}
+                            >
+                              {part.id}
+                            </ImageMark>
+                          )
+                        }
                         <img src={product.img} alt='' />
                         <p>
                           {product.title}
                         </p>
                         <div className={'legend'}>
+                          {/* CAR */}
                           {
                             index === 0 && carPartList.map((part, index) =>
-                              <p>
-                                <span>{part.id} - </span>
+                              <PartName isSelected={partIndex1===index+1}>
+                                <span>{part.id}</span> - &nbsp;
                                 {part.title}
-                              </p>
+                              </PartName>
                             )
                           }
-
+                          {/* WASHING MACHINE */}
                           {
                             index === 1 && washingPartList.map((part, index) =>
-                              <p>
-                                <span>{part.id} - </span>
+                              <PartName isSelected={partIndex2===index+1}>
+                                <span>{part.id}</span> - &nbsp;
                                 {part.title}
-                              </p>
+                              </PartName>
                             )
                           }
                         </div>

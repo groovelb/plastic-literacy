@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Container = styled.div`
+  position: relative;
   width: ${
     props => `calc((100% - ${(props.colPC - 1)*props.spacing}px)/${props.colPC})`
   };
