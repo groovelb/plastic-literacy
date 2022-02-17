@@ -18,12 +18,6 @@ import MainVer2 from "./page/MainVer2";
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  button{
-    position: fixed;
-    z-index: 99999;
-    top:0;
-    left:0;
-  }
 `;
 function App() {
   const onFullS = (isFull) => {
@@ -31,24 +25,8 @@ function App() {
   };
 
   const bttRef = useRef(null);
-  const element = useRef(null);
-  // const { element, triggerFull, exitFull } = useFullscreen(onFullS);
-
-  const triggerFull = (element) => {
-    console.log(element);
-    if (element.current) {
-      if (element.current.requestFullscreen) {
-        element.current.requestFullscreen();
-      } else if (element.current.mozRequestFullScreen) {
-        element.current.mozRequestFullScreen();
-      } else if (element.current.webkitRequestFullscreen) {
-        element.current.webkitRequestFullscreen();
-      } else if (element.current.msRequestFullscreen) {
-        element.current.msRequestFullscreen();
-      }
-      // runCb(true);
-    }
-  };
+  // const element = useRef(null);
+  const { element, triggerFull, exitFull } = useFullscreen(onFullS);
 
   useLayoutEffect(() => {
   
@@ -64,10 +42,12 @@ function App() {
       onMounted={() => console.log('mounted')}
     >
       <ThemeProvider theme={theme}>
-      <button ref={bttRef} onClick={() => {triggerFull(element)}}>Make fullscreen</button>
+      {/* <button ref={bttRef} onClick={() => {triggerFull(element)}}>Make fullscreen</button> */}
         <GlobalStyle />
         {/* <MainVer2 /> */}
-        <Router />
+        <Router
+          triggerFull={triggerFull}
+        />
       </ThemeProvider>
     </Container>
   );

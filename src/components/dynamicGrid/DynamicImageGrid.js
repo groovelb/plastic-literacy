@@ -46,9 +46,9 @@ const Grid = styled.div`
     transition: opacity 0.3s;
   }
   cursor: pointer;
-  :hover{
+  @media (hover: hover){
     z-index: 9;
-     width: ${props => props.type === 'question' ? `calc(2*${props.width})` : props.width};
+    width: ${props => props.type === 'question' ? `calc(2*${props.width})` : props.width};
      /* width: 200px; */
     h2.question{
       display: none;
@@ -63,10 +63,10 @@ const Grid = styled.div`
   }
   @media only screen and (max-width: 480px) {
     h2.question{
-    font-size: 14px;
-    line-height: 1.4;
-    max-width: 240px;
-  }
+      font-size: 14px;
+      line-height: 1.4;
+      max-width: 240px;
+    }
   }
 `;
 
@@ -86,10 +86,96 @@ const Answer = styled.div`
 const GridXNum = 6;
 const GridYNum = 4;
 
+const ModalContainer = styled.div`
+  position: absolute;
+  z-index: 999;
+  top: -120px;
+  left: 0;
+  width: 100%;
+  height: calc(100% + 120px);
+  background-color: ${props => props.theme.color.brand.darkNavy};
+  padding: 24px;
+  ${props => props.theme.layout.flexColCenter}
+  color: #fff;
+  word-break: keep-all;
+  white-space: pre-line;
+  .question{
+    width: 100%;
+    text-align: left;
+    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.weight.bold}
+    font-weight: 800;
+    opacity: 1;
+  }
+  .answer{
+    text-align: left;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    width: 100%;
+    color: ${props => props.theme.color.signal.highlight};
+    ${props => props.theme.type.size.title2}
+    ${props => props.theme.type.weight.bold}
+  }
+  .exp{
+    width: 100%;
+    ${props => props.theme.type.size.body2}
+  }
+  button{
+    margin-top: 48px;
+    width: 100%;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 0px 16px; */
+    background: none;
+    outline: none;
+    border-radius: 4px;
+    border: solid 1px #fff;
+    color: #fff;
+  }
+`;
+
+const Modal = ({
+  answer1,
+  answer2,
+  question,
+  onClose
+}) => (
+  <ModalContainer>
+    <p className={'question'}>
+      {question}
+    </p>
+    <h2 className={'answer'}>
+      {answer1}
+    </h2>
+    <p className={'exp'}>
+      {answer2}
+    </p>
+    <button
+      onClick={onClose}
+    >
+      닫기
+    </button>
+  </ModalContainer>
+);
+
 
 const DynamicImageGrid = ({ gridData }) => {
+  const [isAnwser, setIsAnswer] = useState(false);
+  const [index, setIndex] = useState(0);
   return (
     <Container>
+      {isAnwser &&
+        <Modal
+          question={gridData[index].question}
+          answer1={gridData[index].answer1}
+          answer2={gridData[index].answer2}
+          onClose={
+            () => setIsAnswer(false)
+            }
+        />}
+
       {
         gridData.map((grid, index) =>
         (
@@ -100,6 +186,12 @@ const DynamicImageGrid = ({ gridData }) => {
             width={grid.unitWidth / GridXNum * 100 + '%'}
             height={grid.unitHeight / GridYNum * 100 + '%'}
             type={grid.type}
+            onClick={
+              () => {
+                setIndex(index);
+                setIsAnswer(true);
+              }
+            }
           >
             {grid.type === 'question' &&
               <>

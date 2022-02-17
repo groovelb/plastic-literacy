@@ -512,7 +512,8 @@ const consumptionList = [
 const Chapter1 = ({
   currentChapter,
   chapterObject,
-  setThemeType
+  setThemeType,
+  triggerFull
 }) => {
 
   const { t } = useTranslation();
@@ -522,7 +523,7 @@ const Chapter1 = ({
     console.log(isFull ? "We are full" : "We are small");
   };
 
-  const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+  // const { element, triggerFull, exitFull } = useFullscreen(onFullS);
 
   // Image Preview
   const [currentImageIndexS1, setCurrentImageIndexS1] = useState(0);
@@ -841,7 +842,7 @@ const Chapter1 = ({
   const [isVideo, setIsVideo] = useState(false);
 
   return (
-    <Container ref={element}>
+    <Container>
       <ChapterIndicator
         sectionList={summary}
         isTrigger={0 < currentPage}
@@ -903,7 +904,7 @@ const Chapter1 = ({
             onClick={() => {
               setCurrentPage(1);
               setTimeout(() =>{
-                triggerFull();
+                isMobile&&triggerFull();
               },1200);
             }}
           />

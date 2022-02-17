@@ -27,7 +27,7 @@ const Background = styled.div`
     props.theme.color.ui.bg.dark
   };
 `;
-export default () => {
+export default ({triggerFull}) => {
   const [themeType, setThemeType] = useState('light');
 
   return (
@@ -55,6 +55,7 @@ export default () => {
             path="/chapter1"
             exact element={
               <Chapter1
+                triggerFull={triggerFull}
                 currentChapter={1}
                 setThemeType={setThemeType}
                 themeType={themeType}

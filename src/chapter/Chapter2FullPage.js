@@ -117,7 +117,8 @@ const Chart = styled.div`
     top: 32px;
     padding-top: 108px;
     width: calc(200% - 128px);
-    height: calc(100% - 300px);
+    height: calc(100% - 320px);
+    padding-left:0px;
     left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
     transition: all 0.2s ease-in-out;
   }
@@ -131,7 +132,9 @@ const Source = styled.p`
   ${props => props.theme.type.weight.prd.regular}
   opacity: 0.48;
   @media only screen and (max-width: 480px) {
+    right: unset;
     left: 24px;
+    width: 320px;
   }
 `;
 
@@ -378,7 +381,7 @@ const Chapter2FullPage = ({
         <Top isActive={1 < currentPage && currentPage < 5}>
           <Chart
             step={
-              currentPage === 1 || currentPage === 2 || currentPage === 3 ? 0 :
+              currentPage === 1 || currentPage === 2 ? 0 :
                 1
             }
             isFilter={currentPage === 2}
@@ -403,7 +406,7 @@ const Chapter2FullPage = ({
           <Chart
             isActive={7 < currentPage && currentPage < 11}
             step={
-              currentPage === 8|| currentPage === 9 ? 0 :
+              currentPage === 7|| currentPage === 8 ? 0 :
                 1
             }
           >
