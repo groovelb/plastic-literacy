@@ -111,8 +111,6 @@ const Chart = styled.div`
   }
 `;
 
-
-
 const ChartTitle = styled.p`
   padding-left: 44px;
   margin-bottom: 12px;
