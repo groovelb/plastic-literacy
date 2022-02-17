@@ -38,7 +38,8 @@ const Grid = ({
   isBorder,
   length,
   spacing,
-  className
+  className,
+  style
 }) => (
   <Container
     isBorder={isBorder}

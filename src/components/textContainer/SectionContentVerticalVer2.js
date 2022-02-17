@@ -44,7 +44,7 @@ const TextContent = styled.div`
     }
     left: 24px;
     top: unset;
-    bottom: 48px;
+    bottom: 24px;
     width: calc(100% - 48px);
   }
 `;
@@ -71,6 +71,9 @@ const SectionTitle = styled.div`
     width: calc(480px - 80px);
     margin-top: -8px;
     margin-bottom:8px;
+    @media only screen and (max-width: 480px) {
+      
+    }
   }
 `;
 

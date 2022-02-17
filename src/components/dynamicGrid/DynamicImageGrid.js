@@ -46,7 +46,7 @@ const Grid = styled.div`
     transition: opacity 0.3s;
   }
   cursor: pointer;
-  @media (hover: hover){
+  :hover{
     z-index: 9;
     width: ${props => props.type === 'question' ? `calc(2*${props.width})` : props.width};
      /* width: 200px; */

@@ -89,7 +89,7 @@ const Chart = styled(LiveArea)`
     width: 100%;
     height: auto;
     left: 0;
-    top: 0px;
+    top: 36px;
     padding-top: 48px;
     /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   }
@@ -118,6 +118,20 @@ const Row = styled.div`
       height: 200px !important;
       width: auto !important;
     }
+    @media only screen and (max-width: 480px) {
+        .imgContainer{
+          height: 100px;
+          ${props => props.theme.layout.flexColCenter}
+        }
+        img.car{
+          height: 72px !important;
+          width: auto;
+        }
+        img.washing{
+          height: 100px !important;
+          width: auto;
+        }
+      }
   }
   .legend{
     text-align: left;
@@ -159,6 +173,11 @@ const ImageMark = styled.div`
   opacity: 0.75;
   :hover{
     opacity: 1;
+  }
+  @media only screen and (max-width: 480px) {
+    width: 16px;
+    height: 16px;
+    border-radius: 8px;
   }
 `;
 
@@ -327,7 +346,8 @@ const Stage = styled.div`
   transition: border 0.4s;
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.white};
   @media only screen and (max-width: 480px) {
-    height: 180px
+    height: 120px;
+    padding: 12px 0;
   }
   .arrow{
     position: absolute;
@@ -358,7 +378,7 @@ const Stage = styled.div`
   }
   };
     @media only screen and (max-width: 480px) {
-      height: 164px;
+      height: 100%;
       width: auto;
     }
   }
@@ -370,13 +390,18 @@ const StageTitle = styled.p`
   ${props => props.theme.type.weight.prd.bold};
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
   @media only screen and (max-width: 480px) {
-    
+    margin-top: 8px;
   }
 `;
 
 const StageContent = styled(SectionContentVertical)`
   position: static;
   margin-left: ${props => props.left};
+  @media only screen and (max-width: 480px) {
+    margin-top: 16px;
+    margin-left: 0px;
+    width: 100%;
+  }
 `;
 
 const Chapter3 = ({
@@ -577,26 +602,26 @@ const Chapter3 = ({
     {
       title: 'Lamp Housing',
       id: 'A',
-      top: 70,
-      left: -47,
+      top: isMobile?18:70,
+      left: isMobile?-14:-47,
     },
     {
       title: 'Engine Under Cover',
       id: 'B',
-      top: 110,
-      left: -30,
+      top: isMobile?48:110,
+      left: isMobile?-10:-30,
     },
     {
       title: 'Mud Guard',
       id: 'C',
-      top: 144,
-      left: 86,
+      top: isMobile?48:144,
+      left: isMobile?48:86,
     },
     {
       title: 'Wheel Guard',
       id: 'D',
-      top: 96,
-      left: 340,
+      top: isMobile?30:96,
+      left: isMobile?128:340,
     },
   ];
 
@@ -604,20 +629,20 @@ const Chapter3 = ({
     {
       title: 'Drawer Panel',
       id: 'A',
-      top: 8,
-      left: 128,
+      top: isMobile?-12:8,
+      left: isMobile?44:128,
     },
     {
       title: 'Control Panel',
       id: 'B',
-      top: 8,
-      left: 224,
+      top: isMobile?-12:8,
+      left: isMobile?92:224,
     },
     {
       title: 'Carbinet Base',
       id: 'C',
-      top: 180,
-      left: 180,
+      top: isMobile?80:180,
+      left: isMobile?72:180,
     }
   ];
 
@@ -700,7 +725,7 @@ const Chapter3 = ({
                   colMb={3}
                   index={index}
                   length={arr}
-                  spacing={isMobile ? 16 : 48}
+                  spacing={isMobile ? 8 : 48}
                 >
                   <ToRight
                     isTrigger={1 < currentPage}
@@ -927,7 +952,7 @@ const Chapter3 = ({
                     colMb={3}
                     index={index}
                     length={arr}
-                    spacing={isMobile ? 16 : 48}
+                    spacing={isMobile ? 8 : 48}
                   >
                     <ToRight
                       isTrigger={currentPage === 7}
@@ -985,7 +1010,7 @@ const Chapter3 = ({
                       <Grid
                         colPC={2}
                         colMb={2}
-                        spacing={24}
+                        spacing={isMobile?8:24}
                         length={arr.length}
                         index={index}
                         className={'product high'}
@@ -1016,7 +1041,10 @@ const Chapter3 = ({
                             </ImageMark>
                           )
                         }
-                        <img src={product.img} alt='' />
+                        <div className='imgContainer'>
+                          <img className={index===0?'car':'washing'} src={product.img} alt='' />
+                        </div>
+                       
                         <p>
                           {product.title}
                         </p>

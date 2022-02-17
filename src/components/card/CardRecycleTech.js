@@ -14,6 +14,7 @@ const Container = styled.div`
   justify-content: space-between;
   @media only screen and (max-width: 480px) {
     height: auto !important;
+    padding: 12px 16px;
   }
 `;
 
@@ -25,21 +26,23 @@ const Top = styled.div`
     color: ${props => props.theme.color.brand.epGreen};
     white-space: break-spaces;
     @media only screen and (max-width: 480px) {
+      ${props => props.theme.type.size.title2}
       display: flex;
       align-items: center;
       white-space: normal;
       margin-bottom:16px;
-      font-size: 22px;
+      /* font-size: 22px; */
       line-height: 1.5;
+      margin-bottom: 8px;
       img{
-        width: 44px;
-        height: 44px;
+        width: 40px;
+        height: 40px;
         margin-right: 4px;
       }
     }
   }
   p{
-    ${props => props.theme.type.size.body1}
+    ${props => props.theme.type.size.body2}
     ${props => props.theme.type.weight.prd.bold}
     white-space: break-spaces;
     @media only screen and (max-width: 480px) {
