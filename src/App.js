@@ -33,7 +33,7 @@ const GlobalStyle = createGlobalStyle`
     
   }
   html{
-    /* overflow: hidden; */
+    overflow: hidden;
     width: 100%;
     height: 100%;
   }
@@ -44,7 +44,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height:100%;
     width:100%;
-    /* position: fixed; */
+    position: fixed;
     /* prevent overscroll bounce*/
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
