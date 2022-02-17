@@ -20,12 +20,14 @@ function App() {
 
   useEffect(() => {
     handle.enter();
-  },[])
+  }, [])
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       {/* <MainVer2 /> */}
-      <Router />
+      <FullScreen>
+        <Router />
+      </FullScreen>
     </ThemeProvider>
   );
 }
