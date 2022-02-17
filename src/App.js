@@ -3,6 +3,7 @@ import './App.css';
 import './assets/font/pretendardvariable.css';
 import './translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
@@ -15,10 +16,11 @@ import MainVer2 from "./page/MainVer2";
 
 
 function App() {
+  const handle = useFullScreenHandle();
 
   useEffect(() => {
-    window.scrollTo(0, 1);
-  })
+    handle.enter();
+  },[])
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -47,10 +49,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height:100%;
     width:100%;
-    position: fixed;
-    /* prevent overscroll bounce*/
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
     } 
    // Title
   .circle_path_whole.inner{
