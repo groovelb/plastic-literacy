@@ -15,6 +15,10 @@ import MainVer2 from "./page/MainVer2";
 
 
 function App() {
+
+  useEffect(() => {
+    window.scrollTo(0, 1);
+  })
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
