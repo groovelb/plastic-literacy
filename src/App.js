@@ -1,12 +1,12 @@
 import logo from './logo.svg';
+import styled from "styled-components";
 import './App.css';
 import './assets/font/pretendardvariable.css';
 import './translate/I18nSetting';
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
-import styled from 'styled-components';
 import Scrollbar from 'smooth-scrollbar';
 import Router from "./router/Router";
 import useFullscreen from './hook/useFullScreen';
@@ -15,14 +15,61 @@ import useFullscreen from './hook/useFullScreen';
 import MainVer2 from "./page/MainVer2";
 
 
+const Container = styled.div`
+  width: 100%;
+  height: 100%;
+  button{
+    position: fixed;
+    z-index: 99999;
+    top:0;
+    left:0;
+  }
+`;
 function App() {
+  const onFullS = (isFull) => {
+    console.log(isFull ? "We are full" : "We are small");
+  };
+
+  const bttRef = useRef(null);
+  const element = useRef(null);
+  // const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+
+  const triggerFull = (element) => {
+    console.log(element);
+    if (element.current) {
+      if (element.current.requestFullscreen) {
+        element.current.requestFullscreen();
+      } else if (element.current.mozRequestFullScreen) {
+        element.current.mozRequestFullScreen();
+      } else if (element.current.webkitRequestFullscreen) {
+        element.current.webkitRequestFullscreen();
+      } else if (element.current.msRequestFullscreen) {
+        element.current.msRequestFullscreen();
+      }
+      // runCb(true);
+    }
+  };
+
+  useLayoutEffect(() => {
+  
+    setTimeout(() =>{
+      // bttRef.current.click();
+      // triggerFull(element);
+    },500);
+  },[]);
 
   return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      {/* <MainVer2 /> */}
-      <Router />
-    </ThemeProvider>
+    <Container
+      ref={element}
+      onMounted={() => console.log('mounted')}
+    >
+      <ThemeProvider theme={theme}>
+      <button ref={bttRef} onClick={() => {triggerFull(element)}}>Make fullscreen</button>
+        <GlobalStyle />
+        {/* <MainVer2 /> */}
+        <Router />
+      </ThemeProvider>
+    </Container>
   );
 }
 const GlobalStyle = createGlobalStyle`

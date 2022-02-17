@@ -893,7 +893,6 @@ const Chapter1 = ({
         renderAllPagesOnFirstRender={true}
       >
         <Page>
-        <button onClick={triggerFull}>Make fullscreen</button>
           <ChapterTitle
             isFilter={true}
             title={'플라스틱 딜레마'}
@@ -903,6 +902,9 @@ const Chapter1 = ({
             img={bg_c1}
             onClick={() => {
               setCurrentPage(1);
+              setTimeout(() =>{
+                triggerFull();
+              },1200);
             }}
           />
         </Page>

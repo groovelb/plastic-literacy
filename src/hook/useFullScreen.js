@@ -8,6 +8,7 @@ const useFullscreen = (callback) => {
     }
   };
   const triggerFull = () => {
+    console.log(element);
     if (element.current) {
       if (element.current.requestFullscreen) {
         element.current.requestFullscreen();
