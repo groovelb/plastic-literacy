@@ -31,7 +31,7 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.48)' : 'rgba(0,0,0,0)'};
+    background-color: ${props => props.isFilter ? 'rgba(0,0,0,0.56)' : 'rgba(0,0,0,0)'};
     /* background-color: ${props => props.isFilter ? 'rgba(0,48,24,0.64)' : 'rgba(0,0,0,0)'}; */
   }
 	*{
@@ -64,6 +64,17 @@ const ButtonScroll = styled.div`
 	animation: ${Blink} 2s ease-out 0s infinite;
 	cursor: pointer;
 	z-index: 99;
+	@media only screen and (max-width: 480px) {
+		width: 48px;
+		height: 48px;
+		position: absolute;
+		left: calc(50% - 24px);
+		bottom: 8px;
+		img{
+			width: 100%;
+			height: auto;
+		}
+	}
 `;
 
 const Title = styled.div`
@@ -85,6 +96,8 @@ const SubTitle = styled.div`
 	${props => props.theme.type.weight.exp.regular}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	white-space: pre-line;
+	word-break: keep-all;
 	span{
 		${props => props.theme.type.weight.exp.regular}
 	}
@@ -98,20 +111,25 @@ const Divider = styled.div`
 	height: 4px;
 	background-color: #fff;
 	margin: 24px 0px;
+	@media only screen and (max-width: 480px) {
+		width: 120px;
+	}
 `;
 
 
 const Exp = styled.div`
 	position: relative;
-	width: 800px;
-	${props => props.theme.type.size.title2}
+	width: 720px;
+	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.bold}
 	text-align: left;
 	margin-top: 12px;
+	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
 	/* border: solid 1px #fff; */
 	margin-top: 80px;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
+		margin-top: 48px;
 	}
 `;
 

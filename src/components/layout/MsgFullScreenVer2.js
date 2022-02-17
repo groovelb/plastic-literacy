@@ -29,7 +29,7 @@ const Container = styled.div`
     z-index: -1;
   }
   @media only screen and (max-width: 480px) {
-    padding:0 24px;
+    padding: 96px 24px 0px 24px;
   }
 `;
 
@@ -42,6 +42,9 @@ const Title = styled.div`
 		${props => props.theme.type.weight.prd.black}
 		text-transform: capitalize;
 		margin-bottom: 80px;
+    @media only screen and (max-width: 480px) {
+      margin-bottom: 24px;
+    }
 	}
 	h2{
 		${props => props.theme.type.size.h1}
@@ -72,6 +75,7 @@ const Exp = styled.div`
  
 	@media only screen and (max-width: 480px) {
 		width: 100%;
+    margin-top: 0px;
 	}
 `;
 

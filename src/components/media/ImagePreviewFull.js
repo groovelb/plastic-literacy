@@ -47,12 +47,18 @@ const ActionBar = styled.div`
   justify-content: space-between;
   width: 100%;
   display: flex;
+  z-index: 9;
+  @media only screen and (max-width: 480px) {
+    height: 24px;
+    bottom: calc(50% - 12px);
+  }
 `;
 
 const Btt = styled.button`
   width: 48px;
   height: 48px;
   ${props => props.theme.layout.flexColCenter}
+  cursor: pointer;
   img{
     width: auto;
     height: 100%;
@@ -62,6 +68,10 @@ const Btt = styled.button`
   border: none;
   :disabled{
     opacity: 0.2;
+  }
+  @media only screen and (max-width: 480px) {
+    width: 24px;
+    height: 24px;
   }
 `;
 

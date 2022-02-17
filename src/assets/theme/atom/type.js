@@ -63,8 +63,8 @@ const type = {
     line-height: 64px;
     letter-spacing: 4px;
     @media only screen and (max-width: 480px) {
-      font-size: 40px;
-      line-height: 46px;
+      font-size: 32px;
+      line-height: 32px;
       letter-spacing:  1.5px;
     }
     `,
@@ -80,8 +80,8 @@ const type = {
     line-height: 1.5;
     letter-spacing: 0px;
     @media only screen and (max-width: 480px) {
-      font-size: 24px;
-      line-height: 32px;
+      font-size: 22px;
+      line-height: 30px;
       letter-spacing:  0px;
     }
     `,

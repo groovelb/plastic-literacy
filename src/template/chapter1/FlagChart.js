@@ -58,7 +58,7 @@ const List = styled.div`
   height: 80px;
   align-items: center;
   @media only screen and (max-width: 480px) {
-    height: 64px;
+    height: 40px;
   }
 `;
 
@@ -69,7 +69,7 @@ const Flag = styled.div`
     height: auto;
   }
   @media only screen and (max-width: 480px) {
-    width: 48px;
+    width: 28px;
   }
 `;
 
@@ -92,9 +92,9 @@ const Bottles = styled.div`
     margin-left: 8px;
     margin-right: 8px;
     .bottle{
-      width: 16px;
+      width: 14px;
       img{
-        width: 12px;
+        width: 10px;
       }
     }
     width: calc(100% - 32px - 24px);

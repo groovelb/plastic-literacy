@@ -143,7 +143,7 @@ const TimeChart = styled.div`
 const Chart = styled(LiveArea)`
   /* display: none; */
   position: fixed;
-  pointer-events: none;
+  /* pointer-events: none; */
   z-index: 0;
   top:200px;
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
@@ -168,7 +168,7 @@ const Chart = styled(LiveArea)`
     width: calc(100% + 32px);
     height: 55%;
     left: -16px;
-    top: 164px;
+    top: 96px;
     padding-top: 48px;
     background-color: ${props => props.theme.color.ui.bg.dark};
   }
@@ -210,14 +210,16 @@ const ChartTitlePadding = styled.div`
       ${props => props.theme.type.weight.prd.bold};
     }
     @media only screen and (max-width: 480px) {
+      position: static;
+      margin-top: 24px;
       top:48px;
-      left: 16px;
+      left: 0px;
       width: 100%;
       text-align: center;
     }
   }
   @media only screen and (max-width: 480px) {
-    padding-left: 24px;
+    padding-left: 0px;
   }
 `;
 const ChartUnit = styled.p`
@@ -369,7 +371,7 @@ const Row = styled.div`
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
   @media only screen and (max-width: 480px) {
-		margin-top: 120px;
+		margin-top: 90px;
 	}
 `;
 
@@ -385,7 +387,7 @@ const RowBig = styled.div`
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
   @media only screen and (max-width: 480px) {
-		margin-top: 0px;
+		margin-top: 120px;
 	}
 `;
 
@@ -401,7 +403,7 @@ const RowAuto = styled.div`
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
   @media only screen and (max-width: 480px) {
-		margin-top: 120px;
+		margin-top: 96px;
     height: auto;
 	}
 `;
@@ -469,7 +471,7 @@ const ExpFloating = styled.div`
     white-space: normal;
     padding:0 24px;
     top: unset;
-    bottom: 64px !important;
+    bottom: 24px !important;
   }
 `;
 
@@ -799,27 +801,32 @@ const Chapter1 = ({
     {
       title: '1860s',
       exp: `동물을 보호한 최초의 플라스틱 셀룰로이드`,
+      expMobile: `첫 발견`,
       img: img_timeline1,
     },
     {
       title: '1880s',
       exp: `영화의 대중화에 중요한 역할을 한 플라스틱 롤 필름`,
+      expMobile: `영화산업`,
       img: img_timeline2,
     },
     {
       title: '1940s',
       exp: `외부 환경으로부터 식품 오염을 막을 수 있도록 도와준 플라스틱 식품용기`,
+      expMobile: `포장산업`,
       img: img_timeline3,
     },
     {
       title: '1940s',
       exp: `대량생산이 가능해지면서 대중화에 큰 도움을 주었던 플라스틱(PVC) LP판`,
+      expMobile: `음반산업`,
       img: img_timeline4,
 
     },
     {
       title: '1960s',
       exp: `우주의 높은 온도와 압력을 극복한 플라스틱 소재로 발전한 우주산업`,
+      expMobile: `우주산업`,
       img: img_timeline5,
     }
   ];
@@ -902,7 +909,7 @@ const Chapter1 = ({
                 }
                 {
                   i !== 0 && <SectionTitleFloating
-                    top={'48px'}
+                    top={isMobile?'16px':'48px'}
                     title={`${section.title}`}
                   />
                 }
@@ -927,6 +934,7 @@ const Chapter1 = ({
                             <CardTimeline
                               title={time.title}
                               exp={time.exp}
+                              expMobile={time.expMobile}
                               key={index}
                               index={index}
                               img={time.img}
@@ -957,7 +965,7 @@ const Chapter1 = ({
                       buildingList.map((building, index) =>
                         <Grid
                           colPC={3}
-                          colMb={2}
+                          colMb={index===2?1:2}
                           index={index}
                           spacing={isMobile ? 0 : 0}
                           length={3}

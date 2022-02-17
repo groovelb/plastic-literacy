@@ -13,7 +13,7 @@ const Container = styled.div`
   @media only screen and (max-width: 480px) {
     height: auto;
     padding: 8px 0;
-    margin-top: 24px;
+    margin-top: 8px;
   }
 `;
 

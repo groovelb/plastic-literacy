@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import styled from "styled-components";
 import ic_play from "../../assets/icon/ic_play.svg";
+import { isMobile } from 'react-device-detect';
 
 const Container = styled.div`
   width: 100%;
@@ -40,6 +41,9 @@ const Container = styled.div`
     opacity: 0;
     transition: opacity 0.3s;
     cursor: pointer;
+    @media only screen and (max-width: 480px) {
+      opacity: 1;
+    }
   }
   :hover{
     text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
@@ -52,7 +56,11 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 480px) {
     padding: 16px;
-		height: 120px;
+		height: 112px;
+    :before{
+      filter: grayscale(40%) brightness(50%);
+    }
+
     margin-top: 0px !important;
 	}
 `;
@@ -75,6 +83,11 @@ const Play = styled.button`
     height: 24px;
     margin-left: 16px;
   }
+  @media only screen and (max-width: 480px) {
+    border: none;
+    display: none;
+    justify-content: flex-start;
+  } 
 `;
 
 const Num = styled.div`
@@ -92,15 +105,16 @@ const Exp = styled.div`
   ${props => props.theme.type.weight.prd.bold}
   word-break: keep-all;
   @media only screen and (max-width: 480px) {
-    ${props => props.theme.type.size.caption}
-    ${props => props.theme.type.weight.prd.regular}
-    display: none;
+    /* ${props => props.theme.type.size.caption} */
+    /* ${props => props.theme.type.weight.prd.regular} */
+    /* display: none; */
   }
 `;
 
 const CardTimeline = ({
   title,
   exp,
+  expMobile,
   index,
   img,
   setIsVideo,
@@ -119,11 +133,14 @@ const CardTimeline = ({
           {title}
         </Num>
         <Exp>
-          {exp}
+          {isMobile?expMobile:exp}
         </Exp>
       </div>
+
       <Play onClick={onClick}>
-        관련영상 재생
+        {
+          isMobile ? null : '영상재생'
+        }
         <img src={ic_play} alt='' />
       </Play>
     </Container>

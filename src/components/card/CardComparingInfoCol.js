@@ -14,6 +14,7 @@ const Container = styled.div`
   @media only screen and (max-width: 480px) {
     height: auto;
     padding: 8px 0;
+    height: auto;
     margin-top: 24px;
   }
 `;
@@ -38,6 +39,8 @@ const Content = styled.div`
   justify-content: space-between;
   height: 320px;
   @media only screen and (max-width: 480px) {
+    justify-content: flex-start;
+    flex-direction: row;
     height: auto;
   }
 `;
@@ -45,10 +48,14 @@ const Content = styled.div`
 const Img = styled.div`
   width: 100%;
   @media only screen and (max-width: 480px) {
+    width: 50%;
+    display: flex;
+    align-self: flex-end;
     img{
-      margin-top: 32px;
+      margin-top: 8px;
       width: auto;
       height: 32px;
+      margin-left: -50%;
     }
   }
 `;
@@ -66,6 +73,9 @@ const ImgBg = styled.img`
 
 const Text = styled.div`
   width: 100%;
+  @media only screen and (max-width: 480px) {
+    width: 50%;
+  }
 `;
 
 const Number = styled.p`

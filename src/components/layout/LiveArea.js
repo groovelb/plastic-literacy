@@ -9,7 +9,7 @@ const Container = styled.div`
 	margin-right: auto;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
-		padding: 0 24px;
+		padding: 0 20px;
 	}
 `;
 
