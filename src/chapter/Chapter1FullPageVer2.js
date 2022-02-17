@@ -3,6 +3,7 @@ import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
 import ReactPageScroller from 'react-page-scroller';
 import { isMobile } from 'react-device-detect';
+import useFullscreen from '../hook/useFullScreen';
 
 import Page from '../components/layout/Page';
 import ChapterSummary from '../components/layout/ChapterSummary';
@@ -517,6 +518,12 @@ const Chapter1 = ({
   const { t } = useTranslation();
   const windowSize = useWindowSize();
 
+  const onFullS = (isFull) => {
+    console.log(isFull ? "We are full" : "We are small");
+  };
+
+  const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+
   // Image Preview
   const [currentImageIndexS1, setCurrentImageIndexS1] = useState(0);
   const imgListS1 = [
@@ -834,7 +841,7 @@ const Chapter1 = ({
   const [isVideo, setIsVideo] = useState(false);
 
   return (
-    <>
+    <Container ref={element}>
       <ChapterIndicator
         sectionList={summary}
         isTrigger={0 < currentPage}
@@ -886,6 +893,7 @@ const Chapter1 = ({
         renderAllPagesOnFirstRender={true}
       >
         <Page>
+        <button onClick={triggerFull}>Make fullscreen</button>
           <ChapterTitle
             isFilter={true}
             title={'플라스틱 딜레마'}
@@ -1090,7 +1098,7 @@ const Chapter1 = ({
         </MsgFullScreen>
         {/* </ImageBackground> */}
       </ReactPageScroller>
-    </>
+    </Container>
   )
 }
 

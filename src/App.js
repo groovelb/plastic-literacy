@@ -3,31 +3,25 @@ import './App.css';
 import './assets/font/pretendardvariable.css';
 import './translate/I18nSetting';
 import React, { useEffect, useState, useRef } from "react";
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
 import styled from 'styled-components';
 import Scrollbar from 'smooth-scrollbar';
 import Router from "./router/Router";
+import useFullscreen from './hook/useFullScreen';
 
 // Chapter
 import MainVer2 from "./page/MainVer2";
 
 
 function App() {
-  const handle = useFullScreenHandle();
 
-  useEffect(() => {
-    handle.enter();
-  }, [])
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       {/* <MainVer2 /> */}
-      <FullScreen>
-        <Router />
-      </FullScreen>
+      <Router />
     </ThemeProvider>
   );
 }
@@ -51,6 +45,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     height:100%;
     width:100%;
+
     } 
    // Title
   .circle_path_whole.inner{

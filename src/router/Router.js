@@ -31,7 +31,7 @@ export default () => {
   const [themeType, setThemeType] = useState('light');
 
   return (
-    <Div100vh>
+
       <Router>
         <GNB
           themeType={themeType}
@@ -86,6 +86,5 @@ export default () => {
           />
         </Routes>
       </Router>
-    </Div100vh>
   )
 };
