@@ -15,7 +15,6 @@ import MainVer2 from "./page/MainVer2";
 
 
 function App() {
-
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
