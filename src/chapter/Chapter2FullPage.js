@@ -449,7 +449,7 @@ const Chapter2FullPage = ({
         </Page> */}
         <ImageBackground
           isFilter={true}
-          img={videoURL.c2.s5.bg}
+          img={videoURL.c2.t1}
           isTrigger={true}
         >
           <MsgFullScreen
@@ -489,7 +489,7 @@ const Chapter2FullPage = ({
         </Page>
         <ImageBackground
           isFilter={true}
-          img={videoURL.c2.s5.bg}
+          img={videoURL.c2.t2}
           isTrigger={true}
         >
           <MsgFullScreen

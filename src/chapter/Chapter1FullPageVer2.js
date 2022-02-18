@@ -714,7 +714,7 @@ const Chapter1 = ({
     {
       title: t("c1-s2-title"),
       exp: t("c1-s2-exp"),
-      pageList: [2,3],
+      pageList: [2, 3],
       page: 2,
     },
     {
@@ -732,7 +732,7 @@ const Chapter1 = ({
     {
       title: t("c1-s5-title"),
       exp: t("c1-s5-exp"),
-      pageList: [6,7],
+      pageList: [6, 7],
       page: 7,
     }
   ];
@@ -779,11 +779,11 @@ const Chapter1 = ({
   const handlePageChange = (number) => {
     console.log(number);
     let num = number;
-    if(num<0){
+    if (num < 0) {
       console.log(`it's minus! set number 0!`);
       num = 0;
     }
-    if(8<num){
+    if (8 < num) {
       console.log(`it's overflow! set number 8!`);
       num = 8;
     }
@@ -793,7 +793,7 @@ const Chapter1 = ({
     setCurrentPage(num);
     if (1 < num && num < 11) {
       // setData(content[number - 2].data);
-      if (num === 2 ) setData(content[1].data);
+      if (num === 2) setData(content[1].data);
       // if (number === 5 || number === 6) setData(content[3].data);
       if (num === 5) setData(content[5].data);
       // if (number === 7) setData(content[6].data);
@@ -861,7 +861,7 @@ const Chapter1 = ({
         />
         <ChartTitlePadding>
           <p className="caption">
-            <span>{content[currentPage - 1] && content[currentPage - 1].chartTitle}</span><br/>
+            <span>{content[currentPage - 1] && content[currentPage - 1].chartTitle}</span><br />
             {content[currentPage - 1] && content[currentPage - 1].from}
           </p>
         </ChartTitlePadding>
@@ -903,9 +903,9 @@ const Chapter1 = ({
             img={bg_c1}
             onClick={() => {
               setCurrentPage(1);
-              setTimeout(() =>{
-                isMobile&&triggerFull();
-              },1200);
+              setTimeout(() => {
+                isMobile && triggerFull();
+              }, 1200);
             }}
           />
         </Page>
@@ -920,7 +920,7 @@ const Chapter1 = ({
                 }
                 {
                   i !== 0 && <SectionTitleFloating
-                    top={isMobile?'16px':'48px'}
+                    top={isMobile ? '16px' : '48px'}
                     title={`${section.title}`}
                   />
                 }
@@ -976,7 +976,7 @@ const Chapter1 = ({
                       buildingList.map((building, index) =>
                         <Grid
                           colPC={3}
-                          colMb={index===2?1:2}
+                          colMb={index === 2 ? 1 : 2}
                           index={index}
                           spacing={isMobile ? 0 : 0}
                           length={3}
@@ -1085,20 +1085,22 @@ const Chapter1 = ({
           // img={bg_c1_transition}
           isTrigger={currentPage === 6}
         > */}
-        <MsgFullScreen
-          title={t('c1-s6-title')}
-          exp={t('c1-s6-exp')}
-        >
-          <Row3>
-            <ChapterTitleLink
-              title={'플라스틱의 여정'}
-              num={2}
-              img={bg_c2}
-              to={'/chapter2'}
-              exp={t('c2-subtitle')}
-            />
-          </Row3>
-        </MsgFullScreen>
+        <Page>
+          <MsgFullScreen
+            title={t('c1-s6-title')}
+            exp={t('c1-s6-exp')}
+          >
+            <Row3>
+              <ChapterTitleLink
+                title={'플라스틱의 여정'}
+                num={2}
+                img={bg_c2}
+                to={'/chapter2'}
+                exp={t('c2-subtitle')}
+              />
+            </Row3>
+          </MsgFullScreen>
+        </Page>
         {/* </ImageBackground> */}
       </ReactPageScroller>
     </Container>

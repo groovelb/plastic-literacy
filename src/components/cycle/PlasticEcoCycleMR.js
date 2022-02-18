@@ -56,7 +56,6 @@ const Title = styled.div`
   text-align: center;
 `;
 
-
 const Container = styled.div`
    width: ${`calc(1200px + ${margin.left}px + ${margin.right}px )`};
    height: ${`calc(498px + ${margin.top}px + ${margin.bottom}px )`};

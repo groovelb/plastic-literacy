@@ -12,6 +12,8 @@ export const videoURL = {
   },
   c2: {
     bg: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/bg/c2-title_BG.mp4',
+    t1: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/c2_transtion1.jpg',
+    t2: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/c2_transition2.jpg',
     s1: {
       bg: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/bg/c2-s1-title_BG.jpg'
     },
@@ -47,6 +49,8 @@ export const videoURL = {
     },
     s8:{
       bg: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/bg/c3-s8-title_BG.png'
-    }
+    },
+    ending1: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/c3_ending.png',
+    ending2: 'https://plastic-literacy.s3.ap-northeast-2.amazonaws.com/c3_ending2.jpg'
   }
 };

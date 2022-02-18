@@ -47,6 +47,9 @@ const Content = styled(LiveArea)`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	@media only screen and (max-width: 480px) {
+		width: 100%;
+	}
 `;
 
 const Blink = keyframes`
@@ -72,7 +75,8 @@ const Title = styled.div`
 	${props => props.theme.type.weight.prd.black}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
-	white-space: break-spaces;
+	word-break: keep-all;
+	white-space: pre-line;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
@@ -98,6 +102,7 @@ const Exp = styled.div`
 	text-align: center;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
+		white-space: normal;
 	}
 `;
 

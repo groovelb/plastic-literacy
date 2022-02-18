@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
+import { isMobile } from 'react-device-detect';
 
 import img_grid1 from '../../assets/img/c2/grid/img_grid_mixed.jpg';
 import img_grid2 from '../../assets/img/c2/grid/img_grid_polluted.jpg';
@@ -188,8 +189,10 @@ const DynamicImageGrid = ({ gridData }) => {
             type={grid.type}
             onClick={
               () => {
-                setIndex(index);
-                setIsAnswer(true);
+                if(isMobile){
+                  setIndex(index);
+                  setIsAnswer(true);
+                }
               }
             }
           >

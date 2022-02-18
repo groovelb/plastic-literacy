@@ -30,6 +30,10 @@ const Container = styled.div`
   }
   @media only screen and (max-width: 480px) {
     padding: 96px 24px 0px 24px;
+    img{
+      width: 100%;
+      height: auto;
+    }
   }
 `;
 

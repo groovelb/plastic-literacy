@@ -42,7 +42,7 @@ const Grid = styled.div`
     transition: opacity 0.3s;
   }
   cursor: pointer;
-  @media (hover: hover){
+  :hover{
     background-color: ${props => props.type === 'question' ? props.theme.color.brand.epGreen : 'rgba(0,0,0,0.8)'};
     opacity: 1;
     color: ${props => props.theme.color.ui.strong};
@@ -62,7 +62,7 @@ const Grid = styled.div`
     left: 0;
     background-color: ${props => props.type === 'image' ? 'rgba(0,0,0,0.1)' : 'none'};
   }
-  @media (hover: hover){
+  :hover{
     h2.question{
       display: none;
     }
@@ -217,8 +217,10 @@ const DynamicImageGrid2 = ({ gridData }) => {
             isRecycle={grid.type === 'question'?true:grid.isRecycle}
             onClick={
               () => {
-                setIndex(index);
-                setIsAnswer(true);
+                if(isMobile){
+                  setIndex(index);
+                  setIsAnswer(true);
+                }
               }
             }
           >

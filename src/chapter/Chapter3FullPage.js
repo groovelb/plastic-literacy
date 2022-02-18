@@ -113,6 +113,16 @@ const Row = styled.div`
       }
     }
   }
+  .product.low{
+    img{
+      height: 140px;
+      width: auto;
+      @media only screen and (max-width: 480px) {
+        height: 64px;
+      }
+    }
+    
+  }
   .product.high{
     img{
       height: 200px !important;
@@ -602,26 +612,26 @@ const Chapter3 = ({
     {
       title: 'Lamp Housing',
       id: 'A',
-      top: isMobile?18:70,
-      left: isMobile?-14:-47,
+      top: isMobile ? 18 : 70,
+      left: isMobile ? -14 : -47,
     },
     {
       title: 'Engine Under Cover',
       id: 'B',
-      top: isMobile?48:110,
-      left: isMobile?-10:-30,
+      top: isMobile ? 48 : 110,
+      left: isMobile ? -10 : -30,
     },
     {
       title: 'Mud Guard',
       id: 'C',
-      top: isMobile?48:144,
-      left: isMobile?48:86,
+      top: isMobile ? 48 : 144,
+      left: isMobile ? 48 : 86,
     },
     {
       title: 'Wheel Guard',
       id: 'D',
-      top: isMobile?30:96,
-      left: isMobile?128:340,
+      top: isMobile ? 30 : 96,
+      left: isMobile ? 128 : 340,
     },
   ];
 
@@ -629,20 +639,20 @@ const Chapter3 = ({
     {
       title: 'Drawer Panel',
       id: 'A',
-      top: isMobile?-12:8,
-      left: isMobile?44:128,
+      top: isMobile ? -12 : 8,
+      left: isMobile ? 44 : 128,
     },
     {
       title: 'Control Panel',
       id: 'B',
-      top: isMobile?-12:8,
-      left: isMobile?92:224,
+      top: isMobile ? -12 : 8,
+      left: isMobile ? 92 : 224,
     },
     {
       title: 'Carbinet Base',
       id: 'C',
-      top: isMobile?80:180,
-      left: isMobile?72:180,
+      top: isMobile ? 80 : 180,
+      left: isMobile ? 72 : 180,
     }
   ];
 
@@ -921,7 +931,7 @@ const Chapter3 = ({
                         spacing={isMobile ? 8 : 24}
                         length={arr.length}
                         index={index}
-                        className={'product'}
+                        className={'product low'}
                       >
                         <img src={product.img} alt='' />
                         <p>
@@ -1010,7 +1020,7 @@ const Chapter3 = ({
                       <Grid
                         colPC={2}
                         colMb={2}
-                        spacing={isMobile?8:24}
+                        spacing={isMobile ? 8 : 24}
                         length={arr.length}
                         index={index}
                         className={'product high'}
@@ -1042,9 +1052,9 @@ const Chapter3 = ({
                           )
                         }
                         <div className='imgContainer'>
-                          <img className={index===0?'car':'washing'} src={product.img} alt='' />
+                          <img className={index === 0 ? 'car' : 'washing'} src={product.img} alt='' />
                         </div>
-                       
+
                         <p>
                           {product.title}
                         </p>
@@ -1052,7 +1062,7 @@ const Chapter3 = ({
                           {/* CAR */}
                           {
                             index === 0 && carPartList.map((part, index) =>
-                              <PartName isSelected={partIndex1===index+1}>
+                              <PartName isSelected={partIndex1 === index + 1}>
                                 <span>{part.id}</span> - &nbsp;
                                 {part.title}
                               </PartName>
@@ -1061,7 +1071,7 @@ const Chapter3 = ({
                           {/* WASHING MACHINE */}
                           {
                             index === 1 && washingPartList.map((part, index) =>
-                              <PartName isSelected={partIndex2===index+1}>
+                              <PartName isSelected={partIndex2 === index + 1}>
                                 <span>{part.id}</span> - &nbsp;
                                 {part.title}
                               </PartName>
@@ -1115,7 +1125,7 @@ const Chapter3 = ({
                 crStage.map((stage, index, arr) =>
                   <Grid
                     colPC={4}
-                    colMb={2}
+                    colMb={4}
                     index={index}
                     length={arr}
                     spacing={isMobile ? 8 : 48}
@@ -1167,7 +1177,7 @@ const Chapter3 = ({
         <Page>
           <ImageBackground
             isFilter={true}
-            img={videoURL.c3.s7.bg}
+            img={videoURL.c3.ending1}
             isTrigger={true}
             title={t('c3-s9-title')}
             exp={t('c3-s9-exp')}
@@ -1177,7 +1187,7 @@ const Chapter3 = ({
         <Page>
           <ImageBackground
             isFilter={true}
-            img={videoURL.c3.s8.bg}
+            img={videoURL.c3.ending2}
             isTrigger={true}
             title={t('c3-s10-title')}
             exp={t('c3-s10-exp')}
