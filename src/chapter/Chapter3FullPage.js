@@ -67,6 +67,7 @@ const PageAlignTop = styled(Page)`
   justify-content: flex-start !important;
   padding-top: 144px;
   height: 100%;
+  pointer-events: none;
   .content{
     height: 100%;
   }
@@ -98,6 +99,7 @@ const Chart = styled(LiveArea)`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
+  pointer-events: none;
   width: 100%;
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
   .product{
@@ -844,7 +846,7 @@ const Chapter3 = ({
         animationTimer={1000}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={isMobile&&!isFull}
+        // blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <ChapterTitle
