@@ -33,7 +33,7 @@ import ic_stage4 from '../../assets/icon/cycle/ic_mr_grind.svg';
 import ic_stage5 from '../../assets/icon/cycle/ic_mr_process.svg';
 import ic_stage6 from '../../assets/icon/cycle/ic_mr_flake.svg';
 
-const margin = { top: 24, right: 24, bottom: 24, left: 24 };
+const margin = { top: isMobile?0:24, right: isMobile?0:24, bottom: isMobile?0:24, left: isMobile?0:24 };
 
 const Wrapper = styled.div`
   width: 1200px;
@@ -44,7 +44,8 @@ const Wrapper = styled.div`
   align-items: center;
   @media only screen and (max-width: 480px) {
     width: 100%;
-    display: none;
+    height: auto;
+    /* display: none; */
   }
 `;
 
@@ -63,9 +64,13 @@ const Container = styled.div`
    top: -24px;
    left: -24px;
    @media only screen and (max-width: 480px) {
+    position: relative;
     width: calc(100% + 32px);
-    top:80px;
-    left:-16px;
+    display: flex;
+    align-items: center;
+    height: auto;
+    top:0px;
+    left:0px;
   }
 `;
 
@@ -82,6 +87,9 @@ const Arrow = styled.div`
    left: 0;
    top: ${props => props.position === 'top' ? '32px' : '-40px'};
  }
+ @media only screen and (max-width: 480px) {
+  display: none;
+}
 `;
 
 const stageList = [
@@ -145,6 +153,15 @@ const CycleFill = styled.div`
     width: 128px !important;
     height: auto !important;
   }
+  @media only screen and (max-width: 480px) {
+      width: 108px;
+      height: 108px;
+      ${props => props.theme.type.size.body2}
+      img{
+      width: 80px !important;
+      height: auto !important;
+    }
+  }
 `;
 
 const Stage = styled.div`
@@ -178,6 +195,16 @@ const Stage = styled.div`
    background-color: ${props => props.theme.color.ui.bg.light};
    padding: 4px 0;
  }
+ @media only screen and (max-width: 480px) {
+  display: none;
+  width: 48px;
+  height: 48px;
+  img{
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+  }
+}
 `;
 
 const arrowList = [
@@ -216,12 +243,16 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
   const [stop, setStop] = useState(false);
   const [count, setCount] = useState(0);
+  // const [widthMobile, setWidthMobile] = useState(0);
+  const [heightMobile, setHeightMobile] = useState(0);
   let widthMobile = 0;
+  // let heightMobile = 0;
 
   useEffect(() => {
     widthMobile = containerRef.current.clientWidth;
+    setHeightMobile(containerRef.current.clientHeight);
     console.log(widthMobile);
-  },[]);
+  }, []);
 
   useEffect(() => {
     if (isStop === true) {
@@ -231,17 +262,16 @@ const PlasticEcoCycleMR = ({ isStop }) => {
     else {
       setStop(false);
     }
-  }, [isStop])
-
+  }, [isStop]);
 
   useEffect(() => {
     svg = d3.select(svgRef.current)
-    .attr("width", isMobile?widthMobile:1200 + margin.left + margin.right)
-    .attr("height", isMobile?widthMobile/2:498 + margin.top + margin.bottom);
+      .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
+      .attr("height", isMobile ? widthMobile / 2 : 498 + margin.top + margin.bottom);
 
     g = svg.append('g')
-    .attr("transform", 
-      isMobile?`scale(${widthMobile/1248}, ${widthMobile/1248}) translate(24,24)`: `translate(${margin.left},${margin.top})`);
+      .attr("transform",
+        isMobile ? `translate(${margin.left},${margin.top}) scale(${widthMobile / 1248}, ${widthMobile / 1248})` : `translate(${margin.left},${margin.top})`);
 
     cyclePathData2.forEach((path, index, arr) => {
       g.append('path')
@@ -382,14 +412,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
       </Title>
       <Container ref={containerRef}>
         <CycleFill
-          top={'calc((546px - 276px)/2)'}
-          left={'120px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '8px' : '120px'}
         >
           <img src={logo_gs} alt='' />
         </CycleFill>
         <CycleFill
-          top={'calc((546px - 276px)/2)'}
-          left={'848px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '204px' : '848px'}
         >
           자동차.가전 시장
         </CycleFill>

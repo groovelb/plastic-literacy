@@ -8,7 +8,7 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: ${props => props.isTop?'flex-star':'center'};
   z-index: ${props => props.isOverlap?99:0};
   background-color: 
   ${
@@ -35,12 +35,14 @@ const Page = ({
   children,
   className,
   themeType,
-  isOverlap
+  isOverlap,
+  isTop
 }) => (
   <Container
     className={className}
     themeType={themeType}
     isOverlap={isOverlap}
+    isTop={isTop}
   >
     {children}
   </Container>

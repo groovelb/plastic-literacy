@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import styled from "styled-components";
+import { isMobile } from 'react-device-detect';
 import * as d3 from 'd3';
 import { cyclePathData2 } from '../../data/cyclePathData';
 import { useAnimationFrameLoop } from "react-timing-hooks";
@@ -44,7 +45,9 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   @media only screen and (max-width: 480px) {
-    display: none;
+    width: 100%;
+    height: auto;
+    /* display: none; */
   }
 `;
 
@@ -63,6 +66,15 @@ const Container = styled.div`
    position: absolute;
    top: -24px;
    left: -24px;
+   @media only screen and (max-width: 480px) {
+    position: static;
+    width: calc(100% + 32px);
+    display: flex;
+    align-items: center;
+    height: auto;
+    top:80px;
+    left:-16px;
+  }
 `;
 
 const Arrow = styled.div`
@@ -78,6 +90,9 @@ const Arrow = styled.div`
    left: 0;
    top: ${props => props.position === 'bottom' ? '117px' : '-44px'};
  }
+ @media only screen and (max-width: 480px) {
+  display: none;
+}
 `;
 
 const stageList = [
@@ -141,6 +156,15 @@ const CycleFill = styled.div`
     width: 128px !important;
     height: auto !important;
   }
+  @media only screen and (max-width: 480px) {
+      width: 108px;
+      height: 108px;
+      ${props => props.theme.type.size.body2}
+      img{
+      width: 80px !important;
+      height: auto !important;
+    }
+  }
 `;
 
 const Stage = styled.div`
@@ -174,6 +198,16 @@ const Stage = styled.div`
    background-color: ${props => props.theme.color.ui.bg.light};
    padding: 4px 0;
  }
+ @media only screen and (max-width: 480px) {
+  display: none;
+  width: 48px;
+  height: 48px;
+  img{
+    width: 44px !important;
+    height: 44px !important;
+    margin: 0 !important;
+  }
+}
 `;
 
 const arrowList = [
@@ -205,12 +239,19 @@ const arrowList = [
 ];
 
 const PlasticEcoCycleCR = ({ isStop }) => {
+  let containerRef = useRef(null);
   let svgRef = useRef(null);
   let svg;
   let g;
 
   const [stop, setStop] = useState(false);
   const [count, setCount] = useState(0);
+  let widthMobile = 0;
+
+  useEffect(() => {
+    widthMobile = containerRef.current.clientWidth;
+    console.log(widthMobile);
+  }, []);
 
   useEffect(() => {
     if (isStop === true) {
@@ -226,11 +267,12 @@ const PlasticEcoCycleCR = ({ isStop }) => {
 
   useEffect(() => {
     svg = d3.select(svgRef.current)
-      .attr("width", 1200 + margin.left + margin.right)
-      .attr("height", 498 + margin.top + margin.bottom);
-
+    .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
+    .attr("height", isMobile ? widthMobile / 2 : 498 + margin.top + margin.bottom);
+    
     g = svg.append('g')
-      .attr("transform", `translate(${margin.left},${margin.top})`);
+      .attr("transform",
+        isMobile ? `scale(${widthMobile / 1248}, ${widthMobile / 1248}) translate(24,24)` : `translate(${margin.left},${margin.top})`);
 
     cyclePathData2.forEach((path, index, arr) => {
       g.append('path')
@@ -369,16 +411,16 @@ const PlasticEcoCycleCR = ({ isStop }) => {
         Circular<br />
         Economy System
       </Title>
-      <Container>
+      <Container ref={containerRef}>
         <CycleFill
-          top={'calc((546px - 276px)/2)'}
-          left={'120px'}
+          top={isMobile ? '104px' : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '8px' : '120px'}
         >
           <img src={logo_gs} alt='' />
         </CycleFill>
         <CycleFill
-          top={'calc((546px - 276px)/2)'}
-          left={'848px'}
+          top={isMobile ? '104px' : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '204px' : '848px'}
         >
           자동차.가전 시장
         </CycleFill>

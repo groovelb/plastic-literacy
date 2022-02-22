@@ -236,6 +236,7 @@ const ExpCenter = styled.div`
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
   @media only screen and (max-width: 480px) {
     width: 100%;
+    margin: 0px;
   }
 `;
 
@@ -252,6 +253,9 @@ const CircularLoop = styled.div`
   }
   transition: opacity 0.3s;
   opacity: ${props => props.isActive ? 1 : 0};
+  @media only screen and (max-width: 480px) {
+    margin: 24px 0;
+  }
 `;
 
 const mrProcessList = [
@@ -1089,7 +1093,7 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={isMobile?true:false}>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
