@@ -35,7 +35,7 @@ import ic_stage4 from "../../assets/img/icon/ic_tr_outlined.svg";
 import ic_stage5 from '../../assets/icon/cycle/ic_cr_process.svg';
 import ic_stage6 from '../../assets/icon/cycle/ic_mr_flake.svg';
 
-const margin = { top: 24, right: 24, bottom: 24, left: 24 };
+const margin = { top: isMobile?0:24, right: isMobile?0:24, bottom: isMobile?0:24, left: isMobile?0:24 };
 
 const Wrapper = styled.div`
   width: 1200px;
@@ -59,7 +59,6 @@ const Title = styled.div`
   text-align: center;
 `;
 
-
 const Container = styled.div`
    width: ${`calc(1200px + ${margin.left}px + ${margin.right}px )`};
    height: ${`calc(498px + ${margin.top}px + ${margin.bottom}px )`};
@@ -67,13 +66,20 @@ const Container = styled.div`
    top: -24px;
    left: -24px;
    @media only screen and (max-width: 480px) {
-    position: static;
+    position: relative;
     width: calc(100% + 32px);
+    height: ${props => `calc(498px * (${props.widthMobile} / 1200))`};
     display: flex;
     align-items: center;
-    height: auto;
-    top:80px;
-    left:-16px;
+    justify-content: space-between;
+    top:0px;
+    left:0px;
+    padding:0 8%;
+    svg{
+      position: absolute;
+      top:0;
+      left:8px;
+    }
   }
 `;
 
@@ -88,7 +94,7 @@ const Arrow = styled.div`
    position: absolute;
    width: 48px;
    left: 0;
-   top: ${props => props.position === 'bottom' ? '117px' : '-44px'};
+   top: ${props => props.position === 'top' ? '32px' : '-40px'};
  }
  @media only screen and (max-width: 480px) {
   display: none;
@@ -97,14 +103,14 @@ const Arrow = styled.div`
 
 const stageList = [
   {
-    title: `소비재 기업에서\n최종 제품화`,
+    title: `고객사 최종 제품화\n(가전, 자동차 부품)`,
     img: ic_stage1,
     top: 32,
     left: 980,
     position: 'top',
   },
   {
-    title: `소비자의\n제품 사용`,
+    title: `소비자의 제품 사용`,
     img: ic_stage2,
     top: 272,
     left: 1216,
@@ -118,21 +124,21 @@ const stageList = [
     position: 'bottom',
   },
   {
-    title: `친환경 열분해유\n생산`,
+    title: `전처리를 통한\n고순도 플레이크 생산`,
     img: ic_stage4,
     top: 32,
     left: 264,
     position: 'top',
   },
   {
-    title: `탄소기반 정제공정을\n친환경으로 대체`,
+    title: `고객사 니즈에 맞는\n복합수지 recipe`,
     img: ic_stage5,
     top: 272,
     left: 32,
     position: 'bottom',
   },
   {
-    title: `친환경 플라스틱\n생산`,
+    title: `upcycling\n친환경 복합수지 생산`,
     img: ic_stage6,
     top: 512,
     left: 264,
@@ -145,7 +151,7 @@ const CycleFill = styled.div`
   width: 276px;
   height: 276px;
   border-radius: 50%;
-  background-color: rgba(60, 220, 135, 0.64);
+  background-color: rgba(60, 220, 135, 0.48);
   top: ${props => props.top};
   left: ${props => props.left};
   ${props => props.theme.layout.flexColCenter}
@@ -157,6 +163,7 @@ const CycleFill = styled.div`
     height: auto !important;
   }
   @media only screen and (max-width: 480px) {
+      position: static;
       width: 108px;
       height: 108px;
       ${props => props.theme.type.size.body2}
@@ -185,7 +192,7 @@ const Stage = styled.div`
     margin: 0 !important;
   }
   p{
-    position: absolute;
+   position: absolute;
    width: 48px;
    left: -6px;
    top: ${props => props.position === 'bottom' ? '117px' : '-44px'};
@@ -238,7 +245,7 @@ const arrowList = [
   },
 ];
 
-const PlasticEcoCycleCR = ({ isStop }) => {
+const PlasticEcoCycleMR = ({ isStop }) => {
   let containerRef = useRef(null);
   let svgRef = useRef(null);
   let svg;
@@ -246,10 +253,15 @@ const PlasticEcoCycleCR = ({ isStop }) => {
 
   const [stop, setStop] = useState(false);
   const [count, setCount] = useState(0);
+  const [widthMobileState, setWidthMobile] = useState(0);
+  const [heightMobile, setHeightMobile] = useState(0);
   let widthMobile = 0;
+  // let heightMobile = 0;
 
   useEffect(() => {
     widthMobile = containerRef.current.clientWidth;
+    setWidthMobile(widthMobile);
+    setHeightMobile(containerRef.current.clientHeight);
     console.log(widthMobile);
   }, []);
 
@@ -257,22 +269,20 @@ const PlasticEcoCycleCR = ({ isStop }) => {
     if (isStop === true) {
       setStop(true);
       setCount(0);
-      d3.selectAll(".particle").remove();
     }
     else {
       setStop(false);
     }
   }, [isStop]);
 
-
   useEffect(() => {
     svg = d3.select(svgRef.current)
-    .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
-    .attr("height", isMobile ? widthMobile / 2 : 498 + margin.top + margin.bottom);
-    
+      .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
+      .attr("height", isMobile ? 498 * (widthMobile / 1200) : 498 + margin.top + margin.bottom);
+
     g = svg.append('g')
       .attr("transform",
-        isMobile ? `scale(${widthMobile / 1248}, ${widthMobile / 1248}) translate(24,24)` : `translate(${margin.left},${margin.top})`);
+        isMobile ? `translate(${margin.left},${margin.top}) scale(${widthMobile / 1248}, ${widthMobile / 1248})` : `translate(${margin.left},${margin.top})`);
 
     cyclePathData2.forEach((path, index, arr) => {
       g.append('path')
@@ -411,16 +421,19 @@ const PlasticEcoCycleCR = ({ isStop }) => {
         Circular<br />
         Economy System
       </Title>
-      <Container ref={containerRef}>
+      <Container
+        ref={containerRef}
+        widthMobile={widthMobileState}
+      >
         <CycleFill
-          top={isMobile ? '104px' : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '8px' : '120px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '16px' : '120px'}
         >
           <img src={logo_gs} alt='' />
         </CycleFill>
         <CycleFill
-          top={isMobile ? '104px' : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '204px' : '848px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? 'calc(100% - 136px)' : '848px'}
         >
           자동차.가전 시장
         </CycleFill>
@@ -429,6 +442,7 @@ const PlasticEcoCycleCR = ({ isStop }) => {
             <Stage
               top={`calc(${stage.top}px - 54px)`}
               left={`calc(${stage.left}px - 54px)`}
+              position={stage.position}
               key={index}
             >
               <img src={stage.img} alt='' />
@@ -476,4 +490,4 @@ const PlasticEcoCycleCR = ({ isStop }) => {
 
 
 
-export default PlasticEcoCycleCR;
+export default PlasticEcoCycleMR;

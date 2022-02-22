@@ -66,11 +66,18 @@ const Container = styled.div`
    @media only screen and (max-width: 480px) {
     position: relative;
     width: calc(100% + 32px);
+    height: ${props => `calc(498px * (${props.widthMobile} / 1200))`};
     display: flex;
     align-items: center;
-    height: auto;
+    justify-content: space-between;
     top:0px;
     left:0px;
+    padding:0 8%;
+    svg{
+      position: absolute;
+      top:0;
+      left:8px;
+    }
   }
 `;
 
@@ -154,6 +161,7 @@ const CycleFill = styled.div`
     height: auto !important;
   }
   @media only screen and (max-width: 480px) {
+      position: static;
       width: 108px;
       height: 108px;
       ${props => props.theme.type.size.body2}
@@ -243,13 +251,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
   const [stop, setStop] = useState(false);
   const [count, setCount] = useState(0);
-  // const [widthMobile, setWidthMobile] = useState(0);
+  const [widthMobileState, setWidthMobile] = useState(0);
   const [heightMobile, setHeightMobile] = useState(0);
   let widthMobile = 0;
   // let heightMobile = 0;
 
   useEffect(() => {
     widthMobile = containerRef.current.clientWidth;
+    setWidthMobile(widthMobile);
     setHeightMobile(containerRef.current.clientHeight);
     console.log(widthMobile);
   }, []);
@@ -267,7 +276,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   useEffect(() => {
     svg = d3.select(svgRef.current)
       .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
-      .attr("height", isMobile ? widthMobile / 2 : 498 + margin.top + margin.bottom);
+      .attr("height", isMobile ? 498 * (widthMobile / 1200) : 498 + margin.top + margin.bottom);
 
     g = svg.append('g')
       .attr("transform",
@@ -410,16 +419,19 @@ const PlasticEcoCycleMR = ({ isStop }) => {
         Circular<br />
         Economy System
       </Title>
-      <Container ref={containerRef}>
+      <Container
+        ref={containerRef}
+        widthMobile={widthMobileState}
+      >
         <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '8px' : '120px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? '16px' : '120px'}
         >
           <img src={logo_gs} alt='' />
         </CycleFill>
         <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '204px' : '848px'}
+          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+          left={isMobile ? 'calc(100% - 136px)' : '848px'}
         >
           자동차.가전 시장
         </CycleFill>
