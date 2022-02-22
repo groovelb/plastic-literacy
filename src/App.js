@@ -3,7 +3,7 @@ import styled from "styled-components";
 import './App.css';
 import './assets/font/pretendardvariable.css';
 import './translate/I18nSetting';
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { isMobile } from 'react-device-detect';
 import theme from "./assets/theme/theme";
@@ -27,6 +27,7 @@ function App() {
   const bttRef = useRef(null);
   // const element = useRef(null);
   const { element, triggerFull, exitFull } = useFullscreen(onFullS);
+  const [isFull, setIsFull] = useState(false);
 
   useLayoutEffect(() => {
   
@@ -46,7 +47,11 @@ function App() {
         <GlobalStyle />
         {/* <MainVer2 /> */}
         <Router
-          triggerFull={triggerFull}
+          triggerFull={() => {
+            triggerFull();
+            setIsFull(true);
+          }}
+          isFull={isFull}
         />
       </ThemeProvider>
     </Container>

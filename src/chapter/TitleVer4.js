@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useTranslation } from 'react-i18next';
 import Section from "../components/layout/Section";
 import ReactPageScroller from 'react-page-scroller';
+import { isMobile } from 'react-device-detect';
 
 import PlasticLiteracy from '../template/Main/PlasticLiteracyVer2';
 import SiteTitle from '../components/layout/SiteTitleVer2';
@@ -51,7 +52,9 @@ const IllustCycle = styled.img`
 
 
 const Title = ({
-  setThemeType
+  setThemeType,
+  triggerFull,
+  isFull
 }) => {
   const [currentPage, setCurrentPage] = useState(0);
   const [selectedRow,setSelectedRow] = useState(0);
@@ -95,6 +98,7 @@ const Title = ({
         transitionTimingFunction={'ease-in-out'}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={!isFull}
       >
         <Page>
           <PlasticLiteracy
@@ -102,6 +106,9 @@ const Title = ({
             starChatper={0}
             onClick={() => {
               setCurrentPage(1);
+              setTimeout(() => {
+                isMobile && triggerFull();
+              }, 1200);
             }}
           />
         </Page>

@@ -32,6 +32,7 @@ const Grid = styled.div`
   background-size: cover;
   background-position: center;
   opacity: 0.75;
+  pointer-events: ${props => props.index===0?'none':'default'};
   h2{
     ${props => props.theme.type.size.title3}
     ${props => props.theme.type.weight.bold}
@@ -215,9 +216,10 @@ const DynamicImageGrid2 = ({ gridData }) => {
             bg={grid.bg}
             themeType={grid.themeType}
             isRecycle={grid.type === 'question'?true:grid.isRecycle}
+            index={index}
             onClick={
               () => {
-                if(isMobile){
+                if(isMobile&&grid.type==='image'){
                   setIndex(index);
                   setIsAnswer(true);
                 }

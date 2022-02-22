@@ -18,7 +18,7 @@ import illust_crush from "../../assets/illust/illust_crush.svg";
 import illust_synthesis from "../../assets/illust/illust_synthesis.svg";
 import video_earth from "../../assets/video/earth_spin.mp4"
 
-import ic_scroll from "../../assets/icon/ic_keep_scroll_white.svg";
+import ic_scroll from "../../assets/icon/ic_keep_scroll_green.svg";
 
 
 const circleSize = {
@@ -28,7 +28,8 @@ const circleSize = {
 };
 
 const Wrapper = styled.div`
-
+  margin-top: -48px;
+  width: 100%;
 `;
 
 const nodeSize = {
@@ -140,6 +141,7 @@ const Illust = styled.div`
   top: ${`calc((100% - ${circleSize.height}px)/2 + 24px)`};
   left: ${`calc((100% - ${circleSize.width}px)/2)`};
   @media only screen and (max-width: 480px) {
+    margin-top: -48px;
     padding-top: 20px;
     width: 100%;
     height: auto;
@@ -216,7 +218,7 @@ const ExpFloating = styled.div`
   position: absolute;
   left: 0;
   padding:0 48px;
-  bottom: -120px;
+  bottom: -100px;
   ${props => props.theme.type.weight.prd.bold}
   ${props => props.theme.type.size.title3}
 `;
@@ -295,7 +297,7 @@ const PlasticLiteracy = ({
   const [hoverIndex, setHoverIndex] = useState(0);
 
   return (
-    <>
+    <Wrapper>
       <Illust>
         <ButtonScroll onClick={onClick}>
           <img src={ic_scroll} alt='' />
@@ -387,7 +389,7 @@ const PlasticLiteracy = ({
           </ExpFloating>
         }
       </Illust>
-    </>
+    </Wrapper>
   )
 }
 

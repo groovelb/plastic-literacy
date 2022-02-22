@@ -189,7 +189,7 @@ const DynamicImageGrid = ({ gridData }) => {
             type={grid.type}
             onClick={
               () => {
-                if(isMobile){
+                if(isMobile&&grid.type==='question'){
                   setIndex(index);
                   setIsAnswer(true);
                 }

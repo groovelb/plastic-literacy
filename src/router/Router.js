@@ -27,7 +27,10 @@ const Background = styled.div`
     props.theme.color.ui.bg.dark
   };
 `;
-export default ({triggerFull}) => {
+export default ({
+  triggerFull,
+  isFull
+}) => {
   const [themeType, setThemeType] = useState('light');
 
   return (
@@ -46,6 +49,8 @@ export default ({triggerFull}) => {
             path="/"
             exact element={
               <Title
+                triggerFull={triggerFull}
+                isFull={isFull}
                 currentChapter={0}
                 setThemeType={setThemeType}
                 themeType={themeType}
@@ -56,6 +61,7 @@ export default ({triggerFull}) => {
             exact element={
               <Chapter1
                 triggerFull={triggerFull}
+                isFull={isFull}
                 currentChapter={1}
                 setThemeType={setThemeType}
                 themeType={themeType}
@@ -65,6 +71,8 @@ export default ({triggerFull}) => {
             path="/chapter2"
             exact element={
               <Chapter2Ver2
+                triggerFull={triggerFull}
+                isFull={isFull}
                 currentChapter={2}
                 setThemeType={setThemeType}
                 themeType={themeType}
@@ -74,6 +82,8 @@ export default ({triggerFull}) => {
             path="/chapter3"
             exact element={
               <Chapter3Ver2
+                triggerFull={triggerFull}
+                isFull={isFull}
                 currentChapter={3}
                 setThemeType={setThemeType}
                 themeType={themeType}

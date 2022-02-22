@@ -54,8 +54,8 @@ import img_c1_s4_2 from "../assets/img/image/c1/c1-s4_2.jpg";
 import img_c1_s4_3 from "../assets/img/image/c1/c1-s4_3.jpg";
 import img_c1_s4_4 from "../assets/img/image/c1/c1-s4_4.jpg";
 import img_c1_s4_5 from "../assets/img/image/c1/c1-s4_5.jpg";
-import img_c1_s5_1 from "../assets/img/image/c1/c1-s5_1.png";
-import img_c1_s5_3 from "../assets/img/image/c1/c1-s5_3.jpg";
+import img_c1_s5_1 from "../assets/img/image/c1/c1-s5_1.jpg";
+import img_c1_s5_2 from "../assets/img/image/c1/c1-s5_2.jpg";
 import illust_comparing_volume from "../assets/img/illust/c1/compare_volume.png";
 import illust_daily_consume from "../assets/img/illust/c1/daily_consume.png";
 import bg_c1_transition from "../assets/img/bg/c1_transition.jpg";
@@ -513,7 +513,8 @@ const Chapter1 = ({
   currentChapter,
   chapterObject,
   setThemeType,
-  triggerFull
+  triggerFull,
+  isFull
 }) => {
 
   const { t } = useTranslation();
@@ -606,13 +607,13 @@ const Chapter1 = ({
   const [currentImageIndexS5, setCurrentImageIndexS5] = useState(0);
   const imgListS5 = [
     {
-      src: img_c1_s5_3,
+      src: img_c1_s5_1,
       caption: `하와이 근처 쓰레기 지대*에서 20년 된 한국 쓰레기 발견
 
       쓰레기 지대, 즉 GPGP(The Great Pacific Garbage Patch)는 북태평양에 위치한 거대한 쓰레기 섬. 바람과 해류의 영향으로 북아메리카, 아시아에서 흘러온 쓰레기가 모여 있는 지역 [출처: National Geographic]`,
     },
     {
-      src: img_c1_s5_1,
+      src: img_c1_s5_2,
       caption: `반구대암각화* 앞 모래톱에서 27년간 썩지 않고 남아있다가 발견된 플라스틱 비닐 포장지
 
       국보 제 285호로, 세계에서 가장 오래된 고래사냥 암각화. ‘ㄱ’자 모양으로 꺾인 절벽암반에 육지동물과 사냥하는 장면 등 총 200여점의 그림이 새겨져 있는 신석기시대의 문화재. [출처: 문화재청]`,
@@ -892,6 +893,7 @@ const Chapter1 = ({
         animationTimer={800}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={!isFull}
       >
         <Page>
           <ChapterTitle
@@ -936,7 +938,7 @@ const Chapter1 = ({
                           index={index}
                           length={5}
                           spacing={isMobile ? 8 : 24}
-                        >
+                        > 
                           <ToTop
                             isTrigger={currentPage === section.page - 1}
                             distance={'middle'}

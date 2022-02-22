@@ -422,7 +422,9 @@ const Chapter3 = ({
   currentChapter,
   chapterObject,
   setThemeType,
-  themeType
+  themeType,
+  triggerFull,
+  isFull
 }) => {
 
   const { t } = useTranslation();
@@ -842,6 +844,7 @@ const Chapter3 = ({
         animationTimer={1000}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={!isFull}
       >
         <Page>
           <ChapterTitle
@@ -853,6 +856,9 @@ const Chapter3 = ({
             img={bg_c3}
             onClick={() => {
               setCurrentPage(1);
+              setTimeout(() => {
+                isMobile && triggerFull();
+              }, 1200);
             }}
           />
         </Page>
