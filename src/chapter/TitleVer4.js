@@ -98,7 +98,7 @@ const Title = ({
         transitionTimingFunction={'ease-in-out'}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={!isFull}
+        blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <PlasticLiteracy
