@@ -99,7 +99,6 @@ const Chart = styled(LiveArea)`
 const Row = styled.div`
   display: flex;
   flex-wrap: wrap;
-  pointer-events: none;
   width: 100%;
   color: ${props => props.themeType === 'light' ? props.theme.color.ui.strong : props.theme.color.ui.whhite};
   .product{
@@ -712,7 +711,7 @@ const Chapter3 = ({
     if (number !== 7) {
       setIsMrStageShow2(false);
     }
-    setCurrentPage(number);
+    // setCurrentPage(number);
   }
 
   return (
@@ -841,9 +840,8 @@ const Chapter3 = ({
       } */}
       <ReactPageScroller
         pageOnChange={handlePageChange}
-        onBeforePageScroll={handleBeforePageChange}
-        animationTimerBuffer={0}
-        animationTimer={1000}
+        // onBeforePageScroll={handleBeforePageChange}
+        animationTimer={750}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
         // blockScrollDown={isMobile&&!isFull}
@@ -1210,8 +1208,8 @@ const Chapter3 = ({
           <MsgFullScreen
             title={t('c3-s10-ending')}
           >
-            <img src={text_energy} style={{ marginBottom: '48px' }} alt='' />
-            <img src={logo_white} alt='' />
+            <img src={text_energy} style={{ margin: '80px 0px' }} alt='' />
+            <img src={logo_white} style={{ marginBottom: '80px' }} alt='' />
           </MsgFullScreen>
         </Page>
       </ReactPageScroller>
