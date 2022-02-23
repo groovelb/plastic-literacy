@@ -67,7 +67,6 @@ const PageAlignTop = styled(Page)`
   justify-content: flex-start !important;
   padding-top: 144px;
   height: 100%;
-  pointer-events: none;
   .content{
     height: 100%;
   }
@@ -667,7 +666,8 @@ const Chapter3 = ({
 
 
   const handlePageChange = (number) => {
-    console.log(number);
+    console.log('도착' + number);
+    console.log('-------------');
     if (number === 0) {
       setThemeType('light');
     }
@@ -695,6 +695,7 @@ const Chapter3 = ({
 
     if (1 < number && number < 6) {
       setIsMrStageShow(true);
+      console.log('true');
     }
     if (number === 7) {
       setIsMrStageShow2(true);
@@ -703,15 +704,19 @@ const Chapter3 = ({
   }
 
   const handleBeforePageChange = (number) => {
-    console.log(number);
+    console.log('-------------');
+    console.log('출발' + number);
     if (!(1 < number && number < 6)) {
       // setThemeType('dark');
       setIsMrStageShow(false);
+      console.log('false');
     }
     if (number !== 7) {
       setIsMrStageShow2(false);
     }
-    setCurrentPage(number);
+
+    handlePageChange(number);
+    // setCurrentPage(number);
   }
 
   return (
@@ -839,7 +844,7 @@ const Chapter3 = ({
         </Chart>
       } */}
       <ReactPageScroller
-        pageOnChange={handlePageChange}
+        // pageOnChange={handlePageChange}
         onBeforePageScroll={handleBeforePageChange}
         animationTimer={750}
         customPageNumber={currentPage}

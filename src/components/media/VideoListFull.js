@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { Player } from 'video-react';
+import { isMobile } from 'react-device-detect';
 import ic_next from "../../assets/img/icon/navigation/next/white.svg";
 import ic_prev from "../../assets/img/icon/navigation/prev/white.svg";
 import LiveArea from '../layout/LiveArea';
@@ -171,8 +172,8 @@ const VideoList = ({
                   currentIndex={current}
                 >
                   <Player
-                    fluid={false}
-                    height={680}
+                    fluid={isMobile?true:false}
+                    height={isMobile?248:680}
                     width={'100%'}
                     ref={player => {
                       video.ref = player
