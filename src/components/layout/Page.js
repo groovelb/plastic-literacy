@@ -8,26 +8,30 @@ const Container = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: ${props => props.isTop?'flex-star':'center'};
-  z-index: ${props => props.isOverlap?99:0};
+  justify-content: ${props => props.isTop ? 'flex-star' : 'center'};
+  z-index: ${props => props.isOverlap ? 99 : 0};
   background-color: 
-  ${
-    props => {
-      switch (props.themeType){
-        case 'light':
-          return props.theme.color.ui.bg.light;
-        case 'dark':
-          return props.theme.color.ui.bg.dark;
-        default:
-          return 'rgba(0,0,0,0)';
-      } 
+  ${props => {
+    switch (props.themeType) {
+      case 'light':
+        return props.theme.color.ui.bg.light;
+      case 'dark':
+        return props.theme.color.ui.bg.dark;
+      default:
+        return 'rgba(0,0,0,0)';
     }
+  }
   };
   .content{
     height: 100%;
   }
+  overflow-y: hidden;
   @media only screen and (max-width: 480px) {
     padding-top: 80px;
+    .content{
+      margin-top: -48px;
+      height: calc(100% - 80px);
+    }
   }
 `;
 

@@ -69,15 +69,18 @@ const GlobalStyle = createGlobalStyle`
     overflow: hidden;
     width: 100%;
     height: 100%;
+    /* min-height: -webkit-fill-available;
+    height: 100vh; */
   }
   body{
     /* background-color: ${(props) => props.theme.color.ui.bg.dark}; */
     color: #fff;
-    overflow-x: hidden;
+    overflow: hidden;
     margin: 0;
     height:100%;
     width:100%;
-
+    height: 100vh; /* Fallback for browsers that do not support Custom Properties */
+    height: calc(var(--vh, 1vh) * 100);
     } 
    // Title
   .circle_path_whole.inner{
