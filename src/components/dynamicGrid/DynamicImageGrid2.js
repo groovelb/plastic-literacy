@@ -9,7 +9,7 @@ const Container = styled.div`
   position: relative;
   @media only screen and (max-width: 480px) {
     margin-top: 120px;
-    width: calc(100% + 24px);
+    width: calc(100% + 20px);
     height: calc(100% - 120px);
     position: relative;
   }

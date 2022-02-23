@@ -50,7 +50,7 @@ const TextContent = styled.div`
       height: fit-content;
       padding:0;
       padding-left: 16px;
-      bottom: 0px;
+      bottom: 48px;
     }
   }
 `;
@@ -71,7 +71,7 @@ const SectionTitle = styled.div`
   }
   @media only screen and (max-width: 480px) {
     h2{
-      width: calc(100% - 120px);
+      width: calc(100% - 156px);
     }
   }
 `;

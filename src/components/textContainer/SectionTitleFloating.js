@@ -10,6 +10,7 @@ const Container = styled.div`
   left: 0;
   @media only screen and (max-width: 480px) {
     left: 24px;
+    width: calc(100% - 24px);
   }
 `;
 const Title = styled.div`

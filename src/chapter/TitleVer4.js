@@ -98,7 +98,7 @@ const Title = ({
         transitionTimingFunction={'ease-in-out'}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={isMobile&&!isFull}
+        // blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <PlasticLiteracy
@@ -106,9 +106,9 @@ const Title = ({
             starChatper={0}
             onClick={() => {
               setCurrentPage(1);
-              setTimeout(() => {
-                isMobile && triggerFull();
-              }, 1200);
+              // setTimeout(() => {
+              //   isMobile && triggerFull();
+              // }, 1200);
             }}
           />
         </Page>

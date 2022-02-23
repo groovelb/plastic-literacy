@@ -428,7 +428,7 @@ const Chapter2FullPage = ({
         animationTimer={1000}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={isMobile&&!isFull}
+        // blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <ChapterTitle
@@ -439,9 +439,9 @@ const Chapter2FullPage = ({
             img={bg_c2}
             onClick={() => {
               setCurrentPage(1);
-              setTimeout(() => {
-                isMobile && triggerFull();
-              }, 1200);
+              // setTimeout(() => {
+              //   isMobile && triggerFull();
+              // }, 1200);
             }}
           />
         </Page>

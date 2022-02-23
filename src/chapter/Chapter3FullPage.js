@@ -705,13 +705,13 @@ const Chapter3 = ({
   const handleBeforePageChange = (number) => {
     console.log(number);
     if (!(1 < number && number < 6)) {
-      setThemeType('dark');
+      // setThemeType('dark');
       setIsMrStageShow(false);
     }
     if (number !== 7) {
       setIsMrStageShow2(false);
     }
-    // setCurrentPage(number);
+    setCurrentPage(number);
   }
 
   return (
@@ -840,7 +840,7 @@ const Chapter3 = ({
       } */}
       <ReactPageScroller
         pageOnChange={handlePageChange}
-        // onBeforePageScroll={handleBeforePageChange}
+        onBeforePageScroll={handleBeforePageChange}
         animationTimer={750}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
@@ -856,9 +856,9 @@ const Chapter3 = ({
             img={bg_c3}
             onClick={() => {
               setCurrentPage(1);
-              setTimeout(() => {
-                isMobile && triggerFull();
-              }, 1200);
+              // setTimeout(() => {
+              //   isMobile && triggerFull();
+              // }, 1200);
             }}
           />
         </Page>
@@ -1011,7 +1011,7 @@ const Chapter3 = ({
             />
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={isMobile?true:false}>
           <LiveArea className={''}>
             <Row>
               <TitleCol>
@@ -1124,7 +1124,7 @@ const Chapter3 = ({
             </ExpCenter>
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={isMobile?true:false}>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
@@ -1170,7 +1170,7 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={isMobile?true:false}>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
