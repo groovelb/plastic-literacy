@@ -893,7 +893,7 @@ const Chapter1 = ({
         animationTimer={800}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={isMobile&&!isFull}
+        // blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <ChapterTitle

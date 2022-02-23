@@ -705,7 +705,7 @@ const Chapter3 = ({
   const handleBeforePageChange = (number) => {
     console.log(number);
     if (!(1 < number && number < 6)) {
-      // setThemeType('dark');
+      setThemeType('dark');
       setIsMrStageShow(false);
     }
     if (number !== 7) {
