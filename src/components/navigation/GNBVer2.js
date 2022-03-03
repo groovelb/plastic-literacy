@@ -28,7 +28,13 @@ const Container = styled.div`
   color: ${props => props.themeType === 'light' ?
     theme.color.ui.strong :
     theme.color.ui.white700
-  };
+  } !important;
+  a{
+    color: ${props => props.themeType === 'light' ?
+    theme.color.ui.strong :
+    theme.color.ui.white700
+  } !important;
+  }
   background-color: ${props => props.themeType === 'light' ?
     theme.color.ui.bg.light :
     theme.color.ui.bg.dark
