@@ -456,8 +456,15 @@ const Sankey = ({
     // add in the title for the nodes
     node.append("text")
       .attr("class", "node_title")
-      .attr("x", function (d) { return d.x0; })
-      .attr("y", function (d) { return d.y0 - 14 })
+      .attr("x", function (d) { return d.x0 + 12; })
+      .attr("y", function (d) {
+        if (d.y1 - d.y0 < 40) {
+          return (d.y0 + d.y1)/2;
+        }
+        else{
+          return d.y0 + 20;
+        }
+      })
       .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {
@@ -469,39 +476,40 @@ const Sankey = ({
         //   if (d.isReused) return d.textColor = theme.color.brand.orange;
         //   else return d.textColor = theme.color.brand.secondary500;
         // }
-        return theme.color.brand.epPurple
+        return theme.color.brand.white
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
-    const valueScale = isMobile ?
-      d3.scaleLinear().domain(linkExtent).range([14, 14]) :
-      d3.scaleLinear().domain(linkExtent).range([14, 20]);
+    const valueScale = isMobile?
+    d3.scaleLinear().domain(linkExtent).range([14, 14]):
+    d3.scaleLinear().domain(linkExtent).range([14, 20]);
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 4; })
+      .attr("x", function (d) { return d.x0 + 12; })
       .attr("y", function (d) {
-        if (d.y1 - d.y0 < 20) {
+        if (d.y1 - d.y0 < 40) {
           return d.y0 + 5;
         } else {
-          return (d.y1 + d.y0) / 2;
+          return d.y1 - 20;
         }
       })
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
-        return valueScale(d.value);
+        // return valueScale(d.value);
+        return 16;
       })
-      .style("fill", "#ffffff")
-      .text(function (d) {
-        if (d.isReal) {
-          let value = parseFloat(d.value / 10000).toFixed(1) + '만';
-          return value;
+      .style("fill", theme.color.brand.epDeepPurple)
+      .text(function (d) { 
+        let value = parseInt(d.value/10) + '만';
+        if (d.y1 - d.y0 < 40) {
+          return '';  
         }
-        else {
-          return '추정치';
+        else{
+          return value; 
         }
       })
       .filter(function (d) { return d.x0 < width / 2; })

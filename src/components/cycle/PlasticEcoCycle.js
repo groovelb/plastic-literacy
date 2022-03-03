@@ -90,37 +90,37 @@ const ArrowHead = styled.div`
   opacity: 0.1;
   border-left: 60px solid ${props => props.theme.color.brand.epGreen};
   position: absolute;
-  top: 279px;
+  top: 147px;
   left: 526px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   /* border-radius: 4px; */
 `;
 
 const arrowList = [
   {
     position: 'top',
-    title: '수거',
+    title: '배출',
     top: 14,
     left: 256,
     deg: 180
   },
   {
     position: 'top',
-    title: '생산',
+    title: '처리',
     top: 14,
     left: 1248 - 272,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '처리',
+    title: '생산',
     top: 509,
     left: 256,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '배출',
+    title: '수거',
     top: 509,
     left: 1248 - 272,
     deg: 180
@@ -256,7 +256,7 @@ const PlasticEcoCycle = ({ isStop }) => {
           if (svg !== null) {
             let path = d3.select(`.path_${i}`);
             let isRverse = false;
-            if (i === 0 || i === 4) isRverse = true;
+            if (i === 0 || i === 2 || i === 4) isRverse = true;
             return pathTweenWithGroup(path, d, 3, isRverse);
           }
         })

@@ -35,7 +35,7 @@ const Container = styled.div`
   };
   position: fixed;
   transition: color 0.3s, background-color 0.3s;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     height: 80px;
   }
 `;
@@ -64,7 +64,7 @@ const Logo = styled.div`
     height: 2px;
     background-color: ${props => props.isCurrent ? props.theme.color.brand.epGreen : 'none'};
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     width: 104px;
     z-index: 9;
     :before{
@@ -79,7 +79,7 @@ const MenuList = styled.div`
   height: 100%;
   align-items: center;
   justify-content: flex-end;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     width: calc(100% - 104px);
   }
 `;
@@ -106,11 +106,11 @@ const Menu = styled.div`
     width: 100%;
     height: 2px;
     background-color: ${props => props.isCurrent ? props.theme.color.brand.epGreen : 'none'};
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 825px) {
       background-color: 'none';
     }
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     display: none;
   }
 `;
@@ -120,7 +120,7 @@ const HamburgerContainer = styled.div`
 	height: 48px;
 	${(props) => props.theme.layout.flexColCenter}
 	display: none;
-	@media only screen and (max-width: 480px) {
+	@media only screen and (max-width: 825px) {
     z-index: 9;
 		display: flex;
 	}
@@ -128,7 +128,7 @@ const HamburgerContainer = styled.div`
 
 const SlideMenu = styled(LiveArea)`
   display: none;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
 		display: flex;
     flex-direction: column;
     position: fixed;

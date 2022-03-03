@@ -269,7 +269,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile?72:96, right: 24, bottom: 10, left: 0 };
+  const margin = { top: isMobile?72:96, right: 24, bottom: 24, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -299,7 +299,7 @@ const Sankey = ({
 
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
-      .nodeWidth(isMobile?64:80)
+      .nodeWidth(isMobile?64:124)
       .nodePadding(isMobile?24:24)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
@@ -453,8 +453,15 @@ const Sankey = ({
     // add in the title for the nodes
     node.append("text")
       .attr("class", "node_title")
-      .attr("x", function (d) { return d.x0; })
-      .attr("y", function (d) { return d.y0 - 8 })
+      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 12; })
+      .attr("y", function (d) {
+        if (d.y1 - d.y0 < 32 & !isMobile) {
+          return (d.y0 + d.y1)/2;
+        }
+        else{
+          return isMobile? d.y0 + 16 : d.y0 + 20;
+        }
+      })
       .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {
@@ -466,10 +473,12 @@ const Sankey = ({
         //   if (d.isReused) return d.textColor = theme.color.brand.orange;
         //   else return d.textColor = theme.color.brand.secondary500;
         // }
-        return theme.color.brand.epPurple
+        return theme.color.brand.white
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
+
+    if(isMobile) d3.selectAll(".node_title").call(wrap,  56);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?
@@ -478,23 +487,29 @@ const Sankey = ({
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 4; })
+      .attr("x", function (d) { return d.x0 + 12; })
       .attr("y", function (d) {
-        if (d.y1 - d.y0 < 20) {
+        if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
         } else {
-          return (d.y1 + d.y0) / 2;
+          return d.y1 - 20;
         }
       })
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
-        return valueScale(d.value);
+        // return valueScale(d.value);
+        return 16;
       })
-      .style("fill", "#ffffff")
+      .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
         let value = parseInt(d.value/10) + '만';
-        return value; 
+        if (d.y1 - d.y0 < 40) {
+          return '';  
+        }
+        else{
+          return value; 
+        }
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
@@ -668,6 +683,30 @@ const Sankey = ({
       });
     }
   }, [currentStage]);
+
+  function wrap(text, width) {
+    text.each(function () {
+      var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", dy + "em");
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text.append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        }
+      }
+    });
+  }
 
   function pathTween(path, offset, r) {
     var length = path.node().getTotalLength(); // Get the length of the path

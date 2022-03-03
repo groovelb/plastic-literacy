@@ -680,10 +680,28 @@ const Chapter3 = ({
     if (number === 3) {
       setThemeType('dark');
     }
+    if (number === 4) {
+      setThemeType('dark');
+    }
+    if (number === 5) {
+      setThemeType('dark');
+    }
     if (number === 6) {
       setThemeType('dark');
     }
     if (number === 7) {
+      setThemeType('light');
+    }
+    if (number === 8) {
+      setThemeType('light');
+    }
+    if (number === 9) {
+      setThemeType('light');
+    }
+    if (number === 10) {
+      setThemeType('light');
+    }
+    if (number === 11) {
       setThemeType('light');
     }
     if (number === 12) {

@@ -12,7 +12,7 @@ const Container = styled.div`
   height: 100%;
   background-color: #484848;
   position: relative;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     margin-top: 120px;
     width: calc(100% + 20px);
     height: calc(100% - 120px);
@@ -62,7 +62,7 @@ const Grid = styled.div`
   }
   :before{
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     h2.question{
       font-size: 14px;
       line-height: 1.4;

@@ -136,11 +136,17 @@ const GlobalStyle = createGlobalStyle`
   }
   .node_title{
     font-weight: bold;
-    font-size: 12px;
+    font-size: 16px;
+    white-space: pre-line;
+    word-break: keep-all;
+    letter-spacing: -0.5px;
+    @media only screen and (max-width: 480px) {
+      font-size: 14px;
+    }
   }
   .node_value{
-    /* font-size: 20px; */
-    font-weight: bold;
+    font-size: 12px;
+    /* font-weight: bold; */
     /* text-shadow: 0px 0px 4px #fff; */
   }
   h1,h2{

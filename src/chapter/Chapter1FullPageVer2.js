@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import styled, { keyframes } from "styled-components";
 import { useTranslation } from 'react-i18next';
 import ReactPageScroller from 'react-page-scroller';
-import { isMobile } from 'react-device-detect';
+import { isMobile, isTablet } from 'react-device-detect';
 import useFullscreen from '../hook/useFullScreen';
 
 import Page from '../components/layout/Page';
@@ -104,7 +104,7 @@ const Row3 = styled.div`
   margin-top: 48px;
   width: 900px;
   height: calc(100%/4);
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     width: 100%;
   }
 `;
@@ -132,7 +132,7 @@ const TimeChart = styled.div`
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   transform: ${props => props.isActive ? `translateY(00px)` : `translateY(120px)`};
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     width: 100%;
     height: 55%;
     left: 0;
@@ -165,7 +165,7 @@ const Chart = styled(LiveArea)`
     transition: background-color 0.1s ease-out;
     z-index: 9;
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     width: calc(100% + 32px);
     height: 55%;
     left: -16px;
@@ -186,7 +186,7 @@ const ChartTitle = styled.p`
   margin-bottom: 12px;
   ${props => props.theme.type.size.title3};
   ${props => props.theme.type.weight.prd.regular};
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     padding-left: 24px;
   }
 `;
@@ -210,7 +210,7 @@ const ChartTitlePadding = styled.div`
       ${props => props.theme.type.size.title3}
       ${props => props.theme.type.weight.prd.bold};
     }
-    @media only screen and (max-width: 480px) {
+    @media only screen and (max-width: 825px) {
       position: static;
       margin-top: 24px;
       top:48px;
@@ -219,7 +219,7 @@ const ChartTitlePadding = styled.div`
       text-align: center;
     }
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     padding-left: 0px;
   }
 `;
@@ -229,7 +229,7 @@ const ChartUnit = styled.p`
   ${props => props.theme.type.size.caption};
   ${props => props.theme.type.weight.prd.regular};
   text-align: center;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     padding-left: 24px;
   }
 `;
@@ -274,7 +274,7 @@ const TextContent = styled(LiveArea)`
     ${props => props.theme.type.weight.prd.regular}
     word-break: break-all;
   }
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     padding-left: 0px;
     flex-direction: column;
     p{
@@ -371,7 +371,7 @@ const Row = styled.div`
   height: calc(100% - 440px);
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
 		margin-top: 90px;
 	}
 `;
@@ -387,7 +387,7 @@ const RowBig = styled.div`
   height: calc(100% - 280px);
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
 		margin-top: 120px;
 	}
 `;
@@ -403,7 +403,7 @@ const RowAuto = styled.div`
   height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'};
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
 		margin-top: 96px;
     height: auto;
 	}
@@ -420,7 +420,7 @@ const RowAutoBG = styled.div`
   height:  ${props => props.isFull ? 'calc(100% - 156px - 128px)' : 'auto'};
   /* position: relative; */
   /* background-color: ${props => props.isFilter ? 'rgba(15, 30, 45,0.95)' : ''}; */
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
 		margin-top: 120px;
     height: auto;
 	}
@@ -448,7 +448,7 @@ const Exp = styled.div`
   ${props => props.theme.type.size.body1};
   ${props => props.theme.type.weight.prd.bold};
   white-space: break-spaces;
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     white-space: normal;
     padding:0 24px;
   }
@@ -468,7 +468,7 @@ const ExpFloating = styled.div`
   position: absolute;
   /* bottom: 124px; */
   top: calc(100% - 400px + 120px + 24px);
-  @media only screen and (max-width: 480px) {
+  @media only screen and (max-width: 825px) {
     white-space: normal;
     padding:0 24px;
     top: unset;
@@ -922,7 +922,7 @@ const Chapter1 = ({
                 }
                 {
                   i !== 0 && <SectionTitleFloating
-                    top={isMobile ? '16px' : '48px'}
+                    top={isMobile || isTablet ? '16px' : '48px'}
                     title={`${section.title}`}
                   />
                 }
@@ -937,7 +937,7 @@ const Chapter1 = ({
                           colMb={2}
                           index={index}
                           length={5}
-                          spacing={isMobile ? 8 : 24}
+                          spacing={isMobile || isTablet ? 8 : 24}
                         > 
                           <ToTop
                             isTrigger={currentPage === section.page - 1}
@@ -980,7 +980,7 @@ const Chapter1 = ({
                           colPC={3}
                           colMb={index === 2 ? 1 : 2}
                           index={index}
-                          spacing={isMobile ? 0 : 0}
+                          spacing={isMobile || isTablet ? 0 : 0}
                           length={3}
                         >
                           <ToTop

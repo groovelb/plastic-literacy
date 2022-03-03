@@ -7,7 +7,7 @@ const Container = styled.div`
 	width: ${(props) => props.theme.size.liveArea};
 	margin-left: auto;
 	margin-right: auto;
-	@media only screen and (max-width: 480px) {
+	@media only screen and (max-width: 825px) {
 		width: 100%;
 		padding: 0 20px;
 	}

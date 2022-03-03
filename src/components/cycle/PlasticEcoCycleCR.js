@@ -35,7 +35,7 @@ import ic_stage4 from "../../assets/img/icon/ic_tr_outlined.svg";
 import ic_stage5 from '../../assets/icon/cycle/ic_cr_process.svg';
 import ic_stage6 from '../../assets/icon/cycle/ic_mr_flake.svg';
 
-const margin = { top: isMobile?0:24, right: isMobile?0:24, bottom: isMobile?0:24, left: isMobile?0:24 };
+const margin = { top: isMobile ? 0 : 24, right: isMobile ? 0 : 24, bottom: isMobile ? 0 : 24, left: isMobile ? 0 : 24 };
 
 const Wrapper = styled.div`
   width: 1200px;
@@ -105,44 +105,44 @@ const stageList = [
   {
     title: `고객사 최종 제품화\n(가전, 자동차 부품)`,
     img: ic_stage1,
-    top: 32,
-    left: 980,
-    position: 'top',
+    top: 512,
+    left: 264,
+    position: 'bottom',
   },
   {
     title: `소비자의 제품 사용`,
     img: ic_stage2,
     top: 272,
-    left: 1216,
+    left: 32,
     position: 'bottom',
   },
   {
     title: `플라스틱 폐기물\n발생`,
     img: ic_stage3,
-    top: 512,
-    left: 980,
-    position: 'bottom',
-  },
-  {
-    title: `전처리를 통한\n고순도 플레이크 생산`,
-    img: ic_stage4,
     top: 32,
     left: 264,
     position: 'top',
   },
   {
+    title: `전처리를 통한\n고순도 플레이크 생산`,
+    img: ic_stage4,
+    top: 512,
+    left: 980,
+    position: 'bottom',
+  },
+  {
     title: `고객사 니즈에 맞는\n복합수지 recipe`,
     img: ic_stage5,
     top: 272,
-    left: 32,
+    left: 1216,
     position: 'bottom',
   },
   {
     title: `upcycling\n친환경 복합수지 생산`,
     img: ic_stage6,
-    top: 512,
-    left: 264,
-    position: 'bottom',
+    top: 32,
+    left: 980,
+    position: 'top',
   },
 ];
 
@@ -391,7 +391,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
           if (svg !== null) {
             let path = d3.select(`.path_cr_${i}`);
             let isReverse = false;
-            if (i === 0 || i === 1 || i === 6) isReverse = true;
+            if (i === 0 || i === 1 || i === 3 || i === 6) isReverse = true;
             return pathTweenWithGroup(path, d, 3, isReverse);
           }
         })
@@ -429,13 +429,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
           top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
           left={isMobile ? '16px' : '120px'}
         >
-          <img src={logo_gs} alt='' />
+          일상 소비재 시장
         </CycleFill>
         <CycleFill
           top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
           left={isMobile ? 'calc(100% - 136px)' : '848px'}
+
         >
-          자동차.가전 시장
+          <img src={logo_gs} alt='' />
         </CycleFill>
         {
           stageList.map((stage, index) =>
