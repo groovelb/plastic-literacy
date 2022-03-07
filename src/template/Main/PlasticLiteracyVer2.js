@@ -342,8 +342,8 @@ const PlasticLiteracy = ({
           {/* <img src={illust_earth_green} alt=' ' /> */}
           <VideoEarth
             isVideoPlay={true}
-            width={924}
-            height={924}
+            width={isMobile?window.innerWidth:924}
+            height={isMobile?window.innerWidth:924}
             isFilter={true}
             videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/earth_spin.mp4?alt=media&token=7d0b37cd-0a3b-4398-ba2c-692a33a07299'}
             isTrigger={true}
