@@ -33,8 +33,8 @@ const Wrapper = styled.div`
 `;
 
 const nodeSize = {
-  width: isMobile ? 80 : 160,
-  height: isMobile ? 80 : 160,
+  width: isMobile ? 80 : 144,
+  height: isMobile ? 80 : 144,
   margin: isMobile ? 0 : 0
 };
 
@@ -51,11 +51,11 @@ const FadeIn = keyframes`
 `;
 
 const Earth = styled.div`
-  width: 440px;
-  height: 440px;
+  width: 544px;
+  height: 544px;
   position: absolute;
-  top: calc((100% - 440px)/2);
-  left: calc((100% - 440px)/2);
+  top: calc((100% - 544px)/2);
+  left: calc((100% - 544px)/2);
   overflow: hidden;
   ${props => props.theme.layout.flexColCenter}
   animation: ${FadeIn} 0.5s linear;
@@ -92,7 +92,7 @@ const Earth = styled.div`
   }
   p{
     text-align: center;
-    padding: 0 24px;
+    padding: 0 64px;
     ${props => props.theme.type.weight.prd.bold}
     text-shadow: 0 0 20px rgba(15,30,45,0.34);
     z-index: 9;
@@ -342,8 +342,8 @@ const PlasticLiteracy = ({
           {/* <img src={illust_earth_green} alt=' ' /> */}
           <VideoEarth
             isVideoPlay={true}
-            width={780}
-            height={780}
+            width={924}
+            height={924}
             isFilter={true}
             videoSrc={'https://firebasestorage.googleapis.com/v0/b/data-driven-design-d2418.appspot.com/o/earth_spin.mp4?alt=media&token=7d0b37cd-0a3b-4398-ba2c-692a33a07299'}
             isTrigger={true}
