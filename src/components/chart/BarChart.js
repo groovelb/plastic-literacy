@@ -103,7 +103,7 @@ const BarChart = ({
       //   tickValues.push(item.year);
       // }
     
-      if (!isMobile && i%2 === 0){
+      if (!isMobile && i%1 === 0){
         tickValues.push(item.year);
       }
       if (isMobile && i%4 === 0){
@@ -208,7 +208,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.8},${96})`:`translate(${x(2020) + 40},${200})`)
+          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.8},${96})`:`translate(${x(2020) + x.bandwidth()*0.5},${240})`)
           .attr("class", "s1_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -216,18 +216,19 @@ const BarChart = ({
           .attr("y", 0)
           .attr("fill", "#fff")
           .attr("transform", "rotate(-90)")
-          .text("3억 6700만톤");
+          .text("3억 6,700만톤")
+          .attr('alignment-baseline','central');
 
         chart.append("g")
           .attr("class", "s1_text")
-          .attr("transform", `translate(${x(2020) + 8},${16})`)
+          .attr("transform", `translate(${x(2020) + x.bandwidth()*0.5},${32})`)
           .append("text")
           .attr("class", 'bar_mark_text')
-          .attr("x", isMobile?-8:0)
-          .attr("y", isMobile?-16:0)
+          .attr("x", isMobile?0:0)
+          .attr("y", isMobile?0:0)
           .attr("fill", "#fff")
           .text("280배")
-          .attr("text-anchor",isMobile?"middle":"center")
+          .attr("text-anchor",isMobile?"middle":"middle")
       }, 1000);
     }
     else{
@@ -312,7 +313,7 @@ const BarChart = ({
           .attr("y", 0)
           .attr("fill", "#fff")
           .attr("transform", "rotate(-90)")
-          .text("1018만 톤");
+          .text("1,018만 톤");
       }, 1500);
 
     } else {

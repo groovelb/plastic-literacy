@@ -160,11 +160,11 @@ const ChapterTitle = ({
 				<Divider />
 				<SubTitle>
 					<span>
-						❝
+						{/* ❝ */}
 					</span>
 					{` ${subTitle} `}
 					<span>
-						❞
+						{/* ❞ */}
 					</span>
 				</SubTitle>
 				<Exp>

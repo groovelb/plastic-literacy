@@ -135,7 +135,8 @@ const GlobalStyle = createGlobalStyle`
     
   }
   .node_title{
-    font-weight: bold;
+    font-family: ${props => props.theme.type.weight.prd.black};
+    text-shadow: 0px 0px 12px ${props => props.theme.color.brand.epDeepPurple};
     font-size: 16px;
     white-space: pre-line;
     word-break: keep-all;

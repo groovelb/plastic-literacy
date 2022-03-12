@@ -106,7 +106,7 @@ const Chart = styled.div`
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`}; */
   /* height: ${sankeyHeight + 'px'}; */
-  height: calc(100% - 520px);
+  height: calc(100% - 486px);
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
@@ -117,7 +117,7 @@ const Chart = styled.div`
     top: 32px;
     padding-top: 108px;
     width: calc(200% - 128px);
-    height: calc(100% - 320px);
+    height: calc(100% - 348px);
     padding-left:0px;
     left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
     transition: all 0.2s ease-in-out;
@@ -126,12 +126,19 @@ const Chart = styled.div`
 
 const Source = styled.p`
   position: absolute;
-  right: calc(50% - 600px);
-  bottom: -85px;
+  /* right: calc(50% - 600px); */
+  left: calc(50% - 600px + 8px);
+  bottom: -124px;
   ${props => props.theme.type.size.caption}
   ${props => props.theme.type.weight.prd.regular}
-  opacity: 0.48;
+  opacity: 0.96;
+  color: ${props => props.theme.color.ui.low};
+  span{
+    ${props => props.theme.type.weight.prd.bold}
+    color: ${props => props.theme.color.brand.epPurple};
+  }
   @media only screen and (max-width: 480px) {
+    bottom: -88px;
     right: unset;
     left: 24px;
     width: 320px;
@@ -398,7 +405,8 @@ const Chapter2FullPage = ({
             </p>
           </Chart>
           <Source>
-            출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤
+            출처: 환경부 ‘2019년도 전국 폐기물 발생 및 처리현황’, 단위: 톤 <br/>
+            환경부는 공공 선별장에 반입되는 양을 기준으로 집계하여, 재활용률이 높아 보이나, <span>실제 재활용률은 40%</span>에 미치지 못합니다
           </Source>
         </Top>
       }
@@ -488,7 +496,7 @@ const Chapter2FullPage = ({
         <Page>
           <Wrapper2>
             <FloatingLeft>
-              플라스틱 분류체계는 잘 지켜지고 있을까요?
+              {t('c2-summary2-title')}
             </FloatingLeft>
             <DynamicImageGrid2 gridData={isMobile?gridDataCategoryMobile:gridDataCategory} />
           </Wrapper2>
@@ -521,7 +529,7 @@ const Chapter2FullPage = ({
         <Page>
           <Wrapper2>
             <FloatingLeft>
-              {t('c2-summary2-title')}
+              {t('c2-summary3-question1')}
             </FloatingLeft>
             <DynamicImageGrid gridData={isMobile?gridDataOcean1Mobile:gridDataOcean1} />
           </Wrapper2>

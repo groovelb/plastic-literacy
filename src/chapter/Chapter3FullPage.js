@@ -10,6 +10,7 @@ import SectionTitle from '../components/textContainer/SectionTitle';
 import SectionContentVertical from '../components/textContainer/SectionContentVerticalVer2';
 // import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
 import ImageBackground from "../components/layout/ImageBackground";
+import ImageBackgroundVer2 from "../components/videoBackground/ImageBackgroundVer2";
 import ChapterSummary from '../components/layout/ChapterSummary';
 import ChapterIndicator from '../components/layout/ChapterIndicator';
 import ChapterTitle from "../components/layout/ChapterTitleVer3";
@@ -54,6 +55,7 @@ import illust_low3 from "../assets/img/illust/c3/mr/illust_low_product3.svg";
 // import illust_high2 from "../assets/img/illust/c3/mr/illust_high_product2.svg";
 import img_high1 from "../assets/img/illust/c3/mr/highend_car.png";
 import img_high2 from "../assets/img/illust/c3/mr/highend_washing.png";
+import gs_factory_bg from "../assets/img/bg/chapter/gs_factory_bg.jpg";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
 import { t } from 'i18next';
@@ -486,7 +488,8 @@ const Chapter3 = ({
   const recycleMethods = [
     {
       id: "mr",
-      name: 'Mechanical\nRecycling',
+      name1: 'Mechanical',
+      name2: 'Recycling',
       exp: `물리적 재활용(MR)은 플라스틱 쓰레기를 물리적으로 분쇄해서 플라스틱의 원료를 만드는 방법으로, 가장 효율적인 재활용 기술입니다. `,
       img: ic_mr_outliend,
       result: {
@@ -496,7 +499,8 @@ const Chapter3 = ({
     },
     {
       id: "cr",
-      name: 'Chemical\nRecycling',
+      name1: 'Chemical',
+      name2: 'Recycling',
       exp: `화학적 재활용(CR)은 MR이 불가능한 플라스틱 쓰레기를 화학적으로 분해해서 석유화학의 원재료(재생원료, 재생유)를 생산하는 재활용 기술입니다. 
       `,
       img: ic_cr_outliend,
@@ -507,7 +511,8 @@ const Chapter3 = ({
     },
     {
       id: "tr",
-      name: 'Thermal\nRecycling',
+      name1: 'Thermal',
+      name2: 'Recycling',
       exp: `재가공이 불가능한 폐기물을 연소 시켜 열에너지로 활용합니다. 다만, 플라스틱의 원료를 만들어내지 못해서 재활용으로 보지 않는 경우도 있습니다.
       `,
       img: ic_tr_outliend,
@@ -586,10 +591,10 @@ const Chapter3 = ({
   ];
 
   const lowProductList = [
-    {
-      title: '아스팔트 포장재',
-      img: illust_low1
-    },
+    // {
+    //   title: '아스팔트 포장재',
+    //   img: illust_low1
+    // },
     {
       title: '건축자재',
       img: illust_low2
@@ -867,7 +872,7 @@ const Chapter3 = ({
         animationTimer={750}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        // blockScrollDown={isMobile&&!isFull}
+      // blockScrollDown={isMobile&&!isFull}
       >
         <Page>
           <ChapterTitle
@@ -914,7 +919,8 @@ const Chapter3 = ({
                     length={arr.length}
                   >
                     <CardRecycleTech
-                      title={item.name}
+                      titleTop={item.name1}
+                      titleBottom={item.name2}
                       exp={item.exp}
                       title2={item.result.title}
                       exp2={item.result.exp}
@@ -959,8 +965,8 @@ const Chapter3 = ({
                   {
                     lowProductList.map((product, index, arr) => (
                       <Grid
-                        colPC={3}
-                        colMb={3}
+                        colPC={2}
+                        colMb={2}
                         spacing={isMobile ? 8 : 24}
                         length={arr.length}
                         index={index}
@@ -1034,7 +1040,7 @@ const Chapter3 = ({
             />
           </LiveArea>
         </Page>
-        <Page isTop={isMobile?true:false}>
+        <Page isTop={isMobile ? true : false}>
           <LiveArea className={''}>
             <Row>
               <TitleCol>
@@ -1122,11 +1128,11 @@ const Chapter3 = ({
             </Row>
           </LiveArea>
         </Page>
-        <Page isTop={isMobile?true:false}>
+        <Page isTop={isMobile ? true : false}>
           <LiveArea>
             <SectionTitle
               themeType={'light'}
-              title={t('c3-s7-title')}
+              title={t('c3-s6-title')}
             />
             <CircularLoop isActive={true}>
               <PlasticEcoCycleMR isStop={currentPage !== 9} />
@@ -1143,12 +1149,22 @@ const Chapter3 = ({
               } */}
             </CircularLoop>
             <ExpCenter themeType='light'>
-              {t('c3-s7-exp')}
+              {t('c3-s6-exp')}
             </ExpCenter>
           </LiveArea>
         </Page>
-        <Page isTop={isMobile?true:false}>
-          <LiveArea>
+        <Page>
+          <ImageBackgroundVer2
+            isFilter={true}
+            img={gs_factory_bg}
+            isTrigger={true}
+          >
+            <MsgFullScreen
+              title={t('c3-s7-title')}
+              exp={t('c3-s7-subtitle') + t('c3-s7-exp')}
+            />
+          </ImageBackgroundVer2>
+          {/* <LiveArea>
             <SectionTitle
               themeType={'light'}
               title={`${t('c3-s6-title')}`}
@@ -1191,20 +1207,17 @@ const Chapter3 = ({
                 {t('c3-s6-exp')}
               </Exp>
             </Row>
-          </LiveArea>
+          </LiveArea> */}
         </Page>
-        <Page isTop={isMobile?true:false}>
+        <Page isTop={isMobile ? true : false}>
           <LiveArea>
-            <SectionTitle
+            {/* <SectionTitle
               themeType={'light'}
-              title={t('c3-s8-title')}
-            />
+            // title={t('c3-s8-title')}
+            /> */}
             <CircularLoop isActive={true}>
               <PlasticEcoCycleCR isStop={currentPage !== 11} />
             </CircularLoop>
-            <ExpCenter themeType='light'>
-              {t('c3-s8-exp')}
-            </ExpCenter>
           </LiveArea>
         </Page>
         <Page>

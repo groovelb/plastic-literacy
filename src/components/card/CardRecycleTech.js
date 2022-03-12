@@ -22,9 +22,10 @@ const Top = styled.div`
   width: 100%;
   h2{
     ${props => props.theme.type.size.h1}
-    ${props => props.theme.type.weight.prd.black}
+    ${props => props.theme.type.weight.prd.regular}
     color: ${props => props.theme.color.brand.epGreen};
     white-space: break-spaces;
+    line-height: 1.15;
     @media only screen and (max-width: 480px) {
       ${props => props.theme.type.size.title2}
       display: flex;
@@ -32,7 +33,7 @@ const Top = styled.div`
       white-space: normal;
       margin-bottom:16px;
       /* font-size: 22px; */
-      line-height: 1.5;
+      line-height: 1.15;
       margin-bottom: 8px;
       img{
         width: 40px;
@@ -40,13 +41,19 @@ const Top = styled.div`
         margin-right: 4px;
       }
     }
+    margin: 0;
+  }
+  h2::first-letter {
+    ${props => props.theme.type.weight.prd.black}
   }
   p{
+    margin-top: 36px;
     ${props => props.theme.type.size.body2}
     ${props => props.theme.type.weight.prd.bold}
     white-space: break-spaces;
     @media only screen and (max-width: 480px) {
       white-space: normal;
+      margin-top: 12px;
     }
   }
 `;
@@ -91,7 +98,8 @@ const Bottom = styled.div`
 `;
 
 const CardRecycleTech = ({
-  title,
+  titleTop,
+  titleBottom,
   exp,
   img,
   title2,
@@ -104,8 +112,11 @@ const CardRecycleTech = ({
     >
       <Top>
         <h2>
-          {isMobile&&<img src={img} alt='' />}
-          {title}
+          {isMobile && <img src={img} alt='' />}
+          {titleTop}
+        </h2>
+        <h2>
+          {titleBottom}
         </h2>
         <p>
           {exp}

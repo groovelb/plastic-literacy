@@ -73,184 +73,166 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "name": "생활계 플라스틱"
+      "name": "2019년도 플라스틱 폐기물 발생량"
     },
     {
       "node": 1,
-      "name": "사업장 플라스틱"
+      "name": "사업장"
     },
     {
       "node": 2,
-      "name": "건설 플라스틱"
+      "name": "공동·단독 주택 "
     },
     {
       "node": 3,
-      "name": "공동.단독 주택"
-    },
-    {
-      "node": 4,
-      "name": "배출 사업장"
-    },
-    {
-      "node": 5,
       "name": "건설공사"
     },
     {
-      "node": 6,
-      "name": "분리수거함"
-    },
-    {
-      "node": 7,
-      "name": "종량제 봉투"
-    },
-    {
-      "node": 8,
+      "node": 4,
       "name": "사업장 폐기물"
     },
     {
+      "node": 5,
+      "name": "분리수거함"
+    },
+    {
+      "node": 6,
+      "name": "종량제 봉투"
+    },
+    {
+      "node": 7,
+      "name": "건설 폐기물"
+    },
+    {
+      "node": 8,
+      "name": "플라스틱류"
+    },
+    {
       "node": 9,
-      "name": "건설 재활용"
+      "name": "폐기물"
     },
     {
       "node": 10,
-      "name": "플라스틱"
-    },
-    {
-      "node": 11,
-      "name": "폐기물(잔재물 등)"
-    },
-    {
-      "node": 12,
       "name": "재활용"
     },
     {
-      "node": 13,
-      "name": "매립"
-    },
-    {
-      "node": 14,
+      "node": 11,
       "name": "소각"
     },
     {
-      "node": 15,
-      "name": "건설폐기물 재활용"
-    },
+      "node": 12,
+      "name": "매립"
+    },   
   ],
   "links": [
     {
-      "name": "소비-배출1",
+      "name": "발생-배출1",
       "source": 0,
-      "target": 3,
+      "target": 1,
+      "value": 5597
+    },
+    {
+      "name": "발생-배출2",
+      "source": 0,
+      "target": 2,
       "value": 4642
     },
     {
-      "name": "소비-배출2",
-      "source": 1,
-      "target": 4,
-      "value": 5577
-    },
-    {
-      "name": "소비-배출3",
-      "source": 2,
-      "target": 5,
+      "name": "발생-배출3",
+      "source": 0,
+      "target": 3,
       "value": 586
     },
     {
       "name": "배출-수거1",
-      "source": 3,
-      "target": 6,
-      "value": 1930
+      "source": 1,
+      "target": 4,
+      "value": 5597
     },
     {
       "name": "배출-수거2",
-      "source": 3,
-      "target": 7,
-      "value": 2712
+      "source": 2,
+      "target": 5,
+      "value": 1930
     },
     {
       "name": "배출-수거3",
-      "source": 4,
-      "target": 8,
-      "value": 5577
+      "source": 2,
+      "target": 6,
+      "value": 2712
     },
     {
       "name": "배출-수거4",
-      "source": 5,
-      "target": 9,
+      "source": 3,
+      "target": 7,
       "value": 586
     },
     {
       "name": "수거-선별1",
-      "source": 6,
-      "target": 10,
-      "value": 1308
+      "source": 4,
+      "target": 8,
+      "value": 4476
     },
     {
       "name": "수거-선별2",
-      "source": 6,
-      "target": 11,
-      "value": 622
-    },
-    {
-      "name": "수거-선별3",
-      "source": 7,
-      "target": 11,
-      "value": 2712
-    },
-    {
-      "name": "수거-선별4",
-      "source": 8,
-      "target": 10,
-      "value": 4456
-    },
-    {
-      "name": "수거-선별5",
-      "source": 8,
-      "target": 11,
+      "source": 4,
+      "target": 9,
       "value": 1121
     },
     {
+      "name": "수거-선별3",
+      "source": 5,
+      "target": 8,
+      "value": 1308
+    },
+    {
+      "name": "수거-선별4",
+      "source": 5,
+      "target": 9,
+      "value": 622
+    },
+    {
+      "name": "수거-선별5",
+      "source": 6,
+      "target": 9,
+      "value": 2712
+    },
+    {
       "name": "수거-선별6",
-      "source": 9,
-      "target": 10,
+      "source": 7,
+      "target": 8,
       "value": 385
     },
     {
       "name": "수거-선별7",
-      "source": 9,
-      "target": 11,
+      "source": 7,
+      "target": 9,
       "value": 201
     },
     {
       "name": "선별-처리1",
-      "source": 10,
-      "target": 12,
-      "value": 5784
+      "source": 8,
+      "target": 10,
+      "value": 6170
     },
     {
       "name": "선별-처리2",
-      "source": 10,
-      "target": 15,
-      "value": 386
-    },
-    {
-      "name": "선별-처리3",
-      "source": 11,
-      "target": 12,
+      "source": 9,
+      "target": 10,
       "value": 1340
     },
     {
-      "name": "선별-처리4",
-      "source": 11,
-      "target": 13,
+      "name": "선별-처리3",
+      "source": 9,
+      "target": 11,
       "value": 2836
     },
     {
-      "name": "선별-처리5",
-      "source": 11,
-      "target": 14,
+      "name": "선별-처리4",
+      "source": 9,
+      "target": 12,
       "value": 479
-    }
+    },
   ]
 };
 
@@ -269,7 +251,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile?72:96, right: 24, bottom: 24, left: 0 };
+  const margin = { top: isMobile?72:96, right: 24, bottom: isMobile?24:0, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -452,17 +434,17 @@ const Sankey = ({
 
     // add in the title for the nodes
     node.append("text")
-      .attr("class", "node_title")
-      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 12; })
+      .attr("class", "node_title land")
+      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32 & !isMobile) {
           return (d.y0 + d.y1)/2;
         }
         else{
-          return isMobile? d.y0 + 16 : d.y0 + 20;
+          return isMobile? d.y0 + 16 : d.y0 + 16;
         }
       })
-      .attr("dy", "0.35em")
+      // .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {
         // if (d.depth === 0) return d.textColor = theme.color.brand.secondary500;
@@ -478,7 +460,7 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
-    if(isMobile) d3.selectAll(".node_title").call(wrap,  56);
+    d3.selectAll(".node_title.land").call(wrap,  isMobile? 56: 80);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?
@@ -487,19 +469,19 @@ const Sankey = ({
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 12; })
+      .attr("x", function (d) { return d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
         } else {
-          return d.y1 - 20;
+          return d.y1 - 16;
         }
       })
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
       .style("font-size", (d) => {
         // return valueScale(d.value);
-        return 16;
+        return 14;
       })
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
@@ -612,7 +594,7 @@ const Sankey = ({
             .selectAll('.particle')
             .data(() => {
               let data = [];
-              let num = parseInt(graph.links[i].value / 200);
+              let num = parseInt(graph.links[i].value / 120);
               let bandHeight = (graph.links[i].width - 12);
               for (let index = 0; index < num; index++) {
                 data.push(parseInt(Math.random() * bandHeight) - bandHeight / 2);

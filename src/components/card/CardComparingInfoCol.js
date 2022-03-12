@@ -6,11 +6,13 @@ import { isMobile } from 'react-device-detect';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 48px;
+  padding: 24px;
   /* display: flex;
   justify-content: center; */
   position: relative;
   overflow: hidden;
+  background-color: rgba(60, 220, 135, 0.05);
+  border-radius: 24px;
   @media only screen and (max-width: 480px) {
     height: auto;
     padding: 8px 0;
@@ -37,7 +39,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 320px;
+  height: 248px;
   @media only screen and (max-width: 480px) {
     justify-content: flex-start;
     flex-direction: row;
@@ -117,7 +119,7 @@ const CardComparingInfo = ({
 
   return (
     <Container>
-      <BG>
+      {/* <BG>
         {
           array.map((item, index) =>
             <ImgBg
@@ -132,11 +134,11 @@ const CardComparingInfo = ({
             />
           )
         }
-      </BG>
+      </BG> */}
       <Content>
         <Text>
           <Number>
-            {`✕`}
+            {`✕`}<br/>
             {isMobile&&<br/>}
             {num}
           </Number>

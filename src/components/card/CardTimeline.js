@@ -90,12 +90,22 @@ const Play = styled.button`
   } 
 `;
 
-const Num = styled.div`
-  font-size: 44px;
+const Title1 = styled.div`
+  font-size: 32px;
   ${props => props.theme.type.weight.prd.black}
+  margin-bottom: 8px;
+  @media only screen and (max-width: 480px) {
+    font-size: 24px;
+    margin-bottom: 0px;
+  }
+`;
+
+const Num = styled.div`
+  font-size: 20px;
+  ${props => props.theme.type.weight.prd.regular}
   margin-bottom: 24px;
   @media only screen and (max-width: 480px) {
-    font-size: 20px;
+    font-size: 16px;
     margin-bottom: 0px;
   }
 `;
@@ -117,6 +127,7 @@ const CardTimeline = ({
   expMobile,
   index,
   img,
+  year,
   setIsVideo,
   onClick
 }) => {
@@ -129,8 +140,11 @@ const CardTimeline = ({
       onClick={onClick}
     >
       <div>
-        <Num>
+        <Title1>
           {title}
+        </Title1>
+        <Num>
+          {year}
         </Num>
         <Exp>
           {isMobile?expMobile:exp}

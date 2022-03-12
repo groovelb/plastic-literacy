@@ -5,11 +5,13 @@ import { isMobile } from 'react-device-detect';
 const Container = styled.div`
   width: 100%;
   height: 100%;
-  padding: 48px;
+  padding: 24px;
   display: flex;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  background-color: rgba(60, 220, 135, 0.05);
+  border-radius: 24px;
   @media only screen and (max-width: 480px) {
     height: auto;
     padding: 8px 0;
@@ -34,6 +36,7 @@ const BG = styled.div`
 const Content = styled.div`
   display: flex;
   width: 100%;
+  height: 248px;
   @media only screen and (max-width: 480px) {
     flex-direction: row-reverse;
     justify-content: flex-end;
@@ -41,7 +44,12 @@ const Content = styled.div`
 `;
 
 const Img = styled.div`
-  width: 76px;
+  /* width: 76px; */
+  margin-right: 16px;
+  img{
+    height: 224px;
+    width: auto
+  }
   @media only screen and (max-width: 480px) {
     width: 56px;
     display: flex;
@@ -81,6 +89,7 @@ const Number = styled.p`
   ${props => props.theme.color.brand.white700};
   ${props => props.theme.type.size.h2};
   ${props => props.theme.type.weight.prd.black};
+  letter-spacing: -1px;
 `;
 
 const Title = styled.p`
@@ -113,7 +122,7 @@ const CardComparingInfo = ({
 }) => {
   return (
     <Container>
-      <BG>
+      {/* <BG>
         {
           array.map((item, index) =>
             <ImgBg
@@ -128,14 +137,14 @@ const CardComparingInfo = ({
             />
           )
         }
-      </BG>
+      </BG> */}
       <Content>
         <Img>
           <img src={img} alt='' />
         </Img>
         <Text>
         <Number>
-            {`✕`}
+            {`✕`}<br/>
             {isMobile&&<br/>}
             {num}
           </Number>

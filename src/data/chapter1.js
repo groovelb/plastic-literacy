@@ -1,3 +1,5 @@
+import { useTranslation } from 'react-i18next';
+
 import ic_movie from "../assets/img/icon/ic_movie.svg";
 import ic_music from "../assets/img/icon/ic_music.svg";
 import ic_electric from "../assets/img/icon/ic_electric.svg";
@@ -11,6 +13,7 @@ import ic_bomb from "../assets/img/icon/c1/bomb.svg";
 import ic_container from "../assets/img/icon/c1/container.svg";
 import ic_vynil from "../assets/img/icon/c1/vynil.svg";
 import ic_astronaut from "../assets/img/icon/c1/astronaut.svg";
+
 
 export const plastic_industry_timeline_1_1 = [
   {
@@ -66,7 +69,7 @@ export const plastic_industry_timeline_1_1 = [
 export const plastic_production_1_3 = [
   {
     "year": 1950,
-    "value": 20
+    "value": 1.5
   },
   {
     "year": 1976,
@@ -85,48 +88,24 @@ export const plastic_production_1_3 = [
     "value": 245
   },
   {
-    "year": 2009,
-    "value": 250
-  },
-  {
     "year": 2010,
     "value": 270
-  },
-  {
-    "year": 2011,
-    "value": 279
   },
   {
     "year": 2012,
     "value": 288
   },
   {
-    "year": 2013,
-    "value": 299
-  },
-  {
     "year": 2014,
     "value": 311
-  },
-  {
-    "year": 2015,
-    "value": 322
   },
   {
     "year": 2016,
     "value": 335
   },
   {
-    "year": 2017,
-    "value": 348
-  },
-  {
     "year": 2018,
     "value": 359
-  },
-  {
-    "year": 2019,
-    "value": 368
   },
   {
     "year": 2020,

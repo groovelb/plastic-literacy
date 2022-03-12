@@ -71,188 +71,149 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "category": "product",
       "name": "육상기인"
     },
     {
       "node": 1,
-      "category": "product",
       "name": "해상기인"
     },
     {
       "node": 2,
-      "category": "dispose",
-      "name": "해안쓰레기",
-      "isReal": true
+      "name": "2019년도 해양쓰레기 수거량"
     },
     {
       "node": 3,
-      "category": "dispose",
-      "name": "부유쓰레기",
-      "isReal": true
+      "name": "잔존량"
     },
     {
       "node": 4,
-      "category": "dispose",
-      "name": "침적쓰레기",
-      "isReal": true
+      "name": "해안쓰레기"
     },
     {
       "node": 5,
-      "category": "collect",
-      "name": "폐기물",
-      "isReal": true
+      "name": "부유쓰레기"
     },
     {
       "node": 6,
-      "category": "select",
-      "name": "플라스틱"
+      "name": "침적쓰레기"
     },
     {
       "node": 7,
-      "category": "select",
-      "name": "기타물질"
+      "name": "플라스틱"
     },
     {
       "node": 8,
-      "category": "final",
-      "name": "재활용"
+      "name": "비플라스틱"
     },
     {
       "node": 9,
-      "category": "final",
-      "name": "소각"
+      "name": "재활용"
     },
     {
       "node": 10,
-      "category": "final",
-      "name": "매립"
+      "name": "소각"
     },
     {
       "node": 11,
-      "category": "final",
-      "name": "위탁처리"
-    }
+      "name": "매립"
+    },
   ],
   "links": [
     {
-      "name": "육상 배출1",
+      "name": "유입-현존1",
       "source": 0,
       "target": 2,
-      "value": 111592 / 2,
-      "isReal": false
+      "value": 89934
     },
     {
-      "name": "육상 배출2",
+      "name": "유입-현존2",
       "source": 0,
       "target": 3,
-      "value": 8558 / 2,
-      "isReal": false
+      "value": 89934
     },
     {
-      "name": "육상 배출3",
-      "source": 0,
-      "target": 4,
-      "value": 9106,
-      "isReal": false
-    },
-    {
-      "name": "해상 배출1",
+      "name": "유입-현존3",
       "source": 1,
       "target": 2,
-      "value": 111592 / 2,
-      "isReal": false
+      "value": 48426
     },
     {
-      "name": "해상 배출2",
+      "name": "유입-현존4",
       "source": 1,
       "target": 3,
-      "value": 8558 / 2,
-      "isReal": false
+      "value": 48426
     },
     {
-      "name": "해상 배출3",
-      "source": 1,
+      "name": "현존-수거1",
+      "source": 2,
       "target": 4,
-      "value": 9106,
-      "isReal": false
+      "value": 111592
     },
     {
-      "name": "해안 수거",
+      "name": "현존-수거2",
       "source": 2,
       "target": 5,
-      "value": 111592,
-      "isReal": true
+      "value": 8557
     },
     {
-      "name": "부유 수거",
-      "source": 3,
-      "target": 5,
-      "value": 8558,
-      "isReal": true
-    },
-    {
-      "name": "침적 수거",
-      "source": 4,
-      "target": 5,
-      "value": 18212,
-      "isReal": true
-    },
-    {
-      "name": "폐기물 선별1",
-      "source": 5,
+      "name": "현존-수거3",
+      "source": 2,
       "target": 6,
-      "value": 138362 * 7 / 10,
-      "isReal": false
+      "value": 18211
     },
     {
-      "name": "폐기물 선별2",
+      "name": "수거-선별1",
+      "source": 4,
+      "target": 7,
+      "value": 89273.6
+    },
+    {
+      "name": "수거-선별2",
+      "source": 4,
+      "target": 8,
+      "value": 22318.4
+    },
+    {
+      "name": "수거-선별3",
       "source": 5,
       "target": 7,
-      "value": 138362 * 3 / 10,
-      "isReal": false
+      "value": 6845.6
     },
     {
-      "name": "플라스틱 처리1",
+      "name": "수거-선별4",
+      "source": 5,
+      "target": 8,
+      "value": 1711.4
+    },
+    {
+      "name": "수거-선별5",
+      "source": 6,
+      "target": 7,
+      "value": 14568.8
+    },
+    {
+      "name": "수거-선별6",
       "source": 6,
       "target": 8,
-      "value": 138362 * 7 / 30,
-      "isReal": false
+      "value": 3642.2
     },
     {
-      "name": "플라스틱 처리2",
-      "source": 6,
-      "target": 9,
-      "value": 138362 * 7 / 30,
-      "isReal": false
-    },
-    {
-      "name": "플라스틱 처리3",
-      "source": 6,
-      "target": 10,
-      "value": 138362 * 7 / 30,
-      "isReal": false
-    },
-    {
-      "name": "기타 처리",
+      "name": "선별-처리1",
       "source": 7,
       "target": 9,
-      "value": 138362 * 3 / 30,
-      "isReal": false
+      "value": 37633.92
     },
     {
-      "name": "기타 처리",
+      "name": "선별-처리2",
       "source": 7,
       "target": 10,
-      "value": 138362 * 3 / 30,
-      "isReal": false
+      "value": 36527.04
     },
     {
-      "name": "기타 처리",
+      "name": "선별-처리3",
       "source": 7,
       "target": 11,
-      "value": 138362 * 3 / 30,
-      "isReal": false
+      "value": 36527.04
     },
   ]
 };
@@ -302,7 +263,7 @@ const Sankey = ({
 
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
-      .nodeWidth(isMobile ? 64 : 80)
+      .nodeWidth(isMobile ? 64 : 124)
       .nodePadding(isMobile ? 24 : 56)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
@@ -452,20 +413,19 @@ const Sankey = ({
         return d.name + "\n" + format(d.value);
       });
 
-
     // add in the title for the nodes
     node.append("text")
-      .attr("class", "node_title")
-      .attr("x", function (d) { return d.x0 + 12; })
+      .attr("class", "node_title ocean")
+      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
-        if (d.y1 - d.y0 < 40) {
+        if (d.y1 - d.y0 < 32 & !isMobile) {
           return (d.y0 + d.y1)/2;
         }
         else{
-          return d.y0 + 20;
+          return isMobile? d.y0 + 16 : d.y0 + 16;
         }
       })
-      .attr("dy", "0.35em")
+      // .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {
         // if (d.depth === 0) return d.textColor = theme.color.brand.secondary500;
@@ -481,6 +441,8 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
+    d3.selectAll(".node_title.ocean").call(wrap,  isMobile? 56: 80);
+
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?
     d3.scaleLinear().domain(linkExtent).range([14, 14]):
@@ -488,12 +450,12 @@ const Sankey = ({
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 12; })
+      .attr("x", function (d) { return d.x0 + 8; })
       .attr("y", function (d) {
-        if (d.y1 - d.y0 < 40) {
+        if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
         } else {
-          return d.y1 - 20;
+          return d.y1 - 16;
         }
       })
       .attr("dy", "0.35em")
@@ -613,7 +575,7 @@ const Sankey = ({
             .selectAll('.particle')
             .data(() => {
               let data = [];
-              let num = parseInt(graph.links[i].value / 4000);
+              let num = parseInt(graph.links[i].value / 2000);
               let bandHeight = (graph.links[i].width - 12);
               for (let index = 0; index < num; index++) {
                 data.push(parseInt(Math.random() * bandHeight) - bandHeight / 2);
@@ -684,6 +646,30 @@ const Sankey = ({
       });
     }
   }, [currentStage]);
+
+  function wrap(text, width) {
+    text.each(function () {
+      var text = d3.select(this),
+        words = text.text().split(/\s+/).reverse(),
+        word,
+        line = [],
+        lineNumber = 0,
+        lineHeight = 1.1, // ems
+        y = text.attr("y"),
+        dy = parseFloat(text.attr("dy")),
+        tspan = text.text(null).append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", dy + "em");
+      while (word = words.pop()) {
+        line.push(word);
+        tspan.text(line.join(" "));
+        if (tspan.node().getComputedTextLength() > width) {
+          line.pop();
+          tspan.text(line.join(" "));
+          line = [word];
+          tspan = text.append("tspan").attr("x", d3.select(this).attr("x")).attr("y", y).attr("dy", ++lineNumber * lineHeight + dy + "em").text(word);
+        }
+      }
+    });
+  }
 
   function pathTween(path, offset, r) {
     var length = path.node().getTotalLength(); // Get the length of the path

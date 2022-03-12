@@ -50,13 +50,13 @@ const TextContent = styled.div`
       height: fit-content;
       padding:0;
       padding-left: 16px;
-      bottom: 48px;
+      bottom: 0px;
     }
   }
 `;
 
 const SectionTitle = styled.div`
-  width: 480px;
+  width: 640px;
   /* display: flex; */
   /* margin-bottom: 72px; */
   h1{
@@ -66,7 +66,7 @@ const SectionTitle = styled.div`
   h2{
     ${props => props.theme.type.size.title1}
     ${props => props.theme.type.weight.prd.bold}
-    width: calc(480px - 80px);
+    width: calc(640px - 80px);
     margin-top: -8px;
   }
   @media only screen and (max-width: 480px) {

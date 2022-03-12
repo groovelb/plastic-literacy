@@ -2,16 +2,25 @@ import React from 'react';
 import styled, { keyframes } from "styled-components";
 import { isMobile } from 'react-device-detect';
 
+import flag_be from "../../assets/img/c1/flag_belgium.png";
+import flag_ta from "../../assets/img/c1/flag_taiwan.png";
 import flag_kr from "../../assets/img/c1/flag_korea.jpg";
 import flag_us from "../../assets/img/c1/flag_usa.jpg";
 import flag_cn from "../../assets/img/c1/flag_china.jpg";
-import flag_jp from "../../assets/img/c1/flag_japan.jpg";
-import flag_uk from "../../assets/img/c1/flag_uk.jpg";
-import flag_rs from "../../assets/img/c1/flag_russia.jpg";
 import ToRight from '../../components/motion/ToRight';
 import ic_bottle from "../../assets/img/c1/ic_bottle_simple.svg";
 
 const consumptionList = [
+  {
+    title: '벨기에',
+    img: flag_be,
+    value: 199.1
+  },
+  {
+    title: '대만',
+    img: flag_ta,
+    value: 154.7
+  },
   {
     title: '한국',
     img: flag_kr,
@@ -27,21 +36,6 @@ const consumptionList = [
     img: flag_cn,
     value: 72.6
   },
-  {
-    title: '일본',
-    img: flag_jp,
-    value: 71.5
-  },
-  {
-    title: '영국',
-    img: flag_uk,
-    value: 50.4
-  },
-  // {
-  //   title: '러시아',
-  //   img: flag_rs,
-  //   value: 44.3
-  // }
 ];
 
 const Container = styled.div`
@@ -117,7 +111,7 @@ const Value = styled.div`
 `;
 
 const RenderBottle = (number) => {
-  let divide = isMobile?12:3.5;
+  let divide = isMobile?14:4;
   let num = parseInt(number / divide);
   let array = [];
   for (let i = 0; i < num; i++) {

@@ -25,7 +25,7 @@ import img_timeline4 from '../assets/img/c1/timeline4.jpg';
 import img_timeline5 from '../assets/img/c1/timeline5.jpg';
 
 import img_lotte_tower from '../assets/illust/c1/lotte_tower.svg';
-import img_namsan_tower from '../assets/illust/c1/namsan.svg';
+import img_man from '../assets/illust/c1/man.svg';
 import img_ktx from '../assets/illust/c1/ktx.svg';
 import ToRight from '../components/motion/ToRight';
 
@@ -584,23 +584,23 @@ const Chapter1 = ({
   const imgListS4 = [
     {
       src: img_c1_s4_1,
-      caption: '부리에 플라스틱 어망이 감긴 채 죽은 바다새 가넷(Gannet)',
+      caption: t('c1-s5-exp1'),
     },
     {
       src: img_c1_s4_2,
-      caption: '플라스틱 병 안에서 갇혀 죽은 문어',
+      caption: t('c1-s5-exp2'),
     },
     {
       src: img_c1_s4_3,
-      caption: '플라스틱 원반이 목에 박혀 죽은 물개',
+      caption: t('c1-s5-exp3'),
     },
     {
       src: img_c1_s4_4,
-      caption: '플라스틱 쓰레기를 먹이 인줄 알고 먹고 있는 소',
+      caption: t('c1-s5-exp4'),
     },
     {
       src: img_c1_s4_5,
-      caption: '플라스틱 봉지를 먹이로 착각해 먹고 있는 낙타',
+      caption: t('c1-s5-exp5'),
     },
   ];
 
@@ -608,15 +608,11 @@ const Chapter1 = ({
   const imgListS5 = [
     {
       src: img_c1_s5_1,
-      caption: `하와이 근처 쓰레기 지대*에서 20년 된 한국 쓰레기 발견
-
-      쓰레기 지대, 즉 GPGP(The Great Pacific Garbage Patch)는 북태평양에 위치한 거대한 쓰레기 섬. 바람과 해류의 영향으로 북아메리카, 아시아에서 흘러온 쓰레기가 모여 있는 지역 [출처: National Geographic]`,
+      caption: t('c1-s6-exp1'),
     },
     {
       src: img_c1_s5_2,
-      caption: `반구대암각화* 앞 모래톱에서 27년간 썩지 않고 남아있다가 발견된 플라스틱 비닐 포장지
-
-      국보 제 285호로, 세계에서 가장 오래된 고래사냥 암각화. ‘ㄱ’자 모양으로 꺾인 절벽암반에 육지동물과 사냥하는 장면 등 총 200여점의 그림이 새겨져 있는 신석기시대의 문화재. [출처: 문화재청]`,
+      caption: t('c1-s6-exp2'),
     }
   ];
 
@@ -641,8 +637,8 @@ const Chapter1 = ({
       page: 3,
     },
     {
-      title: '3억 6700만 톤\n얼마나 무거운걸까?',
-      exp: '3억 6700만 톤은 국내에서 가장 높은 잠실 L 타워 500개, 남산타워 2만5천개 그리고 KTX 52만4천개와 맞먹는 무게입니다.',
+      title: t("c1-s2-1-title"),
+      exp: t("c1-s2-1-exp"),
       data: plastic_production_1_3,
       // chartTitle: '전세계 연도별 플라스틱 생산량',
       unit: '(단위: million metric tons)',
@@ -677,7 +673,7 @@ const Chapter1 = ({
       page: 6,
     },
     {
-      title: '플라스틱 폐기물로\n죽어가는 자연',
+      title: t('c1-s5-title'),
       exp: '',
       data: plastic_waste_1_7,
       chartTitle: '국내 연도별 플라스틱 폐기물량',
@@ -695,7 +691,7 @@ const Chapter1 = ({
     //   page: 8,
     // },
     {
-      title: t('c1-s5-title'),
+      title: t('c1-s6-title'),
       exp: '',
       data: plastic_accumulated_waste_1_8,
       chartTitle: '국내 연도별 플라스틱 누적 폐기물량',
@@ -740,22 +736,22 @@ const Chapter1 = ({
 
   const buildingList = [
     {
-      num: 500,
-      title: '잠실 L 타워',
+      num: '500개',
+      title: '롯데월드타워',
       unit: '74만t',
       img: img_lotte_tower
     },
     {
-      num: 25000,
-      title: '남산타워',
-      unit: '1.5만',
-      img: img_namsan_tower
-    },
-    {
-      num: 524000,
+      num: '524000대',
       title: 'KTX',
       unit: '700t',
       img: img_ktx
+    },
+    {
+      num: '4,893,333명',
+      title: '성인남자',
+      unit: '75kg',
+      img: img_man
     },
   ]
 
@@ -808,34 +804,39 @@ const Chapter1 = ({
 
   const timelineData = [
     {
-      title: '1860s',
-      exp: `동물을 보호한 최초의 플라스틱 셀룰로이드`,
+      title: t('c1-s1-subtitle1'),
+      exp: t('c1-s1-subexp1'),
       expMobile: `첫 발견`,
+      year: 1860,
       img: img_timeline1,
     },
     {
-      title: '1880s',
-      exp: `영화의 대중화에 중요한 역할을 한 플라스틱 롤 필름`,
+      title: t('c1-s1-subtitle2'),
+      exp: t('c1-s1-subexp2'),
       expMobile: `영화산업`,
+      year: 1880,
       img: img_timeline2,
     },
     {
-      title: '1940s',
-      exp: `외부 환경으로부터 식품 오염을 막을 수 있도록 도와준 플라스틱 식품용기`,
+      title: t('c1-s1-subtitle3'),
+      exp: t('c1-s1-subexp3'),
       expMobile: `포장산업`,
+      year: 1940,
       img: img_timeline3,
     },
     {
-      title: '1940s',
-      exp: `대량생산이 가능해지면서 대중화에 큰 도움을 주었던 플라스틱(PVC) LP판`,
+      title: t('c1-s1-subtitle4'),
+      exp: t('c1-s1-subexp4'),
       expMobile: `음반산업`,
+      year: 1940,
       img: img_timeline4,
 
     },
     {
-      title: '1960s',
-      exp: `우주의 높은 온도와 압력을 극복한 플라스틱 소재로 발전한 우주산업`,
+      title: t('c1-s1-subtitle5'),
+      exp: t('c1-s1-subexp5'),
       expMobile: `우주산업`,
+       year: 1960,
       img: img_timeline5,
     }
   ];
@@ -949,8 +950,9 @@ const Chapter1 = ({
                               exp={time.exp}
                               expMobile={time.expMobile}
                               key={index}
-                              index={index}
+                              index={0}
                               img={time.img}
+                              year={time.year}
                               onClick={
                                 (e) => {
                                   console.log('click');
@@ -980,7 +982,7 @@ const Chapter1 = ({
                           colPC={3}
                           colMb={index === 2 ? 1 : 2}
                           index={index}
-                          spacing={isMobile || isTablet ? 0 : 0}
+                          spacing={isMobile || isTablet ? 8 : 32}
                           length={3}
                         >
                           <ToTop
@@ -995,7 +997,7 @@ const Chapter1 = ({
                               }
                               }>
                               {
-                                index < 2 &&
+                                index !==1 &&
                                 <CardComparingInfoRow
                                   num={building.num}
                                   title={building.title}
@@ -1006,7 +1008,7 @@ const Chapter1 = ({
                                 />
                               }
                               {
-                                index === 2 &&
+                                index === 1 &&
                                 <CardComparingInfoCol
                                   num={building.num}
                                   title={building.title}
@@ -1089,8 +1091,8 @@ const Chapter1 = ({
         > */}
         <Page>
           <MsgFullScreen
-            title={t('c1-s6-title')}
-            exp={t('c1-s6-exp')}
+            title={t('c1-s7-title')}
+            exp={t('c1-s7-exp')}
           >
             <Row3>
               <ChapterTitleLink
