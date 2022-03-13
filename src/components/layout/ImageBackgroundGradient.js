@@ -37,7 +37,7 @@ const Container = styled.div`
     pointer-events: none;
   }
 	@media only screen and (max-width: 480px) {
-		height: calc(100% - 148px);
+		height: calc(100% - 32px);
 	}
 `;
 

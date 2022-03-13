@@ -38,8 +38,8 @@ const Container = styled.div`
 		z-index: 9;
 	}
 	@media only screen and (max-width: 480px) {
-		margin-top: -64px;
-		height: calc(100% - 148px);
+		margin-top: 0px;
+		height: calc(100% - 32px);
 	}
 `;
 
