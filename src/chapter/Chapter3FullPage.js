@@ -621,16 +621,16 @@ const Chapter3 = ({
 
   const carPartList = [
     {
-      title: 'Lamp Housing',
-      id: 'A',
-      top: isMobile ? 18 : 70,
-      left: isMobile ? -14 : -47,
-    },
-    {
       title: 'Engine Under Cover',
-      id: 'B',
+      id: 'A',
       top: isMobile ? 48 : 110,
       left: isMobile ? -10 : -30,
+    },
+    {
+      title: 'Battery Tray',
+      id: 'B',
+      top: isMobile ? 48 : 80,
+      left: isMobile ? -10 : 24,
     },
     {
       title: 'Mud Guard',
@@ -639,29 +639,35 @@ const Chapter3 = ({
       left: isMobile ? 48 : 86,
     },
     {
-      title: 'Wheel Guard',
+      title: 'Luggage Floor Box',
       id: 'D',
+      top: isMobile ? 30 : 108,
+      left: isMobile ? 128 : 164,
+    },
+    {
+      title: 'Wheel Guard',
+      id: 'E',
       top: isMobile ? 30 : 96,
       left: isMobile ? 128 : 340,
     },
   ];
 
   const washingPartList = [
-    {
-      title: 'Drawer Panel',
-      id: 'A',
-      top: isMobile ? -12 : 8,
-      left: isMobile ? 44 : 128,
-    },
-    {
-      title: 'Control Panel',
-      id: 'B',
-      top: isMobile ? -12 : 8,
-      left: isMobile ? 92 : 224,
-    },
+    // {
+    //   title: 'Drawer Panel',
+    //   id: 'A',
+    //   top: isMobile ? -12 : 8,
+    //   left: isMobile ? 44 : 128,
+    // },
+    // {
+    //   title: 'Control Panel',
+    //   id: 'B',
+    //   top: isMobile ? -12 : 8,
+    //   left: isMobile ? 92 : 224,
+    // },
     {
       title: 'Carbinet Base',
-      id: 'C',
+      id: 'A',
       top: isMobile ? 80 : 180,
       left: isMobile ? 72 : 180,
     }
@@ -1052,7 +1058,7 @@ const Chapter3 = ({
               <ContentCol>
                 <Row themeType={'light'}>
                   <SubTitle>
-                    하이 엔드 제품
+                    {t('c3-s5-subtitle')}
                   </SubTitle>
                   {
                     highProductList.map((product, index, arr) => (
@@ -1143,7 +1149,6 @@ const Chapter3 = ({
                     top={`calc(${stage.y} * 50% - 54px)`}
                     left={`calc(${stage.x} * 25% - 54px)`}
                   >
-
                   </CircularStage>
                 )
               } */}

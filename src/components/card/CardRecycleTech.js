@@ -20,7 +20,17 @@ const Container = styled.div`
 
 const Top = styled.div`
   width: 100%;
-  h2{
+  @media only screen and (max-width: 480px) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    img{
+        width: 40px;
+        height: 40px;
+        margin-right: 4px;
+      }
+    }
+  .title{
     ${props => props.theme.type.size.h1}
     ${props => props.theme.type.weight.prd.regular}
     color: ${props => props.theme.color.brand.epGreen};
@@ -28,22 +38,17 @@ const Top = styled.div`
     line-height: 1.15;
     @media only screen and (max-width: 480px) {
       ${props => props.theme.type.size.title2}
-      display: flex;
+      /* display: flex; */
       align-items: center;
       white-space: normal;
       margin-bottom:16px;
       /* font-size: 22px; */
       line-height: 1.15;
-      margin-bottom: 8px;
-      img{
-        width: 40px;
-        height: 40px;
-        margin-right: 4px;
-      }
+      margin-bottom: 0px;
     }
     margin: 0;
   }
-  h2::first-letter {
+  .title::first-letter {
     ${props => props.theme.type.weight.prd.black}
   }
   p{
@@ -111,13 +116,30 @@ const CardRecycleTech = ({
     <Container
     >
       <Top>
-        <h2>
-          {isMobile && <img src={img} alt='' />}
-          {titleTop}
-        </h2>
-        <h2>
-          {titleBottom}
-        </h2>
+        {
+          !isMobile &&
+          <>
+            <div className={'title'}>
+              {titleTop}
+            </div>
+            <div className={'title'}>
+              {titleBottom}
+            </div>
+          </>
+        }
+        {
+          isMobile &&
+          <>
+            <img src={img} alt='' />
+            <div className={'title'}>
+              {`${titleTop} \u00A0`}
+            </div>
+            <div className={'title'}>
+              {titleBottom}
+            </div>
+          </>
+        }
+
         <p>
           {exp}
         </p>

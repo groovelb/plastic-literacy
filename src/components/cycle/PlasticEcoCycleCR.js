@@ -103,7 +103,7 @@ const Arrow = styled.div`
 
 const stageList = [
   {
-    title: `고객사 최종 제품화\n(가전, 자동차 부품)`,
+    title: `소비재/포장재 기업에서\n최종 제품화`,
     img: ic_stage1,
     top: 512,
     left: 264,
@@ -117,28 +117,28 @@ const stageList = [
     position: 'bottom',
   },
   {
-    title: `플라스틱 폐기물\n발생`,
+    title: `플라스틱 및 비닐류\n폐기물 발생`,
     img: ic_stage3,
     top: 32,
     left: 264,
     position: 'top',
   },
   {
-    title: `전처리를 통한\n고순도 플레이크 생산`,
+    title:  `폐기물을 원료로\n친환경 열분해유 생산`,
     img: ic_stage4,
     top: 512,
     left: 980,
     position: 'bottom',
   },
   {
-    title: `고객사 니즈에 맞는\n복합수지 recipe`,
+    title: `석유정제공정의 원료로 재활용\n(탄소기반 원재료 대체)`,
     img: ic_stage5,
     top: 272,
     left: 1216,
     position: 'bottom',
   },
   {
-    title: `upcycling\n친환경 복합수지 생산`,
+    title: `석유화학공정에서\nCircular Product 생산`,
     img: ic_stage6,
     top: 32,
     left: 980,
@@ -194,12 +194,12 @@ const Stage = styled.div`
   p{
    position: absolute;
    width: 48px;
-   left: -6px;
+   left: -36px;
    top: ${props => props.position === 'bottom' ? '117px' : '-44px'};
    ${props => props.theme.type.size.caption}
    ${props => props.theme.type.weight.prd.regular}
    color: ${props => props.theme.color.ui.strong};
-   width: 120px;
+   width: 180px;
    text-align: center;
    white-space: pre-line;
    background-color: ${props => props.theme.color.ui.bg.light};
