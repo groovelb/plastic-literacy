@@ -10,6 +10,7 @@ import SectionTitle from '../components/textContainer/SectionTitle';
 import SectionContentVertical from '../components/textContainer/SectionContentVerticalVer2';
 // import ImageBackground from "../components/videoBackground/ImageBackgroundVer2";
 import ImageBackground from "../components/layout/ImageBackground";
+import ImageBackgroundGradient from "../components/layout/ImageBackgroundGradient";
 import ImageBackgroundVer2 from "../components/videoBackground/ImageBackgroundVer2";
 import ChapterSummary from '../components/layout/ChapterSummary';
 import ChapterIndicator from '../components/layout/ChapterIndicator';
@@ -58,6 +59,8 @@ import img_high2 from "../assets/img/illust/c3/mr/highend_washing.png";
 import gs_factory_bg from "../assets/img/bg/chapter/gs_factory_bg.jpg";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
+import img_slogan from "../assets/img/logo/slogan.svg";
+import img_slogan_vertical from "../assets/img/logo/slogan_vertical.svg";
 import { t } from 'i18next';
 
 
@@ -419,6 +422,16 @@ const StageContent = styled(SectionContentVertical)`
     margin-top: 16px;
     margin-left: 0px;
     width: 100%;
+  }
+`;
+
+const Slogan = styled.img`
+  margin: 180px auto 0px auto;
+  width: 640px;
+  height: auto;
+  @media only screen and (max-width: 480px) {
+    margin: 80px auto 0px auto;
+    width: 224px;
   }
 `;
 
@@ -1238,23 +1251,24 @@ const Chapter3 = ({
           </ImageBackground>
         </Page>
         <Page>
-          <ImageBackground
+          <ImageBackgroundGradient
             isFilter={true}
             img={videoURL.c3.ending2}
             isTrigger={true}
             title={t('c3-s10-title')}
             exp={t('c3-s10-exp')}
           >
-          </ImageBackground>
+            <Slogan src={isMobile?img_slogan_vertical:img_slogan} alt='' />
+          </ImageBackgroundGradient>
         </Page>
-        <Page>
+        {/* <Page>
           <MsgFullScreen
             title={t('c3-s10-ending')}
           >
             <img src={text_energy} style={{ margin: '80px 0px' }} alt='' />
             <img src={logo_white} style={{ marginBottom: '80px' }} alt='' />
           </MsgFullScreen>
-        </Page>
+        </Page> */}
       </ReactPageScroller>
     </Container>
   )

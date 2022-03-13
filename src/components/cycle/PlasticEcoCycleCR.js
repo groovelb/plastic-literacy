@@ -239,9 +239,9 @@ const arrowList = [
     deg: 180
   },
   {
-    top: 353,
+    top: 173.5,
     left: 1248 - 725,
-    deg: -45
+    deg: 45
   },
 ];
 

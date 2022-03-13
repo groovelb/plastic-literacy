@@ -31,7 +31,8 @@ const Container = styled.div`
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: ${props => props.isFilter ? 'rgba(15,30,45,0.56)' : 'rgba(0,0,0,0)'};
+    /* background-color: ${props => props.isFilter ? 'rgba(15,30,45,0.56)' : 'rgba(0,0,0,0)'}; */
+		background: linear-gradient(180deg, rgba(15,30,45,0.56) 25%, rgba(0,150,150,1) 85%);
     z-index: 0;
     pointer-events: none;
   }
