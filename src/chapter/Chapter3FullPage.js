@@ -187,6 +187,8 @@ const ImageMark = styled.div`
     opacity: 1;
   }
   @media only screen and (max-width: 480px) {
+    top: ${props => `calc(${props.top}% - 2px)`};
+    left: ${props => `calc(${props.left}% - 2px)`};
     width: 16px;
     height: 16px;
     border-radius: 8px;
@@ -623,32 +625,32 @@ const Chapter3 = ({
     {
       title: 'Engine Under Cover',
       id: 'A',
-      top: isMobile ? 48 : 110,
-      left: isMobile ? -10 : -30,
+      top: isMobile ? 17 : 110,
+      left: isMobile ? 1 : -30,
     },
     {
       title: 'Battery Tray',
       id: 'B',
-      top: isMobile ? 48 : 80,
-      left: isMobile ? -10 : 24,
+      top: isMobile ? 13 : 80,
+      left: isMobile ? 11 : 24,
     },
     {
       title: 'Mud Guard',
       id: 'C',
-      top: isMobile ? 48 : 144,
-      left: isMobile ? 48 : 86,
+      top: isMobile ? 19 : 144,
+      left: isMobile ? 27 : 86,
     },
     {
       title: 'Luggage Floor Box',
       id: 'D',
-      top: isMobile ? 30 : 108,
-      left: isMobile ? 128 : 164,
+      top: isMobile ? 15 : 108,
+      left: isMobile ? 43 : 164,
     },
     {
       title: 'Wheel Guard',
       id: 'E',
-      top: isMobile ? 30 : 96,
-      left: isMobile ? 128 : 340,
+      top: isMobile ? 13 : 96,
+      left: isMobile ? 81 : 340,
     },
   ];
 
@@ -668,8 +670,8 @@ const Chapter3 = ({
     {
       title: 'Carbinet Base',
       id: 'A',
-      top: isMobile ? 80 : 180,
-      left: isMobile ? 72 : 180,
+      top: isMobile ? 29 : 180,
+      left: isMobile ? 49 : 180,
     }
   ];
 
