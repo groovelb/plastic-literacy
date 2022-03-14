@@ -138,7 +138,7 @@ const Source = styled.p`
     color: ${props => props.theme.color.brand.epPurple};
   }
   @media only screen and (max-width: 480px) {
-    bottom: -88px;
+    bottom: -56px;
     right: unset;
     left: 24px;
     width: 320px;
@@ -168,6 +168,7 @@ const Wrapper2 = styled(LiveArea)`
   @media only screen and (max-width: 480px) {
     flex-direction: column;
     padding-left: 0px;
+    padding-bottom: 32px;
   }
 `;
 
