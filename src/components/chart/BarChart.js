@@ -95,6 +95,7 @@ const BarChart = ({
 
   function update() {
     let tickValues = [];
+    console.log(`update for stage ${stage}`);
     data.forEach((item, i, arr) => {
       // if (i === 0) {
       //   tickValues.push(item.year);
@@ -106,7 +107,10 @@ const BarChart = ({
       if (!isMobile && i%1 === 0){
         tickValues.push(item.year);
       }
-      if (isMobile && i%4 === 0){
+      if (isMobile && i%1 === 0){
+        tickValues.push(item.year);
+      }
+      if (isMobile && stage === 5 && i%4 === 0){
         tickValues.push(item.year);
       }
     })
@@ -208,7 +212,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.8},${96})`:`translate(${x(2020) + x.bandwidth()*0.5},${240})`)
+          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.5},${96})`:`translate(${x(2020) + x.bandwidth()*0.5},${240})`)
           .attr("class", "s1_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -221,7 +225,7 @@ const BarChart = ({
 
         chart.append("g")
           .attr("class", "s1_text")
-          .attr("transform", `translate(${x(2020) + x.bandwidth()*0.5},${32})`)
+          .attr("transform", `translate(${x(2020) + x.bandwidth()*0.5},${isMobile?-4:32})`)
           .append("text")
           .attr("class", 'bar_mark_text')
           .attr("x", isMobile?0:0)

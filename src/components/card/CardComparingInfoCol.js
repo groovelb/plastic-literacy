@@ -15,9 +15,9 @@ const Container = styled.div`
   border-radius: 24px;
   @media only screen and (max-width: 480px) {
     height: auto;
-    padding: 8px 0;
+    padding: 8px 16px;
     height: auto;
-    margin-top: 24px;
+    /* margin-top: 24px; */
   }
 `;
 
@@ -41,7 +41,7 @@ const Content = styled.div`
   justify-content: space-between;
   height: 248px;
   @media only screen and (max-width: 480px) {
-    justify-content: flex-start;
+    justify-content: space-between;
     flex-direction: row;
     height: auto;
   }
@@ -50,9 +50,10 @@ const Content = styled.div`
 const Img = styled.div`
   width: 100%;
   @media only screen and (max-width: 480px) {
-    width: 50%;
+    width: 40%;
     display: flex;
     align-self: flex-end;
+    justify-content: flex-end;
     img{
       margin-top: 8px;
       width: auto;
@@ -76,7 +77,7 @@ const ImgBg = styled.img`
 const Text = styled.div`
   width: 100%;
   @media only screen and (max-width: 480px) {
-    width: 50%;
+    width: 60%;
   }
 `;
 
@@ -138,8 +139,9 @@ const CardComparingInfo = ({
       <Content>
         <Text>
           <Number>
-            {`✕`}<br/>
-            {isMobile&&<br/>}
+            {`✕`}
+            {!isMobile&&<br/>}
+            {isMobile&&'\u00A0'}
             {num}
           </Number>
           <Title>

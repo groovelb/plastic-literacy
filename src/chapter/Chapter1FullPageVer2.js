@@ -980,7 +980,7 @@ const Chapter1 = ({
                       buildingList.map((building, index) =>
                         <Grid
                           colPC={3}
-                          colMb={index === 2 ? 1 : 2}
+                          colMb={1}
                           index={index}
                           spacing={isMobile || isTablet ? 8 : 32}
                           length={3}
