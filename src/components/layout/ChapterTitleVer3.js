@@ -39,7 +39,7 @@ const Container = styled.div`
 	}
 	@media only screen and (max-width: 480px) {
 		margin-top: 0px;
-		height: calc(100% - 96px);
+		height: calc(100% - 124px);
 	}
 `;
 
