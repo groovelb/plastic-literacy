@@ -142,7 +142,7 @@ const SlideMenu = styled(LiveArea)`
     padding-top: 80px;
     opacity: ${props => props.isOpen ? '1' : '0'};
     pointer-events: ${props => props.isOpen ? 'auto' : 'none'};
-    background-color: ${props => props.theme.color.ui.bg.dark};
+    background-color: ${props => theme==='dark'?props.theme.color.ui.bg.dark:props.theme.color.ui.bg.light};
     left: 0;
     width: 100%;
     height: 100%;
@@ -157,7 +157,8 @@ const Row3 = styled.div`
 `;
 
 const GNB = ({
-  themeType
+  themeType,
+  setThemeType
 }) => {
   const [currentRoute, setCurrentRoute] = useState('');
   const [isMenuOpen, setOpen] = useState(false);
@@ -178,7 +179,12 @@ const GNB = ({
           </Link>
         </Logo>
         <MenuList>
-          <Menu isCurrent={currentRoute === '/chapter1'}>
+          <Menu
+            onClick={
+              () => setThemeType('dark')
+            }
+            isCurrent={currentRoute === '/chapter1'}
+            >
             <Link to="chapter1">
               <p className="num">
                 Chapter1
@@ -188,7 +194,12 @@ const GNB = ({
               </p>
             </Link>
           </Menu>
-          <Menu isCurrent={currentRoute === '/chapter2'}>
+          <Menu
+            onClick={
+              () => setThemeType('dark')
+            }
+            isCurrent={currentRoute === '/chapter2'}
+          >
             <Link to="chapter2">
               <p className="num">
                 Chapter2
@@ -200,7 +211,11 @@ const GNB = ({
           </Menu>
           <Menu
             isLast={true}
-            isCurrent={currentRoute === '/chapter3'}>
+            onClick={
+              () => setThemeType('light')
+            }
+            isCurrent={currentRoute === '/chapter3'}
+          >
             <Link to="chapter3">
               <p className="num">
                 Chapter3
@@ -214,7 +229,7 @@ const GNB = ({
             <Hamburger
               toggled={isMenuOpen}
               toggle={setOpen}
-              color={color.blueGray900}
+              color={theme==='light'?color.blueGray900:color.white700}
               rounded={true}
               duration={0.2}
             />
@@ -222,10 +237,14 @@ const GNB = ({
         </MenuList>
         {/* <img src={themeType === 'light' ? logo_black : logo_white} alt='' /> */}
       </Content>
-      <SlideMenu isOpen={isMenuOpen}>
+      <SlideMenu
+        isOpen={isMenuOpen}
+        theme={theme}
+      >
         <Row3
           onClick={() => {
             setOpen(false);
+            setThemeType('dark');
           }}
         >
           <ChapterTitleLink
@@ -239,6 +258,7 @@ const GNB = ({
         <Row3
           onClick={() => {
             setOpen(false);
+            setThemeType('dark');
           }}
         >
           <ChapterTitleLink
@@ -252,6 +272,7 @@ const GNB = ({
         <Row3
           onClick={() => {
             setOpen(false);
+            setThemeType('light');
           }}
         >
           <ChapterTitleLink

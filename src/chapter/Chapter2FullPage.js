@@ -438,7 +438,7 @@ const Chapter2FullPage = ({
         renderAllPagesOnFirstRender={true}
         // blockScrollDown={isMobile&&!isFull}
       >
-        <Page>
+        <Page isTop={true}>
           <ChapterTitle
             title={'플라스틱의 여정'}
             subTitle={t("c2-subtitle")}

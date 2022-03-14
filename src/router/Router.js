@@ -38,6 +38,7 @@ export default ({
       <Router>
         <GNB
           themeType={themeType}
+          setThemeType={setThemeType}
         />
         <Background themeType={themeType} />
         <Routes>
@@ -86,7 +87,6 @@ export default ({
                 isFull={isFull}
                 currentChapter={3}
                 setThemeType={setThemeType}
-                themeType={themeType}
                 themeType={themeType}
               />} />
           <Route

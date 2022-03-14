@@ -895,7 +895,7 @@ const Chapter3 = ({
         renderAllPagesOnFirstRender={true}
       // blockScrollDown={isMobile&&!isFull}
       >
-        <Page>
+        <Page isTop={true}>
           <ChapterTitle
             title={'플라스틱의 순환'}
             subTitle={t("c3-subtitle")}

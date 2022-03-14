@@ -896,7 +896,7 @@ const Chapter1 = ({
         renderAllPagesOnFirstRender={true}
         // blockScrollDown={isMobile&&!isFull}
       >
-        <Page>
+        <Page isTop={true}>
           <ChapterTitle
             isFilter={true}
             title={'플라스틱 딜레마'}

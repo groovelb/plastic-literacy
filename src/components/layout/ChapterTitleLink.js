@@ -22,7 +22,7 @@ const Container = styled.div`
 	background-size: cover;
   background-position: center;
 	position: relative;
-	color: ${props => props.theme.color.brand.white};
+	color: ${props => props.theme.color.brand.white} !important;
 	:before{
 		position: absolute;
 		top: 0;
@@ -77,6 +77,7 @@ const Title = styled.div`
 	${props => props.theme.type.weight.exp.bold}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	color: #FFF !important;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
@@ -89,6 +90,7 @@ const SubTitle = styled.div`
 	${props => props.theme.type.weight.exp.bold}
 	text-transform: capitalize;
 	text-shadow: 0 0 20px rgba(15, 30, 45, 0.34);
+	color: #FFF !important;
 	@media only screen and (max-width: 480px) {
 		width: 100%;
 	}
