@@ -1229,7 +1229,7 @@ const Chapter3 = ({
             </Row>
           </LiveArea> */}
         </Page>
-        <Page isTop={isMobile ? true : false}>
+        <Page isTop={isMobile ? false : false}>
           <LiveArea>
             {/* <SectionTitle
               themeType={'light'}
