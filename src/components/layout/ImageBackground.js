@@ -17,7 +17,7 @@ const Container = styled.div`
 	margin-left: 24px;
 	margin-right: 24px;
 	height: calc(100% - 48px);
-  max-height: 880px;
+  /* max-height: 880px; */
 	border-radius: 8px;
 	overflow: hidden;
 	background-image: url(${props => props.img});

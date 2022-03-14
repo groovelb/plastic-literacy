@@ -1173,7 +1173,7 @@ const Chapter3 = ({
             </ExpCenter>
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={true}>
           <ImageBackgroundVer2
             isFilter={true}
             img={gs_factory_bg}
@@ -1240,7 +1240,7 @@ const Chapter3 = ({
             </CircularLoop>
           </LiveArea>
         </Page>
-        <Page>
+        <Page isTop={true}>
           <ImageBackground
             isFilter={true}
             img={videoURL.c3.ending1}
@@ -1250,7 +1250,7 @@ const Chapter3 = ({
           >
           </ImageBackground>
         </Page>
-        <Page>
+        <Page isTop={true}>
           <ImageBackgroundGradient
             isFilter={true}
             img={videoURL.c3.ending2}

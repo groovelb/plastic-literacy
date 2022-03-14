@@ -146,9 +146,9 @@ const CardTimeline = ({
         <Num>
           {year}
         </Num>
-        <Exp>
+        {/* <Exp>
           {isMobile?expMobile:exp}
-        </Exp>
+        </Exp> */}
       </div>
 
       <Play onClick={onClick}>
