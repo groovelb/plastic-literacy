@@ -442,7 +442,7 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
-    d3.selectAll(".node_title.ocean").call(wrap,  isMobile? 56: 80);
+    d3.selectAll(".node_title.ocean").call(wrap,  isMobile? 64: 80);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?

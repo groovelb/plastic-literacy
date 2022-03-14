@@ -73,7 +73,7 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "name": "2019년도 플라스틱 폐기물 발생량"
+      "name": "플라스틱 폐기물 발생량"
     },
     {
       "node": 1,
@@ -93,7 +93,7 @@ let data = {
     },
     {
       "node": 5,
-      "name": "분리수거함"
+      "name": "분리 수거함"
     },
     {
       "node": 6,
@@ -105,7 +105,7 @@ let data = {
     },
     {
       "node": 8,
-      "name": "플라스틱류"
+      "name": "플라스틱"
     },
     {
       "node": 9,
@@ -251,7 +251,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile?72:96, right: 24, bottom: isMobile?24:0, left: 0 };
+  const margin = { top: isMobile?72:96, right: 24, bottom: isMobile?48:0, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -437,12 +437,13 @@ const Sankey = ({
       .attr("class", "node_title land")
       .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
-        if (d.y1 - d.y0 < 32 & !isMobile) {
-          return (d.y0 + d.y1)/2;
-        }
-        else{
-          return isMobile? d.y0 + 16 : d.y0 + 16;
-        }
+        // if (d.y1 - d.y0 < 32 & !isMobile) {
+        //   return (d.y0 + d.y1)/2;
+        // }
+        // else{
+        //   return isMobile? d.y0 + 16 : d.y0 + 16;
+        // }
+        return isMobile? d.y0 + 12 : d.y0 + 16;
       })
       .attr("dy", "0.35em")
       // .attr("dy", "0.35em")
@@ -461,7 +462,7 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
-    d3.selectAll(".node_title.land").call(wrap,  isMobile? 56: 80);
+    d3.selectAll(".node_title.land").call(wrap,  isMobile? 64: 80);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?

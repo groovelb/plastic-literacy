@@ -62,7 +62,7 @@ const FadeIn = keyframes`
 
 const Top = styled(LiveArea)`
    position: fixed;
-   z-index: -1;
+   z-index: 9;
    top: 0px;
    left: 0px;
    padding-top: 108px;
