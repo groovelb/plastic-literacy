@@ -168,7 +168,7 @@ const Wrapper2 = styled(LiveArea)`
   @media only screen and (max-width: 480px) {
     flex-direction: column;
     padding-left: 0px;
-    padding-bottom: 32px;
+    padding-bottom: 44px;
   }
 `;
 

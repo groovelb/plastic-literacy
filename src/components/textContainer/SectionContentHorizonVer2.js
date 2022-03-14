@@ -50,7 +50,7 @@ const TextContent = styled.div`
       height: fit-content;
       padding:0;
       padding-left: 16px;
-      bottom: 32px;
+      bottom: 44px;
     }
   }
 `;
