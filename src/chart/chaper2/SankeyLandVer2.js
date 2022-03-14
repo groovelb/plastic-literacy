@@ -444,6 +444,7 @@ const Sankey = ({
           return isMobile? d.y0 + 16 : d.y0 + 16;
         }
       })
+      .attr("dy", "0.35em")
       // .attr("dy", "0.35em")
       .text(function (d) { return d.name; })
       .style("fill", function (d) {
