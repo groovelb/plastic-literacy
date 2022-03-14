@@ -110,7 +110,8 @@ const BarChart = ({
       if (isMobile && i%1 === 0){
         tickValues.push(item.year);
       }
-      if (isMobile && stage === 5 && i%4 === 0){
+      if (isMobile && stage === 4 && i%4 === 0){
+        console.log(item.year);
         tickValues.push(item.year);
       }
     })
@@ -132,7 +133,13 @@ const BarChart = ({
     let xScaleData;
 
     if (true) {
-      xScaleData = d3.axisBottom().scale(x).tickValues(tickValues)
+      console.log(tickValues);
+      if(stage === 4 && isMobile ) {
+        xScaleData = d3.axisBottom().scale(x).tickValues([2000, 2004, 2008, 2012, 2016, 2019]);  
+      }
+      else{
+        xScaleData = d3.axisBottom().scale(x).tickValues(tickValues);
+      }
       // .tickSize(-height);
     } else {
       xScaleData = d3.axisBottom().scale(x)
