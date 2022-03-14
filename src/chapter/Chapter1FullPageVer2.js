@@ -770,6 +770,7 @@ const Chapter1 = ({
   const [currentSection, setCurrentSection] = useState(0);
 
   useEffect(() => {
+    setThemeType('light');
     setInnterHeight(window.innerHeight);
   }, [window]);
 

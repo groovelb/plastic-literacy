@@ -142,7 +142,7 @@ const SlideMenu = styled(LiveArea)`
     padding-top: 80px;
     opacity: ${props => props.isOpen ? '1' : '0'};
     pointer-events: ${props => props.isOpen ? 'auto' : 'none'};
-    background-color: ${props => theme==='dark'?props.theme.color.ui.bg.dark:props.theme.color.ui.bg.light};
+    background-color: ${props => props.themeType==='dark'?props.theme.color.ui.bg.dark:props.theme.color.ui.bg.light};
     left: 0;
     width: 100%;
     height: 100%;
@@ -239,7 +239,7 @@ const GNB = ({
       </Content>
       <SlideMenu
         isOpen={isMenuOpen}
-        theme={theme}
+        themeType={themeType}
       >
         <Row3
           onClick={() => {
