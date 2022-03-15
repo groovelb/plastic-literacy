@@ -545,6 +545,7 @@ const Chapter2FullPage = ({
         <MsgFullScreen
           title={t('c2-s9-title')}
           exp={t('c2-s9-exp')}
+          isCenter={true}
         >
           <Row3>
             <ChapterTitleLink

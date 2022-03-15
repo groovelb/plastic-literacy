@@ -742,7 +742,7 @@ const Chapter1 = ({
       img: img_lotte_tower
     },
     {
-      num: '524000대',
+      num: '524,000대',
       title: 'KTX',
       unit: '700t',
       img: img_ktx
@@ -1094,6 +1094,7 @@ const Chapter1 = ({
           <MsgFullScreen
             title={t('c1-s7-title')}
             exp={t('c1-s7-exp')}
+            isCenter={true}
           >
             <Row3>
               <ChapterTitleLink

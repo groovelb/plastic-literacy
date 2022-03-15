@@ -68,11 +68,11 @@ const Children = styled.div`
 const Exp = styled.div`
 	position: relative;
 	width: 900px;
-  word-break: keep-all;
+  word-break: break-all;
   white-space: pre-line;
 	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.light}
-	text-align: left;
+	text-align: ${props => props.isCenter?'center':'left'};
 	margin-top: 12px;
 	/* padding: 48px; */
 	transition: opacity 1s ease-in-out;
@@ -90,7 +90,8 @@ const FullScreen = ({
   title,
   exp,
   children,
-  isFilter
+  isFilter,
+  isCenter
 }) => {
 
   const size = useWindowSize();
@@ -108,7 +109,7 @@ const FullScreen = ({
         </h1>
       </Title>
       {
-        exp&&<Exp>{exp}</Exp>
+        exp&&<Exp isCenter={isCenter}>{exp}</Exp>
       }
       <>
         {
