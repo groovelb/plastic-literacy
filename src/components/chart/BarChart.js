@@ -231,7 +231,7 @@ const BarChart = ({
           .attr('alignment-baseline', 'central');
 
         chart.append("g")
-          .attr("transform", isMobile ? `translate(${x(1950) + x.bandwidth() * 0.5},${96})` : `translate(${x(1950) + x.bandwidth() * 0.5},${y(data[0].value + 16)})`)
+          .attr("transform", isMobile ? `translate(${x(1950) + x.bandwidth() * 0.5},${y(data[0].value + 16)})` : `translate(${x(1950) + x.bandwidth() * 0.5},${y(data[0].value + 16)})`)
           .attr("class", "s1_text")
           .append("text")
           .attr("class", 'bar_value_text_purple')
