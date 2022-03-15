@@ -251,7 +251,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile?72:96, right: 24, bottom: isMobile?48:0, left: 0 };
+  const margin = { top: isMobile?72:96, right: 24, bottom: isMobile?48:24, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -407,7 +407,7 @@ const Sankey = ({
       .attr("y", function (d) { return d.y0; })
       .attr("height", function (d) {
         if (d.y1 - d.y0 < 20) {
-          return 20;
+          return 32;
         }
         else {
           return d.y1 - d.y0;
@@ -462,7 +462,7 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
-    d3.selectAll(".node_title.land").call(wrap,  isMobile? 64: 80);
+    d3.selectAll(".node_title.land").call(wrap,  isMobile? 64: 120);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?
@@ -488,7 +488,7 @@ const Sankey = ({
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
         let value = parseInt(d.value/10) + '만';
-        if (d.y1 - d.y0 < 40) {
+        if (d.y1 - d.y0 < 32) {
           return '';  
         }
         else{

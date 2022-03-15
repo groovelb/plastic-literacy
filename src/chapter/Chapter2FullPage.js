@@ -510,6 +510,7 @@ const Chapter2FullPage = ({
           isTrigger={true}
         >
           <MsgFullScreen
+            isCenter={true}
             title={t('c2-s5-title')}
             exp={t('c2-s5-exp')}
           />

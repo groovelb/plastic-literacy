@@ -147,6 +147,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .node_value{
     font-size: 14px;
+    font-family: ${props => props.theme.type.weight.prd.regular};
     /* font-weight: bold; */
     /* text-shadow: 0px 0px 4px #fff; */
     @media only screen and (max-width: 480px) {

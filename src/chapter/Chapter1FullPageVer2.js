@@ -649,7 +649,7 @@ const Chapter1 = ({
       title: t("c1-s3-title"),
       exp: t("c1-s3-exp"),
       data: plastic_consumption_1_6,
-      chartTitle: '국가별 1인당 플라스틱 소비량',
+      chartTitle: '2020년 국가별 1인당 플라스틱 소비량',
       unit: '(단위: kilogram)',
       from: '출처: 유럽플라스틱제조자협회(EUROMAP)',
       page: 5,
@@ -837,7 +837,7 @@ const Chapter1 = ({
       title: t('c1-s1-subtitle5'),
       exp: t('c1-s1-subexp5'),
       expMobile: `우주산업`,
-       year: 1960,
+       year: `1960's`,
       img: img_timeline5,
     }
   ];

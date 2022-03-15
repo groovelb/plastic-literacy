@@ -87,7 +87,9 @@ let data = {
     },
     {
       "node": 3,
-      "name": "잔존폐기물"
+      "name": "잔존폐기물",
+      "isTemp":true,
+      "value2":"집계 없음",
     },
     {
       "node": 4,
@@ -280,7 +282,7 @@ const Sankey = ({
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
       .nodeWidth(isMobile ? 64 : 124)
-      .nodePadding(isMobile ? 24 : 56)
+      .nodePadding(isMobile ? 8 : 16)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 
@@ -405,7 +407,7 @@ const Sankey = ({
       .attr("y", function (d) { return d.y0; })
       .attr("height", function (d) {
         if (d.y1 - d.y0 < 20) {
-          return 20;
+          return 28;
         }
         else {
           return d.y1 - d.y0;
@@ -435,7 +437,7 @@ const Sankey = ({
       .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32 & !isMobile) {
-          return (d.y0 + d.y1)/2;
+          return isMobile? d.y0 + 12 : d.y0 + 16;
         }
         else{
           return isMobile? d.y0 + 12 : d.y0 + 16;
@@ -458,7 +460,7 @@ const Sankey = ({
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
 
-    d3.selectAll(".node_title.ocean").call(wrap,  isMobile? 64: 80);
+    d3.selectAll(".node_title.ocean").call(wrap,  isMobile? 64: 120);
 
     const linkExtent = d3.extent(graph.links, function (d) { return d.value });
     const valueScale = isMobile?
@@ -484,7 +486,7 @@ const Sankey = ({
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
         let value = parseInt(d.value/10) + '만';
-        if (d.y1 - d.y0 < 32) {
+        if (d.y1 - d.y0 < 48) {
           return '';  
         }
         else{

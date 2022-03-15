@@ -567,7 +567,7 @@ const Chapter3 = ({
       img: mr_stage1
     },
     {
-      title: '분류',
+      title: '분류 및 파쇄',
       img: mr_stage2
     },
     {
@@ -575,7 +575,7 @@ const Chapter3 = ({
       img: mr_stage3
     },
     {
-      title: '합성',
+      title: '용융 및 합성',
       img: mr_stage4_2
     },
     {
