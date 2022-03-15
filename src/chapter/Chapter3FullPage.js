@@ -505,7 +505,7 @@ const Chapter3 = ({
       id: "mr",
       name1: 'Mechanical',
       name2: 'Recycling',
-      exp: `물리적 재활용(MR)은 플라스틱 쓰레기를 물리적으로 분쇄해서 플라스틱의 원료를 만드는 방법으로, 가장 효율적인 재활용 기술입니다. `,
+      exp: t('c3-s1-subexp1'),
       img: ic_mr_outliend,
       result: {
         title: `플라스틱 플레이크\n(Plastic Flake)`,
@@ -516,8 +516,7 @@ const Chapter3 = ({
       id: "cr",
       name1: 'Chemical',
       name2: 'Recycling',
-      exp: `화학적 재활용(CR)은 MR이 불가능한 플라스틱 쓰레기를 화학적으로 분해해서 석유화학의 원재료(재생원료, 재생유)를 생산하는 재활용 기술입니다. 
-      `,
+      exp: t('c3-s1-subexp2'),
       img: ic_cr_outliend,
       result: {
         title: `석유 정제 공정의 원재료\n(Petrochemical)`,
@@ -528,8 +527,7 @@ const Chapter3 = ({
       id: "tr",
       name1: 'Thermal',
       name2: 'Recycling',
-      exp: `재가공이 불가능한 폐기물을 연소 시켜 열에너지로 활용합니다. 다만, 플라스틱의 원료를 만들어내지 못해서 재활용으로 보지 않는 경우도 있습니다.
-      `,
+      exp: t('c3-s1-subexp3'),
       img: ic_tr_outliend,
       result: {
         title: `열 발전 에너지 연료\n(Thermal Energy)`,
@@ -545,7 +543,7 @@ const Chapter3 = ({
       img: mr_stage1
     },
     {
-      title: '분류',
+      title: '분류 및 파쇄',
       img: mr_stage2
     },
     {
@@ -553,7 +551,7 @@ const Chapter3 = ({
       img: mr_stage3
     },
     {
-      title: '합성',
+      title: '용융',
       img: mr_stage4
     },
     {
@@ -611,11 +609,11 @@ const Chapter3 = ({
     //   img: illust_low1
     // },
     {
-      title: '건축자재',
+      title: '건축 자재',
       img: illust_low2
     },
     {
-      title: '일회용 파레트',
+      title: '일회용 파렛트',
       img: illust_low3
     },
   ];
