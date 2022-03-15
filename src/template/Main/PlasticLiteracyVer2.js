@@ -221,6 +221,7 @@ const ExpFloating = styled.div`
   bottom: -100px;
   ${props => props.theme.type.weight.prd.bold}
   ${props => props.theme.type.size.title3}
+  text-align: center;
 `;
 
 const nodeList = [
