@@ -96,7 +96,7 @@ const Top = styled(LiveArea)`
 const Chart = styled.div`
   position: fixed;
   /* z-index: 999; */
-  top: 348px;
+  top: 324px;
   padding-top: 0px;
   padding-bottom: 0px;
   padding-left:10px;
@@ -106,7 +106,7 @@ const Chart = styled.div`
   left: ${(props) => `calc((100% - ${props.theme.size.liveArea})/2)`};
   /* width: ${props => `calc(calc(${props.theme.size.liveArea} - 308px - 48px))`}; */
   /* height: ${sankeyHeight + 'px'}; */
-  height: calc(100% - 486px);
+  height: calc(100% - 448px);
   /* background-color: ${props => props.theme.color.ui.bg.dark}; */
   opacity: ${props => props.isActive ? 1 : 0};
   transition: opacity 0.3s ease-out;
@@ -117,7 +117,7 @@ const Chart = styled.div`
     top: 32px;
     padding-top: 108px;
     width: calc(200% - 128px);
-    height: calc(100% - 348px);
+    height: calc(100% - 324px);
     padding-left:0px;
     left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
     transition: all 0.2s ease-in-out;
