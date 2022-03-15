@@ -282,7 +282,7 @@ const Sankey = ({
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
       .nodeWidth(isMobile ? 64 : 124)
-      .nodePadding(isMobile ? 24 : 16)
+      .nodePadding(isMobile ? 24 : 20)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 

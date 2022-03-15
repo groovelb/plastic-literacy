@@ -122,6 +122,7 @@ const GlobalStyle = createGlobalStyle`
   }
   .stage_title{
     /* font-weight: bold; */
+    ${props => props.theme.type.weight.prd.regular}
     font-size: 20px;
     fill: #fff;
     opacity: 0.92;
@@ -135,7 +136,7 @@ const GlobalStyle = createGlobalStyle`
     
   }
   .node_title{
-    ${props => props.theme.type.weight.prd.black};
+    ${props => props.theme.type.weight.prd.black}
     text-shadow: 0px 0px 12px ${props => props.theme.color.brand.epDeepPurple};
     font-size: 16px;
     white-space: pre-line;
