@@ -227,31 +227,31 @@ const nodeList = [
   {
     x: circleSize.width / 2 - nodeSize.width / 2,
     y: nodeSize.margin,
+    img: illust_synthesis,
+    title: '생산',
+    exp: '고객사의 요구사항에 따라 자원의 품질 보완을 위해 첨가제를 추가해서 친환경 복합수지로 재활용합니다.'
+  },
+  {
+    x: circleSize.width - nodeSize.width - nodeSize.margin,
+    y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_produce,
     title: '배출',
     exp: '친환경 복합수지는 고객사의 자동차나 가전제품에 부품 원료로 활용되고 소비자의 사용 이후 배출됩니다.'
   },
   {
-    x: circleSize.width - nodeSize.width - nodeSize.margin,
-    y: circleSize.height / 2 - nodeSize.height / 2,
+    x: circleSize.width / 2 - nodeSize.width / 2,
+    y: circleSize.height - nodeSize.height - nodeSize.margin,
     img: illust_dispose,
     title: '수거',
     exp: '동일한 품질의 플라스틱 쓰레기를 대량으로 수급하기 위해서 수거업체와 파트너십을 맺고 자원을 회수합니다.'
   },
   {
-    x: circleSize.width / 2 - nodeSize.width / 2,
-    y: circleSize.height - nodeSize.height - nodeSize.margin,
+    x: nodeSize.margin,
+    y: circleSize.height / 2 - nodeSize.height / 2,
     img: illust_crush,
     title: '처리',
     exp: '파트너십을 체결한 전처리업체를 통해 친환경 복합수지로 재활용할 수 있도록 자원을 선별 및 분쇄합니다.'
   },
-  {
-    x: nodeSize.margin,
-    y: circleSize.height / 2 - nodeSize.height / 2,
-    img: illust_synthesis,
-    title: '생산',
-    exp: '고객사의 요구사항에 따라 자원의 품질 보완을 위해 첨가제를 추가해서 친환경 복합수지로 재활용합니다.'
-  }
 ];
 
 const Cycle = styled.div`

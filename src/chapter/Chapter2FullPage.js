@@ -175,6 +175,8 @@ const Wrapper2 = styled(LiveArea)`
 const FloatingLeft = styled.div`
   width: 224px;
   position: absolute;
+  word-break: keep-all;
+  white-space: pre-line;
   top: 0px;
   left: 0;
   ${props => props.theme.type.size.title2}
@@ -427,7 +429,7 @@ const Chapter2FullPage = ({
             />
           </Chart>
           <Source>
-          출처 : 해양수산부 (2020) 「2018~2020 국가 해안쓰레기 모니터링 및 해양쓰레기 수거량」
+          출처: 해양수산부 ‘해양환경정보포털’, 단위: 톤
           </Source>
         </Top>
       }
@@ -530,7 +532,7 @@ const Chapter2FullPage = ({
         <Page>
           <Wrapper2>
             <FloatingLeft>
-              {t('c2-summary3-question1')}
+              {t('c2-summary3-title')}
             </FloatingLeft>
             <DynamicImageGrid gridData={isMobile?gridDataOcean1Mobile:gridDataOcean1} />
           </Wrapper2>

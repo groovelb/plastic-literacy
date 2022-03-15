@@ -73,7 +73,7 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "name": "플라스틱 폐기물 발생량"
+      "name": "전체폐기물 (2019)"
     },
     {
       "node": 1,
@@ -105,7 +105,7 @@ let data = {
     },
     {
       "node": 8,
-      "name": "플라스틱"
+      "name": "플라스틱류"
     },
     {
       "node": 9,
@@ -296,7 +296,7 @@ const Sankey = ({
       .attr("transform", "translate(0,0)");
 
     let nodeGroupTemp = [
-      { name: '사용', depth: 0, x: null, img: ic_product },
+      { name: '발생', depth: 0, x: null, img: ic_product },
       { name: '배출', depth: 1, x: null, img: ic_dispose },
       { name: '수거', depth: 2, x: null, img: ic_collect },
       { name: '선별', depth: 3, x: null, img: ic_select },
@@ -471,7 +471,7 @@ const Sankey = ({
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 8; })
+      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
@@ -481,10 +481,10 @@ const Sankey = ({
       })
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
-      .style("font-size", (d) => {
-        // return valueScale(d.value);
-        return 14;
-      })
+      // .style("font-size", (d) => {
+      //   // return valueScale(d.value);
+      //   return 14;
+      // })
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
         let value = parseInt(d.value/10) + '만';

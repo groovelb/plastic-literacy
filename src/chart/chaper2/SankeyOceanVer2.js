@@ -71,19 +71,23 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "name": "육상기인"
+      "name": "육상기인",
+      "isTemp":true,
+      "value2":"약65% 추정",
     },
     {
       "node": 1,
-      "name": "해상기인"
+      "name": "해상기인",
+      "isTemp":true,
+      "value2":"약35% 추정",
     },
     {
       "node": 2,
-      "name": "2019년도 해양쓰레기 수거량"
+      "name": "수거폐기물 (2020)"
     },
     {
       "node": 3,
-      "name": "잔존량"
+      "name": "잔존폐기물"
     },
     {
       "node": 4,
@@ -99,23 +103,33 @@ let data = {
     },
     {
       "node": 7,
-      "name": "플라스틱"
+      "name": "플라스틱",
+      "isTemp":true,
+      "value2":"약80% 추정",
     },
     {
       "node": 8,
-      "name": "비플라스틱"
+      "name": "비플라스틱",
+      "isTemp":true,
+      "value2":"약20% 추정",
     },
     {
       "node": 9,
-      "name": "재활용"
+      "name": "재활용",
+      "isTemp":true,
+      "value2":"집계 없음",
     },
     {
       "node": 10,
-      "name": "소각"
+      "name": "소각",
+      "isTemp":true,
+      "value2":"집계 없음",
     },
     {
       "node": 11,
-      "name": "매립"
+      "name": "매립",
+      "isTemp":true,
+      "value2":"집계 없음",
     },
   ],
   "links": [
@@ -123,7 +137,9 @@ let data = {
       "name": "유입-현존1",
       "source": 0,
       "target": 2,
-      "value": 89934
+      "value": 89934,
+      "isTemp":true,
+      "value2":"약 65% 추정",
     },
     {
       "name": "유입-현존2",
@@ -279,7 +295,7 @@ const Sankey = ({
 
     let nodeGroupTemp = [
       { name: '유입', depth: 0, x: null, img: ic_product },
-      { name: '발생', depth: 1, x: null, img: ic_dispose },
+      { name: '현존', depth: 1, x: null, img: ic_dispose },
       { name: '수거', depth: 2, x: null, img: ic_collect },
       { name: '선별', depth: 3, x: null, img: ic_select },
       { name: '처리', depth: 4, x: null, img: ic_recycle },
@@ -422,7 +438,7 @@ const Sankey = ({
           return (d.y0 + d.y1)/2;
         }
         else{
-          return isMobile? d.y0 + 16 : d.y0 + 16;
+          return isMobile? d.y0 + 12 : d.y0 + 16;
         }
       })
       .attr("dy", "0.35em")
@@ -451,7 +467,7 @@ const Sankey = ({
 
     node.append("text")
       .attr("class", "node_value")
-      .attr("x", function (d) { return d.x0 + 8; })
+      .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
@@ -461,10 +477,10 @@ const Sankey = ({
       })
       .attr("dy", "0.35em")
       .attr("alignment-baseline", "middle")
-      .style("font-size", (d) => {
-        // return valueScale(d.value);
-        return 16;
-      })
+      // .style("font-size", (d) => {
+      //   // return valueScale(d.value);
+      //   return 16;
+      // })
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
         let value = parseInt(d.value/10) + '만';
@@ -472,7 +488,8 @@ const Sankey = ({
           return '';  
         }
         else{
-          return value; 
+            if(d.isTemp) return d.value2;
+            else return value; 
         }
       })
       .filter(function (d) { return d.x0 < width / 2; })

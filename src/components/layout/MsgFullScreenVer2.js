@@ -68,7 +68,8 @@ const Children = styled.div`
 const Exp = styled.div`
 	position: relative;
 	width: 900px;
-  word-break: break-all;
+  word-break: keep-all;
+  white-space: pre-line;
 	${props => props.theme.type.size.body1}
 	${props => props.theme.type.weight.prd.light}
 	text-align: left;

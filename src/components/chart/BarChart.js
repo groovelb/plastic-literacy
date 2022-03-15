@@ -18,7 +18,7 @@ const BarChart = ({
 }) => {
 
   const marginUnit = isMobile ? 24 : 24;
-  const margin = { top: marginUnit * 1, right: isMobile?marginUnit * 0.25:marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
+  const margin = { top: marginUnit * 1, right: isMobile ? marginUnit * 0.25 : marginUnit * 0, bottom: marginUnit * 1, left: marginUnit * 0 };
 
   let containerRef = useRef(null);
   let svgRef = useRef(null);
@@ -103,14 +103,14 @@ const BarChart = ({
       // else if (i === arr.length - 1) {
       //   tickValues.push(item.year);
       // }
-    
-      if (!isMobile && i%1 === 0){
+
+      if (!isMobile && i % 1 === 0) {
         tickValues.push(item.year);
       }
-      if (isMobile && i%1 === 0){
+      if (isMobile && i % 1 === 0) {
         tickValues.push(item.year);
       }
-      if (isMobile && stage === 4 && i%4 === 0){
+      if (isMobile && stage === 4 && i % 4 === 0) {
         console.log(item.year);
         tickValues.push(item.year);
       }
@@ -134,10 +134,10 @@ const BarChart = ({
 
     if (true) {
       console.log(tickValues);
-      if(stage === 4 && isMobile ) {
-        xScaleData = d3.axisBottom().scale(x).tickValues([2000, 2004, 2008, 2012, 2016, 2019]);  
+      if (stage === 4 && isMobile) {
+        xScaleData = d3.axisBottom().scale(x).tickValues([2000, 2004, 2008, 2012, 2016, 2019]);
       }
-      else{
+      else {
         xScaleData = d3.axisBottom().scale(x).tickValues(tickValues);
       }
       // .tickSize(-height);
@@ -219,7 +219,7 @@ const BarChart = ({
           });
 
         chart.append("g")
-          .attr("transform", isMobile?`translate(${x(2020) + x.bandwidth()*0.5},${96})`:`translate(${x(2020) + x.bandwidth()*0.5},${240})`)
+          .attr("transform", isMobile ? `translate(${x(2020) + x.bandwidth() * 0.5},${96})` : `translate(${x(2020) + x.bandwidth() * 0.5},${240})`)
           .attr("class", "s1_text")
           .append("text")
           .attr("class", 'bar_value_text')
@@ -228,24 +228,36 @@ const BarChart = ({
           .attr("fill", "#fff")
           .attr("transform", "rotate(-90)")
           .text("3억 6,700만톤")
-          .attr('alignment-baseline','central');
+          .attr('alignment-baseline', 'central');
+
+        chart.append("g")
+          .attr("transform", isMobile ? `translate(${x(1950) + x.bandwidth() * 0.5},${96})` : `translate(${x(1950) + x.bandwidth() * 0.5},${y(data[0].value + 16)})`)
+          .attr("class", "s1_text")
+          .append("text")
+          .attr("class", 'bar_value_text_purple')
+          .attr("x", 0)
+          .attr("y", 0)
+          .attr("fill", "#220749")
+          .attr("transform", "rotate(-90)")
+          .text("150만톤")
+          .attr('alignment-baseline', 'central');
 
         chart.append("g")
           .attr("class", "s1_text")
-          .attr("transform", `translate(${x(2020) + x.bandwidth()*0.5},${isMobile?-4:32})`)
+          .attr("transform", `translate(${x(2020) + x.bandwidth() * 0.5},${isMobile ? -4 : 32})`)
           .append("text")
           .attr("class", 'bar_mark_text')
-          .attr("x", isMobile?0:0)
-          .attr("y", isMobile?0:0)
+          .attr("x", isMobile ? 0 : 0)
+          .attr("y", isMobile ? 0 : 0)
           .attr("fill", "#fff")
           .text("280배")
-          .attr("text-anchor",isMobile?"middle":"middle")
+          .attr("text-anchor", isMobile ? "middle" : "middle")
       }, 1000);
     }
-    else{
+    else {
       chart.selectAll(".s1_text").remove();
     }
-    
+
     // if (stage === 4) {
     //   setTimeout(function () {
     //     chart.selectAll("rect")
@@ -316,7 +328,7 @@ const BarChart = ({
 
       setTimeout(function () {
         chart.append("g")
-          .attr("transform", isMobile?`translate(${x(2019) + 12},${56})`:`translate(${x(2019) + 32},${120})`)
+          .attr("transform", isMobile ? `translate(${x(2019) + 12},${56})` : `translate(${x(2019) + 32},${120})`)
           .attr("class", "s3_text")
           .append("text")
           .attr("class", 'bar_value_text')

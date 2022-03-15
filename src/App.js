@@ -149,6 +149,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 12px;
     /* font-weight: bold; */
     /* text-shadow: 0px 0px 4px #fff; */
+    @media only screen and (max-width: 480px) {
+      font-size: 12px;
+      letter-spacing: -0.8px ;
+    }
   }
   h1,h2{
     margin: 0;
@@ -255,7 +259,14 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (max-width: 480px) {
       font-size: 12px !important;
     }
-
+  }
+  .bar_value_text_purple{
+    fill: #6464FF;
+    ${props => props.theme.type.size.title2};
+    ${props => props.theme.type.weight.prd.black};
+    @media only screen and (max-width: 480px) {
+      font-size: 12px !important;
+    }
   }
   .bar_mark_text{
     fill: #fff;

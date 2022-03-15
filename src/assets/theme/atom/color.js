@@ -59,7 +59,7 @@ const color = {
   },
   signal: {
     inform: colorToken.blueGray700,
-    success: colorToken.green,
+    success: colorToken.epGreen,
     fail: colorToken.pinkRed,
     warn: colorToken.red,
     highlight: colorToken.pinkRed

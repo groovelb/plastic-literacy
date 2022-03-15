@@ -88,6 +88,7 @@ const Answer = styled.div`
 const Title = styled.div`
   color: #fff;
   text-shadow: 0px 0px  8px rgba(0,0,0,0.24);
+  word-break: keep-all;
   h3{
     ${props => props.theme.type.size.title3}
     ${props => props.theme.type.weight.bold}
@@ -135,7 +136,7 @@ const ModalContainer = styled.div`
     margin-top: 32px;
     margin-bottom: 8px;
     width: 100%;
-    color: ${props => props.theme.color.signal.highlight};
+    color: ${props => props.isRecycle?props.theme.color.signal.success:props.theme.color.signal.highlight};
     ${props => props.theme.type.size.title2}
     ${props => props.theme.type.weight.bold}
   }
@@ -165,9 +166,10 @@ const Modal = ({
   answer2,
   question,
   onClose,
-  img
+  img,
+  isRecycle
 }) => (
-  <ModalContainer>
+  <ModalContainer isRecycle={isRecycle}>
     <p className={'question'}>
       {question}
     </p>
@@ -199,6 +201,7 @@ const DynamicImageGrid2 = ({ gridData }) => {
           answer1={gridData[index].answer1}
           answer2={gridData[index].answer2}
           img={gridData[index].src}
+          isRecycle={gridData[index].isRecycle}
           onClose={
             () => setIsAnswer(false)
             }
