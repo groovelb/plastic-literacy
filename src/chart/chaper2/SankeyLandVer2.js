@@ -476,7 +476,7 @@ const Sankey = ({
         if (d.y1 - d.y0 < 32) {
           return d.y0 + 5;
         } else {
-          return d.y1 - 16;
+          return isMobile?d.y1 - 12 : d.y1 - 16;
         }
       })
       .attr("dy", "0.35em")
