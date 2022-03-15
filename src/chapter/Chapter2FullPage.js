@@ -117,7 +117,7 @@ const Chart = styled.div`
     top: 32px;
     padding-top: 108px;
     width: calc(200% - 128px);
-    height: calc(100% - 324px);
+    height: calc(100% - 348px);
     padding-left:0px;
     left: ${props => `calc(${-props.step} * (100% - 100px) + 24px)`};
     transition: all 0.2s ease-in-out;

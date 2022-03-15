@@ -485,8 +485,9 @@ const Sankey = ({
       // })
       .style("fill", theme.color.brand.epDeepPurple)
       .text(function (d) { 
+        let max = isMobile?24:48
         let value = parseInt(d.value/10) + '만';
-        if (d.y1 - d.y0 < 48) {
+        if (d.y1 - d.y0 < max) {
           return '';  
         }
         else{
