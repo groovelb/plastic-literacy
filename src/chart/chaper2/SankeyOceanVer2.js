@@ -251,7 +251,7 @@ const Sankey = ({
   let containerRef = useRef(null);
 
   // set the dimensions and margins of the graph
-  const margin = { top: isMobile ? 72 : 96, right: 10, bottom: 10, left: 0 };
+  const margin = { top: isMobile ? 56 : 96, right: 10, bottom: 10, left: 0 };
   // innerWidth = width - margin.left - margin.right,
   // innerHeight = height - margin.top - margin.bottom;
 
@@ -282,7 +282,7 @@ const Sankey = ({
     // Set the sankey diagram properties
     const sankeyLayout = sankey()
       .nodeWidth(isMobile ? 64 : 124)
-      .nodePadding(isMobile ? 8 : 16)
+      .nodePadding(isMobile ? 24 : 16)
       .nodeAlign(sankeyLeft)
       .size([width, height]);
 
