@@ -79,8 +79,11 @@ const Exp = styled.div`
 	/* border: solid 1px #fff; */
  
 	@media only screen and (max-width: 480px) {
+    word-break: break-all;
+    white-space: normal;
 		width: 100%;
     margin-top: 0px;
+    text-align:left;
 	}
 `;
 
