@@ -34,6 +34,7 @@ import ic_stage3 from '../../assets/icon/cycle/ic_mr_waste.svg';
 import ic_stage4 from "../../assets/img/icon/ic_tr_outlined.svg";
 import ic_stage5 from '../../assets/icon/cycle/ic_cr_process.svg';
 import ic_stage6 from '../../assets/icon/cycle/ic_mr_flake.svg';
+import illust_mobile from '../../assets/img/illust/c3/mr/illust_cycle_cr_mobile.jpg';
 
 const margin = { top: isMobile ? 0 : 24, right: isMobile ? 0 : 24, bottom: isMobile ? 0 : 24, left: isMobile ? 0 : 24 };
 
@@ -99,6 +100,13 @@ const Arrow = styled.div`
  @media only screen and (max-width: 480px) {
   display: none;
 }
+`;
+
+const IllustImg = styled.img`
+  width: calc(100% + 32px) !important;
+  margin-left: -16px  !important;
+  margin-top: 32px !important;
+  margin-bottom: 20px !important;
 `;
 
 const stageList = [
@@ -259,42 +267,48 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   // let heightMobile = 0;
 
   useEffect(() => {
-    widthMobile = containerRef.current.clientWidth;
-    setWidthMobile(widthMobile);
-    setHeightMobile(containerRef.current.clientHeight);
-    console.log(widthMobile);
+    if (!isMobile) {
+      widthMobile = containerRef.current.clientWidth;
+      setWidthMobile(widthMobile);
+      setHeightMobile(containerRef.current.clientHeight);
+      console.log(widthMobile);
+    }
   }, []);
 
   useEffect(() => {
-    if (isStop === true) {
-      setStop(true);
-      setCount(0);
-    }
-    else {
-      setStop(false);
+    if (!isMobile) {
+      if (isStop === true) {
+        setStop(true);
+        setCount(0);
+      }
+      else {
+        setStop(false);
+      }
     }
   }, [isStop]);
 
   useEffect(() => {
-    svg = d3.select(svgRef.current)
-      .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
-      .attr("height", isMobile ? 498 * (widthMobile / 1200) : 498 + margin.top + margin.bottom);
+    if (!isMobile) {
+      svg = d3.select(svgRef.current)
+        .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
+        .attr("height", isMobile ? 498 * (widthMobile / 1200) : 498 + margin.top + margin.bottom);
 
-    g = svg.append('g')
-      .attr("transform",
-        isMobile ? `translate(${margin.left},${margin.top}) scale(${widthMobile / 1248}, ${widthMobile / 1248})` : `translate(${margin.left},${margin.top})`);
+      g = svg.append('g')
+        .attr("transform",
+          isMobile ? `translate(${margin.left},${margin.top}) scale(${widthMobile / 1248}, ${widthMobile / 1248})` : `translate(${margin.left},${margin.top})`);
 
-    cyclePathData2.forEach((path, index, arr) => {
-      g.append('path')
-        .attr('d', path)
-        .attr("class", `path_cr_${index}`)
-        .attr("stroke", color.brand.epGreen)
-        .attr("fill", 'none')
-        .attr("stroke-width", 2);
+      cyclePathData2.forEach((path, index, arr) => {
+        g.append('path')
+          .attr('d', path)
+          .attr("class", `path_cr_${index}`)
+          .attr("stroke", color.brand.epGreen)
+          .attr("fill", 'none')
+          .attr("stroke-width", 2);
 
-      g.append('g')
-        .attr("class", `particleGroup_cr_${index}`);
-    });
+        g.append('g')
+          .attr("class", `particleGroup_cr_${index}`);
+      });
+    }
   }, []);
 
   const renderParticle = () => {
@@ -402,73 +416,84 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   }
 
   const updateParticle = () => {
-    if (count === 1) {
-      renderParticle();
+    if (!isMobile) {
+      if (count === 1) {
+        renderParticle();
+      }
+      else if (count % 300 === 0) {
+        renderParticle();
+        console.log(count);
+      }
+      setCount(count + 1);
     }
-    else if (count % 300 === 0) {
-      renderParticle();
-      console.log(count);
-    }
-    setCount(count + 1);
   }
 
   useAnimationFrameLoop(updateParticle, stop)
 
   return (
     <Wrapper>
-      <Title>
-        Circular<br />
-        Economy System
-      </Title>
-      <Container
-        ref={containerRef}
-        widthMobile={widthMobileState}
-      >
-        <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '16px' : '120px'}
-        >
-          <img src={logo_gs} alt='' />
-        </CycleFill>
-        <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? 'calc(100% - 136px)' : '848px'}
+      {
+        !isMobile &&
+        <>
+          <Title>
+            Circular<br />
+            Economy System
+          </Title>
+          <Container
+            ref={containerRef}
+            widthMobile={widthMobileState}
+          >
+            <CycleFill
+              top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+              left={isMobile ? '16px' : '120px'}
+            >
+              <img src={logo_gs} alt='' />
+            </CycleFill>
+            <CycleFill
+              top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+              left={isMobile ? 'calc(100% - 136px)' : '848px'}
 
-        >
-          일상 소비재 시장
-        </CycleFill>
-        {
-          stageList.map((stage, index) =>
-            <Stage
-              top={`calc(${stage.top}px - 54px)`}
-              left={`calc(${stage.left}px - 54px)`}
-              position={stage.position}
-              key={index}
             >
-              <img src={stage.img} alt='' />
-              <p>
-                {stage.title}
-              </p>
-            </Stage>
-          )
-        }
-        {
-          arrowList.map((arrow, index) =>
-            <Arrow
-              top={arrow.top + 'px'}
-              left={arrow.left + 'px'}
-              deg={arrow.deg}
-              position={arrow.position}
-            >
-              <img src={ic_arrow} alt='' alt='' />
-            </Arrow>
-          )
-        }
-        <svg
-          className={'plastic_cycle'}
-          ref={svgRef}
-        />
-      </Container>
+              일상 소비재 시장
+            </CycleFill>
+            {
+              stageList.map((stage, index) =>
+                <Stage
+                  top={`calc(${stage.top}px - 54px)`}
+                  left={`calc(${stage.left}px - 54px)`}
+                  position={stage.position}
+                  key={index}
+                >
+                  <img src={stage.img} alt='' />
+                  <p>
+                    {stage.title}
+                  </p>
+                </Stage>
+              )
+            }
+            {
+              arrowList.map((arrow, index) =>
+                <Arrow
+                  top={arrow.top + 'px'}
+                  left={arrow.left + 'px'}
+                  deg={arrow.deg}
+                  position={arrow.position}
+                >
+                  <img src={ic_arrow} alt='' />
+                </Arrow>
+              )
+            }
+            <svg
+              className={'plastic_cycle'}
+              ref={svgRef}
+            />
+          </Container>
+        </>
+      }
+      {
+        isMobile && 
+        <IllustImg src={illust_mobile} alt='' />
+      }
     </Wrapper>
   );
 
