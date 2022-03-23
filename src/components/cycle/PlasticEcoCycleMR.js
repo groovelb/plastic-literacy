@@ -103,6 +103,8 @@ const Arrow = styled.div`
 const IllustImg = styled.img`
   width: calc(100% + 32px) !important;
   margin-left: -16px  !important;
+  margin-top: 32px !important;
+  margin-bottom: 20px !important;
 `;
 
 const stageList = [
