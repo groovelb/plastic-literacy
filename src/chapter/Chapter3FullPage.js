@@ -59,8 +59,8 @@ import img_high2 from "../assets/img/illust/c3/mr/highend_washing.png";
 import gs_factory_bg from "../assets/img/bg/chapter/gs_factory_bg.jpg";
 import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycle_mr.jpg";
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
-import img_slogan from "../assets/img/logo/slogan.svg";
-import img_slogan_vertical from "../assets/img/logo/slogan_vertical.svg";
+import img_slogan from "../assets/img/logo/logo_slogan.svg";
+// import img_slogan_vertical from "../assets/img/logo/slogan_vertical.svg";
 import { t } from 'i18next';
 
 
@@ -232,11 +232,11 @@ const Exp = styled.div`
 `;
 
 const ExpCenter = styled.div`
-  margin-top: -160px;
+  margin-top: -164px;
   margin-left: auto;
   margin-right: auto;
-  width: 33%;
-  word-break: keep-all;
+  width: 35%;
+  /* word-break: keep-all; */
   /* text-align: center; */
   ${props => props.theme.type.size.body1}
   ${props => props.theme.type.weight.prd.bold};
@@ -426,12 +426,13 @@ const StageContent = styled(SectionContentVertical)`
 `;
 
 const Slogan = styled.img`
-  margin: 180px auto 0px auto;
-  width: 640px;
+  margin: 120px auto 0px auto;
+  width: 180px;
+  margin-bottom: -120px;
   height: auto;
   @media only screen and (max-width: 480px) {
     margin: 80px auto 0px auto;
-    width: 224px;
+    width: 160px;
   }
 `;
 
@@ -685,8 +686,6 @@ const Chapter3 = ({
       left: isMobile ? 49 : 180,
     }
   ];
-
-
 
 
   const handlePageChange = (number) => {
@@ -1256,7 +1255,7 @@ const Chapter3 = ({
             title={t('c3-s10-title')}
             exp={t('c3-s10-exp')}
           >
-            <Slogan src={isMobile?img_slogan_vertical:img_slogan} alt='' />
+            <Slogan src={img_slogan} alt='' />
           </ImageBackgroundGradient>
         </Page>
         {/* <Page>

@@ -32,6 +32,7 @@ import ic_stage3 from '../../assets/icon/cycle/ic_mr_waste.svg';
 import ic_stage4 from '../../assets/icon/cycle/ic_mr_grind.svg';
 import ic_stage5 from '../../assets/icon/cycle/ic_mr_process.svg';
 import ic_stage6 from '../../assets/icon/cycle/ic_mr_flake.svg';
+import illust_mobile from '../../assets/img/illust/c3/mr/illust_cycle_mr_mobile.jpg';
 
 const margin = { top: isMobile ? 0 : 24, right: isMobile ? 0 : 24, bottom: isMobile ? 0 : 24, left: isMobile ? 0 : 24 };
 
@@ -99,45 +100,50 @@ const Arrow = styled.div`
 }
 `;
 
+const IllustImg = styled.img`
+  width: calc(100% + 32px) !important;
+  margin-left: -16px  !important;
+`;
+
 const stageList = [
-  {
-    title: `고객사 최종 제품화\n(가전, 자동차 부품)`,
-    img: ic_stage1,
-    top: 512,
-    left: 264,
-    position: 'bottom',
-  },
-  {
-    title: `소비자의 제품 사용`,
-    img: ic_stage2,
-    top: 272,
-    left: 32,
-    position: 'bottom',
-  },
-  {
-    title: `플라스틱 폐기물\n발생`,
-    img: ic_stage3,
-    top: 32,
-    left: 264,
-    position: 'top',
-  },
   {
     title: `전처리를 통한\n고순도 플레이크 생산`,
     img: ic_stage4,
     top: 512,
-    left: 980,
+    left: 264,
     position: 'bottom',
   },
   {
     title: `고객사 니즈에 맞는\n복합수지 recipe`,
     img: ic_stage5,
     top: 272,
-    left: 1216,
+    left: 32,
     position: 'bottom',
   },
   {
     title: `upcycling\n친환경 복합수지 생산`,
     img: ic_stage6,
+    top: 32,
+    left: 264,
+    position: 'top',
+  },
+  {
+    title: `고객사 최종 제품화\n(가전, 자동차 부품)`,
+    img: ic_stage1,
+    top: 512,
+    left: 980,
+    position: 'bottom',
+  },
+  {
+    title: `소비자의 제품 사용`,
+    img: ic_stage2,
+    top: 272,
+    left: 1216,
+    position: 'bottom',
+  },
+  {
+    title: `플라스틱 폐기물\n발생`,
+    img: ic_stage3,
     top: 32,
     left: 980,
     position: 'top',
@@ -257,24 +263,29 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   // let heightMobile = 0;
 
   useEffect(() => {
-    widthMobile = containerRef.current.clientWidth;
-    setWidthMobile(widthMobile);
-    setHeightMobile(containerRef.current.clientHeight);
-    console.log(widthMobile);
+    if(!isMobile){
+      widthMobile = containerRef.current.clientWidth;
+      setWidthMobile(widthMobile);
+      setHeightMobile(containerRef.current.clientHeight);
+      console.log(widthMobile);
+    }
   }, []);
 
   useEffect(() => {
-    if (isStop === true) {
-      setStop(true);
-      setCount(0);
-    }
-    else {
-      setStop(false);
+    if(!isMobile){
+      if (isStop === true) {
+        setStop(true);
+        setCount(0);
+      }
+      else {
+        setStop(false);
+      }
     }
   }, [isStop]);
 
   useEffect(() => {
-    svg = d3.select(svgRef.current)
+    if(!isMobile){
+      svg = d3.select(svgRef.current)
       .attr("width", isMobile ? widthMobile : 1200 + margin.left + margin.right)
       .attr("height", isMobile ? 498 * (widthMobile / 1200) : 498 + margin.top + margin.bottom);
 
@@ -293,6 +304,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
       g.append('g')
         .attr("class", `particleGroup_mr_${index}`);
     });
+    }
   }, []);
 
   const renderParticle = () => {
@@ -315,13 +327,13 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
       let size = 48;
 
-      if (i === 0) size = 56;
-      if (i === 1) size = 56;
-      if (i === 2) size = 32;
-      if (i === 3) size = 48;
-      if (i === 4) size = 48;
-      if (i === 5) size = 24;
-      if (i === 6) size = 24;
+      if (i === 0) size = 48;
+      if (i === 1) size = 48;
+      if (i === 2) size = 24;
+      if (i === 3) size = 24;
+      if (i === 4) size = 56;
+      if (i === 5) size = 56;
+      if (i === 6) size = 32;
 
       particleGroup.append("svg:image")
         .attr("class", 'cycle_image')
@@ -330,40 +342,39 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
           // 생산
           if (i === 0) {
-            if (j % 2 === 0) img = illust_washing;
-            if (j % 2 === 1) img = illust_car;
+            img = illust_crushed_cluster;
           }
           // 배출
           if (i === 1) {
+            img = illust_crushed_cluster;
+          }
+          // 수거
+          if (i === 2) {
+            if (j % 3 === 0) img = illust_product1;
+            if (j % 3 === 1) img = illust_product2;
+            if (j % 3 === 2) img = illust_product3;
+          }
+          // 수거
+          if (i === 3) {
+            if (j % 3 === 0) img = illust_product1;
+            if (j % 3 === 1) img = illust_product2;
+            if (j % 3 === 2) img = illust_product3;
+          }
+          // 수거
+          if (i === 4) {
             if (j % 2 === 0) img = illust_washing;
             if (j % 2 === 1) img = illust_car;
           }
           // 수거
-          if (i === 2) {
-            if (j % 3 === 0) img = illust_pressed1;
-            if (j % 3 === 1) img = illust_pressed2;
-            if (j % 3 === 2) img = illust_pressed3;
-
-          }
-          // 수거
-          if (i === 3) {
-            img = illust_crushed_cluster;
-          }
-          // 수거
-          if (i === 4) {
-            img = illust_crushed_cluster;
-          }
-          // 수거
           if (i === 5) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
+            if (j % 2 === 0) img = illust_washing;
+            if (j % 2 === 1) img = illust_car;
           }
           // 수거
           if (i === 6) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
+            if (j % 3 === 0) img = illust_pressed1;
+            if (j % 3 === 1) img = illust_pressed2;
+            if (j % 3 === 2) img = illust_pressed3;
           }
           return img;
         })
@@ -401,72 +412,84 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   }
 
   const updateParticle = () => {
-    if (count === 1) {
-      renderParticle();
+    if(!isMobile){
+      if (count === 1) {
+        renderParticle();
+      }
+      else if (count % 300 === 0) {
+        renderParticle();
+        console.log(count);
+      }
+      setCount(count + 1);
     }
-    else if (count % 300 === 0) {
-      renderParticle();
-      console.log(count);
-    }
-    setCount(count + 1);
+   
   }
 
   useAnimationFrameLoop(updateParticle, stop)
 
   return (
     <Wrapper>
-      <Title>
-        Circular<br />
-        Economy System
-      </Title>
-      <Container
-        ref={containerRef}
-        widthMobile={widthMobileState}
-      >
-        <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? '16px' : '120px'}
-        >
-          자동차.가전 시장
-        </CycleFill>
-        <CycleFill
-          top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
-          left={isMobile ? 'calc(100% - 136px)' : '848px'}
-        >
-          <img src={logo_gs} alt='' />
-        </CycleFill>
-        {
-          stageList.map((stage, index) =>
-            <Stage
-              top={`calc(${stage.top}px - 54px)`}
-              left={`calc(${stage.left}px - 54px)`}
-              position={stage.position}
-              key={index}
+      {
+        !isMobile &&
+        <>
+          <Title>
+            Circular<br />
+            Economy System
+          </Title>
+          <Container
+            ref={containerRef}
+            widthMobile={widthMobileState}
+          >
+            <CycleFill
+              top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+              left={isMobile ? '16px' : '120px'}
             >
-              <img src={stage.img} alt='' />
-              <p>
-                {stage.title}
-              </p>
-            </Stage>
-          )
-        }
-        {
-          arrowList.map((arrow, index) =>
-            <Arrow
-              top={arrow.top + 'px'}
-              left={arrow.left + 'px'}
-              deg={arrow.deg}
-              position={arrow.position}
+              <img src={logo_gs} alt='' />
+            </CycleFill>
+            <CycleFill
+              top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
+              left={isMobile ? 'calc(100% - 136px)' : '848px'}
             >
-              <img src={ic_arrow} alt='' alt='' />
-            </Arrow>
-          )
-        }
-        <svg
-          className={'plastic_cycle'}
-          ref={svgRef}
-        />
-      </Container>
+              자동차.가전 시장
+            </CycleFill>
+            {
+              stageList.map((stage, index) =>
+                <Stage
+                  top={`calc(${stage.top}px - 54px)`}
+                  left={`calc(${stage.left}px - 54px)`}
+                  position={stage.position}
+                  key={index}
+                >
+                  <img src={stage.img} alt='' />
+                  <p>
+                    {stage.title}
+                  </p>
+                </Stage>
+              )
+            }
+            {
+              arrowList.map((arrow, index) =>
+                <Arrow
+                  top={arrow.top + 'px'}
+                  left={arrow.left + 'px'}
+                  deg={arrow.deg}
+                  position={arrow.position}
+                >
+                  <img src={ic_arrow} alt='' />
+                </Arrow>
+              )
+            }
+            <svg
+              className={'plastic_cycle'}
+              ref={svgRef}
+            />
+          </Container>
+        </>
+      }
+      {
+        isMobile && 
+        <IllustImg src={illust_mobile} alt='' />
+      }
     </Wrapper>
   );
 

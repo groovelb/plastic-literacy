@@ -103,43 +103,43 @@ const Arrow = styled.div`
 
 const stageList = [
   {
-    title: `소비재/포장재 기업에서\n최종 제품화`,
-    img: ic_stage1,
-    top: 512,
-    left: 264,
-    position: 'bottom',
-  },
-  {
-    title: `소비자의 제품 사용`,
-    img: ic_stage2,
-    top: 272,
-    left: 32,
-    position: 'bottom',
-  },
-  {
-    title: `플라스틱 및 비닐류\n폐기물 발생`,
-    img: ic_stage3,
-    top: 32,
-    left: 264,
-    position: 'top',
-  },
-  {
-    title:  `폐기물을 원료로\n친환경 열분해유 생산`,
+    title: `폐기물을 원료로\n친환경 열분해유 생산`,
     img: ic_stage4,
     top: 512,
-    left: 980,
+    left: 264,
     position: 'bottom',
   },
   {
     title: `석유정제공정의 원료로 재활용\n(탄소기반 원재료 대체)`,
     img: ic_stage5,
     top: 272,
-    left: 1216,
+    left: 32,
     position: 'bottom',
   },
   {
     title: `석유화학공정에서\nCircular Product 생산`,
     img: ic_stage6,
+    top: 32,
+    left: 264,
+    position: 'top',
+  },
+  {
+    title: `소비재/포장재 기업에서\n최종 제품화`,
+    img: ic_stage1,
+    top: 512,
+    left: 980,
+    position: 'bottom',
+  },
+  {
+    title: `소비자의 제품 사용`,
+    img: ic_stage2,
+    top: 272,
+    left: 1216,
+    position: 'bottom',
+  },
+  {
+    title: `플라스틱 및 비닐류\n폐기물 발생`,
+    img: ic_stage3,
     top: 32,
     left: 980,
     position: 'top',
@@ -317,13 +317,13 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
       let size = 48;
 
-      if (i === 0) size = 56;
-      if (i === 1) size = 56;
-      if (i === 2) size = 32;
-      if (i === 3) size = 48;
-      if (i === 4) size = 48;
-      if (i === 5) size = 24;
-      if (i === 6) size = 24;
+      if (i === 0) size = 48;
+      if (i === 1) size = 48;
+      if (i === 2) size = 24;
+      if (i === 3) size = 24;
+      if (i === 4) size = 56;
+      if (i === 5) size = 56;
+      if (i === 6) size = 32;
 
       particleGroup.append("svg:image")
         .attr("class", 'cycle_image')
@@ -332,40 +332,39 @@ const PlasticEcoCycleMR = ({ isStop }) => {
 
           // 생산
           if (i === 0) {
-            if (j % 2 === 0) img = illust_cup;
-            if (j % 2 === 1) img = illust_bottle;
+            img = illust_crushed_cluster;
           }
           // 배출
           if (i === 1) {
+            img = illust_crushed_cluster;
+          }
+          // 수거
+          if (i === 2) {
+            if (j % 3 === 0) img = illust_product1;
+            if (j % 3 === 1) img = illust_product2;
+            if (j % 3 === 2) img = illust_product3;
+          }
+          // 수거
+          if (i === 3) {
+            if (j % 3 === 0) img = illust_product1;
+            if (j % 3 === 1) img = illust_product2;
+            if (j % 3 === 2) img = illust_product3;
+          }
+          // 수거
+          if (i === 4) {
             if (j % 2 === 0) img = illust_cup;
             if (j % 2 === 1) img = illust_bottle;
           }
           // 수거
-          if (i === 2) {
-            if (j % 3 === 0) img = illust_pressed1;
-            if (j % 3 === 1) img = illust_pressed2;
-            if (j % 3 === 2) img = illust_pressed3;
-
-          }
-          // 수거
-          if (i === 3) {
-            img = illust_crushed_cluster;
-          }
-          // 수거
-          if (i === 4) {
-            img = illust_crushed_cluster;
-          }
-          // 수거
           if (i === 5) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
+            if (j % 2 === 0) img = illust_cup;
+            if (j % 2 === 1) img = illust_bottle;
           }
           // 수거
           if (i === 6) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
+            if (j % 3 === 0) img = illust_pressed1;
+            if (j % 3 === 1) img = illust_pressed2;
+            if (j % 3 === 2) img = illust_pressed3;
           }
           return img;
         })
@@ -429,14 +428,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
           top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
           left={isMobile ? '16px' : '120px'}
         >
-          일상 소비재 시장
+          <img src={logo_gs} alt='' />
         </CycleFill>
         <CycleFill
           top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
           left={isMobile ? 'calc(100% - 136px)' : '848px'}
 
         >
-          <img src={logo_gs} alt='' />
+          일상 소비재 시장
         </CycleFill>
         {
           stageList.map((stage, index) =>

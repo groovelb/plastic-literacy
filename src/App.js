@@ -80,7 +80,7 @@ const GlobalStyle = createGlobalStyle`
     height:100%;
     width:100%;
     height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-    height: calc(var(--vh, 1vh) * 100);
+    /* height: calc(var(--vh, 1vh) * 100); */
     } 
    // Title
   .circle_path_whole.inner{

@@ -905,12 +905,12 @@ const Chapter1 = ({
             exp={t("c1-exp")}
             num={1}
             img={bg_c1}
-            // onClick={() => {
-            //   setCurrentPage(1);
-            //   setTimeout(() => {
-            //     isMobile && triggerFull();
-            //   }, 1200);
-            // }}
+            onClick={() => {
+              setCurrentPage(1);
+              // setTimeout(() => {
+              //   isMobile && triggerFull();
+              // }, 1200);
+            }}
           />
         </Page>
         {

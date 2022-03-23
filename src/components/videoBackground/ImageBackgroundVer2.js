@@ -10,7 +10,7 @@ const Container = styled.div`
   position: relative;
   width: 100%;
   pointer-events: none;
-  height: ${props => `${props.height}px`};
+  height: 100%;
 `;
 
 const ImgBG = styled.div`
@@ -61,7 +61,7 @@ function VideoBackground({
 
   return (
     <Container
-      height={windowSize.height}
+      // height={windowSize.height}
     >
       <ImgBG
         isTrigger={isTrigger}

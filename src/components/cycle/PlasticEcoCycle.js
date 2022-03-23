@@ -78,21 +78,33 @@ const Arrow = styled.div`
    top: ${props => props.position === 'top' ? '48px' : '-56px'};
  }
  @media only screen and (max-width: 480px) {
-  display: none;
+  p{
+   position: absolute;
+   width: 48px;
+   left: 0;
+   top: ${props => props.position === 'top' ? '24px' : '-28px'};
+ }
+  /* display: none; */
  }
 `;
 
 const ArrowHead = styled.div`
   width: 0; 
-  height: 0; 
+  height: 0;
+  z-index: -1;
   border-top: 60px solid transparent;
   border-bottom: 60px solid transparent;
-  opacity: 0.1;
-  border-left: 60px solid ${props => props.theme.color.brand.epGreen};
+  /* opacity: 0.1; */
+  border-left: 60px solid #143136;
   position: absolute;
-  top: 147px;
-  left: 526px;
+  top: ${isMobile?'22%':'147px'};
+  left: ${isMobile?'42%':'526px'};
   transform: rotate(45deg);
+  @media only screen and (max-width: 480px) {
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #143136;
+  }
   /* border-radius: 4px; */
 `;
 
@@ -123,6 +135,37 @@ const arrowList = [
     title: '수거',
     top: 509,
     left: 1248 - 272,
+    deg: 180
+  },
+];
+
+const arrowList2 = [
+  {
+    position: 'top',
+    title: '배출',
+    top: 0,
+    left: 17,
+    deg: 180
+  },
+  {
+    position: 'top',
+    title: '처리',
+    top: 0,
+    left: 76,
+    deg: 0
+  },
+  {
+    position: 'bottom',
+    title: '생산',
+    top: 76,
+    left: 17,
+    deg: 0
+  },
+  {
+    position: 'bottom',
+    title: '수거',
+    top: 76,
+    left: 76,
     deg: 180
   },
 ];
@@ -165,9 +208,9 @@ const PlasticEcoCycle = ({ isStop }) => {
       g.append('path')
         .attr('d', path)
         .attr("class", `path_${index}`)
-        .attr("stroke", color.brand.epGreen)
+        .attr("stroke", '#143136')
         .attr("fill", 'none')
-        .attr("opacity", 0.1)
+        // .attr("opacity", 0.1)
         // .attr("marker-end","url(#arrow)")
         .attr("stroke-width", 48);
 
@@ -288,7 +331,22 @@ const PlasticEcoCycle = ({ isStop }) => {
       <Container ref={containerRef}>
         <ArrowHead />
         {
-          arrowList.map((arrow, index) =>
+          isMobile&&arrowList2.map((arrow, index) =>
+            <Arrow
+              top={arrow.top + '%'}
+              left={arrow.left + '%'}
+              deg={arrow.deg}
+              position={arrow.position}
+            >
+              {/* <img src={ic_arrow} alt='' alt='' /> */}
+              <p>
+                {arrow.title}
+              </p>
+            </Arrow>
+          )
+        }
+         {
+          !isMobile&&arrowList.map((arrow, index) =>
             <Arrow
               top={arrow.top + 'px'}
               left={arrow.left + 'px'}
