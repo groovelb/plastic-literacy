@@ -111,28 +111,28 @@ const ArrowHead = styled.div`
 const arrowList = [
   {
     position: 'top',
-    title: '배출',
+    title: '생산',
     top: 14,
     left: 256,
     deg: 180
   },
   {
     position: 'top',
-    title: '처리',
+    title: '수거',
     top: 14,
     left: 1248 - 272,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '생산',
+    title: '처리',
     top: 509,
     left: 256,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '수거',
+    title: '배출',
     top: 509,
     left: 1248 - 272,
     deg: 180
@@ -142,28 +142,28 @@ const arrowList = [
 const arrowList2 = [
   {
     position: 'top',
-    title: '배출',
+    title: '생산',
     top: 0,
     left: 17,
     deg: 180
   },
   {
     position: 'top',
-    title: '처리',
+    title: '수거',
     top: 0,
     left: 76,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '생산',
+    title: '처리',
     top: 76,
     left: 17,
     deg: 0
   },
   {
     position: 'bottom',
-    title: '수거',
+    title: '배출',
     top: 76,
     left: 76,
     deg: 180
@@ -238,11 +238,11 @@ const PlasticEcoCycle = ({ isStop }) => {
 
       let size = 48;
 
-      if (i === 0) size = isMobile ? 72 : 48;
-      if (i === 1) size = isMobile ? 56 : 32;
+      if (i === 0) size = isMobile ? 48 : 24;
+      if (i === 1) size = isMobile ? 72 : 48;
       if (i === 2) size = isMobile ? 72 : 48;
-      if (i === 3) size = isMobile ? 48 : 24;
-      if (i === 4) size = isMobile ? 48 : 24;
+      if (i === 3) size = isMobile ? 56 : 32;
+      if (i === 4) size = isMobile ? 72 : 48;
 
       particleGroup.append("svg:image")
         .attr("xlink:href", (d, j) => {
@@ -250,30 +250,29 @@ const PlasticEcoCycle = ({ isStop }) => {
 
           // 생산
           if (i === 0) {
-            if (j % 2 === 0) img = illust_washing;
-            if (j % 2 === 1) img = illust_car;
+            if (j % 3 === 0) img = illust_product1;
+            if (j % 3 === 1) img = illust_product2;
+            if (j % 3 === 2) img = illust_product3;
           }
           // 배출
           if (i === 1) {
+            if (j % 2 === 0) img = illust_washing;
+            if (j % 2 === 1) img = illust_car;
+          }
+          // 수거
+          if (i === 2) {
+            if (j % 2 === 0) img = illust_washing;
+            if (j % 2 === 1) img = illust_car;
+          }
+          // 수거
+          if (i === 3) {
             if (j % 3 === 0) img = illust_pressed1;
             if (j % 3 === 1) img = illust_pressed2;
             if (j % 3 === 2) img = illust_pressed3;
           }
           // 수거
-          if (i === 2) {
-            img = illust_crushed_cluster;
-          }
-          // 수거
-          if (i === 3) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
-          }
-          // 수거
           if (i === 4) {
-            if (j % 3 === 0) img = illust_product1;
-            if (j % 3 === 1) img = illust_product2;
-            if (j % 3 === 2) img = illust_product3;
+            img = illust_crushed_cluster
           }
           return img;
         })

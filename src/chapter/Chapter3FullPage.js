@@ -431,8 +431,8 @@ const Slogan = styled.img`
   margin-bottom: -120px;
   height: auto;
   @media only screen and (max-width: 480px) {
-    margin: 80px auto 0px auto;
-    width: 160px;
+    margin: 48px auto 0px auto;
+    width: 96px;
   }
 `;
 
