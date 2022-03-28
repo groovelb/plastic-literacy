@@ -310,14 +310,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   }, []);
 
   const renderParticle = () => {
-    const delay = 1500;
+    const delay = 1200;
 
     for (let i = 0; i < cyclePathData2.length; i++) {
       let particleGroup = d3.select(`.particleGroup_mr_${i}`).selectAll('.particle')
         .data(() => {
           let data = [];
-          let num = 8;
-          if (i === 2) num = 16;
+          let num = 200;
+          if (i === 6) num = 400;
           for (let index = 0; index < num; index++) {
             data.push(index);
           }
@@ -418,7 +418,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
       if (count === 1) {
         renderParticle();
       }
-      else if (count % 300 === 0) {
+      else if (count % 900 === 0) {
         renderParticle();
         console.log(count);
       }

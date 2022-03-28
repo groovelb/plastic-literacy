@@ -19,6 +19,7 @@ import logo_gs from "../../assets/img/logo/logo_gs_black.svg";
 import illust_washing from "../../assets/illust/title/product_washing.svg";
 import illust_car from "../../assets/illust/title/product_car.svg";
 import illust_cup from "../../assets/illust/title/illust_cup.svg";
+import illust_plastic_bag from "../../assets/illust/title/illust_plastic_bag.svg";
 import illust_bottle from "../../assets/illust/title/illust_bottle.svg";
 import illust_product1 from "../../assets/illust/title/product_simple_1.svg";
 import illust_product2 from "../../assets/illust/title/product_simple_2.svg";
@@ -312,14 +313,14 @@ const PlasticEcoCycleMR = ({ isStop }) => {
   }, []);
 
   const renderParticle = () => {
-    const delay = 1500;
+    const delay = 1200;
 
     for (let i = 0; i < cyclePathData2.length; i++) {
       let particleGroup = d3.select(`.particleGroup_cr_${i}`).selectAll('.particle')
         .data(() => {
           let data = [];
-          let num = 8;
-          if (i === 2) num = 16;
+          let num = 200;
+          if (i === 6) num = 400;
           for (let index = 0; index < num; index++) {
             data.push(index);
           }
@@ -366,13 +367,15 @@ const PlasticEcoCycleMR = ({ isStop }) => {
           }
           // 수거
           if (i === 4) {
-            if (j % 2 === 0) img = illust_cup;
-            if (j % 2 === 1) img = illust_bottle;
+            if (j % 3 === 0) img = illust_cup;
+            if (j % 3 === 1) img = illust_bottle;
+            if (j % 3 === 2) img =  illust_plastic_bag;
           }
           // 수거
           if (i === 5) {
-            if (j % 2 === 0) img = illust_cup;
-            if (j % 2 === 1) img = illust_bottle;
+            if (j % 3 === 0) img = illust_cup;
+            if (j % 3 === 1) img = illust_bottle;
+            if (j % 3 === 2) img =  illust_plastic_bag;
           }
           // 수거
           if (i === 6) {
@@ -420,7 +423,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
       if (count === 1) {
         renderParticle();
       }
-      else if (count % 300 === 0) {
+      else if (count % 900 === 0) {
         renderParticle();
         console.log(count);
       }
@@ -454,7 +457,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
               left={isMobile ? 'calc(100% - 136px)' : '848px'}
 
             >
-              일상 소비재 시장
+              소비재 시장
             </CycleFill>
             {
               stageList.map((stage, index) =>
