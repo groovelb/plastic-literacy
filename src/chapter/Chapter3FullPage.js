@@ -1171,16 +1171,14 @@ const Chapter3 = ({
           </LiveArea>
         </Page>
         <Page isTop={true}>
-          <ImageBackgroundVer2
+          <ImageBackground
             isFilter={true}
             img={gs_factory_bg}
             isTrigger={true}
+            title={t('c3-s7-title')}
+            exp={t('c3-s7-subtitle') + t('c3-s7-exp')}
           >
-            <MsgFullScreen
-              title={t('c3-s7-title')}
-              exp={t('c3-s7-subtitle') + t('c3-s7-exp')}
-            />
-          </ImageBackgroundVer2>
+          </ImageBackground>
           {/* <LiveArea>
             <SectionTitle
               themeType={'light'}
@@ -1228,13 +1226,16 @@ const Chapter3 = ({
         </Page>
         <Page isTop={isMobile ? false : false}>
           <LiveArea>
-            {/* <SectionTitle
+            <SectionTitle
               themeType={'light'}
-            // title={t('c3-s8-title')}
-            /> */}
+              title={t('c3-s8-title')}
+            />
             <CircularLoop isActive={true}>
               <PlasticEcoCycleCR isStop={currentPage !== 11} />
             </CircularLoop>
+            <ExpCenter themeType='light'>
+              {t('c3-s8-exp')}
+            </ExpCenter>
           </LiveArea>
         </Page>
         <Page isTop={true}>
