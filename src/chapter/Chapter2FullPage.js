@@ -554,6 +554,7 @@ const Chapter2FullPage = ({
               num={3}
               img={bg_c3}
               to={'/chapter3'}
+              exp={t('c3-subtitle')}
             />
           </Row3>
         </MsgFullScreen>
