@@ -3,7 +3,10 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%PUBLIC_URL%/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, user-scalable=no"
+		/>
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="theme-color" content="#000000" />
 		<meta
@@ -28,8 +31,18 @@
 		<title>플라스틱 리터러시 - GS 칼텍스</title>
 	</head>
 	<!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKTR0BFWR0"></script>
+	<script
+		async
+		src="https://www.googletagmanager.com/gtag/js?id=G-LKTR0BFWR0"
+	></script>
 	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			window.dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+
+		gtag("config", "G-LKTR0BFWR0");
 		// First we get the viewport height and we multiple it by 1% to get a value for a vh unit
 		let vh = window.innerHeight * 0.01;
 		// Then we set the value in the --vh custom property to the root of the document
