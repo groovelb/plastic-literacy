@@ -73,7 +73,7 @@ let data = {
   "nodes": [
     {
       "node": 0,
-      "name": "전체폐기물 (2019)"
+      "name": "전체폐기물"
     },
     {
       "node": 1,

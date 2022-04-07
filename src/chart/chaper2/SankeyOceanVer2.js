@@ -83,7 +83,7 @@ let data = {
     },
     {
       "node": 2,
-      "name": "수거폐기물 (2020)"
+      "name": "수거폐기물"
     },
     {
       "node": 3,
@@ -107,7 +107,8 @@ let data = {
       "node": 7,
       "name": "플라스틱",
       "isTemp":true,
-      "value2":"약80% 추정",
+      "value2":"수거물의\n약80% 추정",
+      "is2Lines": true
     },
     {
       "node": 8,
@@ -468,13 +469,17 @@ const Sankey = ({
     d3.scaleLinear().domain(linkExtent).range([14, 20]);
 
     node.append("text")
-      .attr("class", "node_value")
+      .attr("class", "node_value ocean")
       .attr("x", function (d) { return isMobile? d.x0 + 4: d.x0 + 8; })
       .attr("y", function (d) {
         if (d.y1 - d.y0 < 32) {
           return d.y1 + 5;
         } else {
-          return isMobile?d.y1 - 12 : d.y1 - 16;
+          if(d.is2Lines){
+            return isMobile?d.y1 - 24 : d.y1 - 28;
+          }else {
+            return isMobile?d.y1 - 12 : d.y1 - 16;
+          }
         }
       })
       .attr("dy", "0.35em")
@@ -497,6 +502,8 @@ const Sankey = ({
       })
       .filter(function (d) { return d.x0 < width / 2; })
       .attr("text-anchor", "start");
+
+      d3.selectAll(".node_value.ocean").call(wrap,  isMobile? 64: 80);
 
 
     setIsInitiate(true);

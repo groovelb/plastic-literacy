@@ -429,7 +429,7 @@ const Chapter2FullPage = ({
             />
           </Chart>
           <Source>
-          출처: 해양수산부 ‘해양환경정보포털’, 단위: 톤
+          출처: 해양수산부 ‘해양환경정보포털’, 단위: 톤, 기준: 2020년도
           </Source>
         </Top>
       }

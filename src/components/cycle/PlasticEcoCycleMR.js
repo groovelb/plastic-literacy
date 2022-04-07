@@ -452,7 +452,7 @@ const PlasticEcoCycleMR = ({ isStop }) => {
               top={isMobile ? `calc((${heightMobile}px - 108px)/2 - 16px)` : 'calc((546px - 276px)/2)'}
               left={isMobile ? 'calc(100% - 136px)' : '848px'}
             >
-              자동차.가전 시장
+              자동차/가전 시장
             </CycleFill>
             {
               stageList.map((stage, index) =>
