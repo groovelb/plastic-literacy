@@ -425,15 +425,35 @@ const StageContent = styled(SectionContentVertical)`
   }
 `;
 
-const Slogan = styled.img`
+const Slogan = styled.a`
   margin: 120px auto 0px auto;
   width: 180px;
-  margin-bottom: -120px;
   height: auto;
+  position: relative;
+  img{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+    margin-top: 0px;
+    opacity: 0.82;
+    transition: all 0.3s;
+  }
+  :hover{
+    img{
+      margin-top: -24px;
+      opacity: 1;
+    }
+  }
   @media only screen and (max-width: 480px) {
     margin: 48px auto 0px auto;
     width: 96px;
+    img{
+      opacity: 1;
+    }
   }
+  
 `;
 
 const Chapter3 = ({
@@ -890,6 +910,7 @@ const Chapter3 = ({
         animationTimer={750}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={currentPage === 13}
       // blockScrollDown={isMobile&&!isFull}
       >
         <Page isTop={true}>
@@ -1256,7 +1277,9 @@ const Chapter3 = ({
             title={t('c3-s10-title')}
             exp={t('c3-s10-exp')}
           >
-            <Slogan src={img_slogan} alt='' />
+            <Slogan href='https://gscaltexmediahub.com/category/csr/esg/' target='_blank'>
+              <img src={img_slogan} alt='' />
+            </Slogan>
           </ImageBackgroundGradient>
         </Page>
         {/* <Page>

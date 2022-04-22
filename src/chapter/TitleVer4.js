@@ -98,6 +98,7 @@ const Title = ({
         transitionTimingFunction={'ease-in-out'}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={currentPage===2}
         // blockScrollDown={isMobile&&!isFull}
       >
         <Page>

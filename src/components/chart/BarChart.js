@@ -153,6 +153,8 @@ const BarChart = ({
       .ease(d3.easeExpOut);
 
     d3.select(".xAxis.barChart").transition(t).call(xScaleData);
+    d3.select(".xAxis.barChart")
+    .attr("transform", "translate(0," + height + ")");
     d3.select(".yAxis.barChart").transition(t).call(d3.axisLeft(y).tickSize(-width));
 
     chart.selectAll("rect")

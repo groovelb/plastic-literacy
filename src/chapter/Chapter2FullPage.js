@@ -439,6 +439,7 @@ const Chapter2FullPage = ({
         animationTimer={1000}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={currentPage===12}
         // blockScrollDown={isMobile&&!isFull}
       >
         <Page isTop={true}>

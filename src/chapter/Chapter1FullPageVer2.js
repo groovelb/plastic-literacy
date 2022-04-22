@@ -895,6 +895,7 @@ const Chapter1 = ({
         animationTimer={800}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
+        blockScrollDown={currentPage===8}
         // blockScrollDown={isMobile&&!isFull}
       >
         <Page isTop={true}>
