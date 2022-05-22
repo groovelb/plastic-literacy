@@ -11,7 +11,6 @@ import VideoBackground from "../videoBackground/VideoBackground";
 
 import ic_scroll from "../../assets/icon/ic_keep_scroll_white.svg";
 
-
 const Container = styled.div`
 	width: calc(100% - 48px);
 	margin-left: 24px;
@@ -32,7 +31,7 @@ const Container = styled.div`
     width: 100%;
     height: 100%;
     /* background-color: ${props => props.isFilter ? 'rgba(15,30,45,0.56)' : 'rgba(0,0,0,0)'}; */
-		background: linear-gradient(180deg, rgba(15,30,45,0.56) 25%, rgba(0,150,150,1) 85%);
+		background: linear-gradient(180deg, rgba(15,30,45,0.56) 50%, rgba(15,30,45,0.92) 75%);
     z-index: 0;
     pointer-events: none;
   }
@@ -84,7 +83,7 @@ const Title = styled.div`
 `;
 
 const Divider = styled.div`
-	width: 160px;
+	width: 128px;
 	height: 4px;
 	background-color: #fff;
 	margin: 28px 0px;

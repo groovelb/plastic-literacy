@@ -61,6 +61,9 @@ import illust_circular_loop from "../assets/img/illust/c3/mr/illust_economy_cycl
 import illust_circular_loop2 from "../assets/img/illust/c3/mr/illust_economy_cycle_cr.jpg";
 import img_slogan from "../assets/img/logo/logo_slogan.svg";
 // import img_slogan_vertical from "../assets/img/logo/slogan_vertical.svg";
+
+import bg_energy_plus from "../assets/img/bg/bg_energy_plus.jpg";
+import logo_energy_plus from "../assets/img/logo/logo_energy_plus.svg";
 import { t } from 'i18next';
 
 
@@ -427,7 +430,8 @@ const StageContent = styled(SectionContentVertical)`
 
 const Slogan = styled.a`
   margin: 120px auto 0px auto;
-  width: 180px;
+  width: 280px;
+  padding: 16px;
   height: auto;
   position: relative;
   img{
@@ -448,7 +452,7 @@ const Slogan = styled.a`
   }
   @media only screen and (max-width: 480px) {
     margin: 48px auto 0px auto;
-    width: 96px;
+    width: 180px;
     img{
       opacity: 1;
     }
@@ -910,7 +914,7 @@ const Chapter3 = ({
         animationTimer={750}
         customPageNumber={currentPage}
         renderAllPagesOnFirstRender={true}
-        blockScrollDown={currentPage === 13}
+        blockScrollDown={currentPage === 14}
       // blockScrollDown={isMobile&&!isFull}
       >
         <Page isTop={true}>
@@ -1270,15 +1274,28 @@ const Chapter3 = ({
           </ImageBackground>
         </Page>
         <Page isTop={true}>
-          <ImageBackgroundGradient
+          <ImageBackground
             isFilter={true}
             img={videoURL.c3.ending2}
             isTrigger={true}
             title={t('c3-s10-title')}
             exp={t('c3-s10-exp')}
           >
-            <Slogan href='https://gscaltexmediahub.com/category/csr/esg/' target='_blank'>
+            {/* <Slogan href='https://gscaltexmediahub.com/category/csr/esg/' target='_blank'>
               <img src={img_slogan} alt='' />
+            </Slogan> */}
+          </ImageBackground>
+        </Page>
+        <Page isTop={true}>
+          <ImageBackgroundGradient
+            isFilter={true}
+            img={bg_energy_plus}
+            isTrigger={true}
+            title={t('c3-s11-title')}
+            exp={t('c3-s11-exp')}
+          >
+            <Slogan href='https://bit.ly/3LbtqG9' target='_blank'>
+              <img src={logo_energy_plus} alt='' />
             </Slogan>
           </ImageBackgroundGradient>
         </Page>

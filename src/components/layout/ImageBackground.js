@@ -83,7 +83,7 @@ const Title = styled.div`
 `;
 
 const Divider = styled.div`
-	width: 160px;
+	width: 128px;
 	height: 4px;
 	background-color: #fff;
 	margin: 28px 0px;
