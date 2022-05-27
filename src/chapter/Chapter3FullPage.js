@@ -430,7 +430,7 @@ const StageContent = styled(SectionContentVertical)`
 
 const Slogan = styled.a`
   margin: 120px auto 0px auto;
-  width: 280px;
+  width: 480px;
   padding: 16px;
   height: auto;
   position: relative;
@@ -452,7 +452,7 @@ const Slogan = styled.a`
   }
   @media only screen and (max-width: 480px) {
     margin: 48px auto 0px auto;
-    width: 180px;
+    width: 256px;
     img{
       opacity: 1;
     }
@@ -506,7 +506,8 @@ const Chapter3 = ({
       page: 8,
     },
     {
-      title: t("c3-s6-title"),
+      // title: t("c3-s6-title"),
+      title: '자원순환을 질적으로 향상시킨 GS칼텍스의 CR',
       exp: t("c3-s6-exp"),
       pageList: [10, 11, 12],
       page: 10,
